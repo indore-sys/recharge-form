@@ -1153,7 +1153,7 @@
         }
 
         .nav-item {
-            margin-bottom: 6px;
+            margin-bottom: 12px;
         }
 
         .nav-link {
@@ -1188,6 +1188,21 @@
         .nav-link[data-section="products"]::before { content: "▣"; }
         .nav-link[data-section="marketing"]::before { content: "↗"; }
         .nav-link[data-section="final"]::before { content: "✓"; }
+
+        /* Mobile App Section Icons - Emojis */
+        .nav-link[data-section="app-basic-info"]::before { content: "📱"; }
+        .nav-link[data-section="app-screens"]::before { content: "📲"; }
+        .nav-link[data-section="app-content"]::before { content: "📝"; }
+        .nav-link[data-section="app-platform"]::before { content: "🔧"; }
+        .nav-link[data-section="app-features"]::before { content: "⚡"; }
+        .nav-link[data-section="app-design"]::before { content: "🎨"; }
+        .nav-link[data-section="app-user-roles"]::before { content: "👤"; }
+        .nav-link[data-section="app-notifications"]::before { content: "🔔"; }
+        .nav-link[data-section="app-payment"]::before { content: "💳"; }
+        .nav-link[data-section="app-backend"]::before { content: "⚙️"; }
+        .nav-link[data-section="app-deployment"]::before { content: "🚀"; }
+        .nav-link[data-section="app-maintenance"]::before { content: "🔒"; }
+        .nav-link[data-section="app-final"]::before { content: "✓"; }
 
         .nav-link:hover {
             background: rgba(0, 113, 227, 0.08);
@@ -1521,6 +1536,7 @@
 <body>
     <div class="container">
         <div class="sidebar">
+            <img src="Rechh looo.png" alt="Logo" class="header-logo">
             <h3>Form Sections</h3>
             <ul class="nav-menu">
                 <li class="nav-item">
@@ -1546,8 +1562,8 @@
 
         <div class="form-content">
             <div class="header">
-                <img src="Rechh looo.png" alt="Logo" class="header-logo">
-                <h1>Website Development Client Requirement Form</h1>
+                
+                <h1 style="text-align: center;">Website Development <br>Client Requirement Form</h1>
                 <p>Fill what you know. Leave the rest to us.</p>
             </div>
 
@@ -1565,6 +1581,31 @@
                     <strong>Success!</strong> Your form has been submitted. Check the console for the form data.
                 </div>
 
+                <!-- Project Type Selection -->
+                <div class="form-section active" id="project-type-selection">
+                    <div class="section-header">
+                        <h2>What do you need?</h2>
+                        <span class="section-toggle">▼</span>
+                    </div>
+                    <div class="section-content">
+                        <div class="form-group">
+                            <label class="required">Select Project Type</label>
+                            <div class="option-grid">
+                                <label class="option-card">
+                                    <input type="radio" name="project_type" value="website" required> Website
+                                </label>
+                                <label class="option-card">
+                                    <input type="radio" name="project_type" value="mobile-app" required> Mobile App
+                                </label>
+                                <label class="option-card">
+                                    <input type="radio" name="project_type" value="both" required> Both
+                                </label>
+                            </div>
+                            <div class="error-message">Please select project type</div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Thank You Section (hidden by default) -->
                 <div class="thank-you-section" id="thankYouSection" style="display: none;">
                     <div class="thank-you-content">
@@ -1576,7 +1617,7 @@
                 </div>
 
                 <!-- Section 1: Project Basics -->
-                <div class="form-section active" id="project-basics">
+                <div class="form-section" id="project-basics">
                     <div class="section-header">
                         <h2>1. Project Basics</h2>
                         <span class="section-toggle">▼</span>
@@ -2291,7 +2332,7 @@
                     </div>
                 </div>
 
-                <!-- Section 3: Content & Legal -->
+                <!-- Section 3: Content & Branding -->
                 <div class="form-section" id="content">
                     <div class="section-header">
                         <h2>3. Content & Branding</h2>
@@ -3130,6 +3171,838 @@
                     </div>
                 </div>
             </div>
+
+                <!-- MOBILE APP SECTIONS -->
+                
+                <!-- Mobile App Section 1: App Basic Info -->
+                <div class="form-section" id="app-basic-info">
+                    <!-- <img src="Rechh looo.png" alt="Logo" class="header-logo"> -->
+                    <div class="section-header">
+                        <h2>1. App Basic Info</h2>
+                        <span class="section-toggle">▼</span>
+                    </div>
+                    <div class="section-content">
+                        <div class="form-group">
+                            <label class="required">App Purpose</label>
+                            <textarea name="app_purpose" required placeholder="Describe what your app does and the problem it solves..." rows="4"></textarea>
+                            <div class="error-message">Please describe app purpose</div>
+                        </div>
+                        <div class="form-group">
+                            <label class="required">Target Audience</label>
+                            <textarea name="app_target_audience" required placeholder="Describe your target users (age, interests, needs)..." rows="3"></textarea>
+                            <div class="error-message">Please describe target audience</div>
+                        </div>
+                    </div>
+                    <div class="section-navigation">
+                        <button type="button" class="nav-btn nav-btn-prev" data-prev="project-type-selection">← Previous</button>
+                        <button type="button" class="nav-btn nav-btn-next" data-next="app-screens">Next →</button>
+                    </div>
+                </div>
+
+                <!-- Mobile App Section 2: App Screens -->
+                <div class="form-section" id="app-screens">
+                    <div class="section-header">
+                        <h2>2. App Screens <span id="appScreenCountBadge" class="page-count-badge">Total: 0 screens</span></h2>
+                        <span class="section-toggle">▼</span>
+                    </div>
+                    <div class="section-content">
+                        <p class="limit-note">Up to 12 screens are included by default. Additional screens can still be requested and discussed with the project manager.</p>
+                        <div class="form-group">
+                            <label class="required">Main App Screens</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="appScreens" value="home" checked> Home / Dashboard
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="appScreens" value="login" checked> Login / Sign Up
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="appScreens" value="profile" checked> User Profile
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="appScreens" value="settings" checked> Settings
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="appScreens" value="search"> Search
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="appScreens" value="notifications"> Notifications
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="appScreens" value="cart"> Cart / Checkout
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="appScreens" value="orders"> Orders / History
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="appScreens" value="favorites"> Favorites / Wishlist
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="appScreens" value="support"> Help / Support
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="appScreens" value="messages"> Messages / Chat
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="appScreens" value="map"> Map / Location
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Additional Screens</label>
+                            <div id="additionalAppScreens"></div>
+                            <button type="button" class="btn btn-add" id="addAppScreenBtn">+ Add More Screens</button>
+                        </div>
+                        <div class="form-group">
+                            <label>User Flow / Navigation</label>
+                            <textarea name="app_user_flow" placeholder="Describe how users will navigate between screens..." rows="4"></textarea>
+                        </div>
+                    </div>
+                    <div class="section-navigation">
+                        <button type="button" class="nav-btn nav-btn-prev" data-prev="app-basic-info">← Previous</button>
+                        <button type="button" class="nav-btn nav-btn-next" data-next="app-content">Next →</button>
+                    </div>
+                </div>
+
+                <div class="form-section" id="app-content">
+                    <div class="section-header">
+                        <h2>3. App Content & Branding</h2>
+                        <span class="section-toggle">▼</span>
+                    </div>
+                    <div class="section-content">
+                    
+                    <!-- App Branding Section -->
+                <div class="section">
+                    <h2>App Branding</h2>
+                    <div class="form-group">
+                        <label class="required">App Name</label>
+                        <input type="text" name="app_name" required>
+                        <div class="error-message">Please enter app name</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="checkbox-option" style="display: flex; align-items: center; gap: 8px; font-weight: 500; cursor: pointer;">
+                            <input type="checkbox" id="addAppCompanyDetails" name="addAppCompanyDetails" value="yes" style="width: auto; margin: 0;">
+                            Do you want to add Company details in app?
+                        </label>
+                    </div>
+
+                    <div id="appCompanyDetailsSection" class="conditional-field">
+                        <div class="form-group">
+                            <label>Company Code</label>
+                            <input type="text" name="app_companyCode" placeholder="e.g., CMP-001">
+                        </div>
+                        <div class="form-group">
+                            <label>GST / VAT Number</label>
+                            <input type="text" name="app_gstNumber" placeholder="e.g., 27AABCU9603R1ZX">
+                        </div>
+                        <div class="form-group">
+                            <label>Business Registration Number</label>
+                            <input type="text" name="app_registrationNumber" placeholder="e.g., CIN: U72200MH2021PTC123456">
+                        </div>
+                        <div class="form-group">
+                            <label>Bank Account Number / IBAN</label>
+                            <input type="text" name="app_bankAccount" placeholder="e.g., 12345678901234">
+                        </div>
+                        <div class="form-group">
+                            <label>Bank Name</label>
+                            <input type="text" name="app_bankName" placeholder="e.g., State Bank of India">
+                        </div>
+                        <div class="form-group">
+                            <label>IFSC / SWIFT Code</label>
+                            <input type="text" name="app_ifscCode" placeholder="e.g., SBIN0001234 or SBININBBXXX">
+                        </div>
+                        <div class="form-group">
+                            <label>Company Address</label>
+                            <textarea name="app_companyAddress" placeholder="Enter complete company address..." rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>City</label>
+                            <input type="text" name="app_city" placeholder="e.g., Mumbai">
+                        </div>
+                        <div class="form-group">
+                            <label>State</label>
+                            <input type="text" name="app_state" placeholder="e.g., Maharashtra">
+                        </div>
+                        <div class="form-group">
+                            <label>Country</label>
+                            <input type="text" name="app_country" placeholder="e.g., India">
+                        </div>
+                        <div class="form-group">
+                            <label>Pincode</label>
+                            <input type="text" name="app_pincode" placeholder="e.g., 400001">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>App Tagline/Slogan</label>
+                        <input type="text" name="app_tagline" placeholder="Your app tagline">
+                    </div>
+                    <div class="form-group">
+                        <label>Do you have an App Icon?</label>
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="app_hasIcon" value="yes"> Yes - I have app icon
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="app_hasIcon" value="temporary"> No - Create a temporary icon
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="app_hasIcon" value="professional"> I want a professional paid icon
+                            </label>
+                        </div>
+                    </div>
+                    <div class="conditional-field" id="appIconYes">
+                        <div class="form-group">
+                            <label>App Icon File (Google Drive Link)</label>
+                            <input type="url" name="app_iconLink" placeholder="https://drive.google.com/...">
+                            <small style="color: #6c757d; margin-top: 5px; display: block;">Share the Google Drive link containing your app icon file</small>
+                        </div>
+                        <div class="form-group">
+                            <label>Or Upload App Icon File</label>
+                            <div class="file-upload">
+                                <input type="file" name="app_iconFile" accept="image/*" class="file-input">
+                                <span class="file-name">No file selected</span>
+                                <small style="color: #6c757d; margin-top: 5px; display: block;">Upload app icon file directly (JPG, PNG, GIF)</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="conditional-field" id="appIconNo">
+                        <div class="form-group">
+                            <label>App Icon Size (Dimensions)</label>
+                            <input type="text" name="app_iconSize" placeholder="e.g., 512 x 512, 1024 x 1024">
+                            <small style="color: #6c757d; margin-top: 5px; display: block;">Specify desired icon dimensions (width x height in pixels)</small>
+                        </div>
+                        <div class="form-group">
+                            <label>App Icon Colors & Symbols</label>
+                            <textarea name="app_iconColors" placeholder="Describe preferred colors, symbols, or design elements for your app icon..." rows="3"></textarea>
+                            <small style="color: #6c757d; margin-top: 5px; display: block;">Mention specific colors, symbols, icons, or design elements you want in your app icon</small>
+                        </div>
+                    </div>
+                    <div class="conditional-field" id="appTemporaryIcon">
+                        <div class="form-group">
+                            <label>Temporary Icon Word / Symbol</label>
+                            <input type="text" name="app_temporaryIconText" placeholder="Word, initials, number, or simple symbol">
+                        </div>
+                    </div>
+                    <div class="conditional-field" id="appProfessionalIcon">
+                        <div class="form-group">
+                            <label>Professional Icon Word / Symbol</label>
+                            <input type="text" name="app_professionalIconText" placeholder="Word, initials, number, or symbol">
+                        </div>
+                        <div class="form-group">
+                            <label>Icon Design Description</label>
+                            <textarea name="app_professionalIconDescription" placeholder="Describe the style, mood, colors, and symbols you want."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Example Icon / Reference File</label>
+                            <input type="file" name="app_professionalIconReference" accept="image/*,.pdf">
+                            <small class="limit-note">We will prepare three icon variations for selection.</small>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>App Brand Guidelines</label>
+                        <textarea name="app_brandGuidelines" placeholder="Share any brand guidelines, style guides, or brand assets..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>App Brand Voice/Tone</label>
+                        <select name="app_brandVoice">
+                            <option value="">Select brand voice</option>
+                            <option value="professional">Professional</option>
+                            <option value="friendly">Friendly & Casual</option>
+                            <option value="formal">Formal</option>
+                            <option value="playful">Playful</option>
+                            <option value="luxury">Luxury & Premium</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>App Brand / Business Asset Links</label>
+                        <textarea name="app_assetLinks" placeholder="Add links to brochure, catalog, old website, brand guidelines, company profile, product catalog, photos, or videos."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Upload Important Business Files</label>
+                        <input type="file" name="app_businessAssetsFile" accept=".pdf,.doc,.docx,.xlsx,.xls,.zip,image/*">
+                        <small class="limit-note">Optional: brochures, catalogs, brand guide, company profile, product sheets, or photo folders.</small>
+                    </div>
+                </div>
+                    
+                    <!-- App Content Collection Section -->
+                <div class="section">
+                    <h2>App Content Collection</h2>
+                    <div class="form-group" style="display: block !important; visibility: visible !important;">
+                        <label style="display: block !important; visibility: visible !important;">Do you have content ready?</label>
+                        <div class="radio-group" style="display: flex !important; visibility: visible !important; flex-wrap: wrap; gap: 15px;">
+                            <label class="radio-option" style="display: flex !important; visibility: visible !important; align-items: center; gap: 8px;">
+                                <input type="radio" name="app_contentReady" value="yes" style="width: 18px; height: 18px;"> Yes
+                            </label>
+                            <label class="radio-option" style="display: flex !important; visibility: visible !important; align-items: center; gap: 8px;">
+                                <input type="radio" name="app_contentReady" value="partial" style="width: 18px; height: 18px;"> Partially
+                            </label>
+                            <label class="radio-option" style="display: flex !important; visibility: visible !important; align-items: center; gap: 8px;">
+                                <input type="radio" name="app_contentReady" value="no" style="width: 18px; height: 18px;"> No - Need help
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group conditional-field" id="appContentFieldsContainer">
+                        <label>App Screen Content (Based on selected screens in App Screens section)</label>
+                        <!-- App Screen Content Tabs -->
+                        <div id="appScreenContentTabs" class="page-content-tabs"></div>
+                        <!-- App Screen Content Container -->
+                        <div id="appDynamicContentFields" class="page-content-container"></div>
+                    </div>
+                    <div class="form-group">
+                        <label>Content Support Needed</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-option"><input type="checkbox" name="app_contentSupport" value="rewrite"> Rewrite my content</label>
+                            <label class="checkbox-option"><input type="checkbox" name="app_contentSupport" value="copywriting"> Create content from scratch</label>
+                            <label class="checkbox-option"><input type="checkbox" name="app_contentSupport" value="placeholder"> Use placeholder content first</label>
+                            <label class="checkbox-option"><input type="checkbox" name="app_contentSupport" value="proofread"> Proofread only</label>
+                            <label class="checkbox-option"><input type="checkbox" name="app_contentSupport" value="not-sure"> Not sure, recommend for me</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Media Support Needed</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-option"><input type="checkbox" name="app_mediaSupport" value="stock-images"> Use stock images</label>
+                            <label class="checkbox-option"><input type="checkbox" name="app_mediaSupport" value="image-editing"> Edit provided images</label>
+                            <label class="checkbox-option"><input type="checkbox" name="app_mediaSupport" value="product-cleanup"> Product photo cleanup</label>
+                            <label class="checkbox-option"><input type="checkbox" name="app_mediaSupport" value="banner-design"> Design banners</label>
+                            <label class="checkbox-option"><input type="checkbox" name="app_mediaSupport" value="video-embed"> Embed videos</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>App Screen Content</label>
+                        <textarea name="app_screenContent" placeholder="Describe the content you have ready for each app screen..." rows="5"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>App Extras</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-option">
+                                <input type="checkbox" name="app_pageExtras" value="testimonials"> Testimonials
+                            </label>
+                            <label class="checkbox-option">
+                                <input type="checkbox" name="app_pageExtras" value="gallery"> Gallery
+                            </label>
+                        </div>
+                    </div>
+                    <div id="appTestimonialsBuilder" class="conditional-field">
+                        <h3>Testimonials</h3>
+                        <div id="appTestimonialItems"></div>
+                        <button type="button" class="btn btn-add" id="addAppTestimonialBtn">+ Add Testimonial</button>
+                    </div>
+                    <div id="appGalleryBuilder" class="conditional-field">
+                        <h3>Gallery</h3>
+                        <div class="form-group">
+                            <label>Gallery Title</label>
+                            <input type="text" name="app_galleryTitle" placeholder="Gallery title">
+                        </div>
+                        <div class="form-group">
+                            <label>Gallery Description</label>
+                            <textarea name="app_galleryDescription" placeholder="Describe this image gallery."></textarea>
+                        </div>
+                        <div id="appGalleryItems"></div>
+                        <button type="button" class="btn btn-add" id="addAppGalleryItemBtn">+ Add Gallery Image</button>
+                    </div>
+                </div>
+                    </div>
+                    <div class="section-navigation">
+                        <button type="button" class="nav-btn nav-btn-prev" data-prev="app-screens">← Previous</button>
+                        <button type="button" class="nav-btn nav-btn-next" data-next="app-platform">Next →</button>
+                    </div>
+                </div>
+
+                <!-- Mobile App Section 4: Platform -->
+                <div class="form-section" id="app-platform">
+                    <div class="section-header">
+                        <h2>4. Platform</h2>
+                        <span class="section-toggle">▼</span>
+                    </div>
+                    <div class="section-content">
+                        <div class="form-group">
+                            <label class="required">Target Platforms</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="app_target_platforms[]" value="android"> Android
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="app_target_platforms[]" value="ios"> iOS
+                                </label>
+                            </div>
+                            <div class="error-message">Please select at least one platform</div>
+                        </div>
+                        <div class="form-group">
+                            <label class="required">Development Type</label>
+                            <select name="app_development_type" required>
+                                <option value="">Select development type</option>
+                                <option value="native">Native Development</option>
+                                <option value="react-native">React Native</option>
+                                <option value="flutter">Flutter</option>
+                                <option value="ionic">Ionic</option>
+                                <option value="pwa">Progressive Web App</option>
+                                <option value="not-sure">Not Sure - Need Recommendation</option>
+                            </select>
+                            <div class="error-message">Please select development type</div>
+                        </div>
+                    </div>
+                    <div class="section-navigation">
+                        <button type="button" class="nav-btn nav-btn-prev" data-prev="app-screens">← Previous</button>
+                        <button type="button" class="nav-btn nav-btn-next" data-next="app-features">Next →</button>
+                    </div>
+                </div>
+
+                <!-- Mobile App Section 5: Features -->
+                <div class="form-section" id="app-features">
+                    <div class="section-header">
+                        <h2>5. Features</h2>
+                        <span class="section-toggle">▼</span>
+                    </div>
+                    <div class="section-content">
+                        <div class="form-group">
+                            <label>Core Features</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="app_features[]" value="login"> User Login
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="app_features[]" value="registration"> User Registration
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="app_features[]" value="payment"> Payment Integration
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="app_features[]" value="notifications"> Push Notifications
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="app_features[]" value="chat"> In-app Chat
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="app_features[]" value="booking"> Booking System
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="app_features[]" value="maps"> Maps/Location
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="app_features[]" value="camera"> Camera Integration
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="app_features[]" value="social"> Social Media Integration
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="app_features[]" value="search"> Search Functionality
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="app_features[]" value="offline"> Offline Mode
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="app_features[]" value="multilingual"> Multi-language Support
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section-navigation">
+                        <button type="button" class="nav-btn nav-btn-prev" data-prev="app-platform">← Previous</button>
+                        <button type="button" class="nav-btn nav-btn-next" data-next="app-design">Next →</button>
+                    </div>
+                </div>
+
+                <!-- Mobile App Section 6: Design -->
+                <div class="form-section" id="app-design">
+                    <div class="section-header">
+                        <h2>6. Design</h2>
+                        <span class="section-toggle">▼</span>
+                    </div>
+                    <div class="section-content">
+                        <div class="form-group">
+                            <label>Design Available</label>
+                            <div class="radio-group">
+                                <label class="radio-option">
+                                    <input type="radio" name="app_design_available" value="yes"> Yes - We have designs
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="app_design_available" value="no"> No - Need design
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="app_design_available" value="partial"> Partial - Some designs ready
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Need Design Services</label>
+                            <div class="radio-group">
+                                <label class="radio-option">
+                                    <input type="radio" name="app_need_design" value="yes"> Yes
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="app_need_design" value="no"> No
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Reference Apps</label>
+                            <textarea name="app_reference_apps" placeholder="List apps you like or want to be similar to..." rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="section-navigation">
+                        <button type="button" class="nav-btn nav-btn-prev" data-prev="app-features">← Previous</button>
+                        <button type="button" class="nav-btn nav-btn-next" data-next="app-user-roles">Next →</button>
+                    </div>
+                </div>
+
+                <!-- Mobile App Section 7: User Roles -->
+                <div class="form-section" id="app-user-roles">
+                    <div class="section-header">
+                        <h2>7. User Roles</h2>
+                        <span class="section-toggle">▼</span>
+                    </div>
+                    <div class="section-content">
+                        <div class="form-group">
+                            <label>User Types</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="app_user_roles[]" value="admin"> Admin
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="app_user_roles[]" value="user"> Regular User
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="app_user_roles[]" value="vendor"> Vendor/Provider
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="app_user_roles[]" value="moderator"> Moderator
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="app_user_roles[]" value="guest"> Guest/Anonymous
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section-navigation">
+                        <button type="button" class="nav-btn nav-btn-prev" data-prev="app-design">← Previous</button>
+                        <button type="button" class="nav-btn nav-btn-next" data-next="app-notifications">Next →</button>
+                    </div>
+                </div>
+
+                <!-- Mobile App Section 8: Notifications -->
+                <div class="form-section" id="app-notifications">
+                    <div class="section-header">
+                        <h2>8. Notifications</h2>
+                        <span class="section-toggle">▼</span>
+                    </div>
+                    <div class="section-content">
+                        <div class="form-group">
+                            <label>Notification Types</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="app_notification_types[]" value="push"> Push Notifications
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="app_notification_types[]" value="email"> Email Notifications
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="app_notification_types[]" value="sms"> SMS Notifications
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="app_notification_types[]" value="in-app"> In-app Notifications
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section-navigation">
+                        <button type="button" class="nav-btn nav-btn-prev" data-prev="app-user-roles">← Previous</button>
+                        <button type="button" class="nav-btn nav-btn-next" data-next="app-payment">Next →</button>
+                    </div>
+                </div>
+
+                <!-- Mobile App Section 9: Payment -->
+                <div class="form-section" id="app-payment">
+                    <div class="section-header">
+                        <h2>9. Payment</h2>
+                        <span class="section-toggle">▼</span>
+                    </div>
+                    <div class="section-content">
+                        <div class="form-group">
+                            <label>Payment Required</label>
+                            <div class="radio-group">
+                                <label class="radio-option">
+                                    <input type="radio" name="app_payment_required" value="yes"> Yes
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="app_payment_required" value="no"> No
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Payment Methods</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="app_payment_methods[]" value="credit-card"> Credit/Debit Cards
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="app_payment_methods[]" value="paypal"> PayPal
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="app_payment_methods[]" value="stripe"> Stripe
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="app_payment_methods[]" value="razorpay"> Razorpay
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="app_payment_methods[]" value="apple-pay"> Apple Pay
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="app_payment_methods[]" value="google-pay"> Google Pay
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="app_payment_methods[]" value="upi"> UPI
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="app_payment_methods[]" value="cod"> Cash on Delivery
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section-navigation">
+                        <button type="button" class="nav-btn nav-btn-prev" data-prev="app-notifications">← Previous</button>
+                        <button type="button" class="nav-btn nav-btn-next" data-next="app-backend">Next →</button>
+                    </div>
+                </div>
+
+                <!-- Mobile App Section 10: Backend -->
+                <div class="form-section" id="app-backend">
+                    <div class="section-header">
+                        <h2>10. Backend</h2>
+                        <span class="section-toggle">▼</span>
+                    </div>
+                    <div class="section-content">
+                        <div class="form-group">
+                            <label>API Available</label>
+                            <div class="radio-group">
+                                <label class="radio-option">
+                                    <input type="radio" name="app_api_available" value="yes"> Yes - We have API
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="app_api_available" value="no"> No - Need API development
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Backend Required</label>
+                            <div class="radio-group">
+                                <label class="radio-option">
+                                    <input type="radio" name="app_backend_required" value="yes"> Yes
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="app_backend_required" value="no"> No
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Backend Technology Preference</label>
+                            <select name="app_backend_tech">
+                                <option value="">Select technology</option>
+                                <option value="firebase"> Firebase</option>
+                                <option value="aws"> AWS</option>
+                                <option value="nodejs"> Node.js</option>
+                                <option value="python"> Python</option>
+                                <option value="php"> PHP</option>
+                                <option value="java"> Java</option>
+                                <option value="not-sure"> Not Sure</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="section-navigation">
+                        <button type="button" class="nav-btn nav-btn-prev" data-prev="app-payment">← Previous</button>
+                        <button type="button" class="nav-btn nav-btn-next" data-next="app-deployment">Next →</button>
+                    </div>
+                </div>
+
+                <!-- Mobile App Section 11: Deployment -->
+                <div class="form-section" id="app-deployment">
+                    <div class="section-header">
+                        <h2>11. Deployment</h2>
+                        <span class="section-toggle">▼</span>
+                    </div>
+                    <div class="section-content">
+                        <div class="form-group">
+                            <label>App Store Deployment</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="app_deployment_stores[]" value="play-store"> Google Play Store
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="app_deployment_stores[]" value="app-store"> Apple App Store
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="app_deployment_stores[]" value="help-needed"> Need Help with Setup
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section-navigation">
+                        <button type="button" class="nav-btn nav-btn-prev" data-prev="app-backend">← Previous</button>
+                        <button type="button" class="nav-btn nav-btn-next" data-next="app-maintenance">Next →</button>
+                    </div>
+                </div>
+
+                <!-- Mobile App Section 12: Maintenance -->
+                <div class="form-section" id="app-maintenance">
+                    <div class="section-header">
+                        <h2>12. Maintenance</h2>
+                        <span class="section-toggle">▼</span>
+                    </div>
+                    <div class="section-content">
+                        <div class="form-group">
+                            <label>Updates Required</label>
+                            <div class="radio-group">
+                                <label class="radio-option">
+                                    <input type="radio" name="app_updates_required" value="regular"> Regular Updates
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="app_updates_required" value="occasional"> Occasional Updates
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="app_updates_required" value="minimal"> Minimal Updates
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Bug Fix Support</label>
+                            <div class="radio-group">
+                                <label class="radio-option">
+                                    <input type="radio" name="app_bug_fix_support" value="yes"> Yes - Need ongoing support
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="app_bug_fix_support" value="no"> No - One-time delivery
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section-navigation">
+                        <button type="button" class="nav-btn nav-btn-prev" data-prev="app-deployment">← Previous</button>
+                        <button type="button" class="nav-btn nav-btn-next" data-next="app-final">Next →</button>
+                    </div>
+                </div>
+
+                <!-- Mobile App Section 13: Final Details -->
+                <div class="form-section" id="app-final">
+                    <div class="section-header">
+                        <h2>13. Final Details</h2>
+                        <span class="section-toggle">▼</span>
+                    </div>
+                    <div class="section-content">
+                        <div class="form-group">
+                            <label class="required">Contact Person Name</label>
+                            <input type="text" name="app_contactName" required placeholder="Full name">
+                            <div class="error-message">Please enter contact name</div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="required">Email Address</label>
+                                <input type="email" name="app_contactEmail" required placeholder="email@example.com">
+                                <div class="error-message">Please enter valid email</div>
+                            </div>
+                            <div class="form-group">
+                                <label class="required">Phone Number</label>
+                                <input type="tel" name="app_contactPhone" required placeholder="+91 98765 43210">
+                                <div class="error-message">Please enter phone number</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Business Email</label>
+                            <input type="email" name="app_businessEmail" placeholder="info@yourcompany.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Business Address</label>
+                            <textarea name="app_businessAddress" placeholder="Full business address..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Working Hours</label>
+                            <div class="radio-group">
+                                <label class="radio-option">
+                                    <input type="radio" name="app_workingHoursMode" value="always-open"> Always open
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="app_workingHoursMode" value="selected-hours"> Open for selected hours
+                                </label>
+                            </div>
+                        </div>
+                        <div class="conditional-field" id="appSelectedHoursSection">
+                            <div class="form-group">
+                                <label>Open Days</label>
+                                <div class="checkbox-group">
+                                    <label class="checkbox-option"><input type="checkbox" name="app_openDays[]" value="monday"> Monday</label>
+                                    <label class="checkbox-option"><input type="checkbox" name="app_openDays[]" value="tuesday"> Tuesday</label>
+                                    <label class="checkbox-option"><input type="checkbox" name="app_openDays[]" value="wednesday"> Wednesday</label>
+                                    <label class="checkbox-option"><input type="checkbox" name="app_openDays[]" value="thursday"> Thursday</label>
+                                    <label class="checkbox-option"><input type="checkbox" name="app_openDays[]" value="friday"> Friday</label>
+                                    <label class="checkbox-option"><input type="checkbox" name="app_openDays[]" value="saturday"> Saturday</label>
+                                    <label class="checkbox-option"><input type="checkbox" name="app_openDays[]" value="sunday"> Sunday</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label>Opening Time</label>
+                                    <input type="time" name="app_openingTime">
+                                </div>
+                                <div class="form-group">
+                                    <label>Closing Time</label>
+                                    <input type="time" name="app_closingTime">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Additional Notes or Requirements</label>
+                            <textarea name="app_additionalNotes" placeholder="Any other information you'd like to share..."></textarea>
+                        </div>
+                        <div class="section" style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin-top: 20px;">
+                            <h3 style="color: #2c3e50; margin-bottom: 15px;">Approval & Communication</h3>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label>Final Decision Maker</label>
+                                    <input type="text" name="app_decisionMaker" placeholder="Name or role of final approver">
+                                </div>
+                                <div class="form-group">
+                                    <label>Number of Reviewers</label>
+                                    <input type="number" name="app_reviewerCount" min="1" placeholder="e.g., 2">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label>Preferred Communication Method</label>
+                                    <select name="app_preferredCommunication">
+                                        <option value="">Select method</option>
+                                        <option value="whatsapp">WhatsApp</option>
+                                        <option value="email">Email</option>
+                                        <option value="call">Phone call</option>
+                                        <option value="video-call">Video call</option>
+                                        <option value="project-manager">Through project manager</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Best Time To Contact</label>
+                                    <input type="text" name="app_bestContactTime" placeholder="e.g., Weekdays after 3 PM">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Deadline Reason</label>
+                                <input type="text" name="app_deadlineReason" placeholder="Launch, event, campaign, store opening, investor meeting, etc.">
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-top: 20px;">
+                            <label class="checkbox-option" style="font-weight: 600;">
+                                <input type="checkbox" name="app_informationConfirmed" value="yes" required>
+                                I have provided all the information available and checked the required screens.
+                            </label>
+                            <div class="error-message">Please confirm before submitting</div>
+                        </div>
+                    </div>
+                    <div class="section-navigation">
+                        <button type="button" class="nav-btn nav-btn-prev" data-prev="app-maintenance">← Previous</button>
+                        <button type="submit" class="nav-btn nav-btn-next">Submit Form</button>
+                    </div>
+                </div>
+
+            </div>
         </form>
     </div>
 
@@ -3354,7 +4227,7 @@
             data.timestamp = new Date().toISOString();
 
             // Normalize repeated checkbox groups into arrays for reliable restore
-            ['headerPages', 'footerPages', 'customFeatures', 'filterAttributes', 'paymentMethods', 'currencies', 'pageExtras', 'openDays', 'businessGoals', 'visitorActions', 'priorityFocus', 'contentSupport', 'mediaSupport', 'leadDestinations', 'serviceOperations', 'ecommerceOperations', 'trustAssets', 'legalNeeds'].forEach(name => {
+            ['headerPages', 'footerPages', 'customFeatures', 'filterAttributes', 'paymentMethods', 'currencies', 'pageExtras', 'openDays', 'businessGoals', 'visitorActions', 'priorityFocus', 'contentSupport', 'mediaSupport', 'leadDestinations', 'serviceOperations', 'ecommerceOperations', 'trustAssets', 'legalNeeds', 'app_pageExtras', 'app_contentSupport', 'app_mediaSupport', 'app_target_platforms[]', 'app_features[]', 'app_user_roles[]', 'app_notification_types[]', 'app_payment_methods[]', 'app_deployment_stores[]', 'app_openDays[]'].forEach(name => {
                 const values = Array.from(form.querySelectorAll(`input[name="${name}"]:checked`)).map(input => input.value);
                 data[name] = values;
             });
@@ -3389,7 +4262,7 @@
 
             existingData.timestamp = new Date().toISOString();
 
-            ['headerPages', 'footerPages', 'customFeatures', 'filterAttributes', 'paymentMethods', 'currencies', 'pageExtras', 'openDays', 'businessGoals', 'visitorActions', 'priorityFocus', 'contentSupport', 'mediaSupport', 'leadDestinations', 'serviceOperations', 'ecommerceOperations', 'trustAssets', 'legalNeeds'].forEach(name => {
+            ['headerPages', 'footerPages', 'customFeatures', 'filterAttributes', 'paymentMethods', 'currencies', 'pageExtras', 'openDays', 'businessGoals', 'visitorActions', 'priorityFocus', 'contentSupport', 'mediaSupport', 'leadDestinations', 'serviceOperations', 'ecommerceOperations', 'trustAssets', 'legalNeeds', 'app_pageExtras', 'app_contentSupport', 'app_mediaSupport', 'app_target_platforms[]', 'app_features[]', 'app_user_roles[]', 'app_notification_types[]', 'app_payment_methods[]', 'app_deployment_stores[]', 'app_openDays[]'].forEach(name => {
                 existingData[name] = Array.from(form.querySelectorAll(`input[name="${name}"]:checked`)).map(input => input.value);
             });
 
@@ -3415,7 +4288,7 @@
                     return;
                 }
 
-                const checkboxNames = ['headerPages', 'footerPages', 'customFeatures', 'filterAttributes', 'paymentMethods', 'currencies', 'pageExtras', 'openDays', 'businessGoals', 'visitorActions', 'priorityFocus', 'contentSupport', 'mediaSupport', 'leadDestinations', 'serviceOperations', 'ecommerceOperations', 'trustAssets', 'legalNeeds'];
+                const checkboxNames = ['headerPages', 'footerPages', 'customFeatures', 'filterAttributes', 'paymentMethods', 'currencies', 'pageExtras', 'openDays', 'businessGoals', 'visitorActions', 'priorityFocus', 'contentSupport', 'mediaSupport', 'leadDestinations', 'serviceOperations', 'ecommerceOperations', 'trustAssets', 'legalNeeds', 'app_pageExtras', 'app_contentSupport', 'app_mediaSupport', 'app_target_platforms[]', 'app_features[]', 'app_user_roles[]', 'app_notification_types[]', 'app_payment_methods[]', 'app_deployment_stores[]', 'app_openDays[]'];
 
                 clearPageSelections();
                 checkboxNames.forEach(name => {
@@ -4029,6 +4902,148 @@
             return false;
         }
 
+        // Global function for updating app screen dynamic content fields with TAB UI
+        function updateAppDynamicContentFields() {
+            const appDynamicContentFields = document.getElementById('appDynamicContentFields');
+            const appScreenContentTabs = document.getElementById('appScreenContentTabs');
+            const appScreensCheckboxes = document.querySelectorAll('input[name="appScreens"]:checked');
+
+            // Clear existing fields
+            if (appDynamicContentFields) appDynamicContentFields.innerHTML = '';
+            if (appScreenContentTabs) appScreenContentTabs.innerHTML = '';
+
+            // Get selected screens from checkboxes
+            const selectedScreens = [];
+            appScreensCheckboxes.forEach(checkbox => {
+                const label = checkbox.closest('.checkbox-option')?.textContent?.trim() || checkbox.value;
+                selectedScreens.push({
+                    value: checkbox.value,
+                    label: label
+                });
+            });
+
+            // Also get additional screens
+            const additionalScreenCheckboxes = document.querySelectorAll('#additionalAppScreens input[type="checkbox"]:checked');
+            additionalScreenCheckboxes.forEach((checkbox, idx) => {
+                const label = checkbox.value || `New Screen ${idx + 1}`;
+                selectedScreens.push({
+                    value: 'custom_' + label.toLowerCase().replace(/\s+/g, '_'),
+                    label: label
+                });
+            });
+
+            // If no screens selected, show message
+            if (!selectedScreens.length) {
+                if (appDynamicContentFields) {
+                    appDynamicContentFields.innerHTML = '<p style="color: #6c757d; font-style: italic;">Please select screens in App Screens section to add content.</p>';
+                }
+                return;
+            }
+
+            // Create tabs for each screen
+            selectedScreens.forEach((screen, index) => {
+                const screenId = screen.value;
+                const tabBtn = document.createElement('button');
+                tabBtn.type = 'button';
+                tabBtn.className = 'page-tab-btn' + (index === 0 ? ' active' : '');
+                tabBtn.dataset.screen = screenId;
+                tabBtn.innerHTML = `
+                    <span class="tab-name">${screen.label}</span>
+                    <span class="tab-tick" style="display: none;">✓</span>
+                `;
+                tabBtn.addEventListener('click', () => switchAppScreenTab(screenId));
+                if (appScreenContentTabs) appScreenContentTabs.appendChild(tabBtn);
+            });
+
+            // Create content sections for each screen
+            selectedScreens.forEach((screen, index) => {
+                const screenId = screen.value;
+                const contentDiv = document.createElement('div');
+                contentDiv.className = 'page-content-panel' + (index === 0 ? ' active' : '');
+                contentDiv.dataset.screen = screenId;
+                contentDiv.innerHTML = getAppScreenContentHTML(screen.label, screenId);
+                if (appDynamicContentFields) appDynamicContentFields.appendChild(contentDiv);
+            });
+
+            // Add input listeners
+            addAppScreenCompletionListeners();
+        }
+
+        // Function to get HTML for app screen content
+        function getAppScreenContentHTML(screenName, screenId) {
+            return `
+                <h4>${screenName} Screen Content</h4>
+                <div class="form-group">
+                    <label>Screen Title/Heading</label>
+                    <input type="text" name="${screenId}_title" class="page-input" placeholder="Enter screen title">
+                </div>
+                <div class="form-group">
+                    <label>Main Content</label>
+                    <textarea name="${screenId}_content" class="page-input" rows="6" placeholder="Describe the content for this screen..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Images/Videos for this Screen</label>
+                    <input type="file" name="${screenId}_media" class="page-input" accept="image/*,video/*" multiple>
+                    <small style="color: #6c757d; display: block; margin-top: 5px;">Upload media files for this screen</small>
+                </div>
+                <div class="form-group">
+                    <label>Special Features/Elements</label>
+                    <textarea name="${screenId}_features" class="page-input" rows="3" placeholder="List any special features, buttons, forms, or interactive elements..."></textarea>
+                </div>
+            `;
+        }
+
+        // Function to switch between app screen tabs
+        function switchAppScreenTab(screenId) {
+            // Update tab buttons
+            document.querySelectorAll('#appScreenContentTabs .page-tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.screen === screenId) {
+                    btn.classList.add('active');
+                }
+            });
+
+            // Update content panels
+            document.querySelectorAll('#appDynamicContentFields .page-content-panel').forEach(panel => {
+                panel.classList.remove('active');
+                if (panel.dataset.screen === screenId) {
+                    panel.classList.add('active');
+                }
+            });
+        }
+
+        // Function to add completion listeners to app screen inputs
+        function addAppScreenCompletionListeners() {
+            document.querySelectorAll('#appDynamicContentFields .page-input').forEach(input => {
+                input.addEventListener('input', updateAppScreenCompletionTicks);
+                input.addEventListener('change', updateAppScreenCompletionTicks);
+                input.addEventListener('input', debouncedSave);
+                input.addEventListener('change', debouncedSave);
+            });
+        }
+
+        // Function to update completion ticks for app screens
+        function updateAppScreenCompletionTicks() {
+            document.querySelectorAll('#appDynamicContentFields .page-content-panel').forEach(panel => {
+                const screenId = panel.dataset.screen;
+                const inputs = panel.querySelectorAll('.page-input');
+                let hasContent = false;
+                inputs.forEach(input => {
+                    if (input.value && input.value.trim()) {
+                        hasContent = true;
+                    }
+                });
+
+                const tabBtn = document.querySelector(`#appScreenContentTabs .page-tab-btn[data-screen="${screenId}"]`);
+                if (tabBtn) {
+                    const tick = tabBtn.querySelector('.tab-tick');
+                    if (tick) {
+                        tick.style.display = hasContent ? 'inline' : 'none';
+                    }
+                }
+            });
+        }
+
         // Sidebar navigation logic
         document.addEventListener('DOMContentLoaded', function() {
             // Load saved data on page load
@@ -4048,12 +5063,16 @@
                 }
             }
 
-            if (localStorage.getItem(STORAGE_KEY)) {
-                showApplicationForm();
-            }
-
+            // Always show welcome page first, even if there's saved data
+            // User must click "Create Application" to proceed to form
+            // Always show Project Type Selection first (not restore old selection)
             if (createApplicationBtn) {
-                createApplicationBtn.addEventListener('click', showApplicationForm);
+                createApplicationBtn.addEventListener('click', function() {
+                    showApplicationForm();
+                    // Always show only Project Type Selection initially
+                    hideAllSections();
+                    document.getElementById('project-type-selection').classList.add('active');
+                });
             }
 
             if (form) {
@@ -4507,6 +5526,63 @@
                 }
             }
 
+            // Mobile App Company Details Checkbox
+            const addAppCompanyDetailsCheckbox = document.getElementById('addAppCompanyDetails');
+            const appCompanyDetailsSection = document.getElementById('appCompanyDetailsSection');
+
+            if (addAppCompanyDetailsCheckbox && appCompanyDetailsSection) {
+                addAppCompanyDetailsCheckbox.addEventListener('change', function() {
+                    if (this.checked) {
+                        appCompanyDetailsSection.classList.add('show');
+                    } else {
+                        appCompanyDetailsSection.classList.remove('show');
+                    }
+                });
+
+                // Initialize app company details visibility on page load
+                if (addAppCompanyDetailsCheckbox.checked) {
+                    appCompanyDetailsSection.classList.add('show');
+                } else {
+                    appCompanyDetailsSection.classList.remove('show');
+                }
+            }
+
+            // Mobile App Icon Radio Buttons
+            const appIconRadios = document.querySelectorAll('input[name="app_hasIcon"]');
+            const appIconYes = document.getElementById('appIconYes');
+            const appIconNo = document.getElementById('appIconNo');
+            const appTemporaryIcon = document.getElementById('appTemporaryIcon');
+            const appProfessionalIcon = document.getElementById('appProfessionalIcon');
+
+            if (appIconRadios.length > 0) {
+                appIconRadios.forEach(radio => {
+                    radio.addEventListener('change', function() {
+                        // Hide all icon sections first
+                        if (appIconYes) appIconYes.classList.remove('show');
+                        if (appIconNo) appIconNo.classList.remove('show');
+                        if (appTemporaryIcon) appTemporaryIcon.classList.remove('show');
+                        if (appProfessionalIcon) appProfessionalIcon.classList.remove('show');
+
+                        // Show the relevant section based on selection
+                        if (this.value === 'yes' && appIconYes) {
+                            appIconYes.classList.add('show');
+                        } else if (this.value === 'temporary' && appTemporaryIcon) {
+                            appTemporaryIcon.classList.add('show');
+                        } else if (this.value === 'professional' && appProfessionalIcon) {
+                            appProfessionalIcon.classList.add('show');
+                        } else if (this.value === 'no' && appIconNo) {
+                            appIconNo.classList.add('show');
+                        }
+                    });
+                });
+
+                // Initialize icon visibility on page load
+                const checkedAppIconRadio = document.querySelector('input[name="app_hasIcon"]:checked');
+                if (checkedAppIconRadio) {
+                    checkedAppIconRadio.dispatchEvent(new Event('change', { bubbles: true }));
+                }
+            }
+
             // Ecommerce
             const ecommerceRadios = document.querySelectorAll('input[name="isEcommerce"]');
             const ecommerceYes = document.getElementById('ecommerceYes');
@@ -4628,6 +5704,21 @@
                 workingHoursChecked.dispatchEvent(new Event('change', { bubbles: true }));
             }
 
+            // Mobile App Working Hours conditional field
+            const appWorkingHoursRadios = document.querySelectorAll('input[name="app_workingHoursMode"]');
+            const appSelectedHoursSection = document.getElementById('appSelectedHoursSection');
+            appWorkingHoursRadios.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    if (appSelectedHoursSection) {
+                        appSelectedHoursSection.classList.toggle('show', this.value === 'selected-hours');
+                    }
+                });
+            });
+            const appWorkingHoursChecked = document.querySelector('input[name="app_workingHoursMode"]:checked');
+            if (appWorkingHoursChecked) {
+                appWorkingHoursChecked.dispatchEvent(new Event('change', { bubbles: true }));
+            }
+
             // Dynamic Pages
             let pageCount = 0;
             const addPageBtn = document.getElementById('addPageBtn');
@@ -4730,6 +5821,195 @@
                         </div>
                     `;
                     document.getElementById('galleryItems').appendChild(item);
+                    debouncedSave();
+                });
+            }
+
+            // Mobile App Page Extras
+            const appPageExtrasCheckboxes = document.querySelectorAll('input[name="app_pageExtras"]');
+            const appTestimonialsBuilder = document.getElementById('appTestimonialsBuilder');
+            const appGalleryBuilder = document.getElementById('appGalleryBuilder');
+
+            function updateAppPageExtrasVisibility() {
+                if (appPageExtrasCheckboxes.length > 0) {
+                    const selectedExtras = Array.from(appPageExtrasCheckboxes)
+                        .filter(cb => cb.checked)
+                        .map(cb => cb.value);
+
+                    if (appTestimonialsBuilder) {
+                        appTestimonialsBuilder.classList.toggle('show', selectedExtras.includes('testimonials'));
+                    }
+                    if (appGalleryBuilder) {
+                        appGalleryBuilder.classList.toggle('show', selectedExtras.includes('gallery'));
+                    }
+                }
+            }
+
+            appPageExtrasCheckboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', updateAppPageExtrasVisibility);
+            });
+            updateAppPageExtrasVisibility();
+
+            // Mobile App Content Ready
+            const appContentReadyRadios = document.querySelectorAll('input[name="app_contentReady"]');
+            const appContentFieldsContainer = document.getElementById('appContentFieldsContainer');
+
+            if (appContentReadyRadios.length > 0) {
+                appContentReadyRadios.forEach(radio => {
+                    radio.addEventListener('change', function() {
+                        if (this.value === 'no') {
+                            appContentFieldsContainer.classList.remove('show');
+                        } else {
+                            appContentFieldsContainer.classList.add('show');
+                            updateAppDynamicContentFields();
+                        }
+                    });
+                });
+
+                // Initialize app content fields visibility
+                const appContentReadyChecked = document.querySelector('input[name="app_contentReady"]:checked');
+                if (appContentReadyChecked && appContentReadyChecked.value === 'no') {
+                    appContentFieldsContainer.classList.remove('show');
+                } else {
+                    appContentFieldsContainer.classList.add('show');
+                    updateAppDynamicContentFields();
+                }
+            }
+
+            // Listen for changes in app screens checkboxes
+            const appScreensCheckboxes = document.querySelectorAll('input[name="appScreens"]');
+            appScreensCheckboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    updateAppDynamicContentFields();
+                    updateAppScreenCount();
+                });
+            });
+
+            // Add More App Screens button
+            const addAppScreenBtn = document.getElementById('addAppScreenBtn');
+            const additionalAppScreens = document.getElementById('additionalAppScreens');
+            if (addAppScreenBtn && additionalAppScreens) {
+                let appScreenCounter = 1;
+                addAppScreenBtn.addEventListener('click', function() {
+                    if (appScreenCounter >= 8) {
+                        alert('The included setup covers 12 main screens plus 8 additional screens. Add remaining screens later or discuss with the project manager.');
+                        return;
+                    }
+                    
+                    const screenDiv = document.createElement('div');
+                    screenDiv.className = 'dynamic-item';
+                    screenDiv.style.cssText = 'display: flex; align-items: center; gap: 10px; margin-bottom: 10px;';
+                    const screenId = `additionalAppScreen_${appScreenCounter}`;
+                    screenDiv.innerHTML = `
+                        <input type="checkbox" name="${screenId}" id="${screenId}" value="" style="width: auto; margin: 0;" checked>
+                        <input type="text" placeholder="Enter screen name" style="flex: 1;" id="${screenId}_text">
+                        <button type="button" class="btn btn-remove" onclick="this.parentElement.remove(); updateAppDynamicContentFields(); updateAppScreenCount();">×</button>
+                    `;
+                    additionalAppScreens.appendChild(screenDiv);
+                    
+                    // Get references to the new elements
+                    const newCheckbox = screenDiv.querySelector('input[type="checkbox"]');
+                    const textInput = screenDiv.querySelector('input[type="text"]');
+                    
+                    // Update checkbox value and trigger updates when text changes
+                    textInput.addEventListener('input', function() {
+                        newCheckbox.value = this.value;
+                        // Update the label in tabs if it exists
+                        updateAppDynamicContentFields();
+                    });
+                    
+                    // Also update on change (when user leaves the field)
+                    textInput.addEventListener('change', function() {
+                        newCheckbox.value = this.value;
+                        updateAppDynamicContentFields();
+                        updateAppScreenCount();
+                    });
+                    
+                    // Add change listener to checkbox
+                    newCheckbox.addEventListener('change', function() {
+                        updateAppDynamicContentFields();
+                        updateAppScreenCount();
+                    });
+                    
+                    // Focus the text input for immediate typing
+                    textInput.focus();
+                    
+                    appScreenCounter++;
+                    
+                    // Immediately update tabs since checkbox is checked by default
+                    updateAppDynamicContentFields();
+                    updateAppScreenCount();
+                });
+            }
+
+            // Function to update app screen count badge
+            function updateAppScreenCount() {
+                const appScreenCountBadge = document.getElementById('appScreenCountBadge');
+                if (appScreenCountBadge) {
+                    const mainScreens = document.querySelectorAll('input[name="appScreens"]:checked').length;
+                    const additionalScreens = document.querySelectorAll('#additionalAppScreens input[type="checkbox"]:checked').length;
+                    const total = mainScreens + additionalScreens;
+                    appScreenCountBadge.textContent = `Total: ${total} screen${total !== 1 ? 's' : ''}`;
+                }
+            }
+
+            // Initialize app screen count
+            updateAppScreenCount();
+
+            // Mobile App Testimonials Builder
+            let appTestimonialCount = document.querySelectorAll('#appTestimonialItems .dynamic-item').length;
+            const addAppTestimonialBtn = document.getElementById('addAppTestimonialBtn');
+            if (addAppTestimonialBtn) {
+                addAppTestimonialBtn.addEventListener('click', function() {
+                    appTestimonialCount++;
+                    const item = document.createElement('div');
+                    item.className = 'dynamic-item';
+                    item.innerHTML = `
+                        <button type="button" class="btn btn-remove" onclick="this.parentElement.remove();">Remove</button>
+                        <div class="row-three">
+                            <div class="form-group">
+                                <label>Customer Name</label>
+                                <input type="text" name="app_testimonial_${appTestimonialCount}_name">
+                            </div>
+                            <div class="form-group">
+                                <label>Date</label>
+                                <input type="date" name="app_testimonial_${appTestimonialCount}_date">
+                            </div>
+                            <div class="form-group">
+                                <label>Customer Image</label>
+                                <input type="file" name="app_testimonial_${appTestimonialCount}_image" accept="image/*">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Testimonial Text</label>
+                            <textarea name="app_testimonial_${appTestimonialCount}_text" placeholder="Customer feedback"></textarea>
+                        </div>
+                    `;
+                    document.getElementById('appTestimonialItems').appendChild(item);
+                    debouncedSave();
+                });
+            }
+
+            // Mobile App Gallery Builder
+            let appGalleryCount = document.querySelectorAll('#appGalleryItems .dynamic-item').length;
+            const addAppGalleryItemBtn = document.getElementById('addAppGalleryItemBtn');
+            if (addAppGalleryItemBtn) {
+                addAppGalleryItemBtn.addEventListener('click', function() {
+                    appGalleryCount++;
+                    const item = document.createElement('div');
+                    item.className = 'dynamic-item';
+                    item.innerHTML = `
+                        <button type="button" class="btn btn-remove" onclick="this.parentElement.remove();">Remove</button>
+                        <div class="form-group">
+                            <label>Gallery Image</label>
+                            <input type="file" name="app_gallery_${appGalleryCount}_image" accept="image/*">
+                        </div>
+                        <div class="form-group">
+                            <label>Caption / Notes</label>
+                            <input type="text" name="app_gallery_${appGalleryCount}_caption" placeholder="Optional caption">
+                        </div>
+                    `;
+                    document.getElementById('appGalleryItems').appendChild(item);
                     debouncedSave();
                 });
             }
@@ -4899,10 +6179,15 @@
                         const formGroup = input.closest('.form-group');
 
                         // Skip if field is hidden (in conditional field)
-                        const isHidden = input.closest('.conditional-field') &&
-                                       !input.closest('.conditional-field').classList.contains('show');
-                        if (isHidden) {
-                            console.log(`Skipping hidden field: ${input.name}`);
+                        const isConditionalHidden = input.closest('.conditional-field') &&
+                                              !input.closest('.conditional-field').classList.contains('show');
+                        
+                        // Skip if field is in a hidden section
+                        const parentSection = input.closest('.form-section');
+                        const isSectionHidden = parentSection && !parentSection.classList.contains('active');
+                        
+                        if (isConditionalHidden || isSectionHidden) {
+                            console.log(`Skipping hidden field: ${input.name} (section hidden: ${isSectionHidden}, conditional hidden: ${isConditionalHidden})`);
                             return;
                         }
 
@@ -4990,10 +6275,16 @@
                     emailInputs.forEach(input => {
                         const formGroup = input.closest('.form-group');
                         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                        const isHiddenEmail = input.closest('.conditional-field') &&
-                                             !input.closest('.conditional-field').classList.contains('show');
-                        if (isHiddenEmail) {
-                            console.log(`Skipping hidden email field: ${input.name}`);
+                        // Skip if field is hidden (in conditional field)
+                        const isConditionalHidden = input.closest('.conditional-field') &&
+                                              !input.closest('.conditional-field').classList.contains('show');
+                        
+                        // Skip if field is in a hidden section
+                        const parentSection = input.closest('.form-section');
+                        const isSectionHidden = parentSection && !parentSection.classList.contains('active');
+                        
+                        if (isConditionalHidden || isSectionHidden) {
+                            console.log(`Skipping hidden email field: ${input.name} (section hidden: ${isSectionHidden}, conditional hidden: ${isConditionalHidden})`);
                             return;
                         }
 
@@ -5026,6 +6317,7 @@
                             const rawFormData = new FormData(requirementForm);
                             const formData = new FormData();
                             const multiValueFields = new Set([
+                                'appScreens',
                                 'headerPages',
                                 'footerPages',
                                 'customFeatures',
@@ -5043,7 +6335,10 @@
                                 'serviceOperations',
                                 'ecommerceOperations',
                                 'trustAssets',
-                                'legalNeeds'
+                                'legalNeeds',
+                                'app_pageExtras',
+                                'app_contentSupport',
+                                'app_mediaSupport'
                             ]);
 
                             for (const [key, value] of rawFormData.entries()) {
@@ -5053,6 +6348,14 @@
                                     formData.append(key, value);
                                 }
                             }
+
+                            const additionalSelectedScreens = document.querySelectorAll('#additionalAppScreens input[type="checkbox"]:checked');
+                            additionalSelectedScreens.forEach((checkbox) => {
+                                const screenName = (checkbox.value || '').trim();
+                                if (screenName) {
+                                    formData.append('appScreens[]', screenName);
+                                }
+                            });
 
                             const clientId = generateClientId();
                             formData.set('client_id', clientId);
@@ -5189,6 +6492,267 @@
                     }
                 }
             });
+
+            // ============================================
+            // PROJECT TYPE CONDITIONAL LOGIC
+            // ============================================
+            
+            // Project type change handler
+            const projectTypeRadios = document.querySelectorAll('input[name="project_type"]');
+            
+            function updateFormSections() {
+                const selectedType = document.querySelector('input[name="project_type"]:checked');
+                
+                if (!selectedType) {
+                    // Hide all sections except project type selection
+                    hideAllSections();
+                    document.getElementById('project-type-selection').classList.add('active');
+                    return;
+                }
+                
+                const projectType = selectedType.value;
+                
+                // Hide all sections first
+                hideAllSections();
+                
+                // Hide project type selection after selection is made
+                document.getElementById('project-type-selection').classList.remove('active');
+                
+                if (projectType === 'website') {
+                    // Show only website sections
+                    showWebsiteSections();
+                } else if (projectType === 'mobile-app') {
+                    // Show only mobile app sections
+                    showMobileAppSections();
+                } else if (projectType === 'both') {
+                    // Show all sections
+                    showAllSections();
+                }
+                
+                // Update navigation
+                updateNavigation(projectType);
+            }
+            
+            function hideAllSections() {
+                const allSections = document.querySelectorAll('.form-section');
+                allSections.forEach(section => {
+                    section.classList.remove('active');
+                });
+            }
+            
+            function showWebsiteSections() {
+                hideAllSections();
+                // Only show the first section initially
+                const firstSection = document.getElementById('project-basics');
+                if (firstSection) {
+                    firstSection.classList.add('active');
+                }
+            }
+            
+            function showMobileAppSections() {
+                hideAllSections();
+                // Only show the first section initially
+                const firstSection = document.getElementById('app-basic-info');
+                if (firstSection) {
+                    firstSection.classList.add('active');
+                }
+                
+                // Re-initialize mobile app conditional fields after sections become visible
+                setTimeout(() => {
+                    // Re-attach app company details checkbox listener
+                    const addAppCompanyDetailsCheckbox = document.getElementById('addAppCompanyDetails');
+                    const appCompanyDetailsSection = document.getElementById('appCompanyDetailsSection');
+                    if (addAppCompanyDetailsCheckbox && appCompanyDetailsSection) {
+                        if (addAppCompanyDetailsCheckbox.checked) {
+                            appCompanyDetailsSection.classList.add('show');
+                        }
+                    }
+                    
+                    // Re-attach app icon radio listeners
+                    const checkedAppIconRadio = document.querySelector('input[name="app_hasIcon"]:checked');
+                    if (checkedAppIconRadio) {
+                        checkedAppIconRadio.dispatchEvent(new Event('change', { bubbles: true }));
+                    }
+                    
+                    // Re-attach app page extras listeners
+                    const appPageExtrasCheckboxes = document.querySelectorAll('input[name="app_pageExtras"]');
+                    appPageExtrasCheckboxes.forEach(checkbox => {
+                        if (checkbox.checked) {
+                            checkbox.dispatchEvent(new Event('change', { bubbles: true }));
+                        }
+                    });
+                    
+                    // Re-attach app content ready listeners
+                    const checkedAppContentReady = document.querySelector('input[name="app_contentReady"]:checked');
+                    if (checkedAppContentReady) {
+                        checkedAppContentReady.dispatchEvent(new Event('change', { bubbles: true }));
+                    }
+                    
+                    // Re-attach app working hours listeners
+                    const checkedAppWorkingHours = document.querySelector('input[name="app_workingHoursMode"]:checked');
+                    if (checkedAppWorkingHours) {
+                        checkedAppWorkingHours.dispatchEvent(new Event('change', { bubbles: true }));
+                    }
+                }, 100);
+            }
+            
+            function showAllSections() {
+                hideAllSections();
+                // Only show the first section initially (project-basics)
+                const firstSection = document.getElementById('project-basics');
+                if (firstSection) {
+                    firstSection.classList.add('active');
+                }
+            }
+            
+            function updateNavigation(projectType) {
+                // Update sidebar navigation based on project type
+                const navMenu = document.querySelector('.nav-menu');
+                if (!navMenu) return;
+                
+                // Clear existing navigation
+                navMenu.innerHTML = '';
+                
+                let navItems = [];
+                
+                if (projectType === 'website') {
+                    navItems = [
+                        { id: 'project-basics', text: '1. Project Basics', active: true },
+                        { id: 'technical', text: '2. Technical Setup' },
+                        { id: 'content', text: '3. Content & Branding' },
+                        { id: 'products', text: '4. Products & Features' },
+                        { id: 'marketing', text: '5. Marketing & SEO' },
+                        { id: 'final', text: '6. Final Details' }
+                    ];
+                } else if (projectType === 'mobile-app') {
+                    navItems = [
+                        { id: 'app-basic-info', text: '1. App Basic Info', active: true },
+                        { id: 'app-screens', text: '2. App Screens' },
+                        { id: 'app-content', text: '3. App Content' },
+                        { id: 'app-platform', text: '4. Platform' },
+                        { id: 'app-features', text: '5. Features' },
+                        { id: 'app-design', text: '6. Design' },
+                        { id: 'app-user-roles', text: '7. User Roles' },
+                        { id: 'app-notifications', text: '8. Notifications' },
+                        { id: 'app-payment', text: '9. Payment' },
+                        { id: 'app-backend', text: '10. Backend' },
+                        { id: 'app-deployment', text: '11. Deployment' },
+                        { id: 'app-maintenance', text: '12. Maintenance' },
+                        { id: 'app-final', text: '13. Final Details' }
+                    ];
+                } else if (projectType === 'both') {
+                    navItems = [
+                        { id: 'project-basics', text: '1. Project Basics', active: true },
+                        { id: 'technical', text: '2. Technical Setup' },
+                        { id: 'content', text: '3. Content & Branding' },
+                        { id: 'products', text: '4. Products & Features' },
+                        { id: 'marketing', text: '5. Marketing & SEO' },
+                        { id: 'final', text: '6. Final Details' },
+                        { id: 'app-basic-info', text: '7. App Basic Info' },
+                        { id: 'app-screens', text: '8. App Screens' },
+                        { id: 'app-content', text: '9. App Content' },
+                        { id: 'app-platform', text: '10. Platform' },
+                        { id: 'app-features', text: '11. Features' },
+                        { id: 'app-design', text: '12. Design' },
+                        { id: 'app-user-roles', text: '13. User Roles' },
+                        { id: 'app-notifications', text: '14. Notifications' },
+                        { id: 'app-payment', text: '15. Payment' },
+                        { id: 'app-backend', text: '16. Backend' },
+                        { id: 'app-deployment', text: '17. Deployment' },
+                        { id: 'app-maintenance', text: '18. Maintenance' },
+                        { id: 'app-final', text: '19. Final Details' }
+                    ];
+                }
+                
+                // Create navigation items
+                navItems.forEach(item => {
+                    const li = document.createElement('li');
+                    li.className = 'nav-item';
+                    
+                    const a = document.createElement('a');
+                    a.href = `#${item.id}`;
+                    a.className = `nav-link ${item.active ? 'active' : ''}`;
+                    a.dataset.section = item.id;
+                    a.textContent = item.text;
+                    
+                    li.appendChild(a);
+                    navMenu.appendChild(li);
+                });
+                
+                // Re-attach navigation event listeners
+                attachNavigationListeners();
+            }
+            
+            function attachNavigationListeners() {
+                const navLinks = document.querySelectorAll('.nav-link');
+                const sections = document.querySelectorAll('.form-section');
+                
+                navLinks.forEach(link => {
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        
+                        const targetSection = this.dataset.section;
+                        const targetEl = document.getElementById(targetSection);
+                        
+                        if (!targetEl) return;
+                        
+                        // Update active nav link
+                        navLinks.forEach(l => l.classList.remove('active'));
+                        this.classList.add('active');
+                        
+                        // Show target section
+                        sections.forEach(section => {
+                            section.classList.remove('active');
+                            if (section.id === targetSection) {
+                                section.classList.add('active');
+                            }
+                        });
+                        
+                        // Scroll to top of form content
+                        const formContent = document.querySelector('.form-content');
+                        if (formContent) {
+                            formContent.scrollTo({ top: 0, behavior: 'smooth' });
+                        }
+                    });
+                });
+            }
+            
+            // Add event listeners for project type radios
+            projectTypeRadios.forEach(radio => {
+                radio.addEventListener('change', updateFormSections);
+            });
+            
+            // Initialize - check if project type was previously selected
+            // If yes, skip welcome page and directly show form with saved project type
+            // If no, show welcome page
+            function initializeForm() {
+                const savedRaw = localStorage.getItem(STORAGE_KEY);
+                const savedData = savedRaw ? JSON.parse(savedRaw) : null;
+                
+                if (savedData && savedData.project_type) {
+                    // User already selected project type before - skip welcome page
+                    if (welcomePanel) {
+                        welcomePanel.classList.add('hidden');
+                    }
+                    if (form) {
+                        form.style.display = 'block';
+                    }
+                    // Restore project type and show appropriate sections
+                    const projectTypeRadio = document.querySelector(`input[name="project_type"][value="${savedData.project_type}"]`);
+                    if (projectTypeRadio) {
+                        projectTypeRadio.checked = true;
+                        updateFormSections();
+                    }
+                } else {
+                    // No project type selected yet - show welcome page, hide form
+                    if (form) {
+                        form.style.display = 'none';
+                    }
+                }
+            }
+            
+            // Run initialization after all functions are defined
+            setTimeout(initializeForm, 100);
         });
 
         // Password toggle function

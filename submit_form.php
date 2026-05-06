@@ -10,6 +10,97 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 
 require_once 'config.php';
 
+function sanitizePathSegment(string $value): string {
+    $value = preg_replace('/[^a-zA-Z0-9_-]+/', '-', $value);
+    $value = trim((string) $value, '-');
+    return $value !== '' ? $value : 'file';
+}
+
+function getUploadSubdirectory(string $fieldName): string {
+    // Page images: pageImage_{pageName} → page-images/{pageName}/
+    if (preg_match('/^pageImage_(.+)$/', $fieldName, $matches)) {
+        $pageName = sanitizePathSegment($matches[1]);
+        return 'page-images/' . $pageName;
+    }
+
+    // Page attachments: content_{pageName}_file → page-attachments/{pageName}/
+    if (preg_match('/^content_(.+)_file$/', $fieldName, $matches)) {
+        $pageName = sanitizePathSegment($matches[1]);
+        return 'page-attachments/' . $pageName;
+    }
+
+    // Screen media: {screenName}_media → screen-media/{screenName}/
+    if (preg_match('/^(home|settings|profile|login|register|dashboard|search|cart|checkout|payment|notifications|help|support|messages|map|location|orders|favorites|wishlist|custom_.+)_media$/', $fieldName, $matches)) {
+        $screenName = sanitizePathSegment($matches[1]);
+        return 'screen-media/' . $screenName;
+    }
+
+    // App testimonials
+    if (preg_match('/^app_testimonial_\d+_image$/', $fieldName)) {
+        return 'testimonials';
+    }
+
+    // Gallery images (both website and app)
+    if (preg_match('/^(app_)?gallery_\d+_image$/', $fieldName)) {
+        return 'gallery';
+    }
+
+    // Logo files
+    if (stripos($fieldName, 'logo') !== false) {
+        return 'logos';
+    }
+
+    // Icon files
+    if (stripos($fieldName, 'icon') !== false) {
+        return 'icons';
+    }
+
+    // Documents and assets
+    if (stripos($fieldName, 'asset') !== false || stripos($fieldName, 'document') !== false || stripos($fieldName, 'file') !== false) {
+        return 'documents';
+    }
+
+    return 'misc';
+}
+
+function storeUploadedFile(string $clientId, string $fieldName, array $fileInfo): array {
+    $tmpName = $fileInfo['tmp_name'] ?? '';
+    $originalName = $fileInfo['name'] ?? '';
+    $mimeType = $fileInfo['type'] ?? 'application/octet-stream';
+    $size = (int) ($fileInfo['size'] ?? 0);
+    $error = (int) ($fileInfo['error'] ?? UPLOAD_ERR_NO_FILE);
+
+    if ($error !== UPLOAD_ERR_OK || $tmpName === '' || !is_uploaded_file($tmpName)) {
+        throw new Exception("Upload failed for field {$fieldName}");
+    }
+
+    $baseDir = __DIR__ . '/uploads/clients/' . sanitizePathSegment($clientId);
+    $subDir = $baseDir . '/' . getUploadSubdirectory($fieldName);
+    if (!is_dir($subDir) && !mkdir($subDir, 0775, true) && !is_dir($subDir)) {
+        throw new Exception("Could not create upload directory for {$fieldName}");
+    }
+
+    $extension = pathinfo($originalName, PATHINFO_EXTENSION);
+    $safeBaseName = sanitizePathSegment(pathinfo($originalName, PATHINFO_FILENAME));
+    $uniqueName = sanitizePathSegment($fieldName) . '-' . date('YmdHis') . '-' . substr(bin2hex(random_bytes(4)), 0, 8);
+    if ($safeBaseName !== '') {
+        $uniqueName .= '-' . $safeBaseName;
+    }
+    $finalFileName = $uniqueName . ($extension !== '' ? '.' . strtolower($extension) : '');
+    $absolutePath = $subDir . '/' . $finalFileName;
+
+    if (!move_uploaded_file($tmpName, $absolutePath)) {
+        throw new Exception("Could not save uploaded file for {$fieldName}");
+    }
+
+    return [
+        'fileName' => $originalName,
+        'fileType' => $mimeType,
+        'fileSize' => $size,
+        'path' => 'uploads/clients/' . sanitizePathSegment($clientId) . '/' . getUploadSubdirectory($fieldName) . '/' . $finalFileName,
+    ];
+}
+
 function readSubmissionData() {
     $contentType = $_SERVER['CONTENT_TYPE'] ?? '';
 
@@ -60,7 +151,7 @@ function collectUploadedFiles() {
     return $files;
 }
 
-function buildStructuredPayload(array $data, array $uploadedFiles) {
+function buildStructuredPayload(array $data, array $uploadedFiles, string $clientId) {
     $payload = $data;
     $payload['pageContents'] = [];
     $payload['pageHeadings'] = [];
@@ -73,6 +164,11 @@ function buildStructuredPayload(array $data, array $uploadedFiles) {
             $normalizedKey = $matches[1];
             $payload[$normalizedKey] = is_array($value) ? $value : [$value];
         }
+        
+        // Handle appScreens specifically - ensure it's always an array
+        if ($key === 'appScreens' && !is_array($value)) {
+            $payload['appScreens'] = is_string($value) && !empty($value) ? [$value] : [];
+        }
 
         if (preg_match('/^pageHeading_(.+)$/', $key, $matches)) {
             $payload['pageHeadings'][$matches[1]] = $value;
@@ -84,31 +180,27 @@ function buildStructuredPayload(array $data, array $uploadedFiles) {
     }
 
     foreach ($uploadedFiles as $fieldName => $fileInfo) {
-        $fileName = $fileInfo['name'] ?? '';
-        $fileType = $fileInfo['type'] ?? '';
-        $tmpName = $fileInfo['tmp_name'] ?? '';
-        $fileData = '';
-
-        if ($tmpName && is_readable($tmpName)) {
-            $fileData = base64_encode(file_get_contents($tmpName));
-        }
+        $storedFile = storeUploadedFile($clientId, $fieldName, $fileInfo);
 
         if (preg_match('/^pageImage_(.+)$/', $fieldName, $matches)) {
             $payload['pageImages'][$matches[1]] = [
-                'fileName' => $fileName,
-                'fileType' => $fileType,
-                'data' => $fileData,
+                'fileName' => $storedFile['fileName'],
+                'fileType' => $storedFile['fileType'],
+                'fileSize' => $storedFile['fileSize'],
+                'path' => $storedFile['path'],
             ];
         } elseif (preg_match('/^content_(.+)_file$/', $fieldName, $matches)) {
             $payload['pageAttachments'][$matches[1]] = [
-                'fileName' => $fileName,
-                'fileType' => $fileType,
-                'data' => $fileData,
+                'fileName' => $storedFile['fileName'],
+                'fileType' => $storedFile['fileType'],
+                'fileSize' => $storedFile['fileSize'],
+                'path' => $storedFile['path'],
             ];
         } else {
-            $payload[$fieldName] = $fileName;
-            $payload[$fieldName . '_type'] = $fileType;
-            $payload[$fieldName . '_data'] = $fileData;
+            $payload[$fieldName] = $storedFile['fileName'];
+            $payload[$fieldName . '_type'] = $storedFile['fileType'];
+            $payload[$fieldName . '_size'] = $storedFile['fileSize'];
+            $payload[$fieldName . '_path'] = $storedFile['path'];
         }
     }
 
@@ -132,16 +224,44 @@ try {
         $client_id = 'CL-' . date('Y') . '-' . strtoupper(substr(bin2hex(random_bytes(2)), 0, 4));
     }
 
-    $name = trim($data['companyName'] ?? $data['contactName'] ?? '');
+    // Check both website and mobile app field names - prioritize contact name over company name
+    $name = trim($data['contactName'] ?? $data['app_contactName'] ?? $data['companyName'] ?? $data['app_businessName'] ?? '');
     if ($name === '') {
-        $name = 'Unknown Company';
+        $name = 'Unknown Contact';
     }
 
-    $email = trim($data['contactEmail'] ?? '');
-    $phone = trim($data['contactPhone'] ?? '');
-    $company_name = trim($data['companyName'] ?? $name);
+    $email = trim($data['contactEmail'] ?? $data['app_contactEmail'] ?? '');
+    $phone = trim($data['contactPhone'] ?? $data['app_contactPhone'] ?? '');
+    $company_name = trim($data['companyName'] ?? $data['app_businessName'] ?? '');
 
-    $payload = buildStructuredPayload($data, $uploadedFiles);
+    // Ensure multi-select fields are properly encoded as JSON arrays
+    $multiSelectFields = [
+        'businessGoals', 'pageExtras', 'serviceOperations', 'ecommerceOperations',
+        'trustAssets', 'legalNeeds', 'leadDestinations', 'app_features',
+        'app_target_platforms', 'app_deployment_stores', 'app_payment_methods',
+        'appScreens', 'openDays', 'filterAttributes'
+    ];
+
+    foreach ($multiSelectFields as $field) {
+        if (isset($data[$field])) {
+            if (is_string($data[$field])) {
+                // If it's a JSON string, decode it
+                $decoded = json_decode($data[$field], true);
+                if (json_last_error() === JSON_ERROR_NONE) {
+                    $payload[$field] = $decoded;
+                } else {
+                    // If it's a comma-separated string, split it
+                    $payload[$field] = array_map('trim', explode(',', $data[$field]));
+                }
+            } elseif (is_array($data[$field])) {
+                $payload[$field] = $data[$field];
+            } else {
+                $payload[$field] = [$data[$field]];
+            }
+        }
+    }
+
+    $payload = buildStructuredPayload($data, $uploadedFiles, $client_id);
 
     $conn = getDBConnection();
 

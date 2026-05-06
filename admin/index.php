@@ -20,6 +20,7 @@ $where_conditions = [];
 $params = [];
 $types = '';
 
+// Only apply search filter if search is provided
 if (!empty($search)) {
     $where_conditions[] = "(client_id LIKE ? OR name LIKE ? OR email LIKE ? OR company_name LIKE ?)";
     $search_param = "%$search%";
@@ -48,7 +49,7 @@ $result = $stmt->get_result();
 $clients = $result->fetch_all(MYSQLI_ASSOC);
 
 $stmt->close();
-$conn->close();
+// Don't close connection here, it's needed later for updates
 ?>
 
 <!DOCTYPE html>
@@ -479,12 +480,52 @@ $conn->close();
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($clients as $client): ?>
+                        <?php foreach ($clients as $client): 
+                            // Decode form_data to get fallback values for mobile app
+                            $form_data = json_decode($client['form_data'] ?? '{}', true);
+                            
+                            // Get name from client table or form_data fallback - prioritize contact name
+                            $display_name = $client['name'];
+                            if (empty($display_name) || $display_name === 'Unknown Company' || $display_name === 'Unknown Contact') {
+                                // Use contact name from form (for both website and mobile app), fallback to company name
+                                $display_name = $form_data['contactName'] ?? $form_data['app_contactName'] ?? $form_data['companyName'] ?? '';
+                            }
+                            if (empty($display_name)) $display_name = 'Unknown';
+                            
+                            // Get email from client table or form_data fallback
+                            $display_email = $client['email'];
+                            if (empty($display_email)) {
+                                $display_email = $form_data['app_contactEmail'] ?? $form_data['contactEmail'] ?? '';
+                            }
+                            if (empty($display_email)) $display_email = 'Not Provided';
+                            
+                            // Get company from client table or form_data fallback (companyName - same for both website and mobile app)
+                            $display_company = $client['company_name'];
+                            if (empty($display_company) || $display_company === 'Not Provided') {
+                                $display_company = $form_data['companyName'] ?? '';
+                            }
+                            if (empty($display_company)) $display_company = 'Not Provided';
+                            
+                            // Update database if name is still showing as Unknown but form_data has proper name
+                            if (($client['name'] === 'Unknown Company' || empty($client['name'])) && !empty($display_name) && $display_name !== 'Unknown') {
+                                // Reopen database connection for updates
+                                $update_conn = getDBConnection();
+                                $update_sql = "UPDATE clients SET name = ?, email = ?, company_name = ? WHERE id = ?";
+                                $update_stmt = $update_conn->prepare($update_sql);
+                                $update_stmt->bind_param('sssi', $display_name, $display_email, $display_company, $client['id']);
+                                $update_stmt->execute();
+                                $update_stmt->close();
+                                $update_conn->close();
+                                $client['name'] = $display_name; // Update current row data
+                                $client['email'] = $display_email; // Update current row data
+                                $client['company_name'] = $display_company; // Update current row data
+                            }
+                        ?>
                             <tr>
                                 <td class="client-id"><?php echo htmlspecialchars($client['client_id']); ?></td>
-                                <td><?php echo htmlspecialchars($client['name']); ?></td>
-                                <td><?php echo htmlspecialchars($client['email'] ?: 'Not Provided'); ?></td>
-                                <td><?php echo htmlspecialchars($client['company_name'] ?: 'Not Provided'); ?></td>
+                                <td><?php echo htmlspecialchars($display_name); ?></td>
+                                <td><?php echo htmlspecialchars($display_email); ?></td>
+                                <td><?php echo htmlspecialchars($display_company); ?></td>
                                 <td><?php echo date('M j, Y', strtotime($client['created_at'])); ?></td>
                                 <td>
                                     <span class="status <?php echo strtolower(str_replace(' ', '-', $client['status'])); ?>">

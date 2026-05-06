@@ -38,6 +38,20 @@ if ($result->num_rows === 0) {
 $client = $result->fetch_assoc();
 $form_data = json_decode($client['form_data'], true);
 
+// Get project type to determine which sections to show
+$project_type = $form_data['project_type'] ?? '';
+
+// DEBUG: Check all possible field names for project type
+if (empty($project_type) && !empty($form_data['projectType'])) {
+    $project_type = $form_data['projectType'];
+}
+
+$is_mobile_app = ($project_type === 'mobile-app' || $project_type === 'both');
+$is_website = ($project_type === 'website' || $project_type === 'both');
+
+// Debug info for troubleshooting
+$debug_info = "Project Type: " . ($project_type ?: 'NOT SET') . " | Mobile: " . ($is_mobile_app ? 'YES' : 'NO') . " | Website: " . ($is_website ? 'YES' : 'NO');
+
 // Handle status update
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_status'])) {
     $new_status = $_POST['status'] ?? 'New';
@@ -61,15 +75,241 @@ function displayValue($value) {
     return '<span style="font-size: 14px;">' . htmlspecialchars($value) . '</span>';
 }
 
-// Helper function to display array values
+// Helper function to display formatted array values (improved version)
 function displayArray($values) {
-    if (empty($values)) {
+    if ($values === null || $values === '' || $values === []) {
         return '<span style="color: #999; font-size: 14px;">Not Provided</span>';
     }
-    if (!is_array($values)) {
+
+    if (is_string($values)) {
+        $trimmed = trim($values);
+
+        if ($trimmed === '') {
+            return '<span style="color: #999; font-size: 14px;">Not Provided</span>';
+        }
+
+        $decoded = json_decode($trimmed, true);
+        if (json_last_error() === JSON_ERROR_NONE && is_array($decoded)) {
+            $values = $decoded;
+        } elseif (strpos($trimmed, ',') !== false) {
+            $values = array_map('trim', explode(',', $trimmed));
+        } else {
+            $values = [$trimmed];
+        }
+    } elseif (!is_array($values)) {
         $values = [$values];
     }
-    return '<span style="font-size: 14px;">' . htmlspecialchars(implode(', ', $values)) . '</span>';
+
+    $flatValues = [];
+    array_walk_recursive($values, function ($value) use (&$flatValues) {
+        if ($value !== null && $value !== '') {
+            $flatValues[] = $value;
+        }
+    });
+
+    if (empty($flatValues)) {
+        return '<span style="color: #999; font-size: 14px;">Not Provided</span>';
+    }
+
+    return '<span style="font-size: 14px;">' . htmlspecialchars(implode(', ', $flatValues)) . '</span>';
+}
+
+function normalizeArrayValues($values) {
+    if ($values === null || $values === '' || $values === []) {
+        return [];
+    }
+
+    if (is_string($values)) {
+        $trimmed = trim($values);
+        if ($trimmed === '') {
+            return [];
+        }
+
+        $decoded = json_decode($trimmed, true);
+        if (json_last_error() === JSON_ERROR_NONE && is_array($decoded)) {
+            $values = $decoded;
+        } elseif (strpos($trimmed, ',') !== false) {
+            $values = array_map('trim', explode(',', $trimmed));
+        } else {
+            $values = [$trimmed];
+        }
+    } elseif (!is_array($values)) {
+        $values = [$values];
+    }
+
+    $flatValues = [];
+    array_walk_recursive($values, function ($value) use (&$flatValues) {
+        if ($value !== null) {
+            $trimmed = trim((string) $value);
+            if ($trimmed !== '') {
+                $flatValues[] = $trimmed;
+            }
+        }
+    });
+
+    return $flatValues;
+}
+
+function formatScreenLabel($screen) {
+    $screen = trim((string) $screen);
+    if ($screen === '') {
+        return '';
+    }
+
+    if (strpos($screen, 'custom_') === 0) {
+        $screen = substr($screen, 7);
+    }
+
+    $labelMap = [
+        'home' => 'Home / Dashboard',
+        'login' => 'Login / Sign Up',
+        'profile' => 'User Profile',
+        'settings' => 'Settings',
+        'search' => 'Search',
+        'notifications' => 'Notifications',
+        'cart' => 'Cart / Checkout',
+        'orders' => 'Orders / History',
+        'favorites' => 'Favorites / Wishlist',
+        'support' => 'Help / Support',
+        'help' => 'Help / Support',
+        'messages' => 'Messages / Chat',
+        'map' => 'Map / Location',
+        'location' => 'Map / Location',
+        'dashboard' => 'Dashboard',
+        'register' => 'Register',
+        'checkout' => 'Checkout',
+        'payment' => 'Payment',
+        'wishlist' => 'Wishlist'
+    ];
+
+    if (isset($labelMap[$screen])) {
+        return $labelMap[$screen];
+    }
+
+    return ucwords(str_replace('_', ' ', $screen));
+}
+
+function formatAppFeatureValues($values) {
+    $featureLabels = [
+        'login' => 'User Login',
+        'registration' => 'User Registration',
+        'payment' => 'Payment Integration',
+        'notifications' => 'Push Notifications',
+        'chat' => 'In-app Chat',
+        'booking' => 'Booking System',
+        'maps' => 'Maps/Location',
+        'camera' => 'Camera Integration',
+        'social' => 'Social Media Integration',
+        'search' => 'Search Functionality',
+        'offline' => 'Offline Mode',
+        'multilingual' => 'Multi-language Support',
+        'analytics' => 'Analytics',
+        'custom' => 'Custom Features'
+    ];
+
+    $formatted = [];
+    foreach (normalizeArrayValues($values) as $feature) {
+        $formatted[] = $featureLabels[$feature] ?? ucwords(str_replace(['-', '_'], ' ', $feature));
+    }
+
+    return $formatted;
+}
+
+function formatMappedValue($value, array $labels) {
+    $normalized = trim((string) $value);
+    if ($normalized === '') {
+        return '';
+    }
+
+    return $labels[$normalized] ?? ucwords(str_replace(['-', '_'], ' ', $normalized));
+}
+
+function formatMappedValues($values, array $labels) {
+    $formatted = [];
+    foreach (normalizeArrayValues($values) as $value) {
+        $formatted[] = formatMappedValue($value, $labels);
+    }
+    return $formatted;
+}
+
+function displayOpenDays($values) {
+    if ($values === null || $values === '' || $values === []) {
+        return '<span style="color: #999; font-size: 14px;">Not Provided</span>';
+    }
+
+    if (is_string($values)) {
+        $trimmed = trim($values);
+
+        if ($trimmed === '') {
+            return '<span style="color: #999; font-size: 14px;">Not Provided</span>';
+        }
+
+        $decoded = json_decode($trimmed, true);
+        if (json_last_error() === JSON_ERROR_NONE && is_array($decoded)) {
+            $values = $decoded;
+        } elseif (strpos($trimmed, ',') !== false) {
+            $values = array_map('trim', explode(',', $trimmed));
+        } else {
+            $values = [$trimmed];
+        }
+    } elseif (!is_array($values)) {
+        $values = [$values];
+    }
+
+    $dayLabels = [
+        'monday' => 'Monday',
+        'tuesday' => 'Tuesday',
+        'wednesday' => 'Wednesday',
+        'thursday' => 'Thursday',
+        'friday' => 'Friday',
+        'saturday' => 'Saturday',
+        'sunday' => 'Sunday',
+        'weekdays' => 'Weekdays',
+        'weekends' => 'Weekends',
+        'all-days' => 'All Days'
+    ];
+
+    $displayDays = [];
+    array_walk_recursive($values, function ($day) use (&$displayDays, $dayLabels) {
+        if ($day === null || $day === '') {
+            return;
+        }
+        $displayDays[] = $dayLabels[$day] ?? ucwords(str_replace('-', ' ', $day));
+    });
+
+    if (empty($displayDays)) {
+        return '<span style="color: #999; font-size: 14px;">Not Provided</span>';
+    }
+
+    return '<span style="font-size: 14px;">' . htmlspecialchars(implode(', ', $displayDays)) . '</span>';
+}
+
+function fieldAssetExists(array $formData, string $fieldName): bool {
+    return !empty($formData[$fieldName . '_path']) || !empty($formData[$fieldName . '_data']);
+}
+
+function fieldAssetUrl(string $clientId, string $fieldName, bool $download = false): string {
+    $query = [
+        'client_id' => $clientId,
+        'type' => 'field',
+        'field' => $fieldName,
+    ];
+    if ($download) {
+        $query['download'] = '1';
+    }
+    return '../download_asset.php?' . http_build_query($query);
+}
+
+function pageAssetUrl(string $clientId, string $type, string $page, bool $download = false): string {
+    $query = [
+        'client_id' => $clientId,
+        'type' => $type,
+        'page' => $page,
+    ];
+    if ($download) {
+        $query['download'] = '1';
+    }
+    return '../download_asset.php?' . http_build_query($query);
 }
 ?>
 
@@ -90,7 +330,7 @@ function displayArray($values) {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: #f5f5f5;
             color: #333;
-            font-size: 12px;
+            font-size: 14px;
             line-height: 1.65;
         }
 
@@ -126,7 +366,7 @@ function displayArray($values) {
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 15px;
             transition: all 0.3s ease;
             text-decoration: none;
             display: inline-block;
@@ -297,11 +537,12 @@ function displayArray($values) {
             font-weight: 600;
             color: #555;
             margin-bottom: 5px;
-            font-size: 14px;
+            font-size: 16px;
         }
 
         .detail-value {
             color: #333;
+            font-size: 16px;
         }
 
         .status-form {
@@ -314,7 +555,7 @@ function displayArray($values) {
             padding: 8px 12px;
             border: 1px solid #ddd;
             border-radius: 5px;
-            font-size: 14px;
+            font-size: 16px;
         }
 
         .section {
@@ -329,7 +570,7 @@ function displayArray($values) {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             padding: 24px 30px;
-            font-size: 20px;
+            font-size: 24px;
             font-weight: 600;
         }
 
@@ -349,13 +590,13 @@ function displayArray($values) {
             font-weight: 600;
             color: #555;
             margin-bottom: 8px;
-            font-size: 14px;
+            font-size: 16px;
         }
 
         .field-value {
             color: #333;
             line-height: 1.65;
-            font-size: 14px;
+            font-size: 16px;
         }
 
         .field-grid {
@@ -374,14 +615,14 @@ function displayArray($values) {
             background: #f0f0f0;
             padding: 7px 14px;
             border-radius: 18px;
-            font-size: 14px;
+            font-size: 15px;
         }
 
         .file-status {
             display: inline-block;
             padding: 4px 10px;
             border-radius: 12px;
-            font-size: 14px;
+            font-size: 15px;
             font-weight: 500;
         }
 
@@ -416,7 +657,7 @@ function displayArray($values) {
         .page-name {
             flex: 1;
             font-weight: 500;
-            font-size: 14px;
+            font-size: 16px;
         }
 
         .page-type {
@@ -424,7 +665,7 @@ function displayArray($values) {
             color: white;
             padding: 4px 10px;
             border-radius: 12px;
-            font-size: 14px;
+            font-size: 15px;
             margin-left: 10px;
         }
 
@@ -437,7 +678,7 @@ function displayArray($values) {
         }
 
         .subsection h4 {
-            font-size: 18px;
+            font-size: 20px;
         }
 
         .content-card {
@@ -451,7 +692,7 @@ function displayArray($values) {
         .content-card__title {
             margin: 0 0 14px 0;
             color: #2c3e50;
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 700;
         }
 
@@ -476,21 +717,21 @@ function displayArray($values) {
             margin-bottom: 8px;
             color: #2c3e50;
             font-weight: 700;
-            font-size: 14px;
+            font-size: 16px;
         }
 
         .content-card__value {
             color: #555;
             margin-top: 4px;
             line-height: 1.8;
-            font-size: 14px;
+            font-size: 16px;
             word-break: break-word;
         }
 
         .content-chip {
             border-radius: 18px;
             padding: 7px 14px;
-            font-size: 14px;
+            font-size: 15px;
         }
 
         .content-badge-grid {
@@ -599,19 +840,31 @@ function displayArray($values) {
                 </div>
                 <div class="detail-item">
                     <div class="detail-label">Name</div>
-                    <div class="detail-value"><?php echo displayValue($client['name']); ?></div>
+                    <div class="detail-value"><?php 
+                        $display_name = $client['name'] ?: ($form_data['app_contactName'] ?? $form_data['contactName'] ?? '');
+                        echo displayValue($display_name); 
+                    ?></div>
                 </div>
                 <div class="detail-item">
                     <div class="detail-label">Email</div>
-                    <div class="detail-value"><?php echo displayValue($client['email']); ?></div>
+                    <div class="detail-value"><?php 
+                        $display_email = $client['email'] ?: ($form_data['app_contactEmail'] ?? $form_data['contactEmail'] ?? '');
+                        echo displayValue($display_email); 
+                    ?></div>
                 </div>
                 <div class="detail-item">
                     <div class="detail-label">Phone</div>
-                    <div class="detail-value"><?php echo displayValue($client['phone']); ?></div>
+                    <div class="detail-value"><?php 
+                        $display_phone = $client['phone'] ?: ($form_data['app_contactPhone'] ?? $form_data['contactPhone'] ?? '');
+                        echo displayValue($display_phone); 
+                    ?></div>
                 </div>
                 <div class="detail-item">
                     <div class="detail-label">Company</div>
-                    <div class="detail-value"><?php echo displayValue($client['company_name']); ?></div>
+                    <div class="detail-value"><?php 
+                        $display_company = $client['company_name'] ?: ($form_data['app_name'] ?? $form_data['companyName'] ?? '');
+                        echo displayValue($display_company); 
+                    ?></div>
                 </div>
                 <div class="detail-item">
                     <div class="detail-label">Submission Date</div>
@@ -633,6 +886,9 @@ function displayArray($values) {
             </div>
         </div>
 
+        <?php if ($is_website): ?>
+        <!-- WEBSITE SECTIONS -->
+
         <!-- Section 1: Project Basics -->
         <div class="section">
             <div class="section-header">1. Project Basics</div>
@@ -652,7 +908,11 @@ function displayArray($values) {
                     </div>
                     <div class="field-group">
                         <div class="field-label">Project Type</div>
-                        <div class="field-value"><?php echo displayValue($form_data['projectType'] ?? ''); ?></div>
+                        <div class="field-value" style="font-weight: 600; color: #667eea;"><?php 
+                        $pt = $form_data['project_type'] ?? '';
+                        $pt_labels = ['website' => 'Website', 'mobile-app' => 'Mobile App', 'both' => 'Both (Website + Mobile App)'];
+                        echo displayValue($pt_labels[$pt] ?? $pt); 
+                        ?></div>
                     </div>
                     <div class="field-group">
                         <div class="field-label">Business Category</div>
@@ -686,11 +946,83 @@ function displayArray($values) {
                 <div class="field-group">
                     <div class="field-label">Business Goals & Visitor Journey</div>
                     <div class="field-value">
-                        <strong>Goals:</strong> <?php echo displayArray($form_data['businessGoals'] ?? []); ?><br>
+                        <strong>Goals:</strong> 
+                        <?php 
+                        $goals = is_array($form_data['businessGoals'] ?? []) ? $form_data['businessGoals'] : [$form_data['businessGoals'] ?? []];
+                        $goalLabels = [
+                            'increase-sales' => 'Increase Sales',
+                            'brand-awareness' => 'Brand Awareness',
+                            'lead-generation' => 'Lead Generation',
+                            'customer-support' => 'Customer Support',
+                            'online-booking' => 'Online Booking',
+                            'content-management' => 'Content Management',
+                            'e-commerce' => 'E-commerce',
+                            'user-engagement' => 'User Engagement',
+                            'portfolio-showcase' => 'Portfolio Showcase',
+                            'information-provision' => 'Information Provision',
+                            'community-building' => 'Community Building',
+                            'generate-leads' => 'Generate Leads',
+                            'sell-online' => 'Sell Online',
+                            'book-appointments' => 'Book Appointments',
+                            'share-information' => 'Share Information'
+                        ];
+                        $displayGoals = [];
+                        foreach ($goals as $goal) {
+                            $displayGoals[] = $goalLabels[$goal] ?? ucwords(str_replace('-', ' ', $goal));
+                        }
+                        echo '<span style="font-size: 14px;">' . htmlspecialchars(implode(', ', $displayGoals)) . '</span>';
+                        ?><br>
+                        
                         <strong>Target Audience:</strong> <?php echo displayValue($form_data['targetAudience'] ?? ''); ?><br>
                         <strong>Visitor Problem:</strong> <?php echo displayValue($form_data['visitorProblem'] ?? ''); ?><br>
-                        <strong>Primary Actions:</strong> <?php echo displayArray($form_data['visitorActions'] ?? []); ?><br>
-                        <strong>Priority Focus:</strong> <?php echo displayArray($form_data['priorityFocus'] ?? []); ?>
+                        
+                        <strong>Primary Actions:</strong> 
+                        <?php 
+                        $actions = is_array($form_data['visitorActions'] ?? []) ? $form_data['visitorActions'] : [$form_data['visitorActions'] ?? []];
+                        $actionLabels = [
+                            'browse-products' => 'Browse Products',
+                            'make-purchase' => 'Make Purchase',
+                            'contact-support' => 'Contact Support',
+                            'request-quote' => 'Request Quote',
+                            'book-appointment' => 'Book Appointment',
+                            'read-content' => 'Read Content',
+                            'register-account' => 'Register Account',
+                            'login-account' => 'Login to Account',
+                            'share-content' => 'Share Content',
+                            'subscribe-newsletter' => 'Subscribe Newsletter',
+                            'call' => 'Call',
+                            'whatsapp' => 'WhatsApp',
+                            'inquiry-form' => 'Inquiry Form'
+                        ];
+                        $displayActions = [];
+                        foreach ($actions as $action) {
+                            $displayActions[] = $actionLabels[$action] ?? ucwords(str_replace('-', ' ', $action));
+                        }
+                        echo '<span style="font-size: 14px;">' . htmlspecialchars(implode(', ', $displayActions)) . '</span>';
+                        ?><br>
+                        
+                        <strong>Priority Focus:</strong> 
+                        <?php 
+                        $focus = is_array($form_data['priorityFocus'] ?? []) ? $form_data['priorityFocus'] : [$form_data['priorityFocus'] ?? []];
+                        $focusLabels = [
+                            'user-experience' => 'User Experience',
+                            'performance-speed' => 'Performance & Speed',
+                            'security' => 'Security',
+                            'seo-optimization' => 'SEO Optimization',
+                            'mobile-responsive' => 'Mobile Responsive',
+                            'content-quality' => 'Content Quality',
+                            'conversion-optimization' => 'Conversion Optimization',
+                            'accessibility' => 'Accessibility',
+                            'browser-compatibility' => 'Browser Compatibility',
+                            'premium-design' => 'Premium Design',
+                            'seo' => 'SEO'
+                        ];
+                        $displayFocus = [];
+                        foreach ($focus as $f) {
+                            $displayFocus[] = $focusLabels[$f] ?? ucwords(str_replace('-', ' ', $f));
+                        }
+                        echo '<span style="font-size: 14px;">' . htmlspecialchars(implode(', ', $displayFocus)) . '</span>';
+                        ?>
                     </div>
                 </div>
                 <?php if (!empty($form_data['otherProjectTypeInput'])): ?>
@@ -895,29 +1227,20 @@ function displayArray($values) {
                         </div>
                     </div>
 
-                   <?php if (!empty($form_data['logoFile_data'])): ?>
+                   <?php if (fieldAssetExists($form_data, 'logoFile')): ?>
                     <div class="field-group">
                         <div class="field-label">Uploaded Logo File</div>
                         <div class="field-value">
                             <?php 
-                            $logoData = $form_data['logoFile_data'];
-                            if ((is_array($logoData) && !empty($logoData['data'])) || (is_string($logoData) && !empty($logoData))): 
                             ?>
-                                <!-- IMAGE -->
                                 <img src="../download_asset.php?client_id=<?php echo urlencode($client['client_id']); ?>&type=logo" 
                                     alt="Logo" 
                                     style="max-width: 200px; height: auto; border-radius: 8px; border: 1px solid #ddd;">
-
-                                <!-- 🔥 ADD THIS ONLY -->
                                 <br><br>
-                                <a href="../download_asset.php?client_id=<?php echo urlencode($client['client_id']); ?>&type=logo" 
+                                <a href="../download_asset.php?client_id=<?php echo urlencode($client['client_id']); ?>&type=logo&download=1" 
                                 download>
                                 ⬇ Download Logo
                                 </a>
-
-                            <?php else: ?>
-                                <span style="color: #7f8c8d; font-style: italic;">Logo file data not available</span>
-                            <?php endif; ?>
                         </div>
                     </div>
                 <?php endif; ?>
@@ -965,10 +1288,24 @@ function displayArray($values) {
                         <div class="field-label">Uploaded Business Assets</div>
                         <div class="field-value">
                             <strong>File:</strong> <?php echo displayValue($form_data['businessAssetsFile']); ?><br>
-                            <strong>Type:</strong> <?php echo displayValue($form_data['businessAssetsFile_type'] ?? ''); ?>
+                            <strong>Type:</strong> <?php echo displayValue($form_data['businessAssetsFile_type'] ?? ''); ?><br>
+                            <?php if (fieldAssetExists($form_data, 'businessAssetsFile')): ?>
+                                <div style="margin-top: 10px; display: flex; align-items: center; gap: 10px;">
+                                    <span style="font-size: 14px; color: #6c757d;">
+                                        File: <?php echo htmlspecialchars($form_data['businessAssetsFile']); ?>
+                                    </span>
+                                    <a href="../download_asset.php?client_id=<?php echo urlencode($client['client_id']); ?>&type=business-assets&download=1" 
+                                       style="display: inline-block; padding: 10px 16px; background: #28a745; color: white; text-decoration: none; border-radius: 8px; font-size: 1rem; font-weight: 600;" 
+                                       target="_blank">
+                                        📥 Download Business Assets
+                                    </a>
+                                </div>
+                            <?php else: ?>
+                                <span style="color: #7f8c8d; font-style: italic;">Business assets data not available for download</span>
+                            <?php endif; ?>
                         </div>
                     </div>
-                    <?php endif; ?>
+                <?php endif; ?>
 
                     <div class="field-group">
                         <div class="field-label">Brand Voice/Tone</div>
@@ -1069,8 +1406,48 @@ function displayArray($values) {
                 <div class="field-group">
                     <div class="field-label">Content & Media Support</div>
                     <div class="field-value">
-                        <strong>Content Support:</strong> <?php echo displayArray($form_data['contentSupport'] ?? []); ?><br>
-                        <strong>Media Support:</strong> <?php echo displayArray($form_data['mediaSupport'] ?? []); ?>
+                        <strong>Content Support:</strong> 
+                        <?php 
+                        $contentSupport = is_array($form_data['contentSupport'] ?? []) ? $form_data['contentSupport'] : [$form_data['contentSupport'] ?? []];
+                        $contentSupportLabels = [
+                            'proofread' => 'Proofreading',
+                            'write' => 'Content Writing',
+                            'optimize' => 'SEO Optimization',
+                            'translate' => 'Translation',
+                            'format' => 'Content Formatting',
+                            'research' => 'Content Research',
+                            'edit' => 'Content Editing',
+                            'publish' => 'Content Publishing',
+                            'rewrite' => 'Content Rewriting'
+                        ];
+                        $displayContentSupport = [];
+                        foreach ($contentSupport as $support) {
+                            $displayContentSupport[] = $contentSupportLabels[$support] ?? ucwords(str_replace('-', ' ', $support));
+                        }
+                        echo '<span style="font-size: 14px;">' . htmlspecialchars(implode(', ', $displayContentSupport)) . '</span>';
+                        ?><br>
+                        
+                        <strong>Media Support:</strong> 
+                        <?php 
+                        $mediaSupport = is_array($form_data['mediaSupport'] ?? []) ? $form_data['mediaSupport'] : [$form_data['mediaSupport'] ?? []];
+                        $mediaSupportLabels = [
+                            'video-embed' => 'Video Embedding',
+                            'image-gallery' => 'Image Gallery',
+                            'audio-player' => 'Audio Player',
+                            'file-upload' => 'File Upload',
+                            'live-streaming' => 'Live Streaming',
+                            'document-viewer' => 'Document Viewer',
+                            'carousel-slider' => 'Carousel/Slider',
+                            'lightbox' => 'Lightbox Gallery',
+                            'image-editing' => 'Image Editing',
+                            'stock-images' => 'Stock Images'
+                        ];
+                        $displayMediaSupport = [];
+                        foreach ($mediaSupport as $support) {
+                            $displayMediaSupport[] = $mediaSupportLabels[$support] ?? ucwords(str_replace('-', ' ', $support));
+                        }
+                        echo '<span style="font-size: 14px;">' . htmlspecialchars(implode(', ', $displayMediaSupport)) . '</span>';
+                        ?>
                     </div>
                 </div>
                 </div>
@@ -1262,7 +1639,7 @@ function displayArray($values) {
                                                 <div style="margin-top: 8px;">
                                                     <?php
                                                     $imageData = $form_data['pageImages'][$pageName];
-                                                    if ((is_array($imageData) && !empty($imageData['data'])) || (is_string($imageData) && !empty($imageData))):
+                                                    if ((is_array($imageData) && (!empty($imageData['path']) || !empty($imageData['data']))) || (is_string($imageData) && !empty($imageData))):
                                                     ?>
                                                         <div style="margin-top: 10px; display: flex; align-items: center; gap: 10px;">
                                         <span style="font-size: 14px; color: #6c757d;">
@@ -1354,33 +1731,6 @@ function displayArray($values) {
                                         <?php endforeach; ?>
                                     </div>
                                 </div>
-
-                                <!-- Custom Fields -->
-                                <?php
-                                // Check for custom fields
-                                $customFields = [];
-                                foreach ($form_data as $key => $value) {
-                                    if (preg_match('/^contactCustomField_(\d+)_label$/', $key, $matches)) {
-                                        $index = $matches[1];
-                                        $label = $value;
-                                        $type = $form_data["contactCustomField_{$index}_type"] ?? 'text';
-                                        $customFields[] = ['label' => $label, 'type' => $type];
-                                    }
-                                }
-                                if (!empty($customFields)):
-                                ?>
-                                    <div style="margin-bottom: 15px;">
-                                        <h5 style="margin: 0 0 14px 0; color: #2c3e50; font-size: 14px;">🔧 Custom Fields</h5>
-                                        <ul style="list-style: none; padding: 0; margin: 0;">
-                                            <?php foreach ($customFields as $customField): ?>
-                                                <li style="padding: 12px 14px; margin-bottom: 10px; background: white; border-radius: 10px; border: 1px solid #dee2e6;">
-                                                    <strong style="font-size: 14px;"><?php echo htmlspecialchars($customField['label']); ?></strong>
-                                                    <span style="color: #6c757d; font-size: 14px; margin-left: 8px;">(<?php echo htmlspecialchars($customField['type']); ?>)</span>
-                                                </li>
-                                            <?php endforeach; ?>
-                                        </ul>
-                                    </div>
-                                <?php endif; ?>
                             </div>
                         </div>
                     </div>
@@ -1394,7 +1744,7 @@ function displayArray($values) {
                             <?php foreach ($form_data['pageAttachments'] as $pageName => $attachment): ?>
                                 <div style="margin-bottom: 12px; padding: 12px 14px; background: #f8f9fa; border-radius: 10px;">
                                     <strong style="text-transform: capitalize; font-size: 14px;"><?php echo htmlspecialchars($pageName); ?>:</strong><br>
-                                    <?php if (!empty($attachment['data'])): ?>
+                                    <?php if (is_array($attachment) && (!empty($attachment['path']) || !empty($attachment['data']))): ?>
                                         <a href="../download_asset.php?client_id=<?php echo urlencode($client['client_id']); ?>&type=page-attachment&page=<?php echo urlencode($pageName); ?>&download=1" 
                                            style="color: #28a745; text-decoration: none; display: inline-flex; align-items: center; gap: 5px; padding: 8px 12px; background: #e8f5e8; border-radius: 8px; border: 1px solid #28a745; margin-top: 6px;" target="_blank">
                                             📎 <?php echo htmlspecialchars($attachment['fileName'] ?? 'Download File'); ?>
@@ -1412,23 +1762,43 @@ function displayArray($values) {
                 <?php
                 $testimonialItems = [];
                 $galleryItems = [];
+
                 foreach ($form_data as $key => $value) {
-                    if (preg_match('/^testimonial_(\d+)_name$/', $key, $matches) && !empty($value)) {
+                    if (preg_match('/^testimonial_(\d+)_name$/', $key, $matches)) {
                         $index = $matches[1];
-                        $testimonialItems[] = [
-                            'name' => $value,
-                            'date' => $form_data["testimonial_{$index}_date"] ?? '',
-                            'text' => $form_data["testimonial_{$index}_text"] ?? ''
-                        ];
+                        $testimonialItems[$index]['name'] = $value;
                     }
-                    if (preg_match('/^gallery_(\d+)_caption$/', $key, $matches) && !empty($value)) {
+                    if (preg_match('/^testimonial_(\d+)_date$/', $key, $matches)) {
                         $index = $matches[1];
-                        $galleryItems[] = [
-                            'caption' => $value,
-                            'file' => $form_data["gallery_{$index}_image"] ?? ''
-                        ];
+                        $testimonialItems[$index]['date'] = $value;
+                    }
+                    if (preg_match('/^testimonial_(\d+)_text$/', $key, $matches)) {
+                        $index = $matches[1];
+                        $testimonialItems[$index]['text'] = $value;
+                    }
+                    if (preg_match('/^testimonial_(\d+)_image$/', $key, $matches)) {
+                        $index = $matches[1];
+                        $testimonialItems[$index]['image'] = $value;
+                    }
+                    if (preg_match('/^gallery_(\d+)_caption$/', $key, $matches)) {
+                        $index = $matches[1];
+                        $galleryItems[$index]['caption'] = $value;
+                        $galleryItems[$index]['index'] = $index;
+                    }
+                    if (preg_match('/^gallery_(\d+)_image$/', $key, $matches)) {
+                        $index = $matches[1];
+                        $galleryItems[$index]['file'] = $value;
+                        $galleryItems[$index]['index'] = $index;
                     }
                 }
+
+                // Normalize testimonial and gallery items to sequential array values
+                $testimonialItems = array_values(array_filter($testimonialItems, function ($item) {
+                    return !empty($item['name']) || !empty($item['image']) || !empty($item['text']);
+                }));
+                $galleryItems = array_values(array_filter($galleryItems, function ($item) {
+                    return !empty($item['file']) || !empty($item['caption']);
+                }));
                 ?>
                 <?php if (!empty($form_data['pageExtras']) || !empty($testimonialItems) || !empty($galleryItems) || !empty($form_data['galleryTitle'])): ?>
                     <div class="field-group">
@@ -1439,10 +1809,49 @@ function displayArray($values) {
                             <?php endif; ?>
                             <?php if (!empty($testimonialItems)): ?>
                                 <strong>Testimonials:</strong><br>
-                                <?php foreach ($testimonialItems as $item): ?>
-                                    <?php echo displayValue($item['name']); ?> <?php echo !empty($item['date']) ? '(' . htmlspecialchars($item['date']) . ')' : ''; ?>:
-                                    <?php echo displayValue($item['text']); ?><br>
-                                <?php endforeach; ?>
+                                <div style="margin-top: 15px; display: flex; flex-direction: column; gap: 15px;">
+                                    <?php foreach ($testimonialItems as $item): ?>
+                                        <div style="border: 1px solid #e0e0e0; border-radius: 12px; padding: 20px; background: #fafafa;">
+                                            <div style="display: flex; align-items: flex-start; gap: 15px; margin-bottom: 15px;">
+                                                <?php
+                                                // Check for testimonial image
+                                                $imageData = $form_data["testimonial_{$item['index']}_image_data"] ?? '';
+                                                $imagePath = $form_data["testimonial_{$item['index']}_image_path"] ?? '';
+                                                $imageName = $form_data["testimonial_{$item['index']}_image"] ?? '';
+                                                if (!empty($imageData) || !empty($imagePath)):
+                                                ?>
+                                                    <div style="width: 80px; height: 80px; border-radius: 50%; overflow: hidden; flex-shrink: 0; background: #f0f0f0;">
+                                                        <img src="<?php echo htmlspecialchars(fieldAssetUrl($client['client_id'], 'testimonial_' . $item['index'] . '_image')); ?>"
+                                                             style="width: 100%; height: 100%; object-fit: cover;"
+                                                             alt="<?php echo htmlspecialchars($item['name']); ?>">
+                                                    </div>
+                                                <?php endif; ?>
+                                                <div style="flex: 1;">
+                                                    <div style="font-weight: 600; font-size: 16px; color: #2c3e50; margin-bottom: 5px;">
+                                                        <?php echo htmlspecialchars($item['name'] ?: 'Anonymous'); ?>
+                                                    </div>
+                                                    <?php if (!empty($item['date'])): ?>
+                                                        <div style="font-size: 13px; color: #6c757d;">
+                                                            <?php echo htmlspecialchars($item['date']); ?>
+                                                        </div>
+                                                    <?php endif; ?>
+                                                </div>
+                                            </div>
+                                            <?php if (!empty($item['text'])): ?>
+                                                <div style="font-style: italic; color: #555; padding: 15px; background: white; border-radius: 8px; border-left: 3px solid #3498db; margin-bottom: 10px;">
+                                                    "<?php echo nl2br(htmlspecialchars($item['text'])); ?>"
+                                                </div>
+                                            <?php endif; ?>
+                                            <?php if (!empty($imageData) || !empty($imagePath)): ?>
+                                                <a href="<?php echo htmlspecialchars(fieldAssetUrl($client['client_id'], 'testimonial_' . $item['index'] . '_image', true)); ?>"
+                                                   download="<?php echo htmlspecialchars($imageName ?: 'testimonial-' . $item['index'] . '.jpg'); ?>"
+                                                   style="display: inline-block; padding: 8px 14px; background: #28a745; color: white; text-decoration: none; border-radius: 6px; font-size: 13px; font-weight: 600;">
+                                                   📥 Download Image
+                                                </a>
+                                            <?php endif; ?>
+                                        </div>
+                                    <?php endforeach; ?>
+                                </div>
                             <?php endif; ?>
                             <?php if (!empty($form_data['galleryTitle'])): ?>
                                 <strong>Gallery:</strong> <?php echo displayValue($form_data['galleryTitle']); ?><br>
@@ -1451,10 +1860,44 @@ function displayArray($values) {
                                 <?php echo nl2br(htmlspecialchars($form_data['galleryDescription'])); ?><br>
                             <?php endif; ?>
                             <?php if (!empty($galleryItems)): ?>
-                                <strong>Gallery Items:</strong><br>
-                                <?php foreach ($galleryItems as $item): ?>
-                                    <?php echo displayValue($item['caption']); ?> <?php echo !empty($item['file']) ? '- ' . displayValue($item['file']) : ''; ?><br>
-                                <?php endforeach; ?>
+                                <strong>Gallery Images:</strong><br>
+                                <div class="field-grid" style="grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; margin-top: 15px;">
+                                    <?php foreach ($galleryItems as $item): ?>
+                                        <div class="field-group" style="border: 1px solid #e0e0e0; border-radius: 12px; padding: 15px; background: #fafafa;">
+                                            <?php
+                                            // Check for gallery image data
+                                            $imageDataKey = "gallery_{$item['index']}_image_data";
+                                            $imagePathKey = "gallery_{$item['index']}_image_path";
+                                            $imageData = $form_data[$imageDataKey] ?? '';
+                                            $imagePath = $form_data[$imagePathKey] ?? '';
+                                            $imageName = $item['file'] ?? '';
+                                            ?>
+                                            <div style="width: 100%; height: 200px; border-radius: 8px; overflow: hidden; margin-bottom: 12px; background: #f0f0f0; display: flex; align-items: center; justify-content: center;">
+                                                <?php if (!empty($imageData) || !empty($imagePath)): ?>
+                                                    <img src="<?php echo htmlspecialchars(fieldAssetUrl($client['client_id'], 'gallery_' . $item['index'] . '_image')); ?>"
+                                                         style="max-width: 100%; max-height: 100%; object-fit: contain;"
+                                                         alt="Gallery Image <?php echo $item['index']; ?>">
+                                                <?php else: ?>
+                                                    <span style="color: #999; font-size: 14px;">No Preview</span>
+                                                <?php endif; ?>
+                                            </div>
+                                            <div style="font-size: 13px; color: #6c757d; margin-bottom: 10px; text-align: center;">
+                                                <strong><?php echo htmlspecialchars($item['caption']); ?></strong>
+                                            </div>
+                                            <?php if (!empty($imageData) || !empty($imagePath)): ?>
+                                                <a href="<?php echo htmlspecialchars(fieldAssetUrl($client['client_id'], 'gallery_' . $item['index'] . '_image', true)); ?>"
+                                                   download="<?php echo htmlspecialchars($imageName ?: 'gallery-image-' . $item['index'] . '.jpg'); ?>"
+                                                   style="display: block; width: 100%; text-align: center; padding: 10px 16px; background: #28a745; color: white; text-decoration: none; border-radius: 8px; font-size: 14px; font-weight: 600;">
+                                                   📥 Download Image
+                                                </a>
+                                            <?php else: ?>
+                                                <div style="text-align: center; padding: 10px 16px; background: #f8f9fa; color: #6c757d; border-radius: 8px; font-size: 14px;">
+                                                    File: <?php echo htmlspecialchars($imageName ?: 'No file uploaded'); ?>
+                                                </div>
+                                            <?php endif; ?>
+                                        </div>
+                                    <?php endforeach; ?>
+                                </div>
                             <?php endif; ?>
                         </div>
                     </div>
@@ -1934,6 +2377,1056 @@ function displayArray($values) {
                 </div>
             </div>
         </div>
+        <?php endif; ?>
+
+        <?php if ($is_mobile_app): ?>
+        <!-- MOBILE APP SECTIONS -->
+
+        <!-- Section: App Basic Info -->
+        <div class="section">
+            <div class="section-header">📱 App Basic Info</div>
+            <div class="section-content">
+                <div class="field-grid">
+                    <div class="field-group">
+                        <div class="field-label">App Name</div>
+                        <div class="field-value"><?php echo displayValue($form_data['app_name'] ?? ''); ?></div>
+                    </div>
+                    <div class="field-group">
+                        <div class="field-label">App Tagline</div>
+                        <div class="field-value"><?php echo displayValue($form_data['app_tagline'] ?? ''); ?></div>
+                    </div>
+                    <div class="field-group">
+                        <div class="field-label">App Purpose</div>
+                        <div class="field-value"><?php echo displayValue($form_data['app_purpose'] ?? ''); ?></div>
+                    </div>
+                    <div class="field-group">
+                        <div class="field-label">Target Audience</div>
+                        <div class="field-value"><?php echo displayValue($form_data['app_target_audience'] ?? ''); ?></div>
+                    </div>
+                </div>
+                
+                <?php if (!empty($form_data['app_features'])): ?>
+                <div class="field-group">
+                    <div class="field-label">App Features</div>
+                    <div class="field-value">
+                        <?php 
+                        echo displayArray(formatAppFeatureValues($form_data['app_features']));
+                        ?>
+                    </div>
+                </div>
+                <?php endif; ?>
+                
+                <?php if (!empty($form_data['app_target_platforms'])): ?>
+                <div class="field-group">
+                    <div class="field-label">Target Platforms</div>
+                    <div class="field-value">
+                        <?php 
+                        $platformLabels = [
+                            'ios' => 'iOS',
+                            'android' => 'Android',
+                            'both' => 'Both iOS & Android',
+                            'web' => 'Web App'
+                        ];
+                        echo displayArray(formatMappedValues($form_data['app_target_platforms'], $platformLabels));
+                        ?>
+                    </div>
+                </div>
+                <?php endif; ?>
+                
+                <?php if (!empty($form_data['app_development_type'])): ?>
+                <div class="field-group">
+                    <div class="field-label">Development Type</div>
+                    <div class="field-value"><?php echo displayValue(formatMappedValue($form_data['app_development_type'], [
+                        'native' => 'Native Development',
+                        'react-native' => 'React Native',
+                        'flutter' => 'Flutter',
+                        'ionic' => 'Ionic',
+                        'pwa' => 'Progressive Web App',
+                        'not-sure' => 'Not Sure - Need Recommendation'
+                    ])); ?></div>
+                </div>
+                <?php endif; ?>
+                
+                <?php if (!empty($form_data['app_need_design'])): ?>
+                <div class="field-group">
+                    <div class="field-label">Design Required</div>
+                    <div class="field-value"><?php echo displayValue(formatMappedValue($form_data['app_need_design'], [
+                        'yes' => 'Yes',
+                        'no' => 'No'
+                    ])); ?></div>
+                </div>
+                <?php endif; ?>
+                
+                <?php if (!empty($form_data['app_design_available'])): ?>
+                <div class="field-group">
+                    <div class="field-label">Design Available</div>
+                    <div class="field-value"><?php echo displayValue(formatMappedValue($form_data['app_design_available'], [
+                        'yes' => 'Yes - We have designs',
+                        'no' => 'No - Need design',
+                        'partial' => 'Partial - Some designs ready'
+                    ])); ?></div>
+                </div>
+                <?php endif; ?>
+            </div>
+        </div>
+
+        <!-- Section: Technical Requirements -->
+        <div class="section">
+            <div class="section-header">🔧 Technical Requirements</div>
+            <div class="section-content">
+                <?php if (!empty($form_data['app_backend_required'])): ?>
+                <div class="field-group">
+                    <div class="field-label">Backend Required</div>
+                    <div class="field-value"><?php echo displayValue(formatMappedValue($form_data['app_backend_required'], [
+                        'yes' => 'Yes',
+                        'no' => 'No'
+                    ])); ?></div>
+                </div>
+                <?php endif; ?>
+                
+                <?php if (!empty($form_data['app_backend_tech'])): ?>
+                <div class="field-group">
+                    <div class="field-label">Backend Technology</div>
+                    <div class="field-value"><?php echo displayValue(formatMappedValue($form_data['app_backend_tech'], [
+                        'firebase' => 'Firebase',
+                        'aws' => 'AWS',
+                        'nodejs' => 'Node.js',
+                        'python' => 'Python',
+                        'php' => 'PHP',
+                        'java' => 'Java',
+                        'not-sure' => 'Not Sure'
+                    ])); ?></div>
+                </div>
+                <?php endif; ?>
+                
+                <?php if (!empty($form_data['app_api_available'])): ?>
+                <div class="field-group">
+                    <div class="field-label">API Available</div>
+                    <div class="field-value"><?php echo displayValue(formatMappedValue($form_data['app_api_available'], [
+                        'yes' => 'Yes - We have API',
+                        'no' => 'No - Need API development'
+                    ])); ?></div>
+                </div>
+                <?php endif; ?>
+                
+                <?php if (!empty($form_data['app_deployment_stores'])): ?>
+                <div class="field-group">
+                    <div class="field-label">Deployment Stores</div>
+                    <div class="field-value">
+                        <?php 
+                        $storeLabels = [
+                            'app-store' => 'Apple App Store',
+                            'play-store' => 'Google Play Store',
+                            'both' => 'Both App Stores',
+                            'direct' => 'Direct Download',
+                            'help-needed' => 'Need Help with Setup'
+                        ];
+                        echo displayArray(formatMappedValues($form_data['app_deployment_stores'], $storeLabels));
+                        ?>
+                    </div>
+                </div>
+                <?php endif; ?>
+                
+            </div>
+        </div>
+
+        <!-- Section: Monetization & Payments -->
+        <div class="section">
+            <div class="section-header">💰 Monetization & Payments</div>
+            <div class="section-content">
+                <?php if (!empty($form_data['app_payment_required'])): ?>
+                <div class="field-group">
+                    <div class="field-label">Payment Required</div>
+                    <div class="field-value"><?php echo displayValue(formatMappedValue($form_data['app_payment_required'], [
+                        'yes' => 'Yes',
+                        'no' => 'No'
+                    ])); ?></div>
+                </div>
+                <?php endif; ?>
+                
+                <?php if (!empty($form_data['app_payment_methods'])): ?>
+                <div class="field-group">
+                    <div class="field-label">Payment Methods</div>
+                    <div class="field-value">
+                        <?php 
+                        $paymentLabels = [
+                            'paypal' => 'PayPal',
+                            'stripe' => 'Stripe',
+                            'cod' => 'Cash on Delivery',
+                            'razorpay' => 'RazorPay',
+                            'paytm' => 'PayTM',
+                            'phonepe' => 'PhonePe',
+                            'google-pay' => 'Google Pay',
+                            'apple-pay' => 'Apple Pay',
+                            'credit-card' => 'Credit/Debit Cards',
+                            'debit-card' => 'Debit Card',
+                            'net-banking' => 'Net Banking',
+                            'upi' => 'UPI'
+                        ];
+                        echo displayArray(formatMappedValues($form_data['app_payment_methods'], $paymentLabels));
+                        ?>
+                    </div>
+                </div>
+                <?php endif; ?>
+            </div>
+        </div>
+
+        <!-- Section: Design & Branding -->
+        <div class="section">
+            <div class="section-header">🎨 Design & Branding</div>
+            <div class="section-content">
+                <?php if (!empty($form_data['app_hasIcon'])): ?>
+                <div class="field-group">
+                    <div class="field-label">Icon Type</div>
+                    <div class="field-value"><?php echo displayValue(formatMappedValue($form_data['app_hasIcon'], [
+                        'yes' => 'Yes - I have app icon',
+                        'temporary' => 'No - Create a temporary icon',
+                        'professional' => 'I want a professional paid icon'
+                    ])); ?></div>
+                </div>
+                <?php endif; ?>
+                
+                <?php if (!empty($form_data['app_professionalIconText'])): ?>
+                <div class="field-group">
+                    <div class="field-label">Professional Icon Text</div>
+                    <div class="field-value"><?php echo displayValue($form_data['app_professionalIconText']); ?></div>
+                </div>
+                <?php endif; ?>
+                
+                <?php if (!empty($form_data['app_professionalIconDescription'])): ?>
+                <div class="field-group">
+                    <div class="field-label">Icon Description</div>
+                    <div class="field-value"><?php echo nl2br(htmlspecialchars($form_data['app_professionalIconDescription'])); ?></div>
+                </div>
+                <?php endif; ?>
+                
+                <?php if (!empty($form_data['app_brandGuidelines'])): ?>
+                <div class="field-group">
+                    <div class="field-label">Brand Guidelines</div>
+                    <div class="field-value"><?php echo nl2br(htmlspecialchars($form_data['app_brandGuidelines'])); ?></div>
+                </div>
+                <?php endif; ?>
+                
+                <?php if (!empty($form_data['app_brandVoice'])): ?>
+                <div class="field-group">
+                    <div class="field-label">Brand Voice</div>
+                    <div class="field-value"><?php echo displayValue(formatMappedValue($form_data['app_brandVoice'], [
+                        'professional' => 'Professional',
+                        'friendly' => 'Friendly & Casual',
+                        'formal' => 'Formal',
+                        'playful' => 'Playful',
+                        'luxury' => 'Luxury & Premium'
+                    ])); ?></div>
+                </div>
+                <?php endif; ?>
+            </div>
+        </div>
+
+        <!-- Section: App Content & Branding -->
+        <div class="section">
+            <div class="section-header">📱 App Content & Branding</div>
+            <div class="section-content">
+                <div class="field-grid">
+                    <div class="field-group">
+                        <div class="field-label">Selected Screens</div>
+                        <div class="field-value">
+                            <?php 
+                            $selected_screen_labels = [];
+                            $selected_screen_keys = [];
+
+                            foreach (normalizeArrayValues($form_data['appScreens'] ?? []) as $screen_value) {
+                                $normalized_screen = strtolower(trim((string) $screen_value));
+                                if ($normalized_screen === '') {
+                                    continue;
+                                }
+                                $selected_screen_keys[$normalized_screen] = true;
+                                $label = formatScreenLabel($normalized_screen);
+                                if ($label !== '') {
+                                    $selected_screen_labels[] = $label;
+                                }
+                            }
+
+                            foreach ($form_data as $key => $value) {
+                                if (!empty($value) && preg_match('/^(home|settings|profile|login|register|dashboard|search|cart|checkout|payment|notifications|help|support|messages|map|location|orders|favorites|wishlist|custom_.+)_(title|content|features|media|media_type|media_data|media_path)$/', $key, $matches)) {
+                                    $screen_name = strtolower($matches[1]);
+                                    if (!isset($selected_screen_keys[$screen_name])) {
+                                        $selected_screen_keys[$screen_name] = true;
+                                        $label = formatScreenLabel($screen_name);
+                                        if ($label !== '') {
+                                            $selected_screen_labels[] = $label;
+                                        }
+                                    }
+                                }
+                            }
+
+                            if (!empty($selected_screen_labels)) {
+                                echo displayArray(array_values(array_unique($selected_screen_labels)));
+                            } else {
+                                echo displayValue('');
+                            }
+                            ?>
+                        </div>
+                    </div>
+                    <div class="field-group">
+                        <div class="field-label">User Flow / Navigation</div>
+                        <div class="field-value">
+                            <?php
+                            if (!empty($form_data['app_user_flow'])) {
+                                echo nl2br(htmlspecialchars($form_data['app_user_flow']));
+                            } else {
+                                echo displayValue('');
+                            }
+                            ?>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="field-grid">
+                    <div class="field-group">
+                        <div class="field-label">App Name</div>
+                        <div class="field-value"><?php echo displayValue($form_data['app_name'] ?? ''); ?></div>
+                    </div>
+                    <div class="field-group">
+                        <div class="field-label">App Tagline</div>
+                        <div class="field-value"><?php echo displayValue($form_data['app_tagline'] ?? ''); ?></div>
+                    </div>
+                </div>
+
+                <?php if (!empty($form_data['addAppCompanyDetails'])): ?>
+                <div class="subsection">
+                    <h4 style="color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 8px; margin-bottom: 18px;">🏢 Company Details</h4>
+                    <div class="field-grid">
+                        <div class="field-group">
+                            <div class="field-label">Company Code</div>
+                            <div class="field-value"><?php echo displayValue($form_data['app_companyCode'] ?? ''); ?></div>
+                        </div>
+                        <div class="field-group">
+                            <div class="field-label">GST/VAT Number</div>
+                            <div class="field-value"><?php echo displayValue($form_data['app_gstNumber'] ?? ''); ?></div>
+                        </div>
+                    </div>
+                    <div class="field-group">
+                        <div class="field-label">Company Address</div>
+                        <div class="field-value"><?php echo displayValue($form_data['app_companyAddress'] ?? ''); ?></div>
+                    </div>
+                </div>
+                <?php endif; ?>
+
+                <div class="subsection">
+                    <h4 style="color: #2c3e50; border-bottom: 2px solid #e74c3c; padding-bottom: 8px; margin-bottom: 18px;">🎨 App Icon</h4>
+                    <div class="field-group">
+                        <div class="field-label">Has App Icon</div>
+                        <div class="field-value"><?php echo displayValue(formatMappedValue($form_data['app_hasIcon'] ?? '', [
+                            'yes' => 'Yes - I have app icon',
+                            'temporary' => 'No - Create a temporary icon',
+                            'professional' => 'I want a professional paid icon'
+                        ])); ?></div>
+                    </div>
+                    <?php if (!empty($form_data['app_iconLink'])): ?>
+                    <div class="field-group">
+                        <div class="field-label">Icon Link</div>
+                        <div class="field-value"><a href="<?php echo htmlspecialchars($form_data['app_iconLink']); ?>" target="_blank"><?php echo htmlspecialchars($form_data['app_iconLink']); ?></a></div>
+                    </div>
+                    <?php endif; ?>
+                    <?php if (fieldAssetExists($form_data, 'app_iconFile')): ?>
+                    <div class="field-group">
+                        <div class="field-label">Icon File</div>
+                        <div class="field-value">
+                            <div style="margin-top: 10px; display: flex; align-items: center; gap: 10px;">
+                                <span style="font-size: 14px; color: #6c757d;">
+                                    File: <?php echo htmlspecialchars($form_data['app_iconFile'] ?? 'app-icon.png'); ?>
+                                </span>
+                                <a href="<?php echo htmlspecialchars(fieldAssetUrl($client['client_id'], 'app_iconFile', true)); ?>" 
+                                   download="<?php echo htmlspecialchars($form_data['app_iconFile'] ?? 'app-icon.png'); ?>"
+                                   style="display: inline-block; padding: 10px 16px; background: #28a745; color: white; text-decoration: none; border-radius: 8px; font-size: 1rem; font-weight: 600;">
+                                   📥 Download Icon
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <?php endif; ?>
+                </div>
+
+                <?php if (fieldAssetExists($form_data, 'app_businessAssetsFile')): ?>
+                <div class="subsection">
+                    <h4 style="color: #2c3e50; border-bottom: 2px solid #e67e22; padding-bottom: 8px; margin-bottom: 18px;">📁 Business Assets Files</h4>
+                    <div class="field-group">
+                        <div class="field-label">Uploaded Business Files</div>
+                        <div class="field-value">
+                            <div style="margin-top: 10px; display: flex; align-items: center; gap: 10px;">
+                                <span style="font-size: 14px; color: #6c757d;">
+                                    File: <?php echo htmlspecialchars($form_data['app_businessAssetsFile'] ?? 'business-assets.pdf'); ?>
+                                </span>
+                                <a href="<?php echo htmlspecialchars(fieldAssetUrl($client['client_id'], 'app_businessAssetsFile', true)); ?>" 
+                                   download="<?php echo htmlspecialchars($form_data['app_businessAssetsFile'] ?? 'business-assets.pdf'); ?>"
+                                   style="display: inline-block; padding: 10px 16px; background: #28a745; color: white; text-decoration: none; border-radius: 8px; font-size: 1rem; font-weight: 600;">
+                                   📥 Download Business Assets
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <?php endif; ?>
+
+                <?php if (fieldAssetExists($form_data, 'app_professionalIconReference')): ?>
+                <div class="subsection">
+                    <h4 style="color: #2c3e50; border-bottom: 2px solid #e74c3c; padding-bottom: 8px; margin-bottom: 18px;">🎨 Professional Icon Reference</h4>
+                    <div class="field-group">
+                        <div class="field-label">Reference Icon/Image</div>
+                        <div class="field-value">
+                            <div style="margin-top: 10px;">
+                                <div style="width: 150px; height: 150px; border-radius: 8px; overflow: hidden; margin-bottom: 10px; background: #f0f0f0; display: flex; align-items: center; justify-content: center;">
+                                    <img src="<?php echo htmlspecialchars(fieldAssetUrl($client['client_id'], 'app_professionalIconReference')); ?>" 
+                                         style="max-width: 100%; max-height: 100%; object-fit: contain;" 
+                                         alt="Professional Icon Reference">
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <span style="font-size: 14px; color: #6c757d;">
+                                        File: <?php echo htmlspecialchars($form_data['app_professionalIconReference'] ?? 'icon-reference.jpg'); ?>
+                                    </span>
+                                    <a href="<?php echo htmlspecialchars(fieldAssetUrl($client['client_id'], 'app_professionalIconReference', true)); ?>" 
+                                       download="<?php echo htmlspecialchars($form_data['app_professionalIconReference'] ?? 'icon-reference.jpg'); ?>"
+                                       style="display: inline-block; padding: 8px 14px; background: #28a745; color: white; text-decoration: none; border-radius: 6px; font-size: 13px; font-weight: 600;">
+                                       📥 Download Reference
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <?php endif; ?>
+
+                <div class="subsection">
+                    <h4 style="color: #2c3e50; border-bottom: 2px solid #f39c12; padding-bottom: 8px; margin-bottom: 18px;">📝 Content Collection</h4>
+                    <div class="field-group">
+                        <div class="field-label">Content Ready</div>
+                        <div class="field-value"><?php echo displayValue($form_data['app_contentReady'] ?? ''); ?></div>
+                    </div>
+                    <?php if (!empty($form_data['app_contentSupport'])): ?>
+                    <div class="field-group">
+                        <div class="field-label">Content Support</div>
+                        <div class="field-value">
+                            <?php 
+                            $contentSupport = is_array($form_data['app_contentSupport']) ? $form_data['app_contentSupport'] : [$form_data['app_contentSupport']];
+                            $contentSupportLabels = [
+                                'proofread' => 'Proofreading',
+                                'write' => 'Content Writing',
+                                'optimize' => 'SEO Optimization',
+                                'translate' => 'Translation',
+                                'format' => 'Content Formatting'
+                            ];
+                            $displayContentSupport = [];
+                            foreach ($contentSupport as $support) {
+                                $displayContentSupport[] = $contentSupportLabels[$support] ?? ucwords(str_replace('-', ' ', $support));
+                            }
+                            echo '<span style="font-size: 14px;">' . htmlspecialchars(implode(', ', $displayContentSupport)) . '</span>';
+                            ?>
+                        </div>
+                    </div>
+                    <?php endif; ?>
+                    <div class="field-group">
+                        <div class="field-label">Media Support</div>
+                        <div class="field-value">
+                            <?php 
+                            $mediaSupport = is_array($form_data['app_mediaSupport']) ? $form_data['app_mediaSupport'] : [$form_data['app_mediaSupport']];
+                            $mediaSupportLabels = [
+                                'video-embed' => 'Video Embedding',
+                                'image-gallery' => 'Image Gallery',
+                                'audio-player' => 'Audio Player',
+                                'file-upload' => 'File Upload',
+                                'live-streaming' => 'Live Streaming'
+                            ];
+                            $displayMediaSupport = [];
+                            foreach ($mediaSupport as $support) {
+                                $displayMediaSupport[] = $mediaSupportLabels[$support] ?? ucwords(str_replace('-', ' ', $support));
+                            }
+                            echo '<span style="font-size: 14px;">' . htmlspecialchars(implode(', ', $displayMediaSupport)) . '</span>';
+                            ?>
+                        </div>
+                    </div>
+                    <?php if (!empty($form_data['app_pageExtras'])): ?>
+                    <div class="field-group">
+                        <div class="field-label">Page Extras</div>
+                        <div class="field-value">
+                            <?php 
+                            $pageExtras = is_array($form_data['app_pageExtras']) ? $form_data['app_pageExtras'] : [$form_data['app_pageExtras']];
+                            $pageExtrasLabels = [
+                                'gallery' => 'Image Gallery',
+                                'testimonials' => 'Testimonials Section',
+                                'blog' => 'Blog/News',
+                                'portfolio' => 'Portfolio',
+                                'team' => 'Team Section',
+                                'faq' => 'FAQ Section',
+                                'contact-form' => 'Contact Form'
+                            ];
+                            $displayPageExtras = [];
+                            foreach ($pageExtras as $extra) {
+                                $displayPageExtras[] = $pageExtrasLabels[$extra] ?? ucwords(str_replace('-', ' ', $extra));
+                            }
+                            echo '<span style="font-size: 14px;">' . htmlspecialchars(implode(', ', $displayPageExtras)) . '</span>';
+                            ?>
+                        </div>
+                    </div>
+                    <?php endif; ?>
+                    <?php if (!empty($form_data['app_screenContent'])): ?>
+                    <div class="field-group">
+                        <div class="field-label">General Screen Content</div>
+                        <div class="field-value"><?php echo nl2br(htmlspecialchars($form_data['app_screenContent'])); ?></div>
+                    </div>
+                    <?php endif; ?>
+                    
+                    <?php
+                    // Display individual screen content - show ALL screens with content, not just selected ones
+                    $screen_contents = [];
+                    foreach ($form_data as $key => $value) {
+                        if (preg_match('/^(home|settings|profile|login|register|dashboard|search|cart|checkout|payment|notifications|help|support|messages|map|location|orders|favorites|wishlist|custom_.+)_(title|content|features|media|media_type|media_data|media_path)$/', $key, $matches) && !empty($value)) {
+                            $screen_name = $matches[1];
+                            $field_type = $matches[2];
+                            if (!isset($screen_contents[$screen_name])) {
+                                $screen_contents[$screen_name] = [];
+                            }
+                            $screen_contents[$screen_name][$field_type] = $value;
+                        }
+                    }
+                    
+                    if (!empty($screen_contents)):
+                    ?>
+                    <div class="field-group">
+                        <div class="field-label">Individual Screen Content</div>
+                        <div class="field-value">
+                            <?php foreach ($screen_contents as $screen_name => $content): ?>
+                                <div style="margin-bottom: 20px; padding: 15px; background: #f8f9fa; border-radius: 8px; border-left: 4px solid #3498db;">
+                                    <h5 style="margin: 0 0 10px 0; color: #2c3e50; font-size: 16px; text-transform: capitalize;">
+                                        📱 <?php echo htmlspecialchars(ucwords(str_replace('_', ' ', $screen_name))); ?> Screen
+                                    </h5>
+                                    
+                                    <?php if (!empty($content['title'])): ?>
+                                    <div style="margin-bottom: 8px;">
+                                        <strong style="color: #555;">Title:</strong> 
+                                        <span style="color: #2c3e50; font-weight: 600;"><?php echo htmlspecialchars($content['title']); ?></span>
+                                    </div>
+                                    <?php endif; ?>
+                                    
+                                    <?php if (!empty($content['content'])): ?>
+                                    <div style="margin-bottom: 8px;">
+                                        <strong style="color: #555;">Content:</strong><br>
+                                        <span style="color: #2c3e50;"><?php echo nl2br(htmlspecialchars($content['content'])); ?></span>
+                                    </div>
+                                    <?php endif; ?>
+                                    
+                                    <?php if (!empty($content['features'])): ?>
+                                    <div style="margin-bottom: 8px;">
+                                        <strong style="color: #555;">Features:</strong><br>
+                                        <span style="color: #2c3e50;"><?php echo nl2br(htmlspecialchars($content['features'])); ?></span>
+                                    </div>
+                                    <?php endif; ?>
+
+                                    <?php if (!empty($content['media_data']) || !empty($content['media_path'])): ?>
+                                    <div style="margin-top: 12px;">
+                                        <strong style="color: #555;">Media:</strong><br>
+                                        <?php $mediaType = $content['media_type'] ?? 'application/octet-stream'; ?>
+                                        <?php if (strpos($mediaType, 'image/') === 0): ?>
+                                            <div style="margin: 10px 0; width: 100%; max-width: 320px; border-radius: 10px; overflow: hidden; background: #fff; border: 1px solid #e0e0e0;">
+                                                <img src="<?php echo htmlspecialchars(fieldAssetUrl($client['client_id'], $screen_name . '_media')); ?>" 
+                                                     alt="<?php echo htmlspecialchars($content['media'] ?? $screen_name . '-media'); ?>"
+                                                     style="display: block; width: 100%; height: auto;">
+                                            </div>
+                                        <?php elseif (strpos($mediaType, 'video/') === 0): ?>
+                                            <div style="margin: 10px 0; max-width: 420px;">
+                                                <video controls style="width: 100%; border-radius: 10px; background: #000;">
+                                                    <source src="<?php echo htmlspecialchars(fieldAssetUrl($client['client_id'], $screen_name . '_media')); ?>">
+                                                </video>
+                                            </div>
+                                        <?php else: ?>
+                                            <div style="margin: 10px 0; padding: 12px; background: #fff; border-radius: 8px; border: 1px solid #e0e0e0;">
+                                                <span style="font-size: 14px; color: #6c757d;">
+                                                    File: <?php echo htmlspecialchars($content['media'] ?? 'media-file'); ?>
+                                                </span>
+                                            </div>
+                                        <?php endif; ?>
+                                        <a href="<?php echo htmlspecialchars(fieldAssetUrl($client['client_id'], $screen_name . '_media', true)); ?>" 
+                                           download="<?php echo htmlspecialchars($content['media'] ?? $screen_name . '-media'); ?>"
+                                           style="display: inline-block; margin-top: 8px; padding: 8px 14px; background: #28a745; color: white; text-decoration: none; border-radius: 6px; font-size: 13px; font-weight: 600;">
+                                           📥 Download Media
+                                        </a>
+                                    </div>
+                                    <?php endif; ?>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                    <?php endif; ?>
+                </div>
+
+                <!-- Additional Business Information -->
+                <?php if (!empty($form_data['app_businessAddress']) || !empty($form_data['app_businessEmail']) || !empty($form_data['app_city']) || !empty($form_data['app_state']) || !empty($form_data['app_country']) || !empty($form_data['app_pincode'])): ?>
+                <div class="subsection">
+                    <h4 style="color: #2c3e50; border-bottom: 2px solid #34495e; padding-bottom: 8px; margin-bottom: 18px;">🏢 Business Information</h4>
+                    <?php if (!empty($form_data['app_businessAddress'])): ?>
+                    <div class="field-group">
+                        <div class="field-label">Business Address</div>
+                        <div class="field-value"><?php echo nl2br(htmlspecialchars($form_data['app_businessAddress'])); ?></div>
+                    </div>
+                    <?php endif; ?>
+                    <?php if (!empty($form_data['app_businessEmail'])): ?>
+                    <div class="field-group">
+                        <div class="field-label">Business Email</div>
+                        <div class="field-value"><?php echo displayValue($form_data['app_businessEmail']); ?></div>
+                    </div>
+                    <?php endif; ?>
+                    <?php if (!empty($form_data['app_city'])): ?>
+                    <div class="field-group">
+                        <div class="field-label">City</div>
+                        <div class="field-value"><?php echo displayValue($form_data['app_city']); ?></div>
+                    </div>
+                    <?php endif; ?>
+                    <?php if (!empty($form_data['app_state'])): ?>
+                    <div class="field-group">
+                        <div class="field-label">State</div>
+                        <div class="field-value"><?php echo displayValue($form_data['app_state']); ?></div>
+                    </div>
+                    <?php endif; ?>
+                    <?php if (!empty($form_data['app_country'])): ?>
+                    <div class="field-group">
+                        <div class="field-label">Country</div>
+                        <div class="field-value"><?php echo displayValue($form_data['app_country']); ?></div>
+                    </div>
+                    <?php endif; ?>
+                    <?php if (!empty($form_data['app_pincode'])): ?>
+                    <div class="field-group">
+                        <div class="field-label">Pincode</div>
+                        <div class="field-value"><?php echo displayValue($form_data['app_pincode']); ?></div>
+                    </div>
+                    <?php endif; ?>
+                </div>
+                <?php endif; ?>
+
+                <!-- Banking Information -->
+                <?php if (!empty($form_data['app_bankName']) || !empty($form_data['app_bankAccount']) || !empty($form_data['app_ifscCode'])): ?>
+                <div class="subsection">
+                    <h4 style="color: #2c3e50; border-bottom: 2px solid #16a085; padding-bottom: 8px; margin-bottom: 18px;">🏦 Banking Information</h4>
+                    <?php if (!empty($form_data['app_bankName'])): ?>
+                    <div class="field-group">
+                        <div class="field-label">Bank Name</div>
+                        <div class="field-value"><?php echo displayValue($form_data['app_bankName']); ?></div>
+                    </div>
+                    <?php endif; ?>
+                    <?php if (!empty($form_data['app_bankAccount'])): ?>
+                    <div class="field-group">
+                        <div class="field-label">Bank Account</div>
+                        <div class="field-value"><?php echo displayValue($form_data['app_bankAccount']); ?></div>
+                    </div>
+                    <?php endif; ?>
+                    <?php if (!empty($form_data['app_ifscCode'])): ?>
+                    <div class="field-group">
+                        <div class="field-label">IFSC Code</div>
+                        <div class="field-value"><?php echo displayValue($form_data['app_ifscCode']); ?></div>
+                    </div>
+                    <?php endif; ?>
+                </div>
+                <?php endif; ?>
+
+                <!-- Working Hours -->
+                <?php if (!empty($form_data['app_workingHoursMode']) || !empty($form_data['app_openingTime']) || !empty($form_data['app_closingTime']) || !empty($form_data['app_openDays'])): ?>
+                <div class="subsection">
+                    <h4 style="color: #2c3e50; border-bottom: 2px solid #8e44ad; padding-bottom: 8px; margin-bottom: 18px;">⏰ Working Hours</h4>
+                    <?php if (!empty($form_data['app_workingHoursMode'])): ?>
+                    <div class="field-group">
+                        <div class="field-label">Working Hours Mode</div>
+                        <div class="field-value"><?php echo displayValue(formatMappedValue($form_data['app_workingHoursMode'], [
+                            'always-open' => 'Always open',
+                            'selected-hours' => 'Open for selected hours'
+                        ])); ?></div>
+                    </div>
+                    <?php endif; ?>
+                    <?php if (!empty($form_data['app_openingTime'])): ?>
+                    <div class="field-group">
+                        <div class="field-label">Opening Time</div>
+                        <div class="field-value"><?php echo displayValue($form_data['app_openingTime']); ?></div>
+                    </div>
+                    <?php endif; ?>
+                    <?php if (!empty($form_data['app_closingTime'])): ?>
+                    <div class="field-group">
+                        <div class="field-label">Closing Time</div>
+                        <div class="field-value"><?php echo displayValue($form_data['app_closingTime']); ?></div>
+                    </div>
+                    <?php endif; ?>
+                    <?php if (!empty($form_data['app_openDays'])): ?>
+                    <div class="field-group">
+                        <div class="field-label">Open Days</div>
+                        <div class="field-value"><?php echo displayOpenDays($form_data['app_openDays']); ?></div>
+                    </div>
+                    <?php endif; ?>
+                </div>
+                <?php endif; ?>
+
+                <!-- Communication Preferences -->
+                <?php if (!empty($form_data['app_preferredCommunication']) || !empty($form_data['app_bestContactTime'])): ?>
+                <div class="subsection">
+                    <h4 style="color: #2c3e50; border-bottom: 2px solid #2980b9; padding-bottom: 8px; margin-bottom: 18px;">📞 Communication Preferences</h4>
+                    <?php if (!empty($form_data['app_preferredCommunication'])): ?>
+                    <div class="field-group">
+                        <div class="field-label">Preferred Communication</div>
+                        <div class="field-value"><?php echo displayValue(formatMappedValue($form_data['app_preferredCommunication'], [
+                            'whatsapp' => 'WhatsApp',
+                            'email' => 'Email',
+                            'call' => 'Phone call',
+                            'video-call' => 'Video call',
+                            'project-manager' => 'Through project manager'
+                        ])); ?></div>
+                    </div>
+                    <?php endif; ?>
+                    <?php if (!empty($form_data['app_bestContactTime'])): ?>
+                    <div class="field-group">
+                        <div class="field-label">Best Contact Time</div>
+                        <div class="field-value"><?php echo displayValue($form_data['app_bestContactTime']); ?></div>
+                    </div>
+                    <?php endif; ?>
+                </div>
+                <?php endif; ?>
+
+                <!-- Additional Information -->
+                <?php if (!empty($form_data['app_assetLinks']) || !empty($form_data['app_reference_apps']) || !empty($form_data['app_additionalNotes'])): ?>
+                <div class="subsection">
+                    <h4 style="color: #2c3e50; border-bottom: 2px solid #27ae60; padding-bottom: 8px; margin-bottom: 18px;">📋 Additional Information</h4>
+                    <?php if (!empty($form_data['app_assetLinks'])): ?>
+                    <div class="field-group">
+                        <div class="field-label">Asset Links</div>
+                        <div class="field-value"><?php echo nl2br(htmlspecialchars($form_data['app_assetLinks'])); ?></div>
+                    </div>
+                    <?php endif; ?>
+                    <?php if (!empty($form_data['app_reference_apps'])): ?>
+                    <div class="field-group">
+                        <div class="field-label">Reference Apps</div>
+                        <div class="field-value"><?php echo nl2br(htmlspecialchars($form_data['app_reference_apps'])); ?></div>
+                    </div>
+                    <?php endif; ?>
+                    <?php if (!empty($form_data['app_additionalNotes'])): ?>
+                    <div class="field-group">
+                        <div class="field-label">Additional Notes</div>
+                        <div class="field-value"><?php echo nl2br(htmlspecialchars($form_data['app_additionalNotes'])); ?></div>
+                    </div>
+                    <?php endif; ?>
+                </div>
+                <?php endif; ?>
+
+                <?php if (!empty($form_data['app_galleryTitle']) || !empty($form_data['app_galleryDescription'])): ?>
+                <div class="subsection">
+                    <h4 style="color: #2c3e50; border-bottom: 2px solid #9b59b6; padding-bottom: 8px; margin-bottom: 18px;">🖼️ Gallery</h4>
+                    <?php if (!empty($form_data['app_galleryTitle'])): ?>
+                    <div class="field-group">
+                        <div class="field-label">Gallery Title</div>
+                        <div class="field-value"><?php echo displayValue($form_data['app_galleryTitle']); ?></div>
+                    </div>
+                    <?php endif; ?>
+                    <?php if (!empty($form_data['app_galleryDescription'])): ?>
+                    <div class="field-group">
+                        <div class="field-label">Description</div>
+                        <div class="field-value"><?php echo nl2br(htmlspecialchars($form_data['app_galleryDescription'])); ?></div>
+                    </div>
+                    <?php endif; ?>
+                </div>
+                <?php endif; ?>
+
+                <?php
+                // Display testimonials
+                $appTestimonials = [];
+                foreach ($form_data as $key => $value) {
+                    if (preg_match('/^app_testimonial_(\d+)_name$/', $key, $matches)) {
+                        $index = $matches[1];
+                        $appTestimonials[$index] = [
+                            'name' => $value,
+                            'date' => $form_data["app_testimonial_{$index}_date"] ?? '',
+                            'text' => $form_data["app_testimonial_{$index}_text"] ?? '',
+                            'image' => $form_data["app_testimonial_{$index}_image"] ?? '',
+                            'image_type' => $form_data["app_testimonial_{$index}_image_type"] ?? 'image/jpeg',
+                            'image_data' => $form_data["app_testimonial_{$index}_image_data"] ?? '',
+                            'image_path' => $form_data["app_testimonial_{$index}_image_path"] ?? ''
+                        ];
+                    }
+                }
+                if (!empty($appTestimonials)): 
+                ?>
+                <div class="subsection">
+                    <h4 style="color: #2c3e50; border-bottom: 2px solid #e67e22; padding-bottom: 8px; margin-bottom: 18px;">💬 Testimonials</h4>
+                    <div style="display: flex; flex-direction: column; gap: 20px;">
+                        <?php foreach ($appTestimonials as $index => $testimonial): ?>
+                        <div class="field-group" style="border: 1px solid #e0e0e0; border-radius: 12px; padding: 20px; background: #fafafa;">
+                            <div style="display: flex; align-items: flex-start; gap: 15px; margin-bottom: 15px;">
+                                <?php if (!empty($testimonial['image_data']) || !empty($testimonial['image_path'])): ?>
+                                <div style="width: 80px; height: 80px; border-radius: 50%; overflow: hidden; flex-shrink: 0; background: #f0f0f0;">
+                                    <img src="<?php echo htmlspecialchars(fieldAssetUrl($client['client_id'], 'app_testimonial_' . $index . '_image')); ?>" 
+                                         style="width: 100%; height: 100%; object-fit: cover;" 
+                                         alt="<?php echo htmlspecialchars($testimonial['name']); ?>">
+                                </div>
+                                <?php endif; ?>
+                                <div style="flex: 1;">
+                                    <div style="font-weight: 600; font-size: 16px; color: #2c3e50; margin-bottom: 5px;">
+                                        <?php echo htmlspecialchars($testimonial['name'] ?: 'Anonymous'); ?>
+                                    </div>
+                                    <?php if (!empty($testimonial['date'])): ?>
+                                    <div style="font-size: 13px; color: #6c757d;">
+                                        <?php echo htmlspecialchars($testimonial['date']); ?>
+                                    </div>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                            <?php if (!empty($testimonial['text'])): ?>
+                            <div style="font-style: italic; color: #555; padding: 15px; background: white; border-radius: 8px; border-left: 3px solid #e67e22;">
+                                "<?php echo nl2br(htmlspecialchars($testimonial['text'])); ?>"
+                            </div>
+                            <?php endif; ?>
+                            <?php if (!empty($testimonial['image_data']) || !empty($testimonial['image_path'])): ?>
+                            <a href="<?php echo htmlspecialchars(fieldAssetUrl($client['client_id'], 'app_testimonial_' . $index . '_image', true)); ?>" 
+                               download="<?php echo htmlspecialchars($testimonial['image'] ?? 'testimonial-' . $index . '.jpg'); ?>"
+                               style="display: inline-block; margin-top: 10px; padding: 8px 14px; background: #28a745; color: white; text-decoration: none; border-radius: 6px; font-size: 13px; font-weight: 600;">
+                               📥 Download Image
+                            </a>
+                            <?php endif; ?>
+                        </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+                <?php endif; ?>
+
+                <?php
+                // Display gallery images
+                $appGalleryImages = [];
+                foreach ($form_data as $key => $value) {
+                    if (preg_match('/^app_gallery_(\d+)_image_(data|path)$/', $key, $matches)) {
+                        $index = $matches[1];
+                        $appGalleryImages[$index] = [
+                            'image' => $form_data["app_gallery_{$index}_image"] ?? '',
+                            'type' => $form_data["app_gallery_{$index}_image_type"] ?? 'image/jpeg',
+                            'data' => $form_data["app_gallery_{$index}_image_data"] ?? '',
+                            'path' => $form_data["app_gallery_{$index}_image_path"] ?? '',
+                            'caption' => $form_data["app_gallery_{$index}_caption"] ?? ''
+                        ];
+                    }
+                }
+                if (!empty($appGalleryImages)): 
+                ?>
+                <div class="subsection">
+                    <h4 style="color: #2c3e50; border-bottom: 2px solid #9b59b6; padding-bottom: 8px; margin-bottom: 18px;">🖼️ Gallery Images</h4>
+                    <div class="field-grid" style="grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px;">
+                        <?php foreach ($appGalleryImages as $index => $image): ?>
+                        <div class="field-group" style="border: 1px solid #e0e0e0; border-radius: 12px; padding: 15px; background: #fafafa;">
+                            <div style="width: 100%; height: 200px; border-radius: 8px; overflow: hidden; margin-bottom: 12px; background: #f0f0f0; display: flex; align-items: center; justify-content: center;">
+                                <img src="<?php echo htmlspecialchars(fieldAssetUrl($client['client_id'], 'app_gallery_' . $index . '_image')); ?>" 
+                                     style="max-width: 100%; max-height: 100%; object-fit: contain;" 
+                                     alt="Gallery Image <?php echo $index; ?>">
+                            </div>
+                            <?php if (!empty($image['caption'])): ?>
+                            <div style="font-size: 13px; color: #6c757d; margin-bottom: 10px; text-align: center;">
+                                <?php echo htmlspecialchars($image['caption']); ?>
+                            </div>
+                            <?php endif; ?>
+                            <a href="<?php echo htmlspecialchars(fieldAssetUrl($client['client_id'], 'app_gallery_' . $index . '_image', true)); ?>" 
+                               download="<?php echo htmlspecialchars($image['image'] ?? 'gallery-image-' . $index . '.jpg'); ?>"
+                               style="display: block; width: 100%; text-align: center; padding: 10px 16px; background: #28a745; color: white; text-decoration: none; border-radius: 8px; font-size: 14px; font-weight: 600;">
+                               📥 Download Image
+                            </a>
+                        </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+                <?php endif; ?>
+            </div>
+        </div>
+
+        <!-- Section: Platform -->
+        <div class="section">
+            <div class="section-header">📱 Platform</div>
+            <div class="section-content">
+                <div class="field-grid">
+                    <div class="field-group">
+                        <div class="field-label">Target Platforms</div>
+                        <div class="field-value"><?php echo displayArray(formatMappedValues($form_data['app_target_platforms'] ?? [], [
+                            'ios' => 'iOS',
+                            'android' => 'Android',
+                            'both' => 'Both iOS & Android',
+                            'web' => 'Web App'
+                        ])); ?></div>
+                    </div>
+                    <div class="field-group">
+                        <div class="field-label">Development Type</div>
+                        <div class="field-value"><?php echo displayValue(formatMappedValue($form_data['app_development_type'] ?? '', [
+                            'native' => 'Native Development',
+                            'react-native' => 'React Native',
+                            'flutter' => 'Flutter',
+                            'ionic' => 'Ionic',
+                            'pwa' => 'Progressive Web App',
+                            'not-sure' => 'Not Sure - Need Recommendation'
+                        ])); ?></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section: Features -->
+        <div class="section">
+            <div class="section-header">📱 Features</div>
+            <div class="section-content">
+                <div class="field-group">
+                    <div class="field-label">Core Features</div>
+                    <div class="field-value"><?php echo displayArray(formatAppFeatureValues($form_data['app_features'] ?? [])); ?></div>
+                </div>
+                <?php if (!empty($form_data['app_custom_features'])): ?>
+                <div class="field-group">
+                    <div class="field-label">Custom Features</div>
+                    <div class="field-value"><?php echo nl2br(htmlspecialchars($form_data['app_custom_features'])); ?></div>
+                </div>
+                <?php endif; ?>
+            </div>
+        </div>
+
+        <!-- Section: Design -->
+        <div class="section">
+            <div class="section-header">📱 Design</div>
+            <div class="section-content">
+                <div class="field-grid">
+                    <div class="field-group">
+                        <div class="field-label">Design Available</div>
+                        <div class="field-value"><?php echo displayValue(formatMappedValue($form_data['app_design_available'] ?? '', [
+                            'yes' => 'Yes - We have designs',
+                            'no' => 'No - Need design',
+                            'partial' => 'Partial - Some designs ready'
+                        ])); ?></div>
+                    </div>
+                    <div class="field-group">
+                        <div class="field-label">UI Style</div>
+                        <div class="field-value"><?php echo displayValue($form_data['app_ui_style'] ?? ''); ?></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section: User Roles -->
+        <div class="section">
+            <div class="section-header">📱 User Roles</div>
+            <div class="section-content">
+                <div class="field-group">
+                    <div class="field-label">User Types</div>
+                    <div class="field-value">
+                        <?php
+                        $roles = normalizeArrayValues($form_data['app_user_roles'] ?? []);
+                        $roleLabels = [
+                            'user' => 'Regular User',
+                            'admin' => 'Admin',
+                            'vendor' => 'Vendor/Provider',
+                            'moderator' => 'Moderator',
+                            'guest' => 'Guest/Anonymous',
+                            'premium' => 'Premium User'
+                        ];
+                        $displayRoles = [];
+                        foreach ($roles as $role) {
+                            $displayRoles[] = $roleLabels[$role] ?? ucwords(str_replace('-', ' ', $role));
+                        }
+                        echo displayArray($displayRoles);
+                        ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section: Notifications -->
+        <div class="section">
+            <div class="section-header">📱 Notifications</div>
+            <div class="section-content">
+                <div class="field-group">
+                    <div class="field-label">Notification Types</div>
+                    <div class="field-value">
+                        <?php
+                        $notifications = normalizeArrayValues($form_data['app_notification_types'] ?? []);
+                        $notificationLabels = [
+                            'email' => 'Email Notifications',
+                            'sms' => 'SMS Notifications',
+                            'push' => 'Push Notifications',
+                            'in-app' => 'In-app Notifications'
+                        ];
+                        $displayNotifications = [];
+                        foreach ($notifications as $notification) {
+                            $displayNotifications[] = $notificationLabels[$notification] ?? ucwords(str_replace('-', ' ', $notification));
+                        }
+                        echo displayArray($displayNotifications);
+                        ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section: Maintenance -->
+        <div class="section">
+            <div class="section-header">📱 Maintenance</div>
+            <div class="section-content">
+                <div class="field-grid">
+                    <div class="field-group">
+                        <div class="field-label">Updates Required</div>
+                        <div class="field-value">
+                            <?php
+                            $updatesRequiredLabels = [
+                                'regular' => 'Regular Updates',
+                                'occasional' => 'Occasional Updates',
+                                'minimal' => 'Minimal Updates'
+                            ];
+                            $updatesRequired = $form_data['app_updates_required'] ?? '';
+                            echo displayValue($updatesRequiredLabels[$updatesRequired] ?? ($updatesRequired !== '' ? ucwords(str_replace('-', ' ', $updatesRequired)) : ''));
+                            ?>
+                        </div>
+                    </div>
+                    <div class="field-group">
+                        <div class="field-label">Bug Fix Support</div>
+                        <div class="field-value">
+                            <?php
+                            $bugSupportLabels = [
+                                'yes' => 'Yes - Need ongoing support',
+                                'no' => 'No - One-time delivery'
+                            ];
+                            $bugFixSupport = $form_data['app_bug_fix_support'] ?? '';
+                            echo displayValue($bugSupportLabels[$bugFixSupport] ?? $bugFixSupport);
+                            ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section: Final Details -->
+        <div class="section">
+            <div class="section-header">📱 Final Details</div>
+            <div class="section-content">
+                <div class="field-group">
+                    <div class="field-label">Contact Information</div>
+                    <div class="field-value">
+                        <?php if (!empty($form_data['app_contactName'])): ?>
+                            <strong>Name:</strong> <?php echo displayValue($form_data['app_contactName']); ?><br>
+                        <?php endif; ?>
+                        <?php if (!empty($form_data['app_contactEmail'])): ?>
+                            <strong>Email:</strong> <?php echo displayValue($form_data['app_contactEmail']); ?><br>
+                        <?php endif; ?>
+                        <?php if (!empty($form_data['app_contactPhone'])): ?>
+                            <strong>Phone:</strong> <?php echo displayValue($form_data['app_contactPhone']); ?><br>
+                        <?php endif; ?>
+                    </div>
+                </div>
+
+                <div class="field-group">
+                    <div class="field-label">Approval & Communication</div>
+                    <div class="field-value">
+                        <?php if (!empty($form_data['app_decisionMaker'])): ?>
+                            <strong>Decision Maker:</strong> <?php echo displayValue($form_data['app_decisionMaker']); ?><br>
+                        <?php endif; ?>
+                        <?php if (!empty($form_data['app_reviewerCount'])): ?>
+                            <strong>Reviewers:</strong> <?php echo displayValue($form_data['app_reviewerCount']); ?><br>
+                        <?php endif; ?>
+                        <?php if (!empty($form_data['app_deadlineReason'])): ?>
+                            <strong>Deadline Reason:</strong> <?php echo displayValue($form_data['app_deadlineReason']); ?>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php endif; ?>
     </div>
 
     <!-- html2pdf library -->
