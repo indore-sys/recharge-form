@@ -775,25 +775,35 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
         @media print {
             .header-actions,
             .btn-pdf,
-            .status-form {
-                display: none;
+            .status-form,
+            .btn-delete,
+            .btn-view,
+            .btn-modal,
+            .modal-overlay,
+            a[href*="download_asset.php"] {
+                display: none !important;
             }
 
-            .section {
-                break-inside: avoid;
-                page-break-inside: avoid;
-            }
-
+            .section,
             .client-info,
             .field-group,
-            .field-grid {
+            .field-grid,
+            .detail-item,
+            .content-card,
+            .subsection {
                 break-inside: avoid;
                 page-break-inside: avoid;
             }
 
-            h2, h3 {
+            h2, h3, h4 {
                 break-after: avoid;
                 page-break-after: avoid;
+            }
+
+            img {
+                max-width: 100%;
+                height: auto;
+                break-inside: avoid;
             }
         }
 
@@ -873,7 +883,17 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
                 <div class="detail-item">
                     <div class="detail-label">Status</div>
                     <div class="detail-value">
-                        <form method="POST" class="status-form">
+                        <span class="status-form">
+                            <span style="padding: 4px 10px; border-radius: 12px; font-size: 15px; font-weight: 500; 
+                                <?php 
+                                if ($client['status'] === 'New') echo 'background: #e3f2fd; color: #1976d2;';
+                                elseif ($client['status'] === 'In Progress') echo 'background: #fff3e0; color: #f57c00;';
+                                elseif ($client['status'] === 'Completed') echo 'background: #e8f5e8; color: #2e7d32;';
+                                ?>">
+                                <?php echo htmlspecialchars($client['status']); ?>
+                            </span>
+                        </span>
+                        <form method="POST" class="status-form" style="display: none;">
                             <select name="status" class="status-select">
                                 <option value="New" <?php echo $client['status'] === 'New' ? 'selected' : ''; ?>>New</option>
                                 <option value="In Progress" <?php echo $client['status'] === 'In Progress' ? 'selected' : ''; ?>>In Progress</option>
@@ -895,8 +915,15 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
             <div class="section-content">
                 <div class="field-grid">
                     <div class="field-group">
-                        <div class="field-label">Application Type</div>
-                        <div class="field-value"><?php echo displayValue($form_data['applicationType'] ?? ''); ?></div>
+                        <div class="field-label">Website Type</div>
+                        <div class="field-value"><?php 
+                        $app_type = $form_data['applicationType'] ?? '';
+                        $app_type_labels = [
+                            'informational' => 'Informational Website',
+                            'online-store' => 'Online Store'
+                        ];
+                        echo displayValue($app_type_labels[$app_type] ?? $app_type); 
+                        ?></div>
                     </div>
                     <div class="field-group">
                         <div class="field-label">Brand Name</div>
@@ -1163,16 +1190,62 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
                             <strong>Theme Name:</strong> <?php echo displayValue($form_data['themeName']); ?><br>
                         <?php endif; ?>
                         <?php if (!empty($form_data['websitePageStyle'])): ?>
-                            <strong>Page Style:</strong> <?php echo displayValue($form_data['websitePageStyle']); ?><br>
+                            <strong>Page Style:</strong> <?php 
+                            $page_style = $form_data['websitePageStyle'];
+                            $page_style_labels = [
+                                'one-page' => 'One Page',
+                                'multi-page' => 'Multi Page'
+                            ];
+                            echo displayValue($page_style_labels[$page_style] ?? $page_style); 
+                            ?><br>
                         <?php endif; ?>
                         <?php if (!empty($form_data['designStyle'])): ?>
-                            <strong>Design Style:</strong> <?php echo displayValue($form_data['designStyle']); ?><br>
+                            <strong>Design Style:</strong> <?php 
+                            $design_style = $form_data['designStyle'];
+                            $design_style_labels = [
+                                'simple-minimal' => 'Simple and minimalistic',
+                                'modern-bold' => 'Modern and bold',
+                                'classic-professional' => 'Classic and professional',
+                                'luxury-premium' => 'Luxury and premium',
+                                'playful-colorful' => 'Playful and colorful',
+                                'team-choice' => 'Use any style you think is suitable'
+                            ];
+                            echo displayValue($design_style_labels[$design_style] ?? $design_style); 
+                            ?><br>
                         <?php endif; ?>
                         <?php if (!empty($form_data['colorScheme'])): ?>
-                            <strong>Color Scheme:</strong> <?php echo displayValue($form_data['colorScheme']); ?><br>
+                            <strong>Color Scheme:</strong> <?php 
+                            $color_scheme = $form_data['colorScheme'];
+                            $color_scheme_labels = [
+                                'team-choice' => 'Let team pick',
+                                'navy-gold' => 'Navy / Gold',
+                                'black-white' => 'Black / White',
+                                'green-cream' => 'Green / Cream',
+                                'blue-gray' => 'Blue / Gray',
+                                'red-charcoal' => 'Red / Charcoal',
+                                'teal-sand' => 'Teal / Sand',
+                                'purple-silver' => 'Purple / Silver',
+                                'orange-ink' => 'Orange / Ink',
+                                'pink-brown' => 'Pink / Brown',
+                                'earth-neutral' => 'Earth / Neutral',
+                                'custom-colors' => 'Custom codes above'
+                            ];
+                            echo displayValue($color_scheme_labels[$color_scheme] ?? $color_scheme); 
+                            ?><br>
                         <?php endif; ?>
                         <?php if (!empty($form_data['fontPreference'])): ?>
-                            <strong>Font Preference:</strong> <?php echo displayValue($form_data['fontPreference']); ?><br>
+                            <strong>Font Preference:</strong> <?php 
+                            $font_pref = $form_data['fontPreference'];
+                            $font_pref_labels = [
+                                'team-choice' => 'Let team pick two suitable fonts',
+                                'clean-sans' => 'Clean sans-serif',
+                                'classic-serif' => 'Classic serif',
+                                'modern-geometric' => 'Modern geometric',
+                                'elegant-display' => 'Elegant display',
+                                'custom' => 'I will provide a font'
+                            ];
+                            echo displayValue($font_pref_labels[$font_pref] ?? $font_pref); 
+                            ?><br>
                         <?php endif; ?>
                         <?php if (!empty($form_data['fontUrl'])): ?>
                             <strong>Font URL / Name:</strong> <?php echo displayValue($form_data['fontUrl']); ?><br>
@@ -1313,7 +1386,15 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
                             <?php 
                             $brandVoice = $form_data['brandVoice'] ?? '';
                             if (!empty($brandVoice)) {
-                                echo '<span style="background: #e8f5e8; padding: 3px 8px; border-radius: 4px; text-transform: capitalize; font-weight: 500;">' . htmlspecialchars($brandVoice) . '</span>';
+                                $brandVoiceLabels = [
+                                    'professional' => 'Professional',
+                                    'friendly' => 'Friendly & Casual',
+                                    'formal' => 'Formal',
+                                    'playful' => 'Playful',
+                                    'luxury' => 'Luxury & Premium'
+                                ];
+                                $displayVoice = $brandVoiceLabels[$brandVoice] ?? $brandVoice;
+                                echo '<span style="background: #e8f5e8; padding: 3px 8px; border-radius: 4px; font-weight: 500;">' . htmlspecialchars($displayVoice) . '</span>';
                             } else {
                                 echo 'Not Provided';
                             }
@@ -1410,15 +1491,11 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
                         <?php 
                         $contentSupport = is_array($form_data['contentSupport'] ?? []) ? $form_data['contentSupport'] : [$form_data['contentSupport'] ?? []];
                         $contentSupportLabels = [
-                            'proofread' => 'Proofreading',
-                            'write' => 'Content Writing',
-                            'optimize' => 'SEO Optimization',
-                            'translate' => 'Translation',
-                            'format' => 'Content Formatting',
-                            'research' => 'Content Research',
-                            'edit' => 'Content Editing',
-                            'publish' => 'Content Publishing',
-                            'rewrite' => 'Content Rewriting'
+                            'rewrite' => 'Rewrite my content',
+                            'copywriting' => 'Create content from scratch',
+                            'placeholder' => 'Use placeholder content first',
+                            'proofread' => 'Proofread only',
+                            'not-sure' => 'Not sure, recommend for me'
                         ];
                         $displayContentSupport = [];
                         foreach ($contentSupport as $support) {
@@ -1431,16 +1508,11 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
                         <?php 
                         $mediaSupport = is_array($form_data['mediaSupport'] ?? []) ? $form_data['mediaSupport'] : [$form_data['mediaSupport'] ?? []];
                         $mediaSupportLabels = [
-                            'video-embed' => 'Video Embedding',
-                            'image-gallery' => 'Image Gallery',
-                            'audio-player' => 'Audio Player',
-                            'file-upload' => 'File Upload',
-                            'live-streaming' => 'Live Streaming',
-                            'document-viewer' => 'Document Viewer',
-                            'carousel-slider' => 'Carousel/Slider',
-                            'lightbox' => 'Lightbox Gallery',
-                            'image-editing' => 'Image Editing',
-                            'stock-images' => 'Stock Images'
+                            'stock-images' => 'Use stock images',
+                            'image-editing' => 'Edit provided images',
+                            'product-cleanup' => 'Product photo cleanup',
+                            'banner-design' => 'Design banners',
+                            'video-embed' => 'Embed videos'
                         ];
                         $displayMediaSupport = [];
                         foreach ($mediaSupport as $support) {
@@ -1763,32 +1835,78 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
                 $testimonialItems = [];
                 $galleryItems = [];
 
-                foreach ($form_data as $key => $value) {
-                    if (preg_match('/^testimonial_(\d+)_name$/', $key, $matches)) {
-                        $index = $matches[1];
-                        $testimonialItems[$index]['name'] = $value;
+                if ($is_website) {
+                    // Handle website testimonial fields only
+                    foreach ($form_data as $key => $value) {
+                        if (preg_match('/^testimonial_(\d+)_name$/', $key, $matches)) {
+                            $index = $matches[1];
+                            $testimonialItems[$index]['name'] = $value;
+                            $testimonialItems[$index]['index'] = $index;
+                        }
+                        if (preg_match('/^testimonial_(\d+)_date$/', $key, $matches)) {
+                            $index = $matches[1];
+                            $testimonialItems[$index]['date'] = $value;
+                            $testimonialItems[$index]['index'] = $index;
+                        }
+                        if (preg_match('/^testimonial_(\d+)_text$/', $key, $matches)) {
+                            $index = $matches[1];
+                            $testimonialItems[$index]['text'] = $value;
+                            $testimonialItems[$index]['index'] = $index;
+                        }
+                        if (preg_match('/^testimonial_(\d+)_image$/', $key, $matches)) {
+                            $index = $matches[1];
+                            $testimonialItems[$index]['image'] = $value;
+                            $testimonialItems[$index]['index'] = $index;
+                            $testimonialItems[$index]['field_name'] = $matches[0]; // Store the full field name
+                        }
+                        // Handle website gallery fields only
+                        if (preg_match('/^gallery_(\d+)_caption$/', $key, $matches)) {
+                            $index = $matches[1];
+                            $galleryItems[$index]['caption'] = $value;
+                            $galleryItems[$index]['index'] = $index;
+                        }
+                        if (preg_match('/^gallery_(\d+)_image$/', $key, $matches)) {
+                            $index = $matches[1];
+                            $galleryItems[$index]['file'] = $value;
+                            $galleryItems[$index]['index'] = $index;
+                            $galleryItems[$index]['field_name'] = $matches[0]; // Store the full field name
+                        }
                     }
-                    if (preg_match('/^testimonial_(\d+)_date$/', $key, $matches)) {
-                        $index = $matches[1];
-                        $testimonialItems[$index]['date'] = $value;
-                    }
-                    if (preg_match('/^testimonial_(\d+)_text$/', $key, $matches)) {
-                        $index = $matches[1];
-                        $testimonialItems[$index]['text'] = $value;
-                    }
-                    if (preg_match('/^testimonial_(\d+)_image$/', $key, $matches)) {
-                        $index = $matches[1];
-                        $testimonialItems[$index]['image'] = $value;
-                    }
-                    if (preg_match('/^gallery_(\d+)_caption$/', $key, $matches)) {
-                        $index = $matches[1];
-                        $galleryItems[$index]['caption'] = $value;
-                        $galleryItems[$index]['index'] = $index;
-                    }
-                    if (preg_match('/^gallery_(\d+)_image$/', $key, $matches)) {
-                        $index = $matches[1];
-                        $galleryItems[$index]['file'] = $value;
-                        $galleryItems[$index]['index'] = $index;
+                } else {
+                    // Handle mobile app testimonial and gallery fields
+                    foreach ($form_data as $key => $value) {
+                        if (preg_match('/^app_testimonial_(\d+)_name$/', $key, $matches)) {
+                            $index = $matches[2];
+                            $testimonialItems[$index]['name'] = $value;
+                            $testimonialItems[$index]['index'] = $index;
+                        }
+                        if (preg_match('/^app_testimonial_(\d+)_date$/', $key, $matches)) {
+                            $index = $matches[2];
+                            $testimonialItems[$index]['date'] = $value;
+                            $testimonialItems[$index]['index'] = $index;
+                        }
+                        if (preg_match('/^app_testimonial_(\d+)_text$/', $key, $matches)) {
+                            $index = $matches[2];
+                            $testimonialItems[$index]['text'] = $value;
+                            $testimonialItems[$index]['index'] = $index;
+                        }
+                        if (preg_match('/^app_testimonial_(\d+)_image$/', $key, $matches)) {
+                            $index = $matches[2];
+                            $testimonialItems[$index]['image'] = $value;
+                            $testimonialItems[$index]['index'] = $index;
+                            $testimonialItems[$index]['field_name'] = $matches[0]; // Store the full field name
+                        }
+                        if (preg_match('/^app_gallery_(\d+)_caption$/', $key, $matches)) {
+                            $index = $matches[2];
+                            $galleryItems[$index]['caption'] = $value;
+                            $galleryItems[$index]['index'] = $index;
+                        }
+                        if (preg_match('/^app_gallery_(\d+)_image$/', $key, $matches)) {
+                            $index = $matches[2];
+                            $galleryItems[$index]['file'] = $value;
+                            $galleryItems[$index]['index'] = $index;
+                            $galleryItems[$index]['field_name'] = $matches[0]; // Store the full field name
+                        }
                     }
                 }
 
@@ -1814,14 +1932,15 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
                                         <div style="border: 1px solid #e0e0e0; border-radius: 12px; padding: 20px; background: #fafafa;">
                                             <div style="display: flex; align-items: flex-start; gap: 15px; margin-bottom: 15px;">
                                                 <?php
-                                                // Check for testimonial image
-                                                $imageData = $form_data["testimonial_{$item['index']}_image_data"] ?? '';
-                                                $imagePath = $form_data["testimonial_{$item['index']}_image_path"] ?? '';
-                                                $imageName = $form_data["testimonial_{$item['index']}_image"] ?? '';
+                                                // Check for testimonial image - use the correct field name
+                                                $fieldName = $item['field_name'] ?? 'testimonial_' . $item['index'] . '_image';
+                                                $imageData = $form_data[$fieldName . '_data'] ?? '';
+                                                $imagePath = $form_data[$fieldName . '_path'] ?? '';
+                                                $imageName = $form_data[$fieldName] ?? '';
                                                 if (!empty($imageData) || !empty($imagePath)):
                                                 ?>
                                                     <div style="width: 80px; height: 80px; border-radius: 50%; overflow: hidden; flex-shrink: 0; background: #f0f0f0;">
-                                                        <img src="<?php echo htmlspecialchars(fieldAssetUrl($client['client_id'], 'testimonial_' . $item['index'] . '_image')); ?>"
+                                                        <img src="<?php echo htmlspecialchars(fieldAssetUrl($client['client_id'], $fieldName)); ?>"
                                                              style="width: 100%; height: 100%; object-fit: cover;"
                                                              alt="<?php echo htmlspecialchars($item['name']); ?>">
                                                     </div>
@@ -1843,7 +1962,7 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
                                                 </div>
                                             <?php endif; ?>
                                             <?php if (!empty($imageData) || !empty($imagePath)): ?>
-                                                <a href="<?php echo htmlspecialchars(fieldAssetUrl($client['client_id'], 'testimonial_' . $item['index'] . '_image', true)); ?>"
+                                                <a href="<?php echo htmlspecialchars(fieldAssetUrl($client['client_id'], $fieldName, true)); ?>"
                                                    download="<?php echo htmlspecialchars($imageName ?: 'testimonial-' . $item['index'] . '.jpg'); ?>"
                                                    style="display: inline-block; padding: 8px 14px; background: #28a745; color: white; text-decoration: none; border-radius: 6px; font-size: 13px; font-weight: 600;">
                                                    📥 Download Image
@@ -1857,7 +1976,7 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
                                 <strong>Gallery:</strong> <?php echo displayValue($form_data['galleryTitle']); ?><br>
                             <?php endif; ?>
                             <?php if (!empty($form_data['galleryDescription'])): ?>
-                                <?php echo nl2br(htmlspecialchars($form_data['galleryDescription'])); ?><br>
+                                <strong>Gallery Description:</strong><?php echo nl2br(htmlspecialchars($form_data['galleryDescription'])); ?><br>
                             <?php endif; ?>
                             <?php if (!empty($galleryItems)): ?>
                                 <strong>Gallery Images:</strong><br>
@@ -1865,16 +1984,15 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
                                     <?php foreach ($galleryItems as $item): ?>
                                         <div class="field-group" style="border: 1px solid #e0e0e0; border-radius: 12px; padding: 15px; background: #fafafa;">
                                             <?php
-                                            // Check for gallery image data
-                                            $imageDataKey = "gallery_{$item['index']}_image_data";
-                                            $imagePathKey = "gallery_{$item['index']}_image_path";
-                                            $imageData = $form_data[$imageDataKey] ?? '';
-                                            $imagePath = $form_data[$imagePathKey] ?? '';
+                                            // Check for gallery image data - use correct field name
+                                            $fieldName = $item['field_name'] ?? 'gallery_' . $item['index'] . '_image';
+                                            $imageData = $form_data[$fieldName . '_data'] ?? '';
+                                            $imagePath = $form_data[$fieldName . '_path'] ?? '';
                                             $imageName = $item['file'] ?? '';
                                             ?>
                                             <div style="width: 100%; height: 200px; border-radius: 8px; overflow: hidden; margin-bottom: 12px; background: #f0f0f0; display: flex; align-items: center; justify-content: center;">
                                                 <?php if (!empty($imageData) || !empty($imagePath)): ?>
-                                                    <img src="<?php echo htmlspecialchars(fieldAssetUrl($client['client_id'], 'gallery_' . $item['index'] . '_image')); ?>"
+                                                    <img src="<?php echo htmlspecialchars(fieldAssetUrl($client['client_id'], $fieldName)); ?>"
                                                          style="max-width: 100%; max-height: 100%; object-fit: contain;"
                                                          alt="Gallery Image <?php echo $item['index']; ?>">
                                                 <?php else: ?>
@@ -1885,7 +2003,7 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
                                                 <strong><?php echo htmlspecialchars($item['caption']); ?></strong>
                                             </div>
                                             <?php if (!empty($imageData) || !empty($imagePath)): ?>
-                                                <a href="<?php echo htmlspecialchars(fieldAssetUrl($client['client_id'], 'gallery_' . $item['index'] . '_image', true)); ?>"
+                                                <a href="<?php echo htmlspecialchars(fieldAssetUrl($client['client_id'], $fieldName, true)); ?>"
                                                    download="<?php echo htmlspecialchars($imageName ?: 'gallery-image-' . $item['index'] . '.jpg'); ?>"
                                                    style="display: block; width: 100%; text-align: center; padding: 10px 16px; background: #28a745; color: white; text-decoration: none; border-radius: 8px; font-size: 14px; font-weight: 600;">
                                                    📥 Download Image
@@ -2269,7 +2387,14 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
                 <div class="field-group">
                     <div class="field-label">Working Hours</div>
                     <div class="field-value">
-                        <strong>Mode:</strong> <?php echo displayValue($form_data['workingHoursMode'] ?? ''); ?><br>
+                        <strong>Mode:</strong> <?php 
+                        $working_mode = $form_data['workingHoursMode'] ?? '';
+                        $working_mode_labels = [
+                            'always-open' => 'Always open',
+                            'selected-hours' => 'Open for selected hours'
+                        ];
+                        echo displayValue($working_mode_labels[$working_mode] ?? $working_mode); 
+                        ?><br>
                         <?php if (!empty($form_data['openDays'])): ?>
                             <strong>Open Days:</strong> <?php echo displayArray($form_data['openDays']); ?><br>
                         <?php endif; ?>
@@ -2283,7 +2408,17 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
                     <div class="field-value">
                         <strong>Decision Maker:</strong> <?php echo displayValue($form_data['decisionMaker'] ?? ''); ?><br>
                         <strong>Reviewers:</strong> <?php echo displayValue($form_data['reviewerCount'] ?? ''); ?><br>
-                        <strong>Preferred Communication:</strong> <?php echo displayValue($form_data['preferredCommunication'] ?? ''); ?><br>
+                        <strong>Preferred Communication:</strong> <?php 
+                        $comm_method = $form_data['preferredCommunication'] ?? '';
+                        $comm_method_labels = [
+                            'whatsapp' => 'WhatsApp',
+                            'email' => 'Email',
+                            'call' => 'Phone call',
+                            'video-call' => 'Video call',
+                            'project-manager' => 'Through project manager'
+                        ];
+                        echo displayValue($comm_method_labels[$comm_method] ?? $comm_method); 
+                        ?><br>
                         <strong>Best Contact Time:</strong> <?php echo displayValue($form_data['bestContactTime'] ?? ''); ?><br>
                         <strong>Deadline Reason:</strong> <?php echo displayValue($form_data['deadlineReason'] ?? ''); ?><br>
                         <strong>Uncertainties:</strong> <?php echo displayValue($form_data['clientUncertainties'] ?? ''); ?>
@@ -3438,20 +3573,22 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
             const btn = evt?.currentTarget || evt?.target || document.querySelector('.btn-pdf');
             const originalText = btn ? btn.innerHTML : '';
             const opt = {
-                margin: [15, 15, 15, 15], // top, left, bottom, right
+                margin: [10, 10, 10, 10], // top, left, bottom, right
                 filename: '<?php echo htmlspecialchars($client['client_id']); ?>_client_details.pdf',
                 image: { type: 'jpeg', quality: 0.98 },
                 html2canvas: {
                     scale: 2,
                     useCORS: true,
-                    letterRendering: true
+                    letterRendering: true,
+                    logging: false,
+                    allowTaint: true
                 },
                 jsPDF: {
                     unit: 'mm',
                     format: 'a4',
                     orientation: 'portrait'
                 },
-                pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+                pagebreak: { mode: 'css' }
             };
 
             // Show loading state

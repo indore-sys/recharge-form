@@ -14,6 +14,7 @@ $conn = getDBConnection();
 // Handle search and filter
 $search = $_GET['search'] ?? '';
 $status_filter = $_GET['status'] ?? '';
+$project_type_filter = $_GET['project_type'] ?? '';
 
 // Build query
 $where_conditions = [];
@@ -22,15 +23,21 @@ $types = '';
 
 // Only apply search filter if search is provided
 if (!empty($search)) {
-    $where_conditions[] = "(client_id LIKE ? OR name LIKE ? OR email LIKE ? OR company_name LIKE ?)";
+    $where_conditions[] = "(client_id LIKE ? OR name LIKE ? OR email LIKE ?)";
     $search_param = "%$search%";
-    $params = array_merge($params, [$search_param, $search_param, $search_param, $search_param]);
-    $types .= 'ssss';
+    $params = array_merge($params, [$search_param, $search_param, $search_param]);
+    $types .= 'sss';
 }
 
 if (!empty($status_filter)) {
     $where_conditions[] = "status = ?";
     $params[] = $status_filter;
+    $types .= 's';
+}
+
+if (!empty($project_type_filter)) {
+    $where_conditions[] = "JSON_EXTRACT(form_data, '$.project_type') = ?";
+    $params[] = $project_type_filter;
     $types .= 's';
 }
 
@@ -222,6 +229,13 @@ $stmt->close();
         .client-id {
             font-weight: 600;
             color: #667eea;
+        }
+
+        .table th:nth-child(4),
+        .table td:nth-child(4) {
+            width: 120px;
+            min-width: 120px;
+            text-align: center;
         }
 
         .status {
@@ -452,12 +466,18 @@ $stmt->close();
         <!-- Filters -->
         <div class="filters">
             <form method="GET" class="filter-form">
-                <input type="text" name="search" placeholder="Search by Client ID, Name, Email, or Company..." value="<?php echo htmlspecialchars($search); ?>">
+                <input type="text" name="search" placeholder="Search by Client ID, Name, or Email..." value="<?php echo htmlspecialchars($search); ?>">
                 <select name="status">
                     <option value="">All Status</option>
                     <option value="New" <?php echo $status_filter === 'New' ? 'selected' : ''; ?>>New</option>
                     <option value="In Progress" <?php echo $status_filter === 'In Progress' ? 'selected' : ''; ?>>In Progress</option>
                     <option value="Completed" <?php echo $status_filter === 'Completed' ? 'selected' : ''; ?>>Completed</option>
+                </select>
+                <select name="project_type">
+                    <option value="">All Types</option>
+                    <option value="website" <?php echo $project_type_filter === 'website' ? 'selected' : ''; ?>>Website</option>
+                    <option value="mobile-app" <?php echo $project_type_filter === 'mobile-app' ? 'selected' : ''; ?>>Mobile App</option>
+                    <option value="both" <?php echo $project_type_filter === 'both' ? 'selected' : ''; ?>>Both</option>
                 </select>
                 <button type="submit" class="btn btn-primary">Search</button>
                 <a href="index.php" class="btn" style="background: #6c757d; color: white; text-decoration: none;">Clear</a>
@@ -473,7 +493,7 @@ $stmt->close();
                             <th>Client ID</th>
                             <th>Name</th>
                             <th>Email</th>
-                            <th>Company</th>
+                            <th>Type</th>
                             <th>Date</th>
                             <th>Status</th>
                             <th>Actions</th>
@@ -484,11 +504,20 @@ $stmt->close();
                             // Decode form_data to get fallback values for mobile app
                             $form_data = json_decode($client['form_data'] ?? '{}', true);
                             
+                            // Get project type
+                            $project_type = $form_data['project_type'] ?? $form_data['projectType'] ?? 'Unknown';
+                            $project_type_label = match($project_type) {
+                                'website' => 'Website',
+                                'mobile-app' => 'Mobile App',
+                                'both' => 'Both',
+                                default => 'Unknown'
+                            };
+                            
                             // Get name from client table or form_data fallback - prioritize contact name
                             $display_name = $client['name'];
                             if (empty($display_name) || $display_name === 'Unknown Company' || $display_name === 'Unknown Contact') {
-                                // Use contact name from form (for both website and mobile app), fallback to company name
-                                $display_name = $form_data['contactName'] ?? $form_data['app_contactName'] ?? $form_data['companyName'] ?? '';
+                                // Use contact name from form (for both website and mobile app), fallback to business name
+                                $display_name = $form_data['app_contactName'] ?? $form_data['contactName'] ?? $form_data['app_businessName'] ?? $form_data['companyName'] ?? '';
                             }
                             if (empty($display_name)) $display_name = 'Unknown';
                             
@@ -499,33 +528,35 @@ $stmt->close();
                             }
                             if (empty($display_email)) $display_email = 'Not Provided';
                             
-                            // Get company from client table or form_data fallback (companyName - same for both website and mobile app)
-                            $display_company = $client['company_name'];
-                            if (empty($display_company) || $display_company === 'Not Provided') {
-                                $display_company = $form_data['companyName'] ?? '';
-                            }
-                            if (empty($display_company)) $display_company = 'Not Provided';
-                            
                             // Update database if name is still showing as Unknown but form_data has proper name
                             if (($client['name'] === 'Unknown Company' || empty($client['name'])) && !empty($display_name) && $display_name !== 'Unknown') {
                                 // Reopen database connection for updates
                                 $update_conn = getDBConnection();
-                                $update_sql = "UPDATE clients SET name = ?, email = ?, company_name = ? WHERE id = ?";
+                                $update_sql = "UPDATE clients SET name = ?, email = ? WHERE id = ?";
                                 $update_stmt = $update_conn->prepare($update_sql);
-                                $update_stmt->bind_param('sssi', $display_name, $display_email, $display_company, $client['id']);
+                                $update_stmt->bind_param('ssi', $display_name, $display_email, $client['id']);
                                 $update_stmt->execute();
                                 $update_stmt->close();
                                 $update_conn->close();
                                 $client['name'] = $display_name; // Update current row data
                                 $client['email'] = $display_email; // Update current row data
-                                $client['company_name'] = $display_company; // Update current row data
                             }
                         ?>
                             <tr>
                                 <td class="client-id"><?php echo htmlspecialchars($client['client_id']); ?></td>
                                 <td><?php echo htmlspecialchars($display_name); ?></td>
                                 <td><?php echo htmlspecialchars($display_email); ?></td>
-                                <td><?php echo htmlspecialchars($display_company); ?></td>
+                                <td>
+                                    <span style="padding: 4px 8px; border-radius: 12px; font-size: 0.8rem; font-weight: 500; 
+                                        <?php 
+                                        if ($project_type === 'website') echo 'background: #e3f2fd; color: #1976d2;';
+                                        elseif ($project_type === 'mobile-app') echo 'background: #f3e5f5; color: #7b1fa2;';
+                                        elseif ($project_type === 'both') echo 'background: #e8f5e8; color: #2e7d32;';
+                                        else echo 'background: #f5f5f5; color: #666;';
+                                        ?>">
+                                        <?php echo htmlspecialchars($project_type_label); ?>
+                                    </span>
+                                </td>
                                 <td><?php echo date('M j, Y', strtotime($client['created_at'])); ?></td>
                                 <td>
                                     <span class="status <?php echo strtolower(str_replace(' ', '-', $client['status'])); ?>">
