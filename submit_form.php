@@ -55,6 +55,11 @@ function getUploadSubdirectory(string $fieldName): string {
         return 'icons';
     }
 
+    // API documentation files
+    if (stripos($fieldName, 'app_api_files') !== false) {
+        return 'documents';
+    }
+
     // Documents and assets
     if (stripos($fieldName, 'asset') !== false || stripos($fieldName, 'document') !== false || stripos($fieldName, 'file') !== false) {
         return 'documents';

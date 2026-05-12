@@ -161,8 +161,8 @@ function formatScreenLabel($screen) {
     }
 
     $labelMap = [
-        'home' => 'Home / Dashboard',
         'login' => 'Login / Sign Up',
+        'home' => 'Home / Dashboard',
         'profile' => 'User Profile',
         'settings' => 'Settings',
         'search' => 'Search',
@@ -1969,6 +1969,12 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
                             $galleryItems[$index]['index'] = $index;
                             $galleryItems[$index]['field_name'] = $matches[0]; // Store the full field name
                         }
+                        if (preg_match('/^app_api_files_(\d+)$/', $key, $matches)) {
+                            $index = $matches[1];
+                            $apiFiles[$index]['file'] = $value;
+                            $apiFiles[$index]['index'] = $index;
+                            $apiFiles[$index]['field_name'] = $matches[0]; // Store the full field name
+                        }
                     }
                 }
 
@@ -1979,8 +1985,11 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
                 $galleryItems = array_values(array_filter($galleryItems, function ($item) {
                     return !empty($item['file']) || !empty($item['caption']);
                 }));
+                $apiFiles = array_values(array_filter($apiFiles ?? [], function ($item) {
+                    return !empty($item['file']);
+                }));
                 ?>
-                <?php if (!empty($form_data['pageExtras']) || !empty($testimonialItems) || !empty($galleryItems) || !empty($form_data['galleryTitle'])): ?>
+                <?php if (!empty($form_data['pageExtras']) || !empty($testimonialItems) || !empty($galleryItems) || !empty($apiFiles) || !empty($form_data['galleryTitle'])): ?>
                     <div class="field-group">
                         <div class="field-label">Page Extras</div>
                         <div class="field-value">
@@ -2075,6 +2084,37 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
                                             <?php else: ?>
                                                 <div style="text-align: center; padding: 10px 16px; background: #f8f9fa; color: #6c757d; border-radius: 8px; font-size: 18px;">
                                                     File: <?php echo htmlspecialchars($imageName ?: 'No file uploaded'); ?>
+                                                </div>
+                                            <?php endif; ?>
+                                        </div>
+                                    <?php endforeach; ?>
+                                </div>
+                            <?php endif; ?>
+                            <?php if (!empty($apiFiles)): ?>
+                                <strong>API Documentation Files:</strong><br>
+                                <div class="field-grid" style="grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; margin-top: 15px;">
+                                    <?php foreach ($apiFiles as $item): ?>
+                                        <div class="field-group" style="border: 1px solid #e0e0e0; border-radius: 12px; padding: 15px; background: #fafafa;">
+                                            <?php
+                                            $fieldName = $item['field_name'] ?? 'app_api_files_' . $item['index'];
+                                            $filePath = $form_data[$fieldName . '_path'] ?? '';
+                                            $fileName = $item['file'] ?? '';
+                                            ?>
+                                            <div style="width: 100%; height: 120px; border-radius: 8px; overflow: hidden; margin-bottom: 12px; background: #f0f0f0; display: flex; align-items: center; justify-content: center;">
+                                                <span style="color: #999; font-size: 24px;">📄</span>
+                                            </div>
+                                            <div style="font-size: 13px; color: #6c757d; margin-bottom: 10px; text-align: center; word-break: break-all;">
+                                                <strong><?php echo htmlspecialchars($fileName); ?></strong>
+                                            </div>
+                                            <?php if (!empty($filePath)): ?>
+                                                <a href="<?php echo htmlspecialchars(fieldAssetUrl($client['client_id'], $fieldName, true)); ?>"
+                                                   download="<?php echo htmlspecialchars($fileName ?: 'api-file-' . $item['index']); ?>"
+                                                   style="display: block; width: 100%; text-align: center; padding: 10px 16px; background: #007bff; color: white; text-decoration: none; border-radius: 8px; font-size: 14px; font-weight: 600;">
+                                                   📥 Download File
+                                                </a>
+                                            <?php else: ?>
+                                                <div style="text-align: center; padding: 10px 16px; background: #f8f9fa; color: #6c757d; border-radius: 8px; font-size: 14px;">
+                                                    File: <?php echo htmlspecialchars($fileName ?: 'No file uploaded'); ?>
                                                 </div>
                                             <?php endif; ?>
                                         </div>
@@ -2652,6 +2692,13 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
                         <div class="field-label">Target Audience</div>
                         <div class="field-value"><?php echo displayValue($form_data['app_target_audience'] ?? ''); ?></div>
                     </div>
+                    <div class="field-group">
+                        <div class="field-label">Splash Screen Required</div>
+                        <div class="field-value"><?php echo displayValue(formatMappedValue($form_data['app_splash_screen_required'], [
+                            'yes' => 'Yes',
+                            'no' => 'No'
+                        ])); ?></div>
+                    </div>
                 </div>
                 
                 <?php if (!empty($form_data['app_features'])): ?>
@@ -2733,21 +2780,6 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
                 </div>
                 <?php endif; ?>
                 
-                <?php if (!empty($form_data['app_backend_tech'])): ?>
-                <div class="field-group">
-                    <div class="field-label">Backend Technology</div>
-                    <div class="field-value"><?php echo displayValue(formatMappedValue($form_data['app_backend_tech'], [
-                        'firebase' => 'Firebase',
-                        'aws' => 'AWS',
-                        'nodejs' => 'Node.js',
-                        'python' => 'Python',
-                        'php' => 'PHP',
-                        'java' => 'Java',
-                        'not-sure' => 'Not Sure'
-                    ])); ?></div>
-                </div>
-                <?php endif; ?>
-                
                 <?php if (!empty($form_data['app_api_available'])): ?>
                 <div class="field-group">
                     <div class="field-label">API Available</div>
@@ -2755,6 +2787,64 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
                         'yes' => 'Yes - We have API',
                         'no' => 'No - Need API development'
                     ])); ?></div>
+                </div>
+                <?php endif; ?>
+                
+                <?php if (!empty($form_data['app_api_source'])): ?>
+                <div class="field-group">
+                    <div class="field-label">API Source / Details</div>
+                    <div class="field-value"><?php echo displayValue($form_data['app_api_source']); ?></div>
+                </div>
+                <?php endif; ?>
+                
+                <?php if (!empty($form_data['app_api_documentation'])): ?>
+                <div class="field-group">
+                    <div class="field-label">API Documentation Link</div>
+                    <div class="field-value"><?php echo displayValue($form_data['app_api_documentation']); ?></div>
+                </div>
+                <?php endif; ?>
+                
+                <?php if (!empty($form_data['app_api_auth_type'])): ?>
+                <div class="field-group">
+                    <div class="field-label">Authentication Type</div>
+                    <div class="field-value"><?php echo displayValue(formatMappedValue($form_data['app_api_auth_type'], [
+                        'none' => 'None',
+                        'api-key' => 'API Key',
+                        'bearer-token' => 'Bearer Token',
+                        'oauth2' => 'OAuth 2.0',
+                        'basic-auth' => 'Basic Auth',
+                        'custom' => 'Custom'
+                    ])); ?></div>
+                </div>
+                <?php endif; ?>
+                
+                <?php if (!empty($form_data['app_api_credentials'])): ?>
+                <div class="field-group">
+                    <div class="field-label">API Credentials</div>
+                    <div class="field-value"><?php echo displayValue($form_data['app_api_credentials']); ?></div>
+                </div>
+                <?php endif; ?>
+                
+                <?php if (!empty($form_data['app_backend_tech'])): ?>
+                <div class="field-group">
+                    <div class="field-label">Backend Technology</div>
+                    <div class="field-value"><?php 
+                    $techValue = $form_data['app_backend_tech'] ?? '';
+                    if ($techValue === 'other' && !empty($form_data['app_backend_tech_other'])) {
+                        echo displayValue($form_data['app_backend_tech_other']);
+                    } else {
+                        echo displayValue(formatMappedValue($techValue, [
+                            'firebase' => 'Firebase',
+                            'aws' => 'AWS',
+                            'nodejs' => 'Node.js',
+                            'python' => 'Python',
+                            'php' => 'PHP',
+                            'java' => 'Java',
+                            'not-sure' => 'Not Sure',
+                            'other' => 'Other'
+                        ]));
+                    }
+                    ?></div>
                 </div>
                 <?php endif; ?>
                 
@@ -2772,6 +2862,26 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
                         ];
                         echo displayArray(formatMappedValues($form_data['app_deployment_stores'], $storeLabels));
                         ?>
+                    </div>
+                </div>
+                <?php endif; ?>
+                
+                <?php if (!empty($form_data['app_playstore_login']) || !empty($form_data['app_playstore_password']) || !empty($form_data['app_appstore_login']) || !empty($form_data['app_appstore_password'])): ?>
+                <div class="field-group">
+                    <div class="field-label">Deployment Login Credentials</div>
+                    <div class="field-value">
+                        <?php if (!empty($form_data['app_playstore_login'])): ?>
+                            <strong>Google Play Store Login:</strong> <?php echo displayValue($form_data['app_playstore_login']); ?><br>
+                        <?php endif; ?>
+                        <?php if (!empty($form_data['app_playstore_password'])): ?>
+                            <strong>Google Play Store Password:</strong> <?php echo displayValue($form_data['app_playstore_password']); ?><br>
+                        <?php endif; ?>
+                        <?php if (!empty($form_data['app_appstore_login'])): ?>
+                            <strong>Apple App Store Login:</strong> <?php echo displayValue($form_data['app_appstore_login']); ?><br>
+                        <?php endif; ?>
+                        <?php if (!empty($form_data['app_appstore_password'])): ?>
+                            <strong>Apple App Store Password:</strong> <?php echo displayValue($form_data['app_appstore_password']); ?><br>
+                        <?php endif; ?>
                     </div>
                 </div>
                 <?php endif; ?>

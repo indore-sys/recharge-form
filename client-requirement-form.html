@@ -3194,6 +3194,17 @@
                             <textarea name="app_target_audience" required placeholder="Describe your target users (age, interests, needs)..." rows="3"></textarea>
                             <div class="error-message">Please describe target audience</div>
                         </div>
+                        <div class="form-group">
+                            <label>Splash Screen Required</label>
+                            <div class="radio-group">
+                                <label class="radio-option">
+                                    <input type="radio" name="app_splash_screen_required" value="yes"> Yes
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="app_splash_screen_required" value="no"> No
+                                </label>
+                            </div>
+                        </div>
                     </div>
                     <div class="section-navigation">
                         <button type="button" class="nav-btn nav-btn-prev" data-prev="project-type-selection">← Previous</button>
@@ -3213,10 +3224,10 @@
                             <label class="required">Main App Screens</label>
                             <div class="checkbox-group">
                                 <label class="checkbox-option">
-                                    <input type="checkbox" name="appScreens" value="home" checked> Home / Dashboard
+                                    <input type="checkbox" name="appScreens" value="login" checked> Login / Sign Up
                                 </label>
                                 <label class="checkbox-option">
-                                    <input type="checkbox" name="appScreens" value="login" checked> Login / Sign Up
+                                    <input type="checkbox" name="appScreens" value="home" checked> Home / Dashboard
                                 </label>
                                 <label class="checkbox-option">
                                     <input type="checkbox" name="appScreens" value="profile" checked> User Profile
@@ -3472,10 +3483,10 @@
                             <label class="checkbox-option"><input type="checkbox" name="app_mediaSupport" value="video-embed"> Embed videos</label>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label>App Screen Content</label>
                         <textarea name="app_screenContent" placeholder="Describe the content you have ready for each app screen..." rows="5"></textarea>
-                    </div>
+                    </div> -->
                     <div class="form-group">
                         <label>App Extras</label>
                         <div class="checkbox-group">
@@ -3568,10 +3579,7 @@
                                 <label class="checkbox-option">
                                     <input type="checkbox" name="app_features[]" value="registration"> User Registration
                                 </label>
-                                <label class="checkbox-option">
-                                    <input type="checkbox" name="app_features[]" value="payment"> Payment Integration
-                                </label>
-                                <label class="checkbox-option">
+                                                                <label class="checkbox-option">
                                     <input type="checkbox" name="app_features[]" value="notifications"> Push Notifications
                                 </label>
                                 <label class="checkbox-option">
@@ -3777,17 +3785,6 @@
                     </div>
                     <div class="section-content">
                         <div class="form-group">
-                            <label>API Available</label>
-                            <div class="radio-group">
-                                <label class="radio-option">
-                                    <input type="radio" name="app_api_available" value="yes"> Yes - We have API
-                                </label>
-                                <label class="radio-option">
-                                    <input type="radio" name="app_api_available" value="no"> No - Need API development
-                                </label>
-                            </div>
-                        </div>
-                        <div class="form-group">
                             <label>Backend Required</label>
                             <div class="radio-group">
                                 <label class="radio-option">
@@ -3809,7 +3806,61 @@
                                 <option value="php"> PHP</option>
                                 <option value="java"> Java</option>
                                 <option value="not-sure"> Not Sure</option>
+                                <option value="other"> Other</option>
                             </select>
+                        </div>
+                        
+                        <!-- Other Backend Technology Field - Shows when Backend Technology = Other -->
+                        <div id="otherBackendTechSection" style="display: none;" class="form-group">
+                            <label>Specify Backend Technology</label>
+                            <input type="text" name="app_backend_tech_other" placeholder="Please specify your backend technology...">
+                        </div>
+                        
+                        <!-- API Details Section - Shows when Backend Required = Yes -->
+                        <div id="backendApiDetailsSection" style="display: none;">
+                            <div class="form-group">
+                                <label>API Available</label>
+                                <div class="radio-group">
+                                    <label class="radio-option">
+                                        <input type="radio" name="app_api_available" value="yes"> Yes - We have API
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="app_api_available" value="no"> No - Need API development
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div id="apiDetailsSubSection" style="display: none;">
+                                <div class="form-group">
+                                    <label>API Source / Details</label>
+                                    <textarea name="app_api_source" placeholder="Describe your API source, endpoints, and functionality..." rows="4"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>API Documentation Link</label>
+                                    <input type="url" name="app_api_documentation" placeholder="https://api-docs.example.com">
+                                </div>
+                                <div class="form-group">
+                                    <label>Authentication Type</label>
+                                    <select name="app_api_auth_type">
+                                        <option value="">Select authentication type</option>
+                                        <option value="none">None</option>
+                                        <option value="api-key">API Key</option>
+                                        <option value="bearer-token">Bearer Token</option>
+                                        <option value="oauth2">OAuth 2.0</option>
+                                        <option value="basic-auth">Basic Auth</option>
+                                        <option value="custom">Custom</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>API Credentials</label>
+                                    <input type="text" name="app_api_credentials" placeholder="API keys, tokens, or other credentials (optional)">
+                                </div>
+                                <div class="form-group">
+                                    <label>API Documentation Files</label>
+                                    <input type="file" name="app_api_files[]" accept=".json,.txt,.pdf,.zip,.doc,.docx" multiple>
+                                    <small>Accepted formats: .json, .txt, .pdf, .zip, .doc, .docx</small>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="section-navigation">
@@ -3837,6 +3888,43 @@
                                 <label class="checkbox-option">
                                     <input type="checkbox" name="app_deployment_stores[]" value="help-needed"> Need Help with Setup
                                 </label>
+                            </div>
+                        </div>
+                        
+                        <!-- Deployment Login Credentials Section - Shows when App Store is selected -->
+                        <div id="deploymentLoginSection" style="display: none;">
+                            <!-- Google Play Store Credentials -->
+                            <div id="playStoreCredentials" style="display: none;">
+                                <div class="form-group">
+                                    <label>Google Play Store Login</label>
+                                    <input type="text" name="app_playstore_login" placeholder="Google Play Console email or username">
+                                </div>
+                                <div class="form-group">
+                                    <label>Google Play Store Password</label>
+                                    <div style="position: relative;">
+                                        <input type="password" name="app_playstore_password" placeholder="Google Play Console password" id="playstorePassword">
+                                        <button type="button" onclick="togglePassword('playstorePassword')" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; padding: 5px;">
+                                            👁️
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Apple App Store Credentials -->
+                            <div id="appStoreCredentials" style="display: none;">
+                                <div class="form-group">
+                                    <label>Apple App Store Login</label>
+                                    <input type="text" name="app_appstore_login" placeholder="App Store Connect email or username">
+                                </div>
+                                <div class="form-group">
+                                    <label>Apple App Store Password</label>
+                                    <div style="position: relative;">
+                                        <input type="password" name="app_appstore_password" placeholder="App Store Connect password" id="appstorePassword">
+                                        <button type="button" onclick="togglePassword('appstorePassword')" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; padding: 5px;">
+                                            👁️
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -5792,15 +5880,110 @@
             const appSelectedHoursSection = document.getElementById('appSelectedHoursSection');
             appWorkingHoursRadios.forEach(radio => {
                 radio.addEventListener('change', function() {
-                    if (appSelectedHoursSection) {
-                        appSelectedHoursSection.classList.toggle('show', this.value === 'selected-hours');
+                    if (this.value === '24/7') {
+                        appSelectedHoursSection.style.display = 'none';
+                    } else {
+                        appSelectedHoursSection.style.display = 'block';
                     }
                 });
             });
-            const appWorkingHoursChecked = document.querySelector('input[name="app_workingHoursMode"]:checked');
-            if (appWorkingHoursChecked) {
-                appWorkingHoursChecked.dispatchEvent(new Event('change', { bubbles: true }));
+
+            // Initialize app working hours visibility
+            const checkedAppWorkingHours = document.querySelector('input[name="app_workingHoursMode"]:checked');
+            if (checkedAppWorkingHours) {
+                checkedAppWorkingHours.dispatchEvent(new Event('change', { bubbles: true }));
             }
+
+            // Mobile App Backend Required conditional field
+            const appBackendRadios = document.querySelectorAll('input[name="app_backend_required"]');
+            const backendApiDetailsSection = document.getElementById('backendApiDetailsSection');
+            appBackendRadios.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    if (this.value === 'yes') {
+                        backendApiDetailsSection.style.display = 'block';
+                    } else {
+                        backendApiDetailsSection.style.display = 'none';
+                    }
+                });
+            });
+
+            // Initialize backend API details visibility
+            const checkedAppBackend = document.querySelector('input[name="app_backend_required"]:checked');
+            if (checkedAppBackend) {
+                checkedAppBackend.dispatchEvent(new Event('change', { bubbles: true }));
+            }
+
+            // Mobile App API Available conditional field (inside backend section)
+            const appApiRadios = document.querySelectorAll('input[name="app_api_available"]');
+            const apiDetailsSubSection = document.getElementById('apiDetailsSubSection');
+            appApiRadios.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    if (this.value === 'yes') {
+                        apiDetailsSubSection.style.display = 'block';
+                    } else {
+                        apiDetailsSubSection.style.display = 'none';
+                    }
+                });
+            });
+
+            // Initialize API details visibility
+            const checkedAppApi = document.querySelector('input[name="app_api_available"]:checked');
+            if (checkedAppApi) {
+                checkedAppApi.dispatchEvent(new Event('change', { bubbles: true }));
+            }
+
+            // Backend Technology Other conditional field
+            const appBackendTechSelect = document.querySelector('select[name="app_backend_tech"]');
+            const otherBackendTechSection = document.getElementById('otherBackendTechSection');
+            appBackendTechSelect.addEventListener('change', function() {
+                if (this.value === 'other') {
+                    otherBackendTechSection.style.display = 'block';
+                } else {
+                    otherBackendTechSection.style.display = 'none';
+                }
+            });
+
+            // Initialize backend tech other visibility
+            if (appBackendTechSelect.value === 'other') {
+                otherBackendTechSection.style.display = 'block';
+            }
+
+            // Deployment Login Credentials conditional field
+            const deploymentStoreCheckboxes = document.querySelectorAll('input[name="app_deployment_stores[]"]');
+            const deploymentLoginSection = document.getElementById('deploymentLoginSection');
+            const playStoreCredentials = document.getElementById('playStoreCredentials');
+            const appStoreCredentials = document.getElementById('appStoreCredentials');
+            
+            function checkDeploymentStores() {
+                const playStoreChecked = document.querySelector('input[name="app_deployment_stores[]"][value="play-store"]').checked;
+                const appStoreChecked = document.querySelector('input[name="app_deployment_stores[]"][value="app-store"]').checked;
+                
+                if (playStoreChecked || appStoreChecked) {
+                    deploymentLoginSection.style.display = 'block';
+                } else {
+                    deploymentLoginSection.style.display = 'none';
+                }
+                
+                // Show/hide individual store credentials
+                if (playStoreChecked) {
+                    playStoreCredentials.style.display = 'block';
+                } else {
+                    playStoreCredentials.style.display = 'none';
+                }
+                
+                if (appStoreChecked) {
+                    appStoreCredentials.style.display = 'block';
+                } else {
+                    appStoreCredentials.style.display = 'none';
+                }
+            }
+            
+            deploymentStoreCheckboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', checkDeploymentStores);
+            });
+
+            // Initialize deployment login visibility
+            checkDeploymentStores();
 
             // Dynamic Pages
             let pageCount = 0;
@@ -6687,6 +6870,34 @@
                     if (checkedAppWorkingHours) {
                         checkedAppWorkingHours.dispatchEvent(new Event('change', { bubbles: true }));
                     }
+                    
+                    // Re-attach Backend Required listeners
+                    const checkedAppBackend = document.querySelector('input[name="app_backend_required"]:checked');
+                    if (checkedAppBackend) {
+                        checkedAppBackend.dispatchEvent(new Event('change', { bubbles: true }));
+                    }
+                    
+                    // Re-attach API Available listeners
+                    const checkedAppApi = document.querySelector('input[name="app_api_available"]:checked');
+                    if (checkedAppApi) {
+                        checkedAppApi.dispatchEvent(new Event('change', { bubbles: true }));
+                    }
+                    
+                    // Re-attach Backend Technology Other listeners
+                    const checkedAppBackendTech = document.querySelector('select[name="app_backend_tech"]');
+                    if (checkedAppBackendTech && checkedAppBackendTech.value === 'other') {
+                        checkedAppBackendTech.dispatchEvent(new Event('change', { bubbles: true }));
+                    }
+                    
+                    // Re-attach Deployment Store listeners
+                    const checkedPlayStore = document.querySelector('input[name="app_deployment_stores[]"][value="play-store"]');
+                    const checkedAppStore = document.querySelector('input[name="app_deployment_stores[]"][value="app-store"]');
+                    if (checkedPlayStore && checkedPlayStore.checked) {
+                        checkedPlayStore.dispatchEvent(new Event('change', { bubbles: true }));
+                    }
+                    if (checkedAppStore && checkedAppStore.checked) {
+                        checkedAppStore.dispatchEvent(new Event('change', { bubbles: true }));
+                    }
                 }, 100);
             }
             
@@ -6861,7 +7072,7 @@
         // Password toggle function
         function togglePassword(fieldId) {
             const passwordField = document.getElementById(fieldId);
-            const toggleBtn = passwordField.nextElementSibling;
+            const toggleBtn = passwordField.parentElement.querySelector('button');
             
             if (passwordField.type === 'password') {
                 passwordField.type = 'text';
