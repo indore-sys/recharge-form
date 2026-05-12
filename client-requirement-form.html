@@ -2430,9 +2430,9 @@
                         <div class="form-group">
                             <label>Or Upload Logo File</label>
                             <div class="file-upload">
-                                <input type="file" name="logoFile" accept="image/*" class="file-input">
+                                <input type="file" name="logoFile" accept="image/jpeg,image/jpg,image/png,image/gif,image/bmp,image/webp,image/avif,image/svg+xml,image/tiff,image/x-icon" class="file-input">
                                 <span class="file-name">No file selected</span>
-                                <small style="color: #6c757d; margin-top: 5px; display: block;">Upload logo file directly (JPG, PNG, GIF)</small>
+                                <small style="color: #6c757d; margin-top: 5px; display: block;">Upload logo file directly (JPG, PNG, GIF, WebP, AVIF, BMP, SVG, TIFF, ICO)</small>
                             </div>
                         </div>
                     </div>
@@ -2465,8 +2465,8 @@
                         </div>
                         <div class="form-group">
                             <label>Example Logo / Reference File</label>
-                            <input type="file" name="professionalLogoReference" accept="image/*,.pdf">
-                            <small class="limit-note">We will prepare three logo variations for selection.</small>
+                            <input type="file" name="professionalLogoReference" accept="image/jpeg,image/jpg,image/png,image/gif,image/bmp,image/webp,image/avif,image/svg+xml,image/tiff,image/x-icon,application/pdf">
+                            <small class="limit-note">We will prepare three logo variations for selection. Supported formats: JPG, PNG, GIF, WebP, AVIF, BMP, SVG, TIFF, ICO, PDF</small>
                         </div>
                     </div>
                     <div class="form-group">
@@ -2490,8 +2490,8 @@
                     </div>
                     <div class="form-group">
                         <label>Upload Important Business Files</label>
-                        <input type="file" name="businessAssetsFile" accept=".pdf,.doc,.docx,.xlsx,.xls,.zip,image/*">
-                        <small class="limit-note">Optional: brochures, catalogs, brand guide, company profile, product sheets, or photo folders.</small>
+                        <input type="file" name="businessAssetsFile" accept=".pdf,.doc,.docx,.xlsx,.xls,.zip,image/jpeg,image/jpg,image/png,image/gif,image/bmp,image/webp,image/avif,image/svg+xml,image/tiff,image/x-icon">
+                        <small class="limit-note">Optional: brochures, catalogs, brand guide, company profile, product sheets, or photo folders. Supported formats: PDF, DOC, DOCX, XLS, XLSX, ZIP, JPG, PNG, GIF, WebP, AVIF, BMP, SVG, TIFF, ICO</small>
                     </div>
                 </div>
                     
@@ -2695,8 +2695,8 @@
                             <textarea name="serviceOperationNotes" placeholder="Locations served, booking rules, consultation fees, staff details, or other service workflow notes."></textarea>
                         </div>
                         <div class="form-group">
-                            <label>Upload Service Details (PDF, Word, Excel)</label>
-                            <input type="file" name="serviceDetailsFile" accept=".pdf,.doc,.docx,.xlsx,.xls">
+                            <small>Upload service details (PDF, Word, Excel) or related images (JPG, PNG, GIF, WebP, AVIF, BMP, SVG, TIFF, ICO)</small>
+                            <input type="file" name="serviceDetailsFile" accept=".pdf,.doc,.docx,.xlsx,.xls,image/jpeg,image/jpg,image/png,image/gif,image/bmp,image/webp,image/avif,image/svg+xml,image/tiff,image/x-icon">
                         </div>
                     </div>
                 </div>
@@ -2995,47 +2995,49 @@
                                 <input type="radio" name="showSocialIcons" value="yes"> Yes
                             </label>
                             <label class="radio-option">
-                                <input type="radio" name="showSocialIcons" value="no"> No
+                                <input type="radio" name="showSocialIcons" value="no" checked> No
                             </label>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label>Facebook</label>
-                        <input type="url" name="facebookUrl" placeholder="https://facebook.com/yourpage">
-                    </div>
-                    <div class="form-group">
-                        <label>Instagram</label>
-                        <input type="url" name="instagramUrl" placeholder="https://instagram.com/yourhandle">
-                    </div>
-                    <div class="form-group">
-                        <label>Twitter/X</label>
-                        <input type="url" name="twitterUrl" placeholder="https://twitter.com/yourhandle">
-                    </div>
-                    <div class="form-group">
-                        <label>LinkedIn</label>
-                        <input type="url" name="linkedinUrl" placeholder="https://linkedin.com/company/yourcompany">
-                    </div>
-                    <div class="form-group">
-                        <label>YouTube</label>
-                        <input type="url" name="youtubeUrl" placeholder="https://youtube.com/yourchannel">
-                    </div>
-                    <div class="form-group">
-                        <label>Pinterest</label>
-                        <input type="url" name="pinterestUrl" placeholder="https://pinterest.com/yourhandle">
-                    </div>
-                    <div class="form-group">
-                        <label>TikTok</label>
-                        <input type="url" name="tiktokUrl" placeholder="https://tiktok.com/@yourhandle">
-                    </div>
-                    <div class="form-group">
-                        <label>Other Social Media</label>
-                        <textarea name="otherSocialMedia" placeholder="Any other social media platforms with URLs..."></textarea>
+                    <div id="socialMediaFields" class="conditional-field">
+                        <div class="form-group">
+                            <label>Facebook</label>
+                            <input type="url" name="facebookUrl" placeholder="https://facebook.com/yourpage">
+                        </div>
+                        <div class="form-group">
+                            <label>Instagram</label>
+                            <input type="url" name="instagramUrl" placeholder="https://instagram.com/yourhandle">
+                        </div>
+                        <div class="form-group">
+                            <label>Twitter/X</label>
+                            <input type="url" name="twitterUrl" placeholder="https://twitter.com/yourhandle">
+                        </div>
+                        <div class="form-group">
+                            <label>LinkedIn</label>
+                            <input type="url" name="linkedinUrl" placeholder="https://linkedin.com/company/yourcompany">
+                        </div>
+                        <div class="form-group">
+                            <label>YouTube</label>
+                            <input type="url" name="youtubeUrl" placeholder="https://youtube.com/yourchannel">
+                        </div>
+                        <div class="form-group">
+                            <label>Pinterest</label>
+                            <input type="url" name="pinterestUrl" placeholder="https://pinterest.com/yourhandle">
+                        </div>
+                        <div class="form-group">
+                            <label>TikTok</label>
+                            <input type="url" name="tiktokUrl" placeholder="https://tiktok.com/@yourhandle">
+                        </div>
+                        <div class="form-group">
+                            <label>Other Social Media</label>
+                            <textarea name="otherSocialMedia" placeholder="Any other social media platforms with URLs..."></textarea>
+                        </div>
                     </div>
                 </div>
 
                         <div class="section-navigation">
                             <button type="button" class="nav-btn nav-btn-prev" data-prev="products">← Previous</button>
-                            <button type="button" class="nav-btn nav-btn-next" data-next="final">Next →</button>
+                            <button type="button" class="nav-btn nav-btn-next" data-next="final" id="marketingNextBtn">Next →</button>
                         </div>
                     </div>
                 </div>
@@ -3361,9 +3363,9 @@
                         <div class="form-group">
                             <label>Or Upload App Icon File</label>
                             <div class="file-upload">
-                                <input type="file" name="app_iconFile" accept="image/*" class="file-input">
+                                <input type="file" name="app_iconFile" accept="image/jpeg,image/jpg,image/png,image/gif,image/bmp,image/webp,image/avif,image/svg+xml,image/tiff,image/x-icon" class="file-input">
                                 <span class="file-name">No file selected</span>
-                                <small style="color: #6c757d; margin-top: 5px; display: block;">Upload app icon file directly (JPG, PNG, GIF)</small>
+                                <small style="color: #6c757d; margin-top: 5px; display: block;">Upload app icon file directly (JPG, PNG, GIF, WebP, AVIF, BMP, SVG, TIFF, ICO)</small>
                             </div>
                         </div>
                     </div>
@@ -3396,8 +3398,8 @@
                         </div>
                         <div class="form-group">
                             <label>Example Icon / Reference File</label>
-                            <input type="file" name="app_professionalIconReference" accept="image/*,.pdf">
-                            <small class="limit-note">We will prepare three icon variations for selection.</small>
+                            <input type="file" name="app_professionalIconReference" accept="image/jpeg,image/jpg,image/png,image/gif,image/bmp,image/webp,image/avif,image/svg+xml,image/tiff,image/x-icon,application/pdf">
+                            <small class="limit-note">We will prepare three icon variations for selection. Supported formats: JPG, PNG, GIF, WebP, AVIF, BMP, SVG, TIFF, ICO, PDF</small>
                         </div>
                     </div>
                     <div class="form-group">
@@ -3421,8 +3423,8 @@
                     </div>
                     <div class="form-group">
                         <label>Upload Important Business Files</label>
-                        <input type="file" name="app_businessAssetsFile" accept=".pdf,.doc,.docx,.xlsx,.xls,.zip,image/*">
-                        <small class="limit-note">Optional: brochures, catalogs, brand guide, company profile, product sheets, or photo folders.</small>
+                        <input type="file" name="app_businessAssetsFile" accept=".pdf,.doc,.docx,.xlsx,.xls,.zip,image/jpeg,image/jpg,image/png,image/gif,image/bmp,image/webp,image/avif,image/svg+xml,image/tiff,image/x-icon">
+                        <small class="limit-note">Optional: brochures, catalogs, brand guide, company profile, product sheets, or photo folders. Supported formats: PDF, DOC, DOCX, XLS, XLSX, ZIP, JPG, PNG, GIF, WebP, AVIF, BMP, SVG, TIFF, ICO</small>
                     </div>
                 </div>
                     
@@ -4615,9 +4617,9 @@
                 <div class="form-group">
                     <label>Page Image</label>
                     <div class="file-upload">
-                        <input type="file" name="pageImage_${page.value}" accept="image/*" class="file-input page-input" data-page="${page.value}">
+                        <input type="file" name="pageImage_${page.value}" accept="image/jpeg,image/jpg,image/png,image/gif,image/bmp,image/webp,image/avif,image/svg+xml,image/tiff,image/x-icon" class="file-input page-input" data-page="${page.value}">
                         <span class="file-name">No image selected</span>
-                        <small style="color: #6c757d; margin-top: 5px; display: block;">Upload main image for ${page.label} page (JPG, PNG, GIF)</small>
+                        <small style="color: #6c757d; margin-top: 5px; display: block;">Upload main image for ${page.label} page (JPG, PNG, GIF, WebP, AVIF, BMP, SVG, TIFF, ICO)</small>
                     </div>
                 </div>
                 <div class="form-group">
@@ -4983,8 +4985,8 @@
                 </div>
                 <div class="form-group">
                     <label>Images/Videos for this Screen</label>
-                    <input type="file" name="${screenId}_media" class="page-input" accept="image/*,video/*" multiple>
-                    <small style="color: #6c757d; display: block; margin-top: 5px;">Upload media files for this screen</small>
+                    <input type="file" name="${screenId}_media" class="page-input" accept="image/jpeg,image/jpg,image/png,image/gif,image/bmp,image/webp,image/avif,image/svg+xml,image/tiff,image/x-icon,video/mp4,video/webm,video/ogg,video/quicktime" multiple>
+                    <small style="color: #6c757d; display: block; margin-top: 5px;">Upload media files for this screen (Images: JPG, PNG, GIF, WebP, AVIF, BMP, SVG, TIFF, ICO | Videos: MP4, WebM, OGG, MOV)</small>
                 </div>
                 <div class="form-group">
                     <label>Special Features/Elements</label>
@@ -5192,6 +5194,25 @@
 
             function navigateToSection(sectionId) {
                 const targetEl = document.getElementById(sectionId);
+                if (targetEl) {
+                    // Multiple scroll methods to ensure it works
+                    setTimeout(() => {
+                        // Method 1: Window scroll
+                        window.scrollTo(0, 0);
+                        
+                        // Method 2: Document element scroll
+                        document.documentElement.scrollTop = 0;
+                        document.body.scrollTop = 0;
+                        
+                        // Method 3: Smooth scroll fallback
+                        window.scrollTo({
+                            top: 0,
+                            behavior: 'smooth'
+                        });
+                        
+                        console.log('Forced scroll to top for section:', sectionId);
+                    }, 200);
+                }
 
                 // Update active nav link in sidebar
                 navLinks.forEach(l => l.classList.remove('active'));
@@ -5213,6 +5234,37 @@
 
                 // Save current section
                 debouncedSave();
+
+                // Auto-scroll to next section if current is mostly filled
+                autoScrollToNextSection();
+            }
+
+            // Auto-scroll to next section based on progress
+            function autoScrollToNextSection() {
+                const currentSection = document.querySelector('.form-section.active');
+                if (!currentSection) return;
+
+                const sectionInputs = currentSection.querySelectorAll('input:not([type="hidden"]), textarea, select');
+                const filledInputs = Array.from(sectionInputs).filter(input => {
+                    if (input.type === 'checkbox' || input.type === 'radio') {
+                        return input.checked;
+                    } else if (input.type === 'file') {
+                        return input.files && input.files.length > 0;
+                    } else {
+                        return input.value.trim() !== '';
+                    }
+                });
+
+                // If 70% or more of current section is filled, scroll to next
+                const fillPercentage = sectionInputs.length > 0 ? (filledInputs.length / sectionInputs.length) : 0;
+                if (fillPercentage >= 0.7) {
+                    const nextBtn = currentSection.querySelector('.nav-btn[data-next]');
+                    if (nextBtn) {
+                        setTimeout(() => {
+                            nextBtn.click(); // Auto-navigate to next section
+                        }, 1000); // 1 second delay for user to see completion
+                    }
+                }
             }
 
             // Dynamic show/hide logic
@@ -5228,6 +5280,37 @@
                     const styleChoice = document.querySelector(`input[name="websitePageStyle"][value="${this.value === 'online-store' ? 'multi-page' : 'one-page'}"]`);
                     if (styleChoice && !document.querySelector('input[name="websitePageStyle"]:checked')) {
                         styleChoice.checked = true;
+                    }
+                });
+            });
+
+            // Add input event listeners for auto-scrolling
+            const allInputs = document.querySelectorAll('input:not([type="hidden"]), textarea, select');
+            allInputs.forEach(input => {
+                input.addEventListener('input', function() {
+                    // Check if we should auto-scroll after a brief delay
+                    clearTimeout(window.autoScrollTimeout);
+                    window.autoScrollTimeout = setTimeout(() => {
+                        autoScrollToNextSection();
+                    }, 500);
+                });
+
+                input.addEventListener('change', function() {
+                    // Immediate check for radio/checkbox changes
+                    autoScrollToNextSection();
+                });
+            });
+
+            // Social Media Icons
+            const socialMediaRadios = document.querySelectorAll('input[name="showSocialIcons"]');
+            const socialMediaFields = document.getElementById('socialMediaFields');
+            
+            socialMediaRadios.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    if (this.value === 'yes') {
+                        socialMediaFields.classList.add('show');
+                    } else {
+                        socialMediaFields.classList.remove('show');
                     }
                 });
             });
@@ -5789,7 +5872,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Customer Image</label>
-                                <input type="file" name="testimonial_${testimonialCount}_image" accept="image/*">
+                                <input type="file" name="testimonial_${testimonialCount}_image" accept="image/jpeg,image/jpg,image/png,image/gif,image/bmp,image/webp,image/avif,image/svg+xml,image/tiff,image/x-icon">
                             </div>
                         </div>
                         <div class="form-group">
@@ -5813,7 +5896,7 @@
                         <button type="button" class="btn btn-remove" onclick="this.parentElement.remove();">Remove</button>
                         <div class="form-group">
                             <label>Gallery Image</label>
-                            <input type="file" name="gallery_${galleryCount}_image" accept="image/*">
+                            <input type="file" name="gallery_${galleryCount}_image" accept="image/jpeg,image/jpg,image/png,image/gif,image/bmp,image/webp,image/avif,image/svg+xml,image/tiff,image/x-icon">
                         </div>
                         <div class="form-group">
                             <label>Caption / Notes</label>
@@ -5977,7 +6060,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Customer Image</label>
-                                <input type="file" name="app_testimonial_${appTestimonialCount}_image" accept="image/*">
+                                <input type="file" name="app_testimonial_${appTestimonialCount}_image" accept="image/jpeg,image/jpg,image/png,image/gif,image/bmp,image/webp,image/avif,image/svg+xml,image/tiff,image/x-icon">
                             </div>
                         </div>
                         <div class="form-group">
@@ -6002,7 +6085,7 @@
                         <button type="button" class="btn btn-remove" onclick="this.parentElement.remove();">Remove</button>
                         <div class="form-group">
                             <label>Gallery Image</label>
-                            <input type="file" name="app_gallery_${appGalleryCount}_image" accept="image/*">
+                            <input type="file" name="app_gallery_${appGalleryCount}_image" accept="image/jpeg,image/jpg,image/png,image/gif,image/bmp,image/webp,image/avif,image/svg+xml,image/tiff,image/x-icon">
                         </div>
                         <div class="form-group">
                             <label>Caption / Notes</label>
@@ -6038,7 +6121,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Product Image</label>
-                                <input type="file" name="product_${productCount}_image" accept="image/*">
+                                <input type="file" name="product_${productCount}_image" accept="image/jpeg,image/jpg,image/png,image/gif,image/bmp,image/webp,image/avif,image/svg+xml,image/tiff,image/x-icon">
                             </div>
                         </div>
                         <div class="form-group">
@@ -6161,7 +6244,7 @@
             // Form Validation and Submission
             const requirementForm = document.getElementById('requirementForm');
 
-            requirementForm.addEventListener('submit', function(e) {
+            requirementForm.addEventListener("submit", function(e) {
                 e.preventDefault();
                 console.log('Submit handler entered');
                 const loader = document.getElementById('loaderOverlay');
@@ -6186,7 +6269,27 @@
                         const parentSection = input.closest('.form-section');
                         const isSectionHidden = parentSection && !parentSection.classList.contains('active');
                         
+                        // For "both" project type, only skip if the section is not in the navigation
+                        let shouldSkip = false;
                         if (isConditionalHidden || isSectionHidden) {
+                            shouldSkip = true;
+                        }
+                        
+                        // Special handling for "both" project type - don't skip fields if they're in the active navigation
+                        const projectType = document.querySelector('input[name="project_type"]:checked')?.value;
+                        if (projectType === 'both' && isSectionHidden) {
+                            // Check if this section should be included in "both" navigation
+                            const sectionId = parentSection?.id;
+                            const bothSections = ['project-basics', 'technical', 'content', 'products', 'marketing', 
+                                                  'app-basic-info', 'app-screens', 'app-content', 'app-platform', 'app-features', 
+                                                  'app-design', 'app-user-roles', 'app-notifications', 'app-payment', 
+                                                  'app-backend', 'app-deployment', 'app-maintenance', 'app-final'];
+                            if (bothSections.includes(sectionId)) {
+                                shouldSkip = false;
+                            }
+                        }
+                        
+                        if (shouldSkip) {
                             console.log(`Skipping hidden field: ${input.name} (section hidden: ${isSectionHidden}, conditional hidden: ${isConditionalHidden})`);
                             return;
                         }
@@ -6349,6 +6452,7 @@
                                 }
                             }
 
+                            
                             const additionalSelectedScreens = document.querySelectorAll('#additionalAppScreens input[type="checkbox"]:checked');
                             additionalSelectedScreens.forEach((checkbox) => {
                                 const screenName = (checkbox.value || '').trim();
@@ -6361,19 +6465,9 @@
                             formData.set('client_id', clientId);
 
                             const submitUrls = [
-                                new URL('submit_form.php', window.location.href).toString(),
-                                new URL('./submit_form.php', window.location.href).toString(),
-                                'http://127.0.0.1:8000/Recharge_form/submit_form.php',
-                                'http://127.0.0.1:8000/Recharge%20form/submit_form.php',
-                                'http://127.0.0.1:8000/submit_form.php',
-                                'http://localhost:8000/Recharge_form/submit_form.php',
-                                'http://localhost:8000/Recharge%20form/submit_form.php',
-                                'http://localhost:8000/submit_form.php'
+                                './submit_form.php',
+                                'submit_form.php'
                             ];
-
-                            console.log('Form submit triggered');
-                            console.log('Submitting data:', Object.fromEntries(formData.entries()));
-                            console.log('Submit targets:', submitUrls);
 
                             loader.classList.add('show');
                             loader.style.display = 'flex';
@@ -6647,21 +6741,30 @@
                         { id: 'content', text: '3. Content & Branding' },
                         { id: 'products', text: '4. Products & Features' },
                         { id: 'marketing', text: '5. Marketing & SEO' },
-                        { id: 'final', text: '6. Final Details' },
-                        { id: 'app-basic-info', text: '7. App Basic Info' },
-                        { id: 'app-screens', text: '8. App Screens' },
-                        { id: 'app-content', text: '9. App Content' },
-                        { id: 'app-platform', text: '10. Platform' },
-                        { id: 'app-features', text: '11. Features' },
-                        { id: 'app-design', text: '12. Design' },
-                        { id: 'app-user-roles', text: '13. User Roles' },
-                        { id: 'app-notifications', text: '14. Notifications' },
-                        { id: 'app-payment', text: '15. Payment' },
-                        { id: 'app-backend', text: '16. Backend' },
-                        { id: 'app-deployment', text: '17. Deployment' },
-                        { id: 'app-maintenance', text: '18. Maintenance' },
-                        { id: 'app-final', text: '19. Final Details' }
+                        { id: 'app-basic-info', text: '6. App Basic Info' },
+                        { id: 'app-screens', text: '7. App Screens' },
+                        { id: 'app-content', text: '8. App Content' },
+                        { id: 'app-platform', text: '9. Platform' },
+                        { id: 'app-features', text: '10. Features' },
+                        { id: 'app-design', text: '11. Design' },
+                        { id: 'app-user-roles', text: '12. User Roles' },
+                        { id: 'app-notifications', text: '13. Notifications' },
+                        { id: 'app-payment', text: '14. Payment' },
+                        { id: 'app-backend', text: '15. Backend' },
+                        { id: 'app-deployment', text: '16. Deployment' },
+                        { id: 'app-maintenance', text: '17. Maintenance' },
+                        { id: 'app-final', text: '18. Final Details' }
                     ];
+                }
+                
+                // Update marketing next button based on project type
+                const marketingNextBtn = document.getElementById('marketingNextBtn');
+                if (marketingNextBtn) {
+                    if (projectType === 'both') {
+                        marketingNextBtn.setAttribute('data-next', 'app-basic-info');
+                    } else {
+                        marketingNextBtn.setAttribute('data-next', 'final');
+                    }
                 }
                 
                 // Create navigation items

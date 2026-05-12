@@ -69,11 +69,45 @@ function stream_relative_path(string $relativePath, string $fileName, string $mi
         exit('Stored file not found');
     }
 
+    // Enhanced MIME type detection for better image support
+    if (empty($mimeType) || $mimeType === 'application/octet-stream') {
+        $finfo = finfo_open(FILEINFO_MIME_TYPE);
+        $detectedMime = finfo_file($finfo, $absolutePath);
+        finfo_close($finfo);
+        if ($detectedMime !== false) {
+            $mimeType = $detectedMime;
+        }
+    }
+
+    // Set proper headers for different image types
+    $imageTypes = [
+        'image/jpeg' => 'jpg',
+        'image/jpg' => 'jpg', 
+        'image/png' => 'png',
+        'image/gif' => 'gif',
+        'image/bmp' => 'bmp',
+        'image/webp' => 'webp',
+        'image/avif' => 'avif',
+        'image/svg+xml' => 'svg',
+        'image/tiff' => 'tiff',
+        'image/x-icon' => 'ico'
+    ];
+
+    // For images, allow inline display unless download is explicitly requested
+    $isImage = isset($imageTypes[$mimeType]);
+    $disposition = ($download || !$isImage) ? 'attachment' : 'inline';
+    
     header('Content-Type: ' . ($mimeType ?: 'application/octet-stream'));
-    $disposition = $download ? 'attachment' : 'inline';
     header('Content-Disposition: ' . $disposition . '; filename="' . rawurlencode($fileName ?: basename($absolutePath)) . '"');
     header('Content-Length: ' . filesize($absolutePath));
     header('Cache-Control: no-store, no-cache, must-revalidate');
+    
+    // Add security headers for images
+    if ($isImage) {
+        header('X-Content-Type-Options: nosniff');
+        header('Accept-Ranges: bytes');
+    }
+    
     readfile($absolutePath);
     exit;
 }

@@ -70,22 +70,22 @@ $conn->close();
 // Helper function to display field value
 function displayValue($value) {
     if (empty($value) || $value === 'Not Provided') {
-        return '<span style="color: #999; font-size: 14px;">Not Provided</span>';
+        return '<span style="color: #999; font-size: 18px;">Not Provided</span>';
     }
-    return '<span style="font-size: 14px;">' . htmlspecialchars($value) . '</span>';
+    return '<span style="font-size: 18px;">' . htmlspecialchars($value) . '</span>';
 }
 
 // Helper function to display formatted array values (improved version)
 function displayArray($values) {
     if ($values === null || $values === '' || $values === []) {
-        return '<span style="color: #999; font-size: 14px;">Not Provided</span>';
+        return '<span style="color: #999; font-size: 18px;">Not Provided</span>';
     }
 
     if (is_string($values)) {
         $trimmed = trim($values);
 
         if ($trimmed === '') {
-            return '<span style="color: #999; font-size: 14px;">Not Provided</span>';
+            return '<span style="color: #999; font-size: 18px;">Not Provided</span>';
         }
 
         $decoded = json_decode($trimmed, true);
@@ -108,10 +108,10 @@ function displayArray($values) {
     });
 
     if (empty($flatValues)) {
-        return '<span style="color: #999; font-size: 14px;">Not Provided</span>';
+        return '<span style="color: #999; font-size: 18px;">Not Provided</span>';
     }
 
-    return '<span style="font-size: 14px;">' . htmlspecialchars(implode(', ', $flatValues)) . '</span>';
+    return '<span style="font-size: 18px;">' . htmlspecialchars(implode(', ', $flatValues)) . '</span>';
 }
 
 function normalizeArrayValues($values) {
@@ -234,14 +234,14 @@ function formatMappedValues($values, array $labels) {
 
 function displayOpenDays($values) {
     if ($values === null || $values === '' || $values === []) {
-        return '<span style="color: #999; font-size: 14px;">Not Provided</span>';
+        return '<span style="color: #999; font-size: 18px;">Not Provided</span>';
     }
 
     if (is_string($values)) {
         $trimmed = trim($values);
 
         if ($trimmed === '') {
-            return '<span style="color: #999; font-size: 14px;">Not Provided</span>';
+            return '<span style="color: #999; font-size: 18px;">Not Provided</span>';
         }
 
         $decoded = json_decode($trimmed, true);
@@ -278,10 +278,10 @@ function displayOpenDays($values) {
     });
 
     if (empty($displayDays)) {
-        return '<span style="color: #999; font-size: 14px;">Not Provided</span>';
+        return '<span style="color: #999; font-size: 18px;">Not Provided</span>';
     }
 
-    return '<span style="font-size: 14px;">' . htmlspecialchars(implode(', ', $displayDays)) . '</span>';
+    return '<span style="font-size: 18px;">' . htmlspecialchars(implode(', ', $displayDays)) . '</span>';
 }
 
 function fieldAssetExists(array $formData, string $fieldName): bool {
@@ -330,7 +330,7 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: #f5f5f5;
             color: #333;
-            font-size: 14px;
+            font-size: 16px;
             line-height: 1.65;
         }
 
@@ -445,7 +445,7 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
         }
 
         .modal-icon {
-            font-size: 14px;
+            font-size: 18px;
         }
 
         .modal-message {
@@ -537,12 +537,12 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
             font-weight: 600;
             color: #555;
             margin-bottom: 5px;
-            font-size: 16px;
+            font-size: 18px;
         }
 
         .detail-value {
             color: #333;
-            font-size: 16px;
+            font-size: 18px;
         }
 
         .status-form {
@@ -590,13 +590,13 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
             font-weight: 600;
             color: #555;
             margin-bottom: 8px;
-            font-size: 16px;
+            font-size: 18px;
         }
 
         .field-value {
             color: #333;
             line-height: 1.65;
-            font-size: 16px;
+            font-size: 18px;
         }
 
         .field-grid {
@@ -657,7 +657,7 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
         .page-name {
             flex: 1;
             font-weight: 500;
-            font-size: 16px;
+            font-size: 18px;
         }
 
         .page-type {
@@ -678,7 +678,7 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
         }
 
         .subsection h4 {
-            font-size: 20px;
+            font-size: 22px;
         }
 
         .content-card {
@@ -692,7 +692,7 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
         .content-card__title {
             margin: 0 0 14px 0;
             color: #2c3e50;
-            font-size: 20px;
+            font-size: 22px;
             font-weight: 700;
         }
 
@@ -717,21 +717,21 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
             margin-bottom: 8px;
             color: #2c3e50;
             font-weight: 700;
-            font-size: 16px;
+            font-size: 18px;
         }
 
         .content-card__value {
             color: #555;
             margin-top: 4px;
             line-height: 1.8;
-            font-size: 16px;
+            font-size: 18px;
             word-break: break-word;
         }
 
         .content-chip {
             border-radius: 18px;
             padding: 7px 14px;
-            font-size: 15px;
+            font-size: 16px;
         }
 
         .content-badge-grid {
@@ -804,6 +804,25 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
                 max-width: 100%;
                 height: auto;
                 break-inside: avoid;
+            }
+        }
+
+        /* Hide all images in admin view but keep download buttons (only for screen, not PDF) */
+        @media not print {
+            .section-content img,
+            .client-info img,
+            .content-card img,
+            .subsection img {
+                display: none !important;
+            }
+
+            /* Hide image container divs that are taking up empty space (only for screen, not PDF) */
+            div[style*="width: 80px"][style*="height: 80px"],
+            div[style*="width: 100px"][style*="height: 100px"],
+            div[style*="width: 150px"][style*="height: 150px"],
+            div[style*="width: 100%"][style*="height: 200px"],
+            div[style*="background: #f0f0f0"][style*="overflow: hidden"] {
+                display: none !important;
             }
         }
 
@@ -888,18 +907,20 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
                                 <?php 
                                 if ($client['status'] === 'New') echo 'background: #e3f2fd; color: #1976d2;';
                                 elseif ($client['status'] === 'In Progress') echo 'background: #fff3e0; color: #f57c00;';
+                                elseif ($client['status'] === 'Hold') echo 'background: #fce4ec; color: #c2185b;';
                                 elseif ($client['status'] === 'Completed') echo 'background: #e8f5e8; color: #2e7d32;';
                                 ?>">
                                 <?php echo htmlspecialchars($client['status']); ?>
                             </span>
                         </span>
-                        <form method="POST" class="status-form" style="display: none;">
+                        <form method="POST" class="status-form" style="margin-top: 8px;">
                             <select name="status" class="status-select">
                                 <option value="New" <?php echo $client['status'] === 'New' ? 'selected' : ''; ?>>New</option>
                                 <option value="In Progress" <?php echo $client['status'] === 'In Progress' ? 'selected' : ''; ?>>In Progress</option>
+                                <option value="Hold" <?php echo $client['status'] === 'Hold' ? 'selected' : ''; ?>>Hold</option>
                                 <option value="Completed" <?php echo $client['status'] === 'Completed' ? 'selected' : ''; ?>>Completed</option>
                             </select>
-                            <button type="submit" name="update_status" class="btn btn-primary" style="padding: 10px 18px; font-size: 1rem;">Update</button>
+                            <button type="submit" name="update_status" class="btn btn-primary" style="padding: 8px 15px; font-size: 0.9rem;">Update</button>
                         </form>
                     </div>
                 </div>
@@ -997,7 +1018,7 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
                         foreach ($goals as $goal) {
                             $displayGoals[] = $goalLabels[$goal] ?? ucwords(str_replace('-', ' ', $goal));
                         }
-                        echo '<span style="font-size: 14px;">' . htmlspecialchars(implode(', ', $displayGoals)) . '</span>';
+                        echo '<span style="font-size: 18px;">' . htmlspecialchars(implode(', ', $displayGoals)) . '</span>';
                         ?><br>
                         
                         <strong>Target Audience:</strong> <?php echo displayValue($form_data['targetAudience'] ?? ''); ?><br>
@@ -1025,7 +1046,7 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
                         foreach ($actions as $action) {
                             $displayActions[] = $actionLabels[$action] ?? ucwords(str_replace('-', ' ', $action));
                         }
-                        echo '<span style="font-size: 14px;">' . htmlspecialchars(implode(', ', $displayActions)) . '</span>';
+                        echo '<span style="font-size: 18px;">' . htmlspecialchars(implode(', ', $displayActions)) . '</span>';
                         ?><br>
                         
                         <strong>Priority Focus:</strong> 
@@ -1048,7 +1069,7 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
                         foreach ($focus as $f) {
                             $displayFocus[] = $focusLabels[$f] ?? ucwords(str_replace('-', ' ', $f));
                         }
-                        echo '<span style="font-size: 14px;">' . htmlspecialchars(implode(', ', $displayFocus)) . '</span>';
+                        echo '<span style="font-size: 18px;">' . htmlspecialchars(implode(', ', $displayFocus)) . '</span>';
                         ?>
                     </div>
                 </div>
@@ -1305,15 +1326,35 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
                         <div class="field-label">Uploaded Logo File</div>
                         <div class="field-value">
                             <?php 
+                            $logoFileName = $form_data['logoFile'] ?? 'logo';
+                            $logoFileType = $form_data['logoFile_type'] ?? 'image/jpeg';
+                            $isImageFile = strpos($logoFileType, 'image/') === 0;
                             ?>
-                                <img src="../download_asset.php?client_id=<?php echo urlencode($client['client_id']); ?>&type=logo" 
-                                    alt="Logo" 
-                                    style="max-width: 200px; height: auto; border-radius: 8px; border: 1px solid #ddd;">
-                                <br><br>
+                            <?php if ($isImageFile): ?>
+                                <div style="margin-bottom: 15px;">
+                                    <img src="../download_asset.php?client_id=<?php echo urlencode($client['client_id']); ?>&type=logo" 
+                                         alt="Logo" 
+                                         style="max-width: 300px; height: auto; border-radius: 8px; border: 1px solid #ddd; box-shadow: 0 2px 8px rgba(0,0,0,0.1);"
+                                         onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                    <div style="display: none; padding: 20px; background: #f8f9fa; border: 1px solid #ddd; border-radius: 8px;">
+                                        <p style="margin: 0; color: #6c757d;">🖼️ Image preview not available</p>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+                            <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                                <span style="font-size: 18px; color: #6c757d;">
+                                    📄 File: <?php echo htmlspecialchars($logoFileName); ?>
+                                </span>
+                                <span style="font-size: 12px; color: #999; background: #e9ecef; padding: 2px 6px; border-radius: 4px;">
+                                    <?php echo htmlspecialchars($logoFileType); ?>
+                                </span>
                                 <a href="../download_asset.php?client_id=<?php echo urlencode($client['client_id']); ?>&type=logo&download=1" 
-                                download>
-                                ⬇ Download Logo
+                                   style="display: inline-block; padding: 8px 16px; background: #007bff; color: white; text-decoration: none; border-radius: 6px; font-size: 18px; font-weight: 600; transition: background 0.3s;"
+                                   onmouseover="this.style.background='#0056b3';" 
+                                   onmouseout="this.style.background='#007bff';">
+                                    📥 Download
                                 </a>
+                            </div>
                         </div>
                     </div>
                 <?php endif; ?>
@@ -1364,7 +1405,7 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
                             <strong>Type:</strong> <?php echo displayValue($form_data['businessAssetsFile_type'] ?? ''); ?><br>
                             <?php if (fieldAssetExists($form_data, 'businessAssetsFile')): ?>
                                 <div style="margin-top: 10px; display: flex; align-items: center; gap: 10px;">
-                                    <span style="font-size: 14px; color: #6c757d;">
+                                    <span style="font-size: 18px; color: #6c757d;">
                                         File: <?php echo htmlspecialchars($form_data['businessAssetsFile']); ?>
                                     </span>
                                     <a href="../download_asset.php?client_id=<?php echo urlencode($client['client_id']); ?>&type=business-assets&download=1" 
@@ -1501,7 +1542,7 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
                         foreach ($contentSupport as $support) {
                             $displayContentSupport[] = $contentSupportLabels[$support] ?? ucwords(str_replace('-', ' ', $support));
                         }
-                        echo '<span style="font-size: 14px;">' . htmlspecialchars(implode(', ', $displayContentSupport)) . '</span>';
+                        echo '<span style="font-size: 18px;">' . htmlspecialchars(implode(', ', $displayContentSupport)) . '</span>';
                         ?><br>
                         
                         <strong>Media Support:</strong> 
@@ -1518,7 +1559,7 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
                         foreach ($mediaSupport as $support) {
                             $displayMediaSupport[] = $mediaSupportLabels[$support] ?? ucwords(str_replace('-', ' ', $support));
                         }
-                        echo '<span style="font-size: 14px;">' . htmlspecialchars(implode(', ', $displayMediaSupport)) . '</span>';
+                        echo '<span style="font-size: 18px;">' . htmlspecialchars(implode(', ', $displayMediaSupport)) . '</span>';
                         ?>
                     </div>
                 </div>
@@ -1626,7 +1667,7 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
 
                                         <!-- Contact Form Fields -->
                                         <div style="margin-bottom: 20px;">
-                                            <h5 style="margin: 0 0 14px 0; color: #2c3e50; font-size: 14px;">📝 Form Fields</h5>
+                                            <h5 style="margin: 0 0 14px 0; color: #2c3e50; font-size: 18px;">📝 Form Fields</h5>
                                             <div class="content-badge-grid">
                                                 <?php
                                                 $contactFields = [
@@ -1641,7 +1682,7 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
                                                 ?>
                                                     <div style="padding: 12px 14px; background: <?php echo $isEnabled ? '#d4edda' : '#f8d7da'; ?>; border-radius: 12px; text-align: center;">
                                                         <span style="font-size: 16px;"><?php echo $fieldInfo['icon']; ?></span>
-                                                        <div style="font-size: 14px; color: <?php echo $isEnabled ? '#155724' : '#721c24'; ?>; font-weight: 600; margin-top: 4px;">
+                                                        <div style="font-size: 18px; color: <?php echo $isEnabled ? '#155724' : '#721c24'; ?>; font-weight: 600; margin-top: 4px;">
                                                             <?php echo $fieldInfo['label']; ?>: <?php echo $isEnabled ? '✓ Yes' : '✗ No'; ?>
                                                         </div>
                                                     </div>
@@ -1664,12 +1705,12 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
                                         if (!empty($customFields)):
                                         ?>
                                             <div style="margin-bottom: 15px;">
-                                                <h5 style="margin: 0 0 14px 0; color: #2c3e50; font-size: 14px;">🔧 Custom Fields</h5>
+                                                <h5 style="margin: 0 0 14px 0; color: #2c3e50; font-size: 18px;">🔧 Custom Fields</h5>
                                                 <ul style="list-style: none; padding: 0; margin: 0;">
                                                     <?php foreach ($customFields as $customField): ?>
                                                         <li style="padding: 12px 14px; margin-bottom: 10px; background: white; border-radius: 10px; border: 1px solid #dee2e6;">
-                                                            <strong style="font-size: 14px;"><?php echo htmlspecialchars($customField['label']); ?></strong>
-                                                            <span style="color: #6c757d; font-size: 14px; margin-left: 8px;">(<?php echo htmlspecialchars($customField['type']); ?>)</span>
+                                                            <strong style="font-size: 18px;"><?php echo htmlspecialchars($customField['label']); ?></strong>
+                                                            <span style="color: #6c757d; font-size: 18px; margin-left: 8px;">(<?php echo htmlspecialchars($customField['type']); ?>)</span>
                                                         </li>
                                                     <?php endforeach; ?>
                                                 </ul>
@@ -1712,13 +1753,34 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
                                                     <?php
                                                     $imageData = $form_data['pageImages'][$pageName];
                                                     if ((is_array($imageData) && (!empty($imageData['path']) || !empty($imageData['data']))) || (is_string($imageData) && !empty($imageData))):
+                                                        $imageFileName = is_array($imageData) ? ($imageData['fileName'] ?? $pageName . '.jpg') : ($pageName . '.jpg');
+                                                        $imageFileType = is_array($imageData) ? ($imageData['fileType'] ?? 'image/jpeg') : 'image/jpeg';
+                                                        $isImageFile = strpos($imageFileType, 'image/') === 0;
                                                     ?>
-                                                        <div style="margin-top: 10px; display: flex; align-items: center; gap: 10px;">
-                                        <span style="font-size: 14px; color: #6c757d;">
-                                                                File: <?php echo htmlspecialchars(is_array($imageData) ? ($imageData['fileName'] ?? 'Unknown') : ($pageName . '.jpg')); ?>
+                                                        <?php if ($isImageFile): ?>
+                                                            <div style="margin-bottom: 15px;">
+                                                                <img src="../download_asset.php?client_id=<?php echo urlencode($client['client_id']); ?>&type=page-image&page=<?php echo urlencode($pageName); ?>" 
+                                                                     alt="<?php echo htmlspecialchars($pageName); ?> Image" 
+                                                                     style="max-width: 250px; height: auto; border-radius: 6px; border: 1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1);"
+                                                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                                                <div style="display: none; padding: 15px; background: #f8f9fa; border: 1px solid #ddd; border-radius: 6px;">
+                                                                    <p style="margin: 0; color: #6c757d; font-size: 13px;">🖼️ Image preview not available</p>
+                                                                </div>
+                                                            </div>
+                                                        <?php endif; ?>
+                                                        <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 10px;">
+                                                            <span style="font-size: 13px; color: #6c757d;">
+                                                                📄 <?php echo htmlspecialchars($imageFileName); ?>
                                                             </span>
-                                        <a href="../download_asset.php?client_id=<?php echo urlencode($client['client_id']); ?>&type=page-image&page=<?php echo urlencode($pageName); ?>&download=1" style="display: inline-block; padding: 10px 16px; background: #28a745; color: white; text-decoration: none; border-radius: 8px; font-size: 1rem; font-weight: 600;" target="_blank">
-                                                                📥 Download Image
+                                                            <span style="font-size: 11px; color: #999; background: #e9ecef; padding: 2px 5px; border-radius: 3px;">
+                                                                <?php echo htmlspecialchars($imageFileType); ?>
+                                                            </span>
+                                                            <a href="../download_asset.php?client_id=<?php echo urlencode($client['client_id']); ?>&type=page-image&page=<?php echo urlencode($pageName); ?>&download=1" 
+                                                               style="display: inline-block; padding: 6px 12px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-size: 13px; font-weight: 600; transition: background 0.3s;" 
+                                                               target="_blank"
+                                                               onmouseover="this.style.background='#1e7e34';" 
+                                                               onmouseout="this.style.background='#28a745';">
+                                                                📥 Download
                                                             </a>
                                                         </div>
                                                     <?php else: ?>
@@ -1746,7 +1808,7 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
 
                                 <!-- Contact Form Settings -->
                                 <div class="content-card__section content-card__section--settings" style="margin-bottom: 20px;">
-                                    <h5 style="margin: 0 0 14px 0; color: #2c3e50; font-size: 14px;">Form Settings</h5>
+                                    <h5 style="margin: 0 0 14px 0; color: #2c3e50; font-size: 18px;">Form Settings</h5>
 
                                     <?php if (!empty($form_data['contactFormTitle'])): ?>
                                         <div style="margin-bottom: 10px;">
@@ -1781,7 +1843,7 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
 
                                 <!-- Contact Form Fields -->
                                 <div style="margin-bottom: 20px;">
-                                    <h5 style="margin: 0 0 14px 0; color: #2c3e50; font-size: 14px;">📝 Form Fields</h5>
+                                    <h5 style="margin: 0 0 14px 0; color: #2c3e50; font-size: 18px;">📝 Form Fields</h5>
                                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px;">
                                         <?php
                                         $contactFields = [
@@ -1796,7 +1858,7 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
                                         ?>
                                             <div style="padding: 12px 14px; background: <?php echo $isEnabled ? '#d4edda' : '#f8d7da'; ?>; border-radius: 12px; text-align: center;">
                                                 <span style="font-size: 16px;"><?php echo $fieldInfo['icon']; ?></span>
-                                                <div style="font-size: 14px; color: <?php echo $isEnabled ? '#155724' : '#721c24'; ?>; font-weight: 600; margin-top: 4px;">
+                                                <div style="font-size: 18px; color: <?php echo $isEnabled ? '#155724' : '#721c24'; ?>; font-weight: 600; margin-top: 4px;">
                                                     <?php echo $fieldInfo['label']; ?>: <?php echo $isEnabled ? '✓ Yes' : '✗ No'; ?>
                                                 </div>
                                             </div>
@@ -1815,7 +1877,7 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
                         <div class="field-value">
                             <?php foreach ($form_data['pageAttachments'] as $pageName => $attachment): ?>
                                 <div style="margin-bottom: 12px; padding: 12px 14px; background: #f8f9fa; border-radius: 10px;">
-                                    <strong style="text-transform: capitalize; font-size: 14px;"><?php echo htmlspecialchars($pageName); ?>:</strong><br>
+                                    <strong style="text-transform: capitalize; font-size: 18px;"><?php echo htmlspecialchars($pageName); ?>:</strong><br>
                                     <?php if (is_array($attachment) && (!empty($attachment['path']) || !empty($attachment['data']))): ?>
                                         <a href="../download_asset.php?client_id=<?php echo urlencode($client['client_id']); ?>&type=page-attachment&page=<?php echo urlencode($pageName); ?>&download=1" 
                                            style="color: #28a745; text-decoration: none; display: inline-flex; align-items: center; gap: 5px; padding: 8px 12px; background: #e8f5e8; border-radius: 8px; border: 1px solid #28a745; margin-top: 6px;" target="_blank">
@@ -1942,7 +2004,8 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
                                                     <div style="width: 80px; height: 80px; border-radius: 50%; overflow: hidden; flex-shrink: 0; background: #f0f0f0;">
                                                         <img src="<?php echo htmlspecialchars(fieldAssetUrl($client['client_id'], $fieldName)); ?>"
                                                              style="width: 100%; height: 100%; object-fit: cover;"
-                                                             alt="<?php echo htmlspecialchars($item['name']); ?>">
+                                                             alt="<?php echo htmlspecialchars($item['name']); ?>"
+                                                             onerror="this.style.display='none'; this.parentElement.style.background='#e9ecef'; this.parentElement.innerHTML='🖼️';">
                                                     </div>
                                                 <?php endif; ?>
                                                 <div style="flex: 1;">
@@ -1994,9 +2057,10 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
                                                 <?php if (!empty($imageData) || !empty($imagePath)): ?>
                                                     <img src="<?php echo htmlspecialchars(fieldAssetUrl($client['client_id'], $fieldName)); ?>"
                                                          style="max-width: 100%; max-height: 100%; object-fit: contain;"
-                                                         alt="Gallery Image <?php echo $item['index']; ?>">
+                                                         alt="Gallery Image <?php echo $item['index']; ?>"
+                                                         onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\\'color: #999; font-size: 18px;\\'>🖼️ Preview Error</span>';">
                                                 <?php else: ?>
-                                                    <span style="color: #999; font-size: 14px;">No Preview</span>
+                                                    <span style="color: #999; font-size: 18px;">No Preview</span>
                                                 <?php endif; ?>
                                             </div>
                                             <div style="font-size: 13px; color: #6c757d; margin-bottom: 10px; text-align: center;">
@@ -2005,11 +2069,11 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
                                             <?php if (!empty($imageData) || !empty($imagePath)): ?>
                                                 <a href="<?php echo htmlspecialchars(fieldAssetUrl($client['client_id'], $fieldName, true)); ?>"
                                                    download="<?php echo htmlspecialchars($imageName ?: 'gallery-image-' . $item['index'] . '.jpg'); ?>"
-                                                   style="display: block; width: 100%; text-align: center; padding: 10px 16px; background: #28a745; color: white; text-decoration: none; border-radius: 8px; font-size: 14px; font-weight: 600;">
+                                                   style="display: block; width: 100%; text-align: center; padding: 10px 16px; background: #28a745; color: white; text-decoration: none; border-radius: 8px; font-size: 18px; font-weight: 600;">
                                                    📥 Download Image
                                                 </a>
                                             <?php else: ?>
-                                                <div style="text-align: center; padding: 10px 16px; background: #f8f9fa; color: #6c757d; border-radius: 8px; font-size: 14px;">
+                                                <div style="text-align: center; padding: 10px 16px; background: #f8f9fa; color: #6c757d; border-radius: 8px; font-size: 18px;">
                                                     File: <?php echo htmlspecialchars($imageName ?: 'No file uploaded'); ?>
                                                 </div>
                                             <?php endif; ?>
@@ -2119,12 +2183,62 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
                         <div class="field-group">
                             <div class="field-label">Individual Products</div>
                             <div class="field-value">
-                                <?php foreach ($productItems as $item): ?>
-                                    <div style="margin-bottom: 10px;">
-                                        <strong><?php echo htmlspecialchars($item['name']); ?></strong>
-                                        <?php if (!empty($item['price'])): ?> - <?php echo displayValue($item['price']); ?><?php endif; ?><br>
-                                        <?php if (!empty($item['description'])): ?><?php echo displayValue($item['description']); ?><br><?php endif; ?>
-                                        <?php if (!empty($item['image'])): ?><small>Image: <?php echo displayValue($item['image']); ?></small><?php endif; ?>
+                                <?php foreach ($productItems as $index => $item): ?>
+                                    <div style="margin-bottom: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 8px; background-color: #f9f9f9;">
+                                        <div style="display: flex; align-items: flex-start; gap: 15px;">
+                                            <div style="flex: 1;">
+                                                <div style="margin-bottom: 12px;">
+                                                    <strong style="color: #333; font-size: 18px;">Product Name:</strong>
+                                                    <div style="margin-top: 4px; padding: 8px; background-color: #f5f5f5; border-radius: 4px;">
+                                                        <?php echo htmlspecialchars($item['name']); ?>
+                                                    </div>
+                                                </div>
+                                                
+                                                <?php if (!empty($item['price'])): ?>
+                                                    <div style="margin-bottom: 12px;">
+                                                        <strong style="color: #333; font-size: 18px;">Price:</strong>
+                                                        <div style="margin-top: 4px; padding: 8px; background-color: #f5f5f5; border-radius: 4px; font-size: 16px; font-weight: bold; color: #2c5aa0;">
+                                                            ₹<?php echo number_format((float)str_replace(',', '', $item['price']), 2); ?>
+                                                        </div>
+                                                    </div>
+                                                <?php endif; ?>
+                                                
+                                                <?php if (!empty($item['description'])): ?>
+                                                    <div style="margin-bottom: 12px;">
+                                                        <strong style="color: #333; font-size: 18px;">Description:</strong>
+                                                        <div style="margin-top: 4px; padding: 8px; background-color: #f5f5f5; border-radius: 4px; color: #666; line-height: 1.4;">
+                                                            <?php echo nl2br(htmlspecialchars($item['description'])); ?>
+                                                        </div>
+                                                    </div>
+                                                <?php endif; ?>
+                                                
+                                                <?php if (!empty($item['image'])): ?>
+                                                    <div style="margin-bottom: 12px;">
+                                                        <strong style="color: #333; font-size: 18px;">Image:</strong>
+                                                        <div style="margin-top: 8px;">
+                                                            <?php 
+                                                            $imagePath = '';
+                                                            if (strpos($item['image'], 'uploads/') === 0) {
+                                                                $imagePath = '../' . $item['image'];
+                                                            } elseif (strpos($item['image'], 'http') === 0) {
+                                                                $imagePath = $item['image'];
+                                                            } else {
+                                                                $imagePath = '../uploads/clients/' . $client['client_id'] . '/' . $item['image'];
+                                                            }
+                                                            ?>
+                                                            
+                                                            <a href="<?php echo $imagePath; ?>" download="<?php echo htmlspecialchars(basename($item['image'])); ?>" 
+                                                               style="padding: 8px 16px; background-color: #007bff; color: white; text-decoration: none; border-radius: 4px; font-size: 18px; display: inline-block;">
+                                                                📥 Download Image
+                                                            </a>
+                                                        </div>
+                                                        <div style="margin-top: 4px; font-size: 12px; color: #888;">
+                                                            📁 <?php echo htmlspecialchars(basename($item['image'])); ?>
+                                                        </div>
+                                                    </div>
+                                                <?php endif; ?>
+                                            </div>
+                                        </div>
                                     </div>
                                 <?php endforeach; ?>
                             </div>
@@ -2345,7 +2459,7 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
                             foreach ($social_platforms as $platform) {
                                 $field_name = $platform . 'Url';
                                 if (!empty($form_data[$field_name])) {
-                                    echo '<div style="margin-bottom: 10px; font-size: 14px;"><strong>' . ucfirst($platform) . ':</strong> <a href="' . htmlspecialchars($form_data[$field_name]) . '" target="_blank" style="color: #3498db; text-decoration: none;">🔗 ' . htmlspecialchars($form_data[$field_name]) . '</a></div>';
+                                    echo '<div style="margin-bottom: 10px; font-size: 18px;"><strong>' . ucfirst($platform) . ':</strong> <a href="' . htmlspecialchars($form_data[$field_name]) . '" target="_blank" style="color: #3498db; text-decoration: none;">🔗 ' . htmlspecialchars($form_data[$field_name]) . '</a></div>';
                                     $has_social = true;
                                 }
                             }
@@ -2868,7 +2982,7 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
                         <div class="field-label">Icon File</div>
                         <div class="field-value">
                             <div style="margin-top: 10px; display: flex; align-items: center; gap: 10px;">
-                                <span style="font-size: 14px; color: #6c757d;">
+                                <span style="font-size: 18px; color: #6c757d;">
                                     File: <?php echo htmlspecialchars($form_data['app_iconFile'] ?? 'app-icon.png'); ?>
                                 </span>
                                 <a href="<?php echo htmlspecialchars(fieldAssetUrl($client['client_id'], 'app_iconFile', true)); ?>" 
@@ -2889,7 +3003,7 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
                         <div class="field-label">Uploaded Business Files</div>
                         <div class="field-value">
                             <div style="margin-top: 10px; display: flex; align-items: center; gap: 10px;">
-                                <span style="font-size: 14px; color: #6c757d;">
+                                <span style="font-size: 18px; color: #6c757d;">
                                     File: <?php echo htmlspecialchars($form_data['app_businessAssetsFile'] ?? 'business-assets.pdf'); ?>
                                 </span>
                                 <a href="<?php echo htmlspecialchars(fieldAssetUrl($client['client_id'], 'app_businessAssetsFile', true)); ?>" 
@@ -2916,7 +3030,7 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
                                          alt="Professional Icon Reference">
                                 </div>
                                 <div style="display: flex; align-items: center; gap: 10px;">
-                                    <span style="font-size: 14px; color: #6c757d;">
+                                    <span style="font-size: 18px; color: #6c757d;">
                                         File: <?php echo htmlspecialchars($form_data['app_professionalIconReference'] ?? 'icon-reference.jpg'); ?>
                                     </span>
                                     <a href="<?php echo htmlspecialchars(fieldAssetUrl($client['client_id'], 'app_professionalIconReference', true)); ?>" 
@@ -2954,7 +3068,7 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
                             foreach ($contentSupport as $support) {
                                 $displayContentSupport[] = $contentSupportLabels[$support] ?? ucwords(str_replace('-', ' ', $support));
                             }
-                            echo '<span style="font-size: 14px;">' . htmlspecialchars(implode(', ', $displayContentSupport)) . '</span>';
+                            echo '<span style="font-size: 18px;">' . htmlspecialchars(implode(', ', $displayContentSupport)) . '</span>';
                             ?>
                         </div>
                     </div>
@@ -2975,7 +3089,7 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
                             foreach ($mediaSupport as $support) {
                                 $displayMediaSupport[] = $mediaSupportLabels[$support] ?? ucwords(str_replace('-', ' ', $support));
                             }
-                            echo '<span style="font-size: 14px;">' . htmlspecialchars(implode(', ', $displayMediaSupport)) . '</span>';
+                            echo '<span style="font-size: 18px;">' . htmlspecialchars(implode(', ', $displayMediaSupport)) . '</span>';
                             ?>
                         </div>
                     </div>
@@ -2998,7 +3112,7 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
                             foreach ($pageExtras as $extra) {
                                 $displayPageExtras[] = $pageExtrasLabels[$extra] ?? ucwords(str_replace('-', ' ', $extra));
                             }
-                            echo '<span style="font-size: 14px;">' . htmlspecialchars(implode(', ', $displayPageExtras)) . '</span>';
+                            echo '<span style="font-size: 18px;">' . htmlspecialchars(implode(', ', $displayPageExtras)) . '</span>';
                             ?>
                         </div>
                     </div>
@@ -3074,7 +3188,7 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
                                             </div>
                                         <?php else: ?>
                                             <div style="margin: 10px 0; padding: 12px; background: #fff; border-radius: 8px; border: 1px solid #e0e0e0;">
-                                                <span style="font-size: 14px; color: #6c757d;">
+                                                <span style="font-size: 18px; color: #6c757d;">
                                                     File: <?php echo htmlspecialchars($content['media'] ?? 'media-file'); ?>
                                                 </span>
                                             </div>
@@ -3358,7 +3472,7 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
                             <?php endif; ?>
                             <a href="<?php echo htmlspecialchars(fieldAssetUrl($client['client_id'], 'app_gallery_' . $index . '_image', true)); ?>" 
                                download="<?php echo htmlspecialchars($image['image'] ?? 'gallery-image-' . $index . '.jpg'); ?>"
-                               style="display: block; width: 100%; text-align: center; padding: 10px 16px; background: #28a745; color: white; text-decoration: none; border-radius: 8px; font-size: 14px; font-weight: 600;">
+                               style="display: block; width: 100%; text-align: center; padding: 10px 16px; background: #28a745; color: white; text-decoration: none; border-radius: 8px; font-size: 18px; font-weight: 600;">
                                📥 Download Image
                             </a>
                         </div>
@@ -3572,6 +3686,22 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
             const element = document.getElementById('pdfContent');
             const btn = evt?.currentTarget || evt?.target || document.querySelector('.btn-pdf');
             const originalText = btn ? btn.innerHTML : '';
+            
+            // Temporarily show all images and containers for PDF generation
+            const hiddenImages = document.querySelectorAll('.section-content img, .client-info img, .content-card img, .subsection img');
+            const hiddenContainers = document.querySelectorAll('div[style*="width: 80px"][style*="height: 80px"], div[style*="width: 100px"][style*="height: 100px"], div[style*="width: 150px"][style*="height: 150px"], div[style*="width: 100%"][style*="height: 200px"], div[style*="background: #f0f0f0"][style*="overflow: hidden"]');
+            
+            // Store original display values and show elements
+            const originalDisplays = [];
+            hiddenImages.forEach(img => {
+                originalDisplays.push({element: img, display: img.style.display});
+                img.style.display = '';
+            });
+            hiddenContainers.forEach(container => {
+                originalDisplays.push({element: container, display: container.style.display});
+                container.style.display = '';
+            });
+            
             const opt = {
                 margin: [10, 10, 10, 10], // top, left, bottom, right
                 filename: '<?php echo htmlspecialchars($client['client_id']); ?>_client_details.pdf',
@@ -3598,12 +3728,22 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
             }
 
             html2pdf().set(opt).from(element).save().then(() => {
+                // Restore original display values
+                originalDisplays.forEach(item => {
+                    item.element.style.display = item.display;
+                });
+                
                 // Restore button state
                 if (btn) {
                     btn.innerHTML = originalText;
                     btn.disabled = false;
                 }
             }).catch((error) => {
+                // Restore original display values
+                originalDisplays.forEach(item => {
+                    item.element.style.display = item.display;
+                });
+                
                 console.error('PDF generation failed:', error);
                 alert('PDF generation failed. Please try again.');
                 if (btn) {
