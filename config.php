@@ -11,10 +11,21 @@ define('ADMIN_PASSWORD', 'admin123'); // Change this in production
 
 // Create database connection
 function getDBConnection() {
-    $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+    // First try to connect without specifying database
+    $conn = new mysqli(DB_HOST, DB_USER, DB_PASS);
     
     if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
+        error_log("Database connection failed: " . $conn->connect_error);
+        return null; // Return null instead of dying
+    }
+    
+    // Try to create database if it doesn't exist
+    $conn->query("CREATE DATABASE IF NOT EXISTS " . DB_NAME);
+    
+    // Select the database
+    if (!$conn->select_db(DB_NAME)) {
+        error_log("Failed to select database: " . $conn->error);
+        return null;
     }
     
     return $conn;

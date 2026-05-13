@@ -288,6 +288,35 @@ function fieldAssetExists(array $formData, string $fieldName): bool {
     return !empty($formData[$fieldName . '_path']) || !empty($formData[$fieldName . '_data']);
 }
 
+// Function to display API files specifically
+function displayApiFiles(array $formData): string {
+    $apiFiles = [];
+    
+    // Check for app_api_files in form data
+    if (isset($formData['app_api_files']) && !empty($formData['app_api_files'])) {
+        $apiFiles = $formData['app_api_files'];
+    }
+    
+    if (empty($apiFiles)) {
+        return '<span style="color: #999; font-size: 18px;">No API files uploaded</span>';
+    }
+    
+    $fileNames = [];
+    if (is_array($apiFiles)) {
+        foreach ($apiFiles as $file) {
+            if (isset($file['fileName'])) {
+                $fileNames[] = $file['fileName'];
+            }
+        }
+    }
+    
+    if (empty($fileNames)) {
+        return '<span style="color: #999; font-size: 18px;">No API files uploaded</span>';
+    }
+    
+    return '<span style="font-size: 18px;">' . htmlspecialchars(implode(', ', $fileNames)) . '</span>';
+}
+
 function fieldAssetUrl(string $clientId, string $fieldName, bool $download = false): string {
     $query = [
         'client_id' => $clientId,
@@ -1969,7 +1998,7 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
                             $galleryItems[$index]['index'] = $index;
                             $galleryItems[$index]['field_name'] = $matches[0]; // Store the full field name
                         }
-                        if (preg_match('/^app_api_files_(\d+)$/', $key, $matches)) {
+                        if (preg_match('/^app_api_files\[(\d+)\]$/', $key, $matches)) {
                             $index = $matches[1];
                             $apiFiles[$index]['file'] = $value;
                             $apiFiles[$index]['index'] = $index;
@@ -2096,7 +2125,7 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
                                     <?php foreach ($apiFiles as $item): ?>
                                         <div class="field-group" style="border: 1px solid #e0e0e0; border-radius: 12px; padding: 15px; background: #fafafa;">
                                             <?php
-                                            $fieldName = $item['field_name'] ?? 'app_api_files_' . $item['index'];
+                                            $fieldName = $item['field_name'] ?? 'app_api_files[' . $item['index'] . ']';
                                             $filePath = $form_data[$fieldName . '_path'] ?? '';
                                             $fileName = $item['file'] ?? '';
                                             ?>

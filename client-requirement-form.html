@@ -3813,7 +3813,8 @@
                         <!-- Other Backend Technology Field - Shows when Backend Technology = Other -->
                         <div id="otherBackendTechSection" style="display: none;" class="form-group">
                             <label>Specify Backend Technology</label>
-                            <input type="text" name="app_backend_tech_other" placeholder="Please specify your backend technology...">
+                            <input type="text" name="app_backend_tech_other" placeholder="Please specify your backend technology..." class="form-control">
+                            <button type="button" class="btn btn-add" onclick="addBackendTechnology()" style="margin-top: 10px;">Add Technology</button>
                         </div>
                         
                         <!-- API Details Section - Shows when Backend Required = Yes -->
@@ -4234,6 +4235,58 @@
             return state;
         }
 
+        // Function to capture app screen content state
+        function captureAppScreenContentState() {
+            const appDynamicContentFields = document.getElementById('appDynamicContentFields');
+            if (!appDynamicContentFields) return {};
+
+            const appState = {};
+            const appPanels = appDynamicContentFields.querySelectorAll('.page-content-panel');
+
+            appPanels.forEach(panel => {
+                const screenId = panel.dataset.screen;
+                if (!screenId) return;
+
+                appState[screenId] = {};
+
+                const inputs = panel.querySelectorAll('.page-input');
+                inputs.forEach(input => {
+                    const key = input.name || input.getAttribute('data-field') || input.dataset.field || input.id;
+                    if (!key) return;
+
+                    if (input.type === 'checkbox') {
+                        if (input.checked) {
+                            if (!appState[screenId][key]) {
+                                appState[screenId][key] = [];
+                            }
+                            appState[screenId][key].push(input.value);
+                        }
+                    } else if (input.type === 'radio') {
+                        if (input.checked) {
+                            appState[screenId][key] = input.value;
+                        }
+                    } else if (input.type === 'file') {
+                        appState[screenId][key] = input.files && input.files[0]
+                            ? { fileName: input.files[0].name }
+                            : null;
+                    } else if (input.tagName === 'TEXTAREA') {
+                        appState[screenId][key] = input.value;
+                    } else if (input.isContentEditable || input.hasAttribute('data-rich-editor')) {
+                        appState[screenId][key] = input.innerHTML;
+                    } else {
+                        appState[screenId][key] = input.value;
+                    }
+                });
+
+                const contentField = panel.querySelector(`textarea[name="content_${screenId}"]`);
+                if (contentField) {
+                    appState[screenId].content = contentField.value;
+                }
+            });
+
+            return appState;
+        }
+
         function restorePageContentState(state) {
             if (!state || typeof state !== 'object') return;
 
@@ -4253,9 +4306,16 @@
                         if (radio) radio.checked = true;
                     } else if (field.type === 'file') {
                         const fileName = field.parentElement.querySelector('.file-name');
-                        if (fileName && fieldValue && fieldValue.fileName) {
-                            fileName.textContent = `Selected: ${fieldValue.fileName}`;
+                        if (fileName && fieldValue && (fieldValue.fileName || fieldValue.uploaded)) {
+                            const fileInfo = fieldValue.uploaded 
+                                ? `Selected: ${fieldValue.fileName} (${Math.round(fieldValue.fileSize / 1024)}KB)`
+                                : `Selected: ${fieldValue.fileName}`;
+                            fileName.textContent = fileInfo;
+                            fileName.style.color = '#28a745'; // Green to indicate it was uploaded
                         }
+                        // Important: Don't try to restore actual file objects from localStorage
+                        // Files cannot be restored from localStorage due to security restrictions
+                        // Only restore the filename display with metadata
                     } else if (field.isContentEditable || field.hasAttribute('data-rich-editor')) {
                         field.innerHTML = fieldValue || '';
                     } else if (field.tagName === 'TEXTAREA') {
@@ -4267,6 +4327,51 @@
 
                 if (typeof fields.content === 'string') {
                     const contentField = panel.querySelector(`textarea[name="content_${pageValue}"]`);
+                    if (contentField) {
+                        contentField.value = fields.content;
+                    }
+                }
+            });
+        }
+
+        // Function to restore app screen content state
+        function restoreAppScreenContentState(appState) {
+            if (!appState || typeof appState !== 'object') return;
+
+            Object.entries(appState).forEach(([screenId, fields]) => {
+                const panel = document.querySelector(`#appDynamicContentFields .page-content-panel[data-screen="${screenId}"]`);
+                if (!panel || !fields || typeof fields !== 'object') return;
+
+                Object.entries(fields).forEach(([fieldName, fieldValue]) => {
+                    const field = panel.querySelector(`[name="${fieldName}"], [data-field="${fieldName}"], [data-rich-editor][data-screen="${screenId}"], [contenteditable="true"][data-screen="${screenId}"]`);
+                    if (!field) return;
+
+                    if (field.type === 'checkbox') {
+                        const values = Array.isArray(fieldValue) ? fieldValue : [fieldValue];
+                        field.checked = values.includes(field.value);
+                    } else if (field.type === 'radio') {
+                        const radio = panel.querySelector(`[name="${fieldName}"][value="${fieldValue}"]`);
+                        if (radio) radio.checked = true;
+                    } else if (field.type === 'file') {
+                        const fileName = field.parentElement.querySelector('.file-name');
+                        if (fileName && fieldValue && (fieldValue.fileName || fieldValue.uploaded)) {
+                            const fileInfo = fieldValue.uploaded 
+                                ? `Selected: ${fieldValue.fileName} (${Math.round(fieldValue.fileSize / 1024)}KB)`
+                                : `Selected: ${fieldValue.fileName}`;
+                            fileName.textContent = fileInfo;
+                            fileName.style.color = '#28a745'; // Green to indicate it was uploaded
+                        }
+                    } else if (field.isContentEditable || field.hasAttribute('data-rich-editor')) {
+                        field.innerHTML = fieldValue || '';
+                    } else if (field.tagName === 'TEXTAREA') {
+                        field.value = fieldValue || '';
+                    } else if (fieldValue !== null && fieldValue !== undefined) {
+                        field.value = fieldValue;
+                    }
+                });
+
+                if (typeof fields.content === 'string') {
+                    const contentField = panel.querySelector(`textarea[name="content_${screenId}"]`);
                     if (contentField) {
                         contentField.value = fields.content;
                     }
@@ -4304,6 +4409,25 @@
             data.pageTypes = getSelectedPageTypes();
             data.pageContents = getRichTextContent();
             data.dynamicPageContent = capturePageContentState();
+            data.appDynamicContent = captureAppScreenContentState();
+
+            // Handle file uploads separately since FormData.fromEntries doesn't handle files properly
+            const fileInputs = form.querySelectorAll('input[type="file"]');
+            fileInputs.forEach(input => {
+                if (input.files && input.files.length > 0) {
+                    // Store file metadata for restoration
+                    data[input.name] = {
+                        fileName: input.files[0].name,
+                        fileSize: input.files[0].size,
+                        fileType: input.files[0].type,
+                        lastModified: input.files[0].lastModified,
+                        uploaded: true
+                    };
+                } else {
+                    // Clear file data if no file is selected
+                    data[input.name] = null;
+                }
+            });
 
             // Keep a direct content snapshot for the generated page content area.
             data.pageContentsByField = {};
@@ -4388,7 +4512,7 @@
                 });
 
                 Object.keys(savedData).forEach(key => {
-                if (key === 'client_id' || key === 'timestamp' || key === 'pages' || key === 'pageTypes' || key === 'pageContents' || key === 'pageContentsByField' || key === 'dynamicPageContent') {
+                if (key === 'client_id' || key === 'timestamp' || key === 'pages' || key === 'pageTypes' || key === 'pageContents' || key === 'pageContentsByField' || key === 'dynamicPageContent' || key === 'appDynamicContent') {
                     return;
                 }
 
@@ -4405,6 +4529,19 @@
                         values.forEach(val => {
                             const checkbox = form.querySelector(`[name="${key}"][value="${val}"]`);
                             if (checkbox) checkbox.checked = true;
+                        });
+                    } else if (firstField.type === 'file') {
+                        // For file inputs, restore file metadata display
+                        // Actual file objects cannot be restored from localStorage due to security
+                        fields.forEach(field => {
+                            const fileName = field.parentElement.querySelector('.file-name');
+                            if (fileName && value && (value.fileName || value.uploaded)) {
+                                const fileInfo = value.uploaded 
+                                    ? `Selected: ${value.fileName} (${Math.round(value.fileSize / 1024)}KB)`
+                                    : `Selected: ${value.fileName}`;
+                                fileName.textContent = fileInfo;
+                                fileName.style.color = '#28a745'; // Green to indicate it was uploaded
+                            }
                         });
                     } else if (firstField.type !== 'file') {
                         fields.forEach(field => {
@@ -4445,6 +4582,11 @@
                         }
                     });
                 }
+
+                // Restore app screen content collection after app panels exist
+                setTimeout(() => {
+                    restoreAppScreenContentState(savedData.appDynamicContent);
+                }, 500); // Small delay to ensure app panels are created
 
                 requestAnimationFrame(() => {
                     restorePageContentState(savedData.dynamicPageContent);
@@ -5110,6 +5252,19 @@
                 input.addEventListener('input', debouncedSave);
                 input.addEventListener('change', debouncedSave);
             });
+
+            // Add file input listeners for API section
+            const apiFilesInput = document.querySelector('input[name="app_api_files[]"]');
+            if (apiFilesInput) {
+                apiFilesInput.addEventListener('change', function(e) {
+                    const files = e.target.files;
+                    if (files && files.length > 0) {
+                        const fileList = Array.from(files).map(file => file.name).join(', ');
+                        console.log('API files selected:', fileList);
+                        debouncedSave();
+                    }
+                });
+            }
         }
 
         // Function to update completion ticks for app screens
@@ -5143,6 +5298,24 @@
             const form = document.getElementById('requirementForm');
             const welcomePanel = document.getElementById('welcomePanel');
             const createApplicationBtn = document.getElementById('createApplicationBtn');
+
+            // Enhanced file input handling for better storage
+            const allFileInputs = form.querySelectorAll('input[type="file"]');
+            allFileInputs.forEach(input => {
+                // Add input event listener for immediate save
+                input.addEventListener('input', function() {
+                    if (this.files && this.files.length > 0) {
+                        console.log(`File selected: ${this.name} - ${this.files[0].name}`);
+                        debouncedSave();
+                    }
+                });
+                
+                // Add change event listener for file selection
+                input.addEventListener('change', function() {
+                    console.log(`File changed: ${this.name}`);
+                    debouncedSave();
+                });
+            });
 
             function showApplicationForm() {
                 if (welcomePanel) {
@@ -5323,7 +5496,7 @@
                 // Save current section
                 debouncedSave();
 
-                // Auto-scroll to next section if current is mostly filled
+                // Auto-scroll to next section if current is 100% filled
                 autoScrollToNextSection();
             }
 
@@ -5343,9 +5516,9 @@
                     }
                 });
 
-                // If 70% or more of current section is filled, scroll to next
+                // If 100% of current section is filled, scroll to next
                 const fillPercentage = sectionInputs.length > 0 ? (filledInputs.length / sectionInputs.length) : 0;
-                if (fillPercentage >= 0.7) {
+                if (fillPercentage >= 1.0) {
                     const nextBtn = currentSection.querySelector('.nav-btn[data-next]');
                     if (nextBtn) {
                         setTimeout(() => {
@@ -5372,7 +5545,7 @@
                 });
             });
 
-            // Add input event listeners for auto-scrolling
+            // Add input event listeners for auto-scrolling - 100% threshold
             const allInputs = document.querySelectorAll('input:not([type="hidden"]), textarea, select');
             allInputs.forEach(input => {
                 input.addEventListener('input', function() {
@@ -5880,10 +6053,10 @@
             const appSelectedHoursSection = document.getElementById('appSelectedHoursSection');
             appWorkingHoursRadios.forEach(radio => {
                 radio.addEventListener('change', function() {
-                    if (this.value === '24/7') {
-                        appSelectedHoursSection.style.display = 'none';
-                    } else {
-                        appSelectedHoursSection.style.display = 'block';
+                    if (this.value === 'always-open') {
+                        appSelectedHoursSection.classList.remove('show');
+                    } else if (this.value === 'selected-hours') {
+                        appSelectedHoursSection.classList.add('show');
                     }
                 });
             });
@@ -5891,7 +6064,11 @@
             // Initialize app working hours visibility
             const checkedAppWorkingHours = document.querySelector('input[name="app_workingHoursMode"]:checked');
             if (checkedAppWorkingHours) {
-                checkedAppWorkingHours.dispatchEvent(new Event('change', { bubbles: true }));
+                if (checkedAppWorkingHours.value === 'always-open') {
+                    appSelectedHoursSection.classList.remove('show');
+                } else if (checkedAppWorkingHours.value === 'selected-hours') {
+                    appSelectedHoursSection.classList.add('show');
+                }
             }
 
             // Mobile App Backend Required conditional field
@@ -6427,10 +6604,46 @@
             // Form Validation and Submission
             const requirementForm = document.getElementById('requirementForm');
 
+            // Prevent Enter key from submitting form in input fields
+            document.addEventListener('keydown', function(e) {
+                // Only handle Enter key (key code 13)
+                if (e.key === 'Enter' || e.keyCode === 13) {
+                    const target = e.target;
+                    
+                    // Allow Enter in textareas for line breaks
+                    if (target.tagName === 'TEXTAREA') {
+                        return; // Let default behavior happen
+                    }
+                    
+                    // Allow Enter in buttons that are meant to be clicked
+                    if (target.tagName === 'BUTTON' || target.type === 'button') {
+                        return; // Let default behavior happen
+                    }
+                    
+                    // Allow Enter on submit button only if validation passes
+                    if (target.type === 'submit') {
+                        return; // Let the submit handler deal with validation
+                    }
+                    
+                    // Prevent Enter key form submission for all other input types
+                    if (target.tagName === 'INPUT' || target.tagName === 'SELECT') {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        return false;
+                    }
+                }
+            });
+
             requirementForm.addEventListener("submit", function(e) {
                 e.preventDefault();
                 console.log('Submit handler entered');
                 const loader = document.getElementById('loaderOverlay');
+                
+                // Prevent multiple submissions
+                if (loader.classList.contains('show')) {
+                    console.log('Submission already in progress, ignoring');
+                    return false;
+                }
 
                 try {
                     let isValid = true;
@@ -6758,7 +6971,7 @@
                 hideValidationBanner();
             });
 
-            // Display selected file name
+            // Display selected file name and trigger auto-save
             requirementForm.addEventListener('change', function(e) {
                 if (e.target.classList.contains('file-input')) {
                     const fileNameSpan = e.target.parentElement.querySelector('.file-name');
@@ -6767,6 +6980,8 @@
                     } else {
                         fileNameSpan.textContent = '';
                     }
+                    // Trigger auto-save when file is selected/changed
+                    debouncedSave();
                 }
             });
 
@@ -7080,6 +7295,25 @@
             } else {
                 passwordField.type = 'password';
                 toggleBtn.textContent = '👁️';
+            }
+        }
+
+        // Add Backend Technology function
+        function addBackendTechnology() {
+            const techInput = document.querySelector('input[name="app_backend_tech_other"]');
+            const techValue = techInput.value.trim();
+            
+            if (techValue) {
+                // Show success feedback
+                const button = event.target;
+                const originalText = button.textContent;
+                button.textContent = '✓ Added';
+                button.style.backgroundColor = '#28a745';
+                
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.style.backgroundColor = '';
+                }, 2000);
             }
         }
     </script>
