@@ -226,6 +226,22 @@ function collectUploadedFiles() {
     return $files;
 }
 
+function isMultiFileUpload(array $fileInfo): bool {
+    if (empty($fileInfo)) {
+        return false;
+    }
+    $keys = array_keys($fileInfo);
+    if ($keys === ['name', 'type', 'size', 'tmp_name', 'error']) {
+        return false;
+    }
+    foreach ($fileInfo as $entry) {
+        if (!is_array($entry) || !isset($entry['name']) || !isset($entry['tmp_name'])) {
+            return false;
+        }
+    }
+    return true;
+}
+
 function buildStructuredPayload(array $data, array $uploadedFiles, string $clientId) {
     $payload = $data;
     $payload['pageContents'] = [];
@@ -255,32 +271,62 @@ function buildStructuredPayload(array $data, array $uploadedFiles, string $clien
     }
 
     foreach ($uploadedFiles as $fieldName => $fileInfo) {
-        $storedFile = storeUploadedFile($clientId, $fieldName, $fileInfo);
-        
-        // Skip if storedFile is empty (validation failed)
-        if (empty($storedFile)) {
-            continue;
+        $fileEntries = [];
+
+        if (isMultiFileUpload($fileInfo)) {
+            foreach ($fileInfo as $index => $singleFile) {
+                if (!is_array($singleFile) || empty($singleFile['name'])) {
+                    continue;
+                }
+                $fileEntries[] = [
+                    'fieldName' => $fieldName . '[' . $index . ']',
+                    'fileInfo' => $singleFile,
+                ];
+            }
+        } else {
+            $fileEntries[] = [
+                'fieldName' => $fieldName,
+                'fileInfo' => $fileInfo,
+            ];
         }
 
-        if (preg_match('/^pageImage_(.+)$/', $fieldName, $matches)) {
-            $payload['pageImages'][$matches[1]] = [
-                'fileName' => $storedFile['fileName'],
-                'fileType' => $storedFile['fileType'],
-                'fileSize' => $storedFile['fileSize'],
-                'path' => $storedFile['path'],
-            ];
-        } elseif (preg_match('/^content_(.+)_file$/', $fieldName, $matches)) {
-            $payload['pageAttachments'][$matches[1]] = [
-                'fileName' => $storedFile['fileName'],
-                'fileType' => $storedFile['fileType'],
-                'fileSize' => $storedFile['fileSize'],
-                'path' => $storedFile['path'],
-            ];
-        } else {
-            $payload[$fieldName] = $storedFile['fileName'];
-            $payload[$fieldName . '_type'] = $storedFile['fileType'];
-            $payload[$fieldName . '_size'] = $storedFile['fileSize'];
-            $payload[$fieldName . '_path'] = $storedFile['path'];
+        foreach ($fileEntries as $entry) {
+            $storedFile = storeUploadedFile($clientId, $entry['fieldName'], $entry['fileInfo']);
+
+            // Skip if storedFile is empty (validation failed)
+            if (empty($storedFile)) {
+                continue;
+            }
+
+            if (preg_match('/^pageImage_(.+)$/', $entry['fieldName'], $matches)) {
+                $payload['pageImages'][$matches[1]] = [
+                    'fileName' => $storedFile['fileName'],
+                    'fileType' => $storedFile['fileType'],
+                    'fileSize' => $storedFile['fileSize'],
+                    'path' => $storedFile['path'],
+                ];
+            } elseif (preg_match('/^content_(.+)_file$/', $entry['fieldName'], $matches)) {
+                $payload['pageAttachments'][$matches[1]] = [
+                    'fileName' => $storedFile['fileName'],
+                    'fileType' => $storedFile['fileType'],
+                    'fileSize' => $storedFile['fileSize'],
+                    'path' => $storedFile['path'],
+                ];
+            } else {
+                $payload[$entry['fieldName']] = $storedFile['fileName'];
+                $payload[$entry['fieldName'] . '_type'] = $storedFile['fileType'];
+                $payload[$entry['fieldName'] . '_size'] = $storedFile['fileSize'];
+                $payload[$entry['fieldName'] . '_path'] = $storedFile['path'];
+
+                // Preserve file list arrays for multi-file fields like app_api_files[]
+                if (preg_match('/^(.+)\[\d+\]$/', $entry['fieldName'], $matches)) {
+                    $baseField = $matches[1];
+                    if (!isset($payload[$baseField]) || !is_array($payload[$baseField])) {
+                        $payload[$baseField] = [];
+                    }
+                    $payload[$baseField][] = $storedFile['fileName'];
+                }
+            }
         }
     }
 
@@ -295,6 +341,27 @@ try {
     $data = readSubmissionData();
     $uploadedFiles = collectUploadedFiles();
 
+    // Normalize mobile app contact and company fields into standard names
+    if (empty($data['contactName']) && !empty($data['app_contactName'])) {
+        $data['contactName'] = $data['app_contactName'];
+    }
+    if (empty($data['contactEmail']) && !empty($data['app_contactEmail'])) {
+        $data['contactEmail'] = $data['app_contactEmail'];
+    }
+    if (empty($data['contactPhone']) && !empty($data['app_contactPhone'])) {
+        $data['contactPhone'] = $data['app_contactPhone'];
+    }
+    if (empty($data['companyName'])) {
+        if (!empty($data['app_businessName'])) {
+            $data['companyName'] = $data['app_businessName'];
+        } elseif (!empty($data['app_name'])) {
+            $data['companyName'] = $data['app_name'];
+        }
+    }
+    if (empty($data['businessEmail']) && !empty($data['app_businessEmail'])) {
+        $data['businessEmail'] = $data['app_businessEmail'];
+    }
+
     // Backend validation - ensure project type is selected
     if (empty($data['project_type'])) {
         error_log('Project type is missing but continuing for testing');
@@ -302,8 +369,8 @@ try {
     }
 
     // Backend validation - very lenient for testing purposes
-    $email = trim($data['contactEmail'] ?? $data['app_contactEmail'] ?? '');
-    $name = trim($data['contactName'] ?? $data['app_contactName'] ?? $data['companyName'] ?? $data['app_businessName'] ?? '');
+    $email = trim($data['contactEmail'] ?? $data['businessEmail'] ?? '');
+    $name = trim($data['contactName'] ?? $data['companyName'] ?? '');
     
     // Ensure at least one contact field is filled
     if (empty($email) && empty($name)) {
@@ -345,9 +412,9 @@ try {
         $name = 'Unknown Contact';
     }
 
-    $email = trim($data['contactEmail'] ?? $data['app_contactEmail'] ?? '');
+    $email = trim($data['contactEmail'] ?? $data['app_contactEmail'] ?? $data['businessEmail'] ?? $data['app_businessEmail'] ?? '');
     $phone = trim($data['contactPhone'] ?? $data['app_contactPhone'] ?? '');
-    $company_name = trim($data['companyName'] ?? $data['app_businessName'] ?? '');
+    $company_name = trim($data['companyName'] ?? $data['app_name'] ?? $data['app_businessName'] ?? '');
 
     // Ensure multi-select fields are properly encoded as JSON arrays
     $multiSelectFields = [

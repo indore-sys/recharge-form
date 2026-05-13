@@ -516,20 +516,20 @@ $stmt->close();
                             // Get name from client table or form_data fallback - prioritize contact name
                             $display_name = $client['name'];
                             if (empty($display_name) || $display_name === 'Unknown Company' || $display_name === 'Unknown Contact') {
-                                // Use contact name from form (for both website and mobile app), fallback to business name
-                                $display_name = $form_data['app_contactName'] ?? $form_data['contactName'] ?? $form_data['app_businessName'] ?? $form_data['companyName'] ?? '';
+                                // Use contact name from form (for both website and mobile app), fallback to business/app name
+                                $display_name = $form_data['app_contactName'] ?? $form_data['contactName'] ?? $form_data['app_businessName'] ?? $form_data['companyName'] ?? $form_data['app_name'] ?? '';
                             }
                             if (empty($display_name)) $display_name = 'Unknown';
                             
                             // Get email from client table or form_data fallback
                             $display_email = $client['email'];
                             if (empty($display_email)) {
-                                $display_email = $form_data['app_contactEmail'] ?? $form_data['contactEmail'] ?? '';
+                                $display_email = $form_data['app_contactEmail'] ?? $form_data['contactEmail'] ?? $form_data['businessEmail'] ?? $form_data['app_businessEmail'] ?? '';
                             }
                             if (empty($display_email)) $display_email = 'Not Provided';
                             
                             // Update database if name is still showing as Unknown but form_data has proper name
-                            if (($client['name'] === 'Unknown Company' || empty($client['name'])) && !empty($display_name) && $display_name !== 'Unknown') {
+                            if ((empty($client['name']) || in_array($client['name'], ['Unknown Company', 'Unknown Contact'], true)) && !empty($display_name) && $display_name !== 'Unknown') {
                                 // Reopen database connection for updates
                                 $update_conn = getDBConnection();
                                 $update_sql = "UPDATE clients SET name = ?, email = ? WHERE id = ?";

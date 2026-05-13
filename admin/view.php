@@ -37,6 +37,7 @@ if ($result->num_rows === 0) {
 
 $client = $result->fetch_assoc();
 $form_data = json_decode($client['form_data'], true);
+$apiFiles = collectApiFiles($form_data);
 
 // Get project type to determine which sections to show
 $project_type = $form_data['project_type'] ?? '';
@@ -289,31 +290,61 @@ function fieldAssetExists(array $formData, string $fieldName): bool {
 }
 
 // Function to display API files specifically
-function displayApiFiles(array $formData): string {
+function collectApiFiles(array $formData): array {
     $apiFiles = [];
-    
-    // Check for app_api_files in form data
-    if (isset($formData['app_api_files']) && !empty($formData['app_api_files'])) {
-        $apiFiles = $formData['app_api_files'];
+
+    if (isset($formData['app_api_files']) && is_array($formData['app_api_files'])) {
+        foreach ($formData['app_api_files'] as $index => $file) {
+            $apiFiles[$index] = [
+                'index' => $index,
+                'file' => $file,
+                'field_name' => 'app_api_files[' . $index . ']',
+            ];
+        }
     }
-    
+
+    if (isset($formData['app_api_files[]']) && is_array($formData['app_api_files[]'])) {
+        foreach ($formData['app_api_files[]'] as $index => $file) {
+            $apiFiles[$index] = [
+                'index' => $index,
+                'file' => $file,
+                'field_name' => 'app_api_files[' . $index . ']',
+            ];
+        }
+    }
+
+    foreach ($formData as $key => $value) {
+        if (preg_match('/^app_api_files\[(\d+)\]$/', $key, $matches)) {
+            $index = (int) $matches[1];
+            $apiFiles[$index] = [
+                'index' => $index,
+                'file' => $value,
+                'field_name' => $key,
+            ];
+        }
+    }
+
+    ksort($apiFiles);
+    return array_values($apiFiles);
+}
+
+function displayApiFiles(array $formData): string {
+    $apiFiles = collectApiFiles($formData);
     if (empty($apiFiles)) {
         return '<span style="color: #999; font-size: 18px;">No API files uploaded</span>';
     }
-    
+
     $fileNames = [];
-    if (is_array($apiFiles)) {
-        foreach ($apiFiles as $file) {
-            if (isset($file['fileName'])) {
-                $fileNames[] = $file['fileName'];
-            }
+    foreach ($apiFiles as $file) {
+        if (!empty($file['file'])) {
+            $fileNames[] = $file['file'];
         }
     }
-    
+
     if (empty($fileNames)) {
         return '<span style="color: #999; font-size: 18px;">No API files uploaded</span>';
     }
-    
+
     return '<span style="font-size: 18px;">' . htmlspecialchars(implode(', ', $fileNames)) . '</span>';
 }
 
@@ -2119,37 +2150,6 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
                                     <?php endforeach; ?>
                                 </div>
                             <?php endif; ?>
-                            <?php if (!empty($apiFiles)): ?>
-                                <strong>API Documentation Files:</strong><br>
-                                <div class="field-grid" style="grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; margin-top: 15px;">
-                                    <?php foreach ($apiFiles as $item): ?>
-                                        <div class="field-group" style="border: 1px solid #e0e0e0; border-radius: 12px; padding: 15px; background: #fafafa;">
-                                            <?php
-                                            $fieldName = $item['field_name'] ?? 'app_api_files[' . $item['index'] . ']';
-                                            $filePath = $form_data[$fieldName . '_path'] ?? '';
-                                            $fileName = $item['file'] ?? '';
-                                            ?>
-                                            <div style="width: 100%; height: 120px; border-radius: 8px; overflow: hidden; margin-bottom: 12px; background: #f0f0f0; display: flex; align-items: center; justify-content: center;">
-                                                <span style="color: #999; font-size: 24px;">📄</span>
-                                            </div>
-                                            <div style="font-size: 13px; color: #6c757d; margin-bottom: 10px; text-align: center; word-break: break-all;">
-                                                <strong><?php echo htmlspecialchars($fileName); ?></strong>
-                                            </div>
-                                            <?php if (!empty($filePath)): ?>
-                                                <a href="<?php echo htmlspecialchars(fieldAssetUrl($client['client_id'], $fieldName, true)); ?>"
-                                                   download="<?php echo htmlspecialchars($fileName ?: 'api-file-' . $item['index']); ?>"
-                                                   style="display: block; width: 100%; text-align: center; padding: 10px 16px; background: #007bff; color: white; text-decoration: none; border-radius: 8px; font-size: 14px; font-weight: 600;">
-                                                   📥 Download File
-                                                </a>
-                                            <?php else: ?>
-                                                <div style="text-align: center; padding: 10px 16px; background: #f8f9fa; color: #6c757d; border-radius: 8px; font-size: 14px;">
-                                                    File: <?php echo htmlspecialchars($fileName ?: 'No file uploaded'); ?>
-                                                </div>
-                                            <?php endif; ?>
-                                        </div>
-                                    <?php endforeach; ?>
-                                </div>
-                            <?php endif; ?>
                         </div>
                     </div>
                 <?php endif; ?>
@@ -2853,8 +2853,45 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
                     <div class="field-value"><?php echo displayValue($form_data['app_api_credentials']); ?></div>
                 </div>
                 <?php endif; ?>
+
+                <?php if (!empty($apiFiles)): ?>
+                <div class="field-group">
+                    <div class="field-label">API Documentation Files</div>
+                    <div class="field-value">
+                        <div class="field-grid" style="grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; margin-top: 15px;">
+                            <?php foreach ($apiFiles as $item): ?>
+                                <div class="field-group" style="border: 1px solid #e0e0e0; border-radius: 12px; padding: 15px; background: #fafafa;">
+                                    <?php
+                                    $fieldName = $item['field_name'] ?? 'app_api_files[' . $item['index'] . ']';
+                                    $filePath = $form_data[$fieldName . '_path'] ?? '';
+                                    $fileName = $item['file'] ?? '';
+                                    ?>
+                                    <div style="width: 100%; height: 120px; border-radius: 8px; overflow: hidden; margin-bottom: 12px; background: #f0f0f0; display: flex; align-items: center; justify-content: center;">
+                                        <span style="color: #999; font-size: 24px;">📄</span>
+                                    </div>
+                                    <div style="font-size: 13px; color: #6c757d; margin-bottom: 10px; text-align: center; word-break: break-all;">
+                                        <strong><?php echo htmlspecialchars($fileName); ?></strong>
+                                    </div>
+                                    <?php if (!empty($filePath)): ?>
+                                        <a href="<?php echo htmlspecialchars(fieldAssetUrl($client['client_id'], $fieldName, true)); ?>"
+                                           download="<?php echo htmlspecialchars($fileName ?: 'api-file-' . $item['index']); ?>"
+                                           style="display: block; width: 100%; text-align: center; padding: 10px 16px; background: #007bff; color: white; text-decoration: none; border-radius: 8px; font-size: 14px; font-weight: 600;">
+                                           📥 Download File
+                                        </a>
+                                    <?php else: ?>
+                                        <div style="text-align: center; padding: 10px 16px; background: #f8f9fa; color: #6c757d; border-radius: 8px; font-size: 14px;">
+                                            File: <?php echo htmlspecialchars($fileName ?: 'No file uploaded'); ?>
+                                        </div>
+                                    <?php endif; ?>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                </div>
+                <?php endif; ?>
                 
                 <?php if (!empty($form_data['app_backend_tech'])): ?>
+
                 <div class="field-group">
                     <div class="field-label">Backend Technology</div>
                     <div class="field-value"><?php 
@@ -2956,6 +2993,7 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
                     </div>
                 </div>
                 <?php endif; ?>
+                
             </div>
         </div>
 
