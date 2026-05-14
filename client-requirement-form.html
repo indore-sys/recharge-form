@@ -1407,6 +1407,35 @@
             display: block !important;
         }
 
+        body.project-type--website .form-section[id^="app-"],
+        body.project-type--mobile-app .form-section#project-basics,
+        body.project-type--mobile-app .form-section#technical,
+        body.project-type--mobile-app .form-section#content,
+        body.project-type--mobile-app .form-section#products,
+        body.project-type--mobile-app .form-section#marketing,
+        body.project-type--mobile-app .form-section#final {
+            display: none !important;
+        }
+
+        body.submission-complete .sidebar,
+        body.submission-complete .header {
+            display: none !important;
+        }
+
+        body.submission-complete .form-content {
+            margin-left: 0 !important;
+            padding: 0 40px 42px !important;
+            max-width: 100% !important;
+        }
+
+        body.submission-complete #requirementForm > :not(#thankYouSection) {
+            display: none !important;
+        }
+
+        body.submission-complete #thankYouSection {
+            display: flex !important;
+        }
+
         /* While the welcome card is showing, never show the form (blocks project type + app screens from landing). */
         #welcomePanel.welcome-panel:not(.hidden) ~ #requirementForm {
             display: none !important;
@@ -3753,7 +3782,6 @@
                             </div>
                         </div>
                     </div>
-                    </div>
                     <div class="merged-module">
                         <h3 class="merged-module-title">App screens <span id="appScreenCountBadge" class="page-count-badge">Total: 0 screens</span></h3>
                         <p class="merged-module-lede">Choose the core flows we should plan for. You can still request extra screens with your project manager.</p>
@@ -5969,6 +5997,11 @@
 
             function syncSidebarNavVisibility() {
                 const body = document.body;
+                if (body.classList.contains('submission-complete')) {
+                    body.classList.add('layout--no-sidebar-nav');
+                    body.classList.remove('form-project-type-selected');
+                    return;
+                }
                 const thankEl = document.getElementById('thankYouSection');
                 if (thankEl) {
                     const tyDisp = window.getComputedStyle(thankEl).display;
@@ -6038,8 +6071,14 @@
                 createApplicationBtn.addEventListener('click', function() {
                     showApplicationForm();
                     // Always show only Project Type Selection initially
-                    hideAllSections();
-                    document.getElementById('project-type-selection').classList.add('active');
+                    const targetSection = activateFormSection('project-type-selection');
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        const firstInput = targetSection.querySelector('input, select, textarea, button');
+                        if (firstInput && typeof firstInput.focus === 'function') {
+                            setTimeout(() => firstInput.focus({ preventScroll: true }), 250);
+                        }
+                    }
                 });
             }
 
@@ -6079,6 +6118,61 @@
                     }
                     saveFormData();
                 });
+            }
+
+            function showSubmissionSuccess(result) {
+                const thankYouSection = document.getElementById('thankYouSection');
+                const thankYouContent = document.querySelector('.thank-you-content');
+                const formContent = document.querySelector('.form-content');
+                const sidebar = document.querySelector('.sidebar');
+                const header = document.querySelector('.header');
+
+                document.body.classList.add('submission-complete', 'client-form-visible', 'layout--no-sidebar-nav');
+                document.body.classList.remove('form-project-type-selected');
+
+                if (welcomePanel) {
+                    welcomePanel.classList.add('hidden');
+                }
+
+                if (sidebar) {
+                    sidebar.style.display = 'none';
+                }
+
+                if (header) {
+                    header.style.display = 'none';
+                }
+
+                document.querySelectorAll('.form-section').forEach(section => {
+                    section.classList.remove('active');
+                    section.style.display = 'none';
+                });
+
+                if (formContent) {
+                    formContent.style.marginLeft = '0';
+                    formContent.style.padding = '0 40px 42px';
+                }
+
+                if (thankYouContent) {
+                    thankYouContent.innerHTML = `
+                        <div class="thank-you-icon" aria-hidden="true"><svg class="mono-svg" focusable="false"><use href="#i-check-circle"></use></svg></div>
+                        <h1>Thank You!</h1>
+                        <p>Your form has been successfully submitted.</p>
+                        <p><strong>Your Client ID: ${result.client_id}</strong></p>
+                        <p>Please save this ID for future reference.</p>
+                        <p>We will review your requirements and get back to you soon.</p>
+                    `;
+                }
+
+                if (thankYouSection) {
+                    thankYouSection.style.display = 'flex';
+                    thankYouSection.classList.add('show');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    thankYouSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+
+                localStorage.removeItem(STORAGE_KEY);
+                localStorage.removeItem(CLIENT_ID_KEY);
+                syncSidebarNavVisibility();
             }
 
             // Add Clear Saved Data button to sidebar footer (stacked under Save draft)
@@ -6125,25 +6219,45 @@
             const sections = document.querySelectorAll('.form-section');
             const sectionHeaders = document.querySelectorAll('.section-header');
 
+            function resetFormSectionState() {
+                sections.forEach(section => {
+                    section.classList.remove('active');
+                    section.style.display = 'none';
+                });
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.remove('active');
+                });
+            }
+
+            function activateFormSection(sectionId) {
+                resetFormSectionState();
+
+                const targetSection = document.getElementById(sectionId);
+                if (!targetSection) {
+                    return null;
+                }
+
+                targetSection.classList.add('active');
+                targetSection.style.display = 'block';
+
+                const activeLink = document.querySelector(`.nav-link[data-section="${sectionId}"]`);
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                }
+
+                return targetSection;
+            }
+
             // Sidebar navigation click
             navLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
 
                     const targetSection = this.dataset.section;
-                    const targetEl = document.getElementById(targetSection);
-
-                    // Update active nav link
-                    navLinks.forEach(l => l.classList.remove('active'));
-                    this.classList.add('active');
-
-                    // Show target section
-                    sections.forEach(section => {
-                        section.classList.remove('active');
-                        if (section.id === targetSection) {
-                            section.classList.add('active');
-                        }
-                    });
+                    const targetEl = activateFormSection(targetSection);
+                    if (!targetEl) {
+                        return;
+                    }
 
                     // Scroll to top of form content
                     document.querySelector('.form-content').scrollTo({ top: 0, behavior: 'smooth' });
@@ -6177,9 +6291,19 @@
                 });
             });
 
-            function navigateToSection(sectionId) {
+            function navigateToSection(sectionId, source = 'manual') {
+                if (window.autoScrollTimeout) {
+                    clearTimeout(window.autoScrollTimeout);
+                    window.autoScrollTimeout = null;
+                }
+                if (window.autoAdvanceTimeout) {
+                    clearTimeout(window.autoAdvanceTimeout);
+                    window.autoAdvanceTimeout = null;
+                }
+
                 const targetEl = document.getElementById(sectionId);
                 if (targetEl) {
+                    activateFormSection(sectionId);
                     // Multiple scroll methods to ensure it works
                     setTimeout(() => {
                         // Method 1: Window scroll
@@ -6199,29 +6323,12 @@
                     }, 200);
                 }
 
-                // Update active nav link in sidebar
-                navLinks.forEach(l => l.classList.remove('active'));
-                const activeLink = document.querySelector(`.nav-link[data-section="${sectionId}"]`);
-                if (activeLink) {
-                    activeLink.classList.add('active');
-                }
-
-                // Show target section
-                sections.forEach(section => {
-                    section.classList.remove('active');
-                    if (section.id === sectionId) {
-                        section.classList.add('active');
-                    }
-                });
-
                 // Scroll to top of form content
                 window.scrollTo({ top: 0, behavior: 'smooth' });
 
                 // Save current section
                 debouncedSave();
 
-                // Auto-scroll to next section if current is 100% filled
-                autoScrollToNextSection();
             }
 
             // Auto-scroll to next section based on progress
@@ -6229,24 +6336,68 @@
                 const currentSection = document.querySelector('.form-section.active');
                 if (!currentSection) return;
 
-                const sectionInputs = currentSection.querySelectorAll('input:not([type="hidden"]), textarea, select');
-                const filledInputs = Array.from(sectionInputs).filter(input => {
-                    if (input.type === 'checkbox' || input.type === 'radio') {
-                        return input.checked;
-                    } else if (input.type === 'file') {
-                        return input.files && input.files.length > 0;
-                    } else {
-                        return input.value.trim() !== '';
+                if (window.autoAdvanceTimeout) {
+                    clearTimeout(window.autoAdvanceTimeout);
+                    window.autoAdvanceTimeout = null;
+                }
+
+                const isVisibleControl = (control) => {
+                    if (!control || control.disabled) return false;
+                    const style = window.getComputedStyle(control);
+                    return style.display !== 'none' && style.visibility !== 'hidden';
+                };
+
+                const visibleControls = Array.from(
+                    currentSection.querySelectorAll('input:not([type="hidden"]), textarea, select')
+                ).filter(isVisibleControl);
+
+                const requiredControls = visibleControls.filter(control => control.required);
+                const controlsToCheck = requiredControls.length ? requiredControls : visibleControls;
+
+                if (!controlsToCheck.length) return;
+
+                const groupState = new Map();
+                let allFilled = true;
+
+                controlsToCheck.forEach(control => {
+                    const type = (control.type || '').toLowerCase();
+                    if (type === 'radio' || type === 'checkbox') {
+                        const key = `${type}:${control.name || control.id || ''}`;
+                        if (!groupState.has(key)) {
+                            const group = controlsToCheck.filter(item => (
+                                (item.type || '').toLowerCase() === type &&
+                                (item.name || item.id || '') === (control.name || control.id || '')
+                            ));
+                            const groupFilled = group.some(item => item.checked);
+                            groupState.set(key, groupFilled);
+                        }
+                        if (!groupState.get(key)) {
+                            allFilled = false;
+                        }
+                    } else if (type === 'file') {
+                        if (!(control.files && control.files.length > 0)) {
+                            allFilled = false;
+                        }
+                    } else if (typeof control.value === 'string') {
+                        if (control.value.trim() === '') {
+                            allFilled = false;
+                        }
                     }
                 });
 
-                // If 100% of current section is filled, scroll to next
-                const fillPercentage = sectionInputs.length > 0 ? (filledInputs.length / sectionInputs.length) : 0;
-                if (fillPercentage >= 1.0) {
+                // If the visible required fields are filled, move to the next section.
+                if (allFilled) {
                     const nextBtn = currentSection.querySelector('.nav-btn[data-next]');
                     if (nextBtn) {
-                        setTimeout(() => {
-                            nextBtn.click(); // Auto-navigate to next section
+                        if (window.autoAdvanceTimeout) {
+                            clearTimeout(window.autoAdvanceTimeout);
+                        }
+                        window.autoAdvanceTimeout = setTimeout(() => {
+                            if (document.querySelector('.form-section.active') !== currentSection) {
+                                return;
+                            }
+                            navigateToSection(nextBtn.dataset.next, 'auto'); // Auto-navigate to next section
+                            window.autoAdvanceTimeout = null;
                         }, 1000); // 1 second delay for user to see completion
                     }
                 }
@@ -7295,19 +7446,7 @@
             function revealSectionForField(field) {
                 const invalidSection = field.closest('.form-section');
                 if (!invalidSection) return;
-
-                sections.forEach(section => {
-                    section.classList.remove('active');
-                    if (section.id === invalidSection.id) {
-                        section.classList.add('active');
-                    }
-                });
-
-                navLinks.forEach(l => l.classList.remove('active'));
-                const activeLink = document.querySelector(`.nav-link[data-section="${invalidSection.id}"]`);
-                if (activeLink) {
-                    activeLink.classList.add('active');
-                }
+                activateFormSection(invalidSection.id);
             }
 
             function getSectionLabel(field) {
@@ -7626,34 +7765,7 @@
                                     }
 
                                     console.log('Submission success branch reached');
-                                    const formContent = document.querySelector('.form-content');
-                                    document.querySelector('.sidebar').style.display = 'none';
-                                    document.querySelector('.header').style.display = 'none';
-                                    document.querySelectorAll('.form-section').forEach(section => {
-                                        section.style.display = 'none';
-                                    });
-                                    if (formContent) {
-                                        formContent.style.marginLeft = '0';
-                                        formContent.style.padding = '0 40px';
-                                    }
-                                    document.getElementById('thankYouSection').style.display = 'block';
-                                    document.getElementById('thankYouSection').style.display = 'flex';
-                                    document.getElementById('thankYouSection').classList.add('show');
-
-                                    const thankYouContent = document.querySelector('.thank-you-content');
-                                    thankYouContent.innerHTML = `
-                                        <div class="thank-you-icon" aria-hidden="true"><svg class="mono-svg" focusable="false"><use href="#i-check-circle"></use></svg></div>
-                                        <h1>Thank You!</h1>
-                                        <p>Your form has been successfully submitted.</p>
-                                        <p><strong>Your Client ID: ${result.client_id}</strong></p>
-                                        <p>Please save this ID for future reference.</p>
-                                        <p>We will review your requirements and get back to you soon.</p>
-                                    `;
-
-                                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                                    document.getElementById('thankYouSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
-                                    localStorage.removeItem(STORAGE_KEY);
-                                    localStorage.removeItem(CLIENT_ID_KEY);
+                                    showSubmissionSuccess(result);
                                     return;
                                 } catch (err) {
                                     lastError = err;
@@ -7717,22 +7829,20 @@
             
             function updateFormSections() {
                 const selectedType = document.querySelector('input[name="project_type"]:checked');
+                document.body.classList.remove('project-type--website', 'project-type--mobile-app', 'project-type--both');
                 
                 if (!selectedType) {
                     // Hide all sections except project type selection
-                    hideAllSections();
-                    document.getElementById('project-type-selection').classList.add('active');
+                    activateFormSection('project-type-selection');
                     syncSidebarNavVisibility();
                     return;
                 }
                 
                 const projectType = selectedType.value;
+                document.body.classList.add(`project-type--${projectType}`);
                 
                 // Hide all sections first
                 hideAllSections();
-                
-                // Hide project type selection after selection is made
-                document.getElementById('project-type-selection').classList.remove('active');
                 
                 if (projectType === 'website') {
                     // Show only website sections
@@ -7758,28 +7868,15 @@
             }
             
             function hideAllSections() {
-                const allSections = document.querySelectorAll('.form-section');
-                allSections.forEach(section => {
-                    section.classList.remove('active');
-                });
+                resetFormSectionState();
             }
             
             function showWebsiteSections() {
-                hideAllSections();
-                // Only show the first section initially
-                const firstSection = document.getElementById('project-basics');
-                if (firstSection) {
-                    firstSection.classList.add('active');
-                }
+                activateFormSection('project-basics');
             }
             
             function showMobileAppSections() {
-                hideAllSections();
-                // Only show the first section initially
-                const firstSection = document.getElementById('app-basic-info');
-                if (firstSection) {
-                    firstSection.classList.add('active');
-                }
+                activateFormSection('app-basic-info');
                 
                 // Re-initialize mobile app conditional fields after sections become visible
                 setTimeout(() => {
@@ -7849,12 +7946,7 @@
             }
             
             function showAllSections() {
-                hideAllSections();
-                // Only show the first section initially (project-basics)
-                const firstSection = document.getElementById('project-basics');
-                if (firstSection) {
-                    firstSection.classList.add('active');
-                }
+                activateFormSection('project-basics');
             }
             
             var NAV_ICON_MAP = {
@@ -8005,33 +8097,27 @@
                 // Re-attach navigation event listeners
                 attachNavigationListeners();
 
+                const currentActiveSection = document.querySelector('.form-section.active');
+                if (currentActiveSection) {
+                    const currentLink = document.querySelector(`.nav-link[data-section="${currentActiveSection.id}"]`);
+                    if (currentLink) {
+                        currentLink.classList.add('active');
+                    }
+                }
+
                 syncSectionStepKickers(navItems.map(item => item.id));
             }
             
             function attachNavigationListeners() {
                 const navLinks = document.querySelectorAll('.nav-link');
-                const sections = document.querySelectorAll('.form-section');
                 
                 navLinks.forEach(link => {
                     link.addEventListener('click', function(e) {
                         e.preventDefault();
                         
                         const targetSection = this.dataset.section;
-                        const targetEl = document.getElementById(targetSection);
-                        
+                        const targetEl = activateFormSection(targetSection);
                         if (!targetEl) return;
-                        
-                        // Update active nav link
-                        navLinks.forEach(l => l.classList.remove('active'));
-                        this.classList.add('active');
-                        
-                        // Show target section
-                        sections.forEach(section => {
-                            section.classList.remove('active');
-                            if (section.id === targetSection) {
-                                section.classList.add('active');
-                            }
-                        });
                         
                         // Scroll to top of form content
                         const formContent = document.querySelector('.form-content');
@@ -8072,6 +8158,8 @@
                 } else {
                     // No project type selected yet - show welcome page, hide form
                     document.body.classList.remove('client-form-visible');
+                    document.body.classList.remove('project-type--website', 'project-type--mobile-app', 'project-type--both');
+                    resetFormSectionState();
                     if (form) {
                         form.style.display = 'none';
                     }
