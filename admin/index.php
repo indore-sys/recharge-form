@@ -844,6 +844,7 @@ function kv_initials($name) {
                             <option value="">All Status</option>
                             <option value="New" <?php echo $status_filter === 'New' ? 'selected' : ''; ?>>New</option>
                             <option value="In Progress" <?php echo $status_filter === 'In Progress' ? 'selected' : ''; ?>>In Progress</option>
+                            <option value="Hold" <?php echo $status_filter === 'Hold' ? 'selected' : ''; ?>>Hold</option>
                             <option value="Completed" <?php echo $status_filter === 'Completed' ? 'selected' : ''; ?>>Completed</option>
                         </select>
                         <select name="project_type">
@@ -1067,4 +1068,3 @@ function kv_initials($name) {
     </div>
 </body>
 </html>
-

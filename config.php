@@ -53,6 +53,19 @@ function initializeDatabase() {
     if (!$conn->query($sql)) {
         die("Error creating clients table: " . $conn->error);
     }
+
+    // Keep the status enum in sync with the admin UI.
+    $statusColumn = $conn->query("SHOW COLUMNS FROM clients LIKE 'status'");
+    if ($statusColumn && $statusColumn->num_rows > 0) {
+        $statusInfo = $statusColumn->fetch_assoc();
+        $type = $statusInfo['Type'] ?? '';
+        if (strpos($type, "Hold") === false) {
+            $alterSql = "ALTER TABLE clients MODIFY status ENUM('New', 'In Progress', 'Hold', 'Completed') DEFAULT 'New'";
+            if (!$conn->query($alterSql)) {
+                die("Error updating clients status enum: " . $conn->error);
+            }
+        }
+    }
     
     // Create admin_users table
     $sql = "CREATE TABLE IF NOT EXISTS admin_users (

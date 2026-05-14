@@ -55,14 +55,25 @@ $debug_info = "Project Type: " . ($project_type ?: 'NOT SET') . " | Mobile: " . 
 
 // Handle status update
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_status'])) {
+    $allowed_statuses = ['New', 'In Progress', 'Hold', 'Completed'];
     $new_status = $_POST['status'] ?? 'New';
-    
+    if (!in_array($new_status, $allowed_statuses, true)) {
+        $new_status = 'New';
+    }
+
     $update_sql = "UPDATE clients SET status = ? WHERE client_id = ?";
     $update_stmt = $conn->prepare($update_sql);
+    if (!$update_stmt) {
+        die("Error preparing status update: " . $conn->error);
+    }
     $update_stmt->bind_param("ss", $new_status, $client_id);
-    $update_stmt->execute();
-    
-    $client['status'] = $new_status;
+    if (!$update_stmt->execute()) {
+        die("Error updating status: " . $update_stmt->error);
+    }
+
+    $update_stmt->close();
+    header('Location: view.php?id=' . urlencode($client_id) . '&updated=1');
+    exit();
 }
 
 $stmt->close();
