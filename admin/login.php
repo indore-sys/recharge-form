@@ -29,6 +29,9 @@ if (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Login - Client Requirements</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -37,110 +40,130 @@ if (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: Inter, system-ui, sans-serif;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 24px;
+            background:
+                radial-gradient(900px 500px at 10% -10%, rgba(160, 32, 240, 0.12), transparent 55%),
+                radial-gradient(700px 400px at 100% 0%, rgba(123, 65, 179, 0.1), transparent 50%),
+                #f9f9f9;
+            color: #1b1b1b;
         }
 
         .login-container {
-            background: white;
+            background: #ffffff;
             padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-radius: 24px;
+            border: 1px solid #d1c1d7;
+            box-shadow: 0 12px 40px rgba(128, 0, 198, 0.08);
             width: 100%;
-            max-width: 400px;
+            max-width: 420px;
         }
 
         .login-header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 28px;
         }
 
         .login-header h1 {
-            color: #333;
-            font-size: 1.8rem;
-            margin-bottom: 10px;
+            font-family: "Space Grotesk", sans-serif;
+            color: #8000c6;
+            font-size: 1.75rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
         }
 
         .login-header p {
-            color: #666;
-            font-size: 0.9rem;
+            color: #4e4355;
+            font-size: 0.95rem;
+            line-height: 1.45;
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
 
         .form-group label {
             display: block;
             margin-bottom: 8px;
-            font-weight: 500;
-            color: #555;
+            font-weight: 600;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: #4e4355;
         }
 
         .form-group input {
             width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
+            padding: 12px 14px;
+            border: 1px solid #d1c1d7;
+            border-radius: 8px;
             font-size: 1rem;
-            transition: border-color 0.3s ease;
+            font-family: inherit;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+            background: #fff;
         }
 
         .form-group input:focus {
             outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            border-color: #a020f0;
+            box-shadow: 0 0 0 3px rgba(160, 32, 240, 0.15);
         }
 
         .btn {
             width: 100%;
             padding: 12px;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             font-size: 1rem;
-            font-weight: 600;
+            font-weight: 700;
+            font-family: inherit;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease;
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: #a020f0;
+            color: #ffffff;
         }
 
         .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+            background: #8000c6;
+            box-shadow: 0 8px 24px rgba(160, 32, 240, 0.35);
+        }
+
+        .btn-primary:active {
+            transform: scale(0.99);
         }
 
         .error-message {
-            background: #fee;
-            color: #c33;
-            padding: 10px;
-            border-radius: 5px;
-            margin-bottom: 20px;
+            background: #ffdad6;
+            color: #93000a;
+            padding: 12px 14px;
+            border-radius: 8px;
+            margin-bottom: 18px;
             font-size: 0.9rem;
-            border: 1px solid #fcc;
+            border: 1px solid #ffc4bf;
         }
 
         .security-note {
-            margin-top: 20px;
-            padding: 15px;
-            background: #f8f9fa;
-            border-radius: 5px;
+            margin-top: 22px;
+            padding: 14px 16px;
+            background: #f3daff;
+            border-radius: 8px;
             font-size: 0.8rem;
-            color: #666;
+            color: #4e4355;
             text-align: center;
+            border: 1px solid #e3b5ff;
         }
 
         @media (max-width: 480px) {
             .login-container {
-                margin: 20px;
-                padding: 30px 20px;
+                padding: 28px 20px;
             }
         }
     </style>
