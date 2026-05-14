@@ -378,38 +378,40 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Client Details - <?php echo htmlspecialchars($client['client_id']); ?></title>
+    <title>Recharge · Client <?php echo htmlspecialchars($client['client_id']); ?></title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
     <style>
-        /* Stitch-style design tokens */
+        /* Kinetic Violet tokens (Stitch DESIGN.md — Recharge) */
         :root {
-            --st-font: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-            --st-ink: #0f172a;
-            --st-ink-muted: #475569;
-            --st-ink-subtle: #64748b;
+            --st-font: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            --st-font-display: "Space Grotesk", system-ui, sans-serif;
+            --st-ink: #1b1b1b;
+            --st-ink-muted: #4e4355;
+            --st-ink-subtle: #4e4355;
             --st-surface: #ffffff;
-            --st-surface-2: #f8fafc;
-            --st-surface-3: #f1f5f9;
-            --st-border: rgba(15, 23, 42, 0.08);
-            --st-border-strong: rgba(15, 23, 42, 0.12);
-            --st-primary: #4f46e5;
-            --st-primary-2: #7c3aed;
-            --st-primary-soft: rgba(79, 70, 229, 0.1);
-            --st-success: #059669;
-            --st-success-hover: #047857;
-            --st-danger: #dc2626;
-            --st-danger-hover: #b91c1c;
-            --st-warn: #ea580c;
-            --st-warn-soft: rgba(234, 88, 12, 0.12);
-            --st-radius-sm: 10px;
-            --st-radius-md: 14px;
-            --st-radius-lg: 20px;
+            --st-surface-2: #f3f3f3;
+            --st-surface-3: #eeeeee;
+            --st-border: #d1c1d7;
+            --st-border-strong: #807286;
+            --st-primary: #8000c6;
+            --st-primary-2: #a020f0;
+            --st-primary-soft: rgba(160, 32, 240, 0.14);
+            --st-success: #2e7d32;
+            --st-success-hover: #1b5e20;
+            --st-danger: #ba1a1a;
+            --st-danger-hover: #93000a;
+            --st-warn: #f57c00;
+            --st-warn-soft: rgba(245, 158, 11, 0.18);
+            --st-radius-sm: 8px;
+            --st-radius-md: 12px;
+            --st-radius-lg: 16px;
             --st-radius-xl: 24px;
-            --st-shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
-            --st-shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.07), 0 12px 28px -8px rgba(15, 23, 42, 0.1);
-            --st-shadow-lg: 0 20px 50px -20px rgba(15, 23, 42, 0.18);
+            --st-shadow-sm: 0 1px 3px rgba(27, 27, 27, 0.06);
+            --st-shadow-md: 0 4px 24px rgba(128, 0, 198, 0.1);
+            --st-shadow-lg: 0 20px 50px rgba(44, 0, 80, 0.14);
         }
 
         * {
@@ -418,13 +420,16 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
             box-sizing: border-box;
         }
 
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+            font-size: 1.25rem;
+        }
+
         body {
             font-family: var(--st-font);
             color: var(--st-ink);
-            background:
-                radial-gradient(1000px 520px at 0% -5%, rgba(124, 58, 237, 0.09), transparent 50%),
-                radial-gradient(800px 480px at 100% 0%, rgba(79, 70, 229, 0.1), transparent 48%),
-                var(--st-surface-2);
+            background: #f9f9f9;
             font-size: 16px;
             line-height: 1.65;
             min-height: 100vh;
@@ -434,30 +439,43 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
             position: sticky;
             top: 0;
             z-index: 50;
-            background: rgba(255, 255, 255, 0.82);
-            backdrop-filter: blur(18px) saturate(1.5);
-            -webkit-backdrop-filter: blur(18px) saturate(1.5);
+            background: #ffffff;
             border-bottom: 1px solid var(--st-border);
             box-shadow: var(--st-shadow-sm);
             color: var(--st-ink);
-            padding: 18px 0;
+            padding: 0;
+            min-height: 72px;
         }
 
         .header-content {
-            max-width: 1200px;
+            max-width: 1280px;
             margin: 0 auto;
-            padding: 0 22px;
+            padding: 0 48px;
+            min-height: 72px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 16px;
+            gap: 20px;
         }
 
         .header h1 {
-            font-size: 1.05rem;
+            font-family: var(--st-font-display);
+            font-size: 1.35rem;
             font-weight: 700;
             letter-spacing: -0.02em;
-            color: var(--st-ink);
+            color: var(--st-primary);
+            line-height: 1.2;
+        }
+
+        .header-brand {
+            color: var(--st-primary);
+        }
+
+        .header-sub {
+            font-family: var(--st-font);
+            color: var(--st-ink-muted);
+            font-weight: 600;
+            font-size: 0.95rem;
         }
 
         .header-actions {
@@ -471,15 +489,17 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
         .btn {
             padding: 10px 18px;
             border: none;
-            border-radius: 999px;
+            border-radius: var(--st-radius-sm);
             cursor: pointer;
             font-size: 14px;
             font-weight: 600;
             font-family: inherit;
-            transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+            transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
             text-decoration: none;
-            display: inline-block;
-            box-shadow: var(--st-shadow-sm);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: none;
         }
 
         .btn:hover {
@@ -491,46 +511,49 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
         }
 
         .btn-secondary {
-            background: var(--st-surface);
+            background: transparent;
             color: var(--st-ink-muted);
-            border: 1px solid var(--st-border-strong);
+            border: 1px solid transparent;
             box-shadow: none;
         }
 
         .btn-secondary:hover {
-            background: var(--st-surface-3);
-            color: var(--st-ink);
+            background: #f0dbff;
+            color: var(--st-primary);
         }
 
         .btn-primary {
-            background: linear-gradient(115deg, var(--st-primary) 0%, var(--st-primary-2) 100%);
+            background: var(--st-primary-2);
             color: #fff;
         }
 
         .btn-primary:hover {
-            box-shadow: 0 6px 20px rgba(79, 70, 229, 0.35);
+            background: var(--st-primary);
+            box-shadow: 0 6px 20px rgba(160, 32, 240, 0.3);
         }
 
         .btn-pdf {
-            background: linear-gradient(115deg, var(--st-success) 0%, #0d9488 100%);
-            color: #fff;
+            background: #ffffff;
+            color: var(--st-primary-2);
+            border: 2px solid var(--st-primary-2);
         }
 
         .btn-pdf:hover {
-            background: linear-gradient(115deg, var(--st-success-hover) 0%, #0f766e 100%);
-            box-shadow: 0 6px 20px rgba(5, 150, 105, 0.35);
+            background: #f0dbff;
+            color: var(--st-primary);
+            border-color: var(--st-primary);
         }
 
         .btn-delete {
-            background: var(--st-surface);
+            background: transparent;
             color: var(--st-danger);
-            border: 1px solid rgba(220, 38, 38, 0.35);
+            border: 2px solid transparent;
             box-shadow: none;
         }
 
         .btn-delete:hover {
-            background: rgba(254, 226, 226, 0.6);
-            border-color: var(--st-danger);
+            background: #ffdad6;
+            color: var(--st-danger-hover);
         }
 
         .modal-overlay {
@@ -640,24 +663,25 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
         }
 
         .container {
-            max-width: 1360px;
-            margin: 32px auto 48px;
-            padding: 0 24px;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 32px 48px 48px;
         }
 
         .client-info {
-            background: var(--st-surface);
-            padding: 28px 32px;
+            background: #ffffff;
+            padding: 32px 36px;
             border-radius: var(--st-radius-xl);
-            box-shadow: var(--st-shadow-md);
+            box-shadow: var(--st-shadow-sm);
             border: 1px solid var(--st-border);
             margin-bottom: 0;
         }
 
         .client-info h2 {
+            font-family: var(--st-font-display);
             color: var(--st-ink);
             margin-bottom: 20px;
-            font-size: 1.35rem;
+            font-size: 1.75rem;
             font-weight: 700;
             letter-spacing: -0.02em;
         }
@@ -665,9 +689,9 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
         .client-info h2::after {
             content: "";
             display: block;
-            width: 48px;
+            width: 56px;
             height: 4px;
-            margin-top: 10px;
+            margin-top: 12px;
             border-radius: 999px;
             background: linear-gradient(90deg, var(--st-primary), var(--st-primary-2));
         }
@@ -680,7 +704,7 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
 
         .detail-item {
             padding: 16px 18px;
-            background: var(--st-surface-2);
+            background: #f3f3f3;
             border-radius: var(--st-radius-md);
             border: 1px solid var(--st-border);
         }
@@ -718,10 +742,10 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
         }
 
         .section {
-            background: var(--st-surface);
+            background: #ffffff;
             margin-bottom: 0;
             border-radius: var(--st-radius-xl);
-            box-shadow: var(--st-shadow-md);
+            box-shadow: var(--st-shadow-sm);
             border: 1px solid var(--st-border);
             overflow: hidden;
             min-width: 0;
@@ -730,11 +754,12 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
 
         .section-header {
             position: relative;
-            background: var(--st-surface);
+            background: #ffffff;
             color: var(--st-ink);
-            padding: 20px 28px 20px 32px;
-            font-size: 1.15rem;
-            font-weight: 700;
+            padding: 18px 28px 18px 32px;
+            font-family: var(--st-font-display);
+            font-size: 1.2rem;
+            font-weight: 600;
             letter-spacing: -0.02em;
             border-bottom: 1px solid var(--st-border);
         }
@@ -743,16 +768,16 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
             content: "";
             position: absolute;
             left: 14px;
-            top: 22px;
-            bottom: 22px;
+            top: 20px;
+            bottom: 20px;
             width: 4px;
             border-radius: 999px;
             background: linear-gradient(180deg, var(--st-primary), var(--st-primary-2));
         }
 
         .section-content {
-            padding: 28px 32px 32px;
-            background: linear-gradient(180deg, var(--st-surface) 0%, var(--st-surface-2) 100%);
+            padding: 24px 28px 28px;
+            background: #ffffff;
         }
 
         .field-group {
@@ -954,6 +979,8 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
                 flex-direction: column;
                 align-items: stretch;
                 text-align: center;
+                padding: 12px 16px;
+                min-height: auto;
             }
 
             .header-actions {
@@ -963,11 +990,11 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
 
             .btn {
                 width: 100%;
-                text-align: center;
+                justify-content: center;
             }
 
             .container {
-                padding: 0 14px;
+                padding: 0 16px 32px;
             }
 
             .section-content,
@@ -1079,20 +1106,21 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
         .field-value span[style*="color: #999"],
         .detail-value span[style*="color: #999"],
         .content-card__value span[style*="color: #999"] {
-            color: var(--st-ink-subtle) !important;
+            color: var(--st-border-strong) !important;
             font-size: 16px !important;
             font-weight: 400 !important;
+            font-style: italic;
         }
     </style>
 </head>
 <body>
     <header class="header">
         <div class="header-content">
-            <h1>Client Details: <?php echo htmlspecialchars($client['client_id']); ?></h1>
+            <h1><span class="header-brand">Recharge</span> <span class="header-sub">Client review · <?php echo htmlspecialchars($client['client_id']); ?></span></h1>
             <div class="header-actions">
-                <a href="index.php" class="btn btn-secondary">← Back to Dashboard</a>
-                <button onclick="generatePDF(event)" class="btn btn-pdf">📄 Download PDF</button>
-                <button onclick="deleteClient()" class="btn btn-delete">🗑️ Delete</button>
+                <a href="index.php" class="btn btn-secondary"><span class="material-symbols-outlined" style="font-size:1.1rem;">arrow_back</span> Dashboard</a>
+                <button type="button" onclick="generatePDF(event)" class="btn btn-pdf"><span class="material-symbols-outlined" style="font-size:1.1rem;">picture_as_pdf</span> Download PDF</button>
+                <button type="button" onclick="deleteClient()" class="btn btn-delete"><span class="material-symbols-outlined" style="font-size:1.1rem;">delete</span> Delete</button>
             </div>
         </div>
     </header>
