@@ -1467,7 +1467,7 @@
         .header {
             background: transparent;
             color: var(--ui-text);
-            padding: 38px 24px 28px;
+            padding: 60px 24px 28px;
         }
 
         .header-logo {
@@ -1477,7 +1477,7 @@
         }
 
         .header h1 {
-            font-size: clamp(1.54rem, 2.8vw, 3.08rem);
+            font-size: clamp(1.4rem, 2.5vw, 2.6rem);
             line-height: 1.05;
             font-weight: 800;
             letter-spacing: -0.02em;
@@ -2111,8 +2111,8 @@
 
         <div class="form-content">
             <div class="header">
-                <h1 class="header-title">Website Development <span class="header-title-accent">Client Requirement Form</span></h1>
-                <p class="header-tagline">A streamlined, 6-step guided application to capture your vision and technical needs.</p>
+                <h1 class="header-title"><span style="white-space: nowrap;">Website & Mobile App Development</span> <span class="header-title-accent">Requirement Form</span></h1>
+                <p class="header-tagline">Let’s Turn Your Vision Into a Digital Success Story - In Just 6 Simple Steps</p>
             </div>
 
             <div class="welcome-panel" id="welcomePanel">
@@ -2120,9 +2120,9 @@
                     <div class="welcome-content welcome-card">
                         <div class="welcome-icon-wrap" aria-hidden="true"><svg class="mono-svg" width="28" height="28" focusable="false"><use href="#i-sparkles"></use></svg></div>
                         <h2 class="welcome-heading">Welcome</h2>
-                        <p class="welcome-lede">Whether you are building an informational website or a full online store, this application helps us translate your business goals into technical specifications, content requirements, and branding guidelines.</p>
-                        <button type="button" class="btn btn-primary welcome-cta" id="createApplicationBtn">Create Application</button>
-                        <p class="welcome-time-note">Takes approximately 10-15 minutes to complete.</p>
+                        <p class="welcome-lede">From stunning websites to powerful mobile apps, we create digital experiences that attract customers, build trust, and accelerate business growth. This quick guided form helps us understand your goals, audience, required features, and brand expectations - so we can craft a website or app that not only looks exceptional, but performs exceptionally too.</p>
+                        <button type="button" class="btn btn-primary welcome-cta" id="createApplicationBtn">Start My Project</button>
+                        <p class="welcome-time-note">Takes just 10 minutes to unlock your custom digital roadmap.</p>
                     </div>
                 </div>
             </div>
@@ -2326,12 +2326,17 @@
                             <option value="">Select platform</option>
                             <option value="wordpress">WordPress</option>
                             <option value="shopify">Shopify</option>
-                            <option value="wix">Wix</option>
-                            <option value="squarespace">Squarespace</option>
                             <option value="custom">Custom Development</option>
+                            <option value="other">Other</option>
                             <option value="unsure">Not Sure - Need Recommendation</option>
                         </select>
                         <div class="error-message">Please select preferred platform</div>
+                    </div>
+                    <div class="conditional-field" id="otherPlatformDetails">
+                        <div class="form-group">
+                            <label class="required">Please specify your platform</label>
+                            <input type="text" name="otherPlatformName" placeholder="Enter platform name">
+                        </div>
                     </div>
                     <div class="conditional-field" id="shopifyDetails">
                         <div class="form-group">
@@ -5498,6 +5503,12 @@
                     });
                 }
 
+                // Restore dynamic options for Project Identity
+                const savedAppType = savedData['applicationType'];
+                if (savedAppType && typeof updateProjectIdentityOptions === 'function') {
+                    updateProjectIdentityOptions(savedAppType);
+                }
+
                 checkboxNames.forEach(name => {
                     const values = Array.isArray(savedData[name]) ? savedData[name] : [];
                     values.forEach(val => {
@@ -5513,6 +5524,12 @@
                 }
                 if (typeof togglePaymentCredentials === 'function') {
                     togglePaymentCredentials();
+                }
+
+                // Trigger platform selection visibility
+                const platformSelectElement = form.querySelector('select[name="platform"]');
+                if (platformSelectElement) {
+                    platformSelectElement.dispatchEvent(new Event('change'));
                 }
 
                 updateDynamicContentFields();
@@ -6692,8 +6709,92 @@
             // Dynamic show/hide logic
             // Application type
             const applicationTypeRadios = document.querySelectorAll('input[name="applicationType"]');
+            
+            const businessCategoriesMap = {
+                'informational': [
+                    { value: 'healthcare', label: 'Healthcare & Medical' },
+                    { value: 'education', label: 'Education & Training' },
+                    { value: 'technology', label: 'Technology & IT Services' },
+                    { value: 'restaurant', label: 'Restaurant & Food Services' },
+                    { value: 'realestate', label: 'Real Estate & Construction' },
+                    { value: 'consulting', label: 'Consulting & Professional Services' },
+                    { value: 'manufacturing', label: 'Manufacturing & Industrial' },
+                    { value: 'nonprofit', label: 'Non-Profit / NGO' },
+                    { value: 'other', label: 'Other' }
+                ],
+                'online-store': [
+                    { value: 'fashion', label: 'Fashion & Apparel' },
+                    { value: 'electronics', label: 'Electronics & Gadgets' },
+                    { value: 'beauty', label: 'Beauty & Personal Care' },
+                    { value: 'home-kitchen', label: 'Home & Kitchen' },
+                    { value: 'groceries', label: 'Groceries & Food' },
+                    { value: 'toys-games', label: 'Toys & Games' },
+                    { value: 'health-supplements', label: 'Health & Supplements' },
+                    { value: 'jewelry', label: 'Jewelry & Accessories' },
+                    { value: 'other', label: 'Other' }
+                ]
+            };
+
+            const projectTypesMap = {
+                'informational': [
+                    { value: 'new', label: 'New Business Website' },
+                    { value: 'redesign', label: 'Website Redesign' },
+                    { value: 'portfolio', label: 'Professional Portfolio' },
+                    { value: 'blog', label: 'Blog / Magazine' },
+                    { value: 'landing-page', label: 'Landing Page' },
+                    { value: 'educational', label: 'Educational Portal' },
+                    { value: 'other', label: 'Other' }
+                ],
+                'online-store': [
+                    { value: 'full-ecommerce', label: 'Full E-commerce Store' },
+                    { value: 'single-product', label: 'Single Product Landing Page' },
+                    { value: 'subscription', label: 'Subscription-based Store' },
+                    { value: 'marketplace', label: 'Multi-vendor Marketplace' },
+                    { value: 'dropshipping', label: 'Dropshipping Store' },
+                    { value: 'redesign-ecommerce', label: 'E-commerce Redesign' },
+                    { value: 'other', label: 'Other' }
+                ]
+            };
+
+            function updateProjectIdentityOptions(type) {
+                if (!type) return;
+
+                const catSelect = document.querySelector('select[name="businessCategory"]');
+                const typeSelect = document.querySelector('select[name="projectType"]');
+
+                if (catSelect && businessCategoriesMap[type]) {
+                    const currentCat = catSelect.value;
+                    catSelect.innerHTML = '<option value="">Select business category</option>';
+                    businessCategoriesMap[type].forEach(opt => {
+                        const option = document.createElement('option');
+                        option.value = opt.value;
+                        option.textContent = opt.label;
+                        catSelect.appendChild(option);
+                    });
+                    if (businessCategoriesMap[type].some(o => o.value === currentCat)) {
+                        catSelect.value = currentCat;
+                    }
+                }
+
+                if (typeSelect && projectTypesMap[type]) {
+                    const currentType = typeSelect.value;
+                    typeSelect.innerHTML = '<option value="">Select project type</option>';
+                    projectTypesMap[type].forEach(opt => {
+                        const option = document.createElement('option');
+                        option.value = opt.value;
+                        option.textContent = opt.label;
+                        typeSelect.appendChild(option);
+                    });
+                    if (projectTypesMap[type].some(o => o.value === currentType)) {
+                        typeSelect.value = currentType;
+                    }
+                }
+            }
+
             applicationTypeRadios.forEach(radio => {
                 radio.addEventListener('change', function() {
+                    updateProjectIdentityOptions(this.value);
+                    
                     const ecommerceChoice = document.querySelector(`input[name="isEcommerce"][value="${this.value === 'online-store' ? 'yes' : 'no'}"]`);
                     if (ecommerceChoice) {
                         ecommerceChoice.checked = true;
@@ -6952,16 +7053,20 @@
                 });
             });
 
-            // Platform Selection - Shopify
+            // Platform Selection - Shopify & Other
             const platformSelect = document.querySelector('select[name="platform"]');
             const shopifyDetails = document.getElementById('shopifyDetails');
+            const otherPlatformDetails = document.getElementById('otherPlatformDetails');
 
             if (platformSelect) {
                 platformSelect.addEventListener('change', function() {
+                    shopifyDetails.classList.remove('show');
+                    if (otherPlatformDetails) otherPlatformDetails.classList.remove('show');
+                    
                     if (this.value === 'shopify') {
                         shopifyDetails.classList.add('show');
-                    } else {
-                        shopifyDetails.classList.remove('show');
+                    } else if (this.value === 'other') {
+                        if (otherPlatformDetails) otherPlatformDetails.classList.add('show');
                     }
                 });
             }

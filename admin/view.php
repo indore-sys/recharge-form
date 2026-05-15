@@ -1310,7 +1310,23 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
                             <div class="field-label">Project Type</div>
                             <div class="field-value" style="font-weight: 600; color: #667eea;"><?php
                             $pt = $form_data['project_type'] ?? '';
-                            $pt_labels = ['website' => 'Website', 'mobile-app' => 'Mobile App', 'both' => 'Both (Website + Mobile App)'];
+                                                         $pt_labels = [
+                                 'website' => 'Website', 
+                                 'mobile-app' => 'Mobile App', 
+                                 'both' => 'Both (Website + Mobile App)',
+                                 'new' => 'New Business Website',
+                                 'redesign' => 'Website Redesign',
+                                 'portfolio' => 'Professional Portfolio',
+                                 'blog' => 'Blog / Magazine',
+                                 'landing-page' => 'Landing Page',
+                                 'educational' => 'Educational Portal',
+                                 'full-ecommerce' => 'Full E-commerce Store',
+                                 'single-product' => 'Single Product Landing Page',
+                                 'subscription' => 'Subscription-based Store',
+                                 'marketplace' => 'Multi-vendor Marketplace',
+                                 'dropshipping' => 'Dropshipping Store',
+                                 'redesign-ecommerce' => 'E-commerce Redesign'
+                             ];
                             echo displayValue($pt_labels[$pt] ?? $pt);
                             ?></div>
                         </div>
@@ -1328,6 +1344,15 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
                                     'realestate' => 'Real Estate & Construction',
                                     'consulting' => 'Consulting & Professional Services',
                                     'manufacturing' => 'Manufacturing & Industrial',
+                                    'nonprofit' => 'Non-Profit / NGO',
+                                    'fashion' => 'Fashion & Apparel',
+                                    'electronics' => 'Electronics & Gadgets',
+                                    'beauty' => 'Beauty & Personal Care',
+                                    'home-kitchen' => 'Home & Kitchen',
+                                    'groceries' => 'Groceries & Food',
+                                    'toys-games' => 'Toys & Games',
+                                    'health-supplements' => 'Health & Supplements',
+                                    'jewelry' => 'Jewelry & Accessories',
                                     'other' => 'Other'
                                 ];
                                 echo displayValue($categoryLabels[$businessCategory] ?? $businessCategory);
@@ -1449,7 +1474,16 @@ function pageAssetUrl(string $clientId, string $type, string $page, bool $downlo
                     <div class="field-grid">
                         <div class="field-group">
                             <div class="field-label">Preferred Platform</div>
-                            <div class="field-value"><?php echo displayValue($form_data['platform'] ?? ''); ?></div>
+                            <div class="field-value">
+                                <?php 
+                                    $platform = $form_data['platform'] ?? '';
+                                    if ($platform === 'other' && !empty($form_data['otherPlatformName'])) {
+                                        echo displayValue($form_data['otherPlatformName']);
+                                    } else {
+                                        echo displayValue($platform);
+                                    }
+                                ?>
+                            </div>
                         </div>
                     </div>
 
