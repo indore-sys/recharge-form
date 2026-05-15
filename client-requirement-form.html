@@ -1054,15 +1054,22 @@
         }
 
         .clear-data-btn {
-            background: #dc3545;
-            color: white;
+            width: 100%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 14px;
             border: none;
-            padding: 8px 16px;
-            border-radius: 5px;
-            font-size: 0.85rem;
+            border-radius: var(--ui-radius-md);
+            font-family: inherit;
+            font-size: 0.92rem;
+            font-weight: 700;
             cursor: pointer;
-            transition: background 0.3s ease;
-            margin-top: 10px;
+            color: #fff;
+            background: linear-gradient(135deg, #6d28d9 0%, #7c3aed 55%, #8b5cf6 100%);
+            box-shadow: 0 8px 20px rgba(var(--ui-accent-rgb), 0.28);
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
         }
 
         .clear-data-btn:hover {
@@ -1419,6 +1426,10 @@
 
         body.submission-complete .sidebar,
         body.submission-complete .header {
+            display: none !important;
+        }
+
+        body.submission-complete #welcomePanel.welcome-panel {
             display: none !important;
         }
 
@@ -4234,14 +4245,96 @@
                                     <label>Design Available</label>
                                     <div class="radio-group">
                                         <label class="radio-option">
-                                            <input type="radio" name="app_design_available" value="yes"> Yes - We have designs
+                                            <input type="radio" name="app_design_available" value="yes" onchange="toggleDesignFollowUp(this.value)"> Yes - We have designs
                                         </label>
                                         <label class="radio-option">
-                                            <input type="radio" name="app_design_available" value="no"> No - Need design
+                                            <input type="radio" name="app_design_available" value="no" onchange="toggleDesignFollowUp(this.value)"> No - Need design
                                         </label>
                                         <label class="radio-option">
-                                            <input type="radio" name="app_design_available" value="partial"> Partial - Some designs ready
+                                            <input type="radio" name="app_design_available" value="partial" onchange="toggleDesignFollowUp(this.value)"> Partial - Some designs ready
                                         </label>
+                                    </div>
+                                </div>
+
+                                <!-- If YES: design details -->
+                                <div id="designFollowUp_yes" style="display:none; margin-top:14px;">
+                                    <div style="background:#e8f4fd; border-left:3px solid #3498db; border-radius:8px; padding:14px;">
+                                        <strong style="color:#2c3e50; display:block; margin-bottom:12px;">📐 Tell us about your designs</strong>
+                                        <div class="form-group">
+                                            <label>Design Tool Used</label>
+                                            <div class="checkbox-group">
+                                                <label class="checkbox-option"><input type="checkbox" name="app_design_tool[]" value="figma"> Figma</label>
+                                                <label class="checkbox-option"><input type="checkbox" name="app_design_tool[]" value="adobe-xd"> Adobe XD</label>
+                                                <label class="checkbox-option"><input type="checkbox" name="app_design_tool[]" value="sketch"> Sketch</label>
+                                                <label class="checkbox-option"><input type="checkbox" name="app_design_tool[]" value="pdf"> PDF / Images</label>
+                                                <label class="checkbox-option"><input type="checkbox" name="app_design_tool[]" value="other"> Other</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Design File Link (Figma, XD, Drive, etc.)</label>
+                                            <input type="url" name="app_design_link" placeholder="https://figma.com/file/...">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Upload Design File (optional)</label>
+                                            <input type="file" name="app_design_file" accept=".fig,.xd,.sketch,.pdf,.png,.jpg,.zip">
+                                            <small>Accepted: .fig, .xd, .sketch, .pdf, .png, .jpg, .zip</small>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Any specific notes about your designs?</label>
+                                            <textarea name="app_design_notes" placeholder="e.g., Screens already designed: Login, Home, Dashboard. Needs: Checkout flow." rows="2"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- If NO: mood & style -->
+                                <div id="designFollowUp_no" style="display:none; margin-top:14px;">
+                                    <div style="background:#fef9e7; border-left:3px solid #f39c12; border-radius:8px; padding:14px;">
+                                        <strong style="color:#2c3e50; display:block; margin-bottom:12px;">🎨 Help us understand your style</strong>
+                                        <div class="form-group">
+                                            <label>App Style / Mood</label>
+                                            <div class="checkbox-group">
+                                                <label class="checkbox-option"><input type="checkbox" name="app_design_mood[]" value="minimal"> Minimal & Clean</label>
+                                                <label class="checkbox-option"><input type="checkbox" name="app_design_mood[]" value="bold"> Bold & Vibrant</label>
+                                                <label class="checkbox-option"><input type="checkbox" name="app_design_mood[]" value="professional"> Professional & Corporate</label>
+                                                <label class="checkbox-option"><input type="checkbox" name="app_design_mood[]" value="playful"> Playful & Fun</label>
+                                                <label class="checkbox-option"><input type="checkbox" name="app_design_mood[]" value="dark"> Dark Mode</label>
+                                                <label class="checkbox-option"><input type="checkbox" name="app_design_mood[]" value="luxury"> Luxury / Premium</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Preferred Color Palette</label>
+                                            <input type="text" name="app_design_colors" placeholder="e.g., Blue & White, Dark theme, Brand colors: #FF6B35...">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Do you have a Brand Guide / Logo?</label>
+                                            <div class="radio-group">
+                                                <label class="radio-option"><input type="radio" name="app_has_brand_guide" value="yes"> Yes – I'll share it</label>
+                                                <label class="radio-option"><input type="radio" name="app_has_brand_guide" value="no"> No – Create from scratch</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Reference Apps (for design inspiration)</label>
+                                            <textarea name="app_design_reference" placeholder="Name apps whose design you like and why..." rows="2"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- If PARTIAL: what's ready / missing -->
+                                <div id="designFollowUp_partial" style="display:none; margin-top:14px;">
+                                    <div style="background:#eafaf1; border-left:3px solid #27ae60; border-radius:8px; padding:14px;">
+                                        <strong style="color:#2c3e50; display:block; margin-bottom:12px;">🔧 Tell us what's ready & what's missing</strong>
+                                        <div class="form-group">
+                                            <label>Which screens/parts are designed?</label>
+                                            <textarea name="app_design_ready_screens" placeholder="e.g., Login, Home screen, Dashboard – all done in Figma." rows="2"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Which screens/parts still need design?</label>
+                                            <textarea name="app_design_missing_screens" placeholder="e.g., Checkout, Profile, Notifications screens need design." rows="2"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Design File Link (for what's ready)</label>
+                                            <input type="url" name="app_design_link" placeholder="https://figma.com/file/...">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -4399,34 +4492,167 @@
                                 </div>
                             </div>
                             <div class="grid-card">
-                                <h3 class="grid-card-title"><span class="grid-card-num">2</span> Methods</h3>
+                                <h3 class="grid-card-title"><span class="grid-card-num">2</span> Methods & Credentials</h3>
                                 <div class="form-group">
                                     <label>Payment Methods</label>
                                     <div class="checkbox-group">
                                         <label class="checkbox-option">
-                                            <input type="checkbox" name="app_payment_methods[]" value="credit-card"> Credit/Debit Cards
+                                            <input type="checkbox" name="app_payment_methods[]" value="credit-card" id="pm_credit_card" onchange="togglePaymentCredentials()"> Credit/Debit Cards
                                         </label>
                                         <label class="checkbox-option">
-                                            <input type="checkbox" name="app_payment_methods[]" value="paypal"> PayPal
+                                            <input type="checkbox" name="app_payment_methods[]" value="paypal" id="pm_paypal" onchange="togglePaymentCredentials()"> PayPal
                                         </label>
                                         <label class="checkbox-option">
-                                            <input type="checkbox" name="app_payment_methods[]" value="stripe"> Stripe
+                                            <input type="checkbox" name="app_payment_methods[]" value="stripe" id="pm_stripe" onchange="togglePaymentCredentials()"> Stripe
                                         </label>
                                         <label class="checkbox-option">
-                                            <input type="checkbox" name="app_payment_methods[]" value="razorpay"> Razorpay
+                                            <input type="checkbox" name="app_payment_methods[]" value="razorpay" id="pm_razorpay" onchange="togglePaymentCredentials()"> Razorpay
                                         </label>
                                         <label class="checkbox-option">
-                                            <input type="checkbox" name="app_payment_methods[]" value="apple-pay"> Apple Pay
+                                            <input type="checkbox" name="app_payment_methods[]" value="apple-pay" id="pm_apple_pay" onchange="togglePaymentCredentials()"> Apple Pay
                                         </label>
                                         <label class="checkbox-option">
-                                            <input type="checkbox" name="app_payment_methods[]" value="google-pay"> Google Pay
+                                            <input type="checkbox" name="app_payment_methods[]" value="google-pay" id="pm_google_pay" onchange="togglePaymentCredentials()"> Google Pay
                                         </label>
                                         <label class="checkbox-option">
-                                            <input type="checkbox" name="app_payment_methods[]" value="upi"> UPI
+                                            <input type="checkbox" name="app_payment_methods[]" value="upi" id="pm_upi" onchange="togglePaymentCredentials()"> UPI
                                         </label>
                                         <label class="checkbox-option">
-                                            <input type="checkbox" name="app_payment_methods[]" value="cod"> Cash on Delivery
+                                            <input type="checkbox" name="app_payment_methods[]" value="cod" id="pm_cod" onchange="togglePaymentCredentials()"> Cash on Delivery
                                         </label>
+                                    </div>
+                                </div>
+
+                                <!-- Payment Credentials (shown conditionally) -->
+                                <div id="paymentCredentialsSection" style="display:none; margin-top: 16px;">
+                                    <label style="font-weight:600; color:#2c3e50; margin-bottom:10px; display:block;">💳 Payment Gateway Credentials <small style="font-weight:400; color:#6c757d;">(fill whichever you have)</small></label>
+
+                                    <!-- Razorpay -->
+                                    <div id="creds_razorpay" class="payment-cred-block" style="display:none;">
+                                        <div style="background:#f8f9fa; border-left:3px solid #3498db; border-radius:8px; padding:14px; margin-bottom:12px;">
+                                            <strong style="color:#2c3e50;">🔵 Razorpay</strong>
+                                            <div class="row" style="margin-top:10px;">
+                                                <div class="form-group">
+                                                    <label>Key ID</label>
+                                                    <input type="text" name="app_payment_cred_razorpay_key_id" placeholder="rzp_live_XXXXXXXXXXXXXXXX">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Key Secret</label>
+                                                    <input type="text" name="app_payment_cred_razorpay_key_secret" placeholder="Your Razorpay key secret">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Stripe -->
+                                    <div id="creds_stripe" class="payment-cred-block" style="display:none;">
+                                        <div style="background:#f8f9fa; border-left:3px solid #6772e5; border-radius:8px; padding:14px; margin-bottom:12px;">
+                                            <strong style="color:#2c3e50;">🟣 Stripe</strong>
+                                            <div class="row" style="margin-top:10px;">
+                                                <div class="form-group">
+                                                    <label>Publishable Key</label>
+                                                    <input type="text" name="app_payment_cred_stripe_publishable_key" placeholder="pk_live_XXXXXXXXXXXXXXXX">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Secret Key</label>
+                                                    <input type="text" name="app_payment_cred_stripe_secret_key" placeholder="sk_live_XXXXXXXXXXXXXXXX">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- PayPal -->
+                                    <div id="creds_paypal" class="payment-cred-block" style="display:none;">
+                                        <div style="background:#f8f9fa; border-left:3px solid #003087; border-radius:8px; padding:14px; margin-bottom:12px;">
+                                            <strong style="color:#2c3e50;">🔷 PayPal</strong>
+                                            <div class="row" style="margin-top:10px;">
+                                                <div class="form-group">
+                                                    <label>Client ID</label>
+                                                    <input type="text" name="app_payment_cred_paypal_client_id" placeholder="Your PayPal Client ID">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Client Secret</label>
+                                                    <input type="text" name="app_payment_cred_paypal_client_secret" placeholder="Your PayPal Client Secret">
+                                                </div>
+                                            </div>
+                                            <div class="form-group" style="margin-top:8px;">
+                                                <label>PayPal Email (Merchant)</label>
+                                                <input type="email" name="app_payment_cred_paypal_email" placeholder="paypal@yourbusiness.com">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- UPI -->
+                                    <div id="creds_upi" class="payment-cred-block" style="display:none;">
+                                        <div style="background:#f8f9fa; border-left:3px solid #5f259f; border-radius:8px; padding:14px; margin-bottom:12px;">
+                                            <strong style="color:#2c3e50;">💜 UPI</strong>
+                                            <div class="row" style="margin-top:10px;">
+                                                <div class="form-group">
+                                                    <label>UPI ID / VPA</label>
+                                                    <input type="text" name="app_payment_cred_upi_id" placeholder="yourname@bankname">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Merchant Name</label>
+                                                    <input type="text" name="app_payment_cred_upi_merchant_name" placeholder="Your Business Name">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Google Pay -->
+                                    <div id="creds_google_pay" class="payment-cred-block" style="display:none;">
+                                        <div style="background:#f8f9fa; border-left:3px solid #4285F4; border-radius:8px; padding:14px; margin-bottom:12px;">
+                                            <strong style="color:#2c3e50;">🟦 Google Pay</strong>
+                                            <div class="form-group" style="margin-top:10px;">
+                                                <label>Merchant ID</label>
+                                                <input type="text" name="app_payment_cred_gpay_merchant_id" placeholder="Your Google Pay Merchant ID">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Merchant Name</label>
+                                                <input type="text" name="app_payment_cred_gpay_merchant_name" placeholder="Your Business Name">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Apple Pay -->
+                                    <div id="creds_apple_pay" class="payment-cred-block" style="display:none;">
+                                        <div style="background:#f8f9fa; border-left:3px solid #555; border-radius:8px; padding:14px; margin-bottom:12px;">
+                                            <strong style="color:#2c3e50;">⬛ Apple Pay</strong>
+                                            <div class="form-group" style="margin-top:10px;">
+                                                <label>Merchant ID</label>
+                                                <input type="text" name="app_payment_cred_apple_merchant_id" placeholder="merchant.com.yourdomain.app">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Domain / Bundle ID</label>
+                                                <input type="text" name="app_payment_cred_apple_bundle_id" placeholder="com.yourdomain.app">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Credit/Debit Card -->
+                                    <div id="creds_credit_card" class="payment-cred-block" style="display:none;">
+                                        <div style="background:#f8f9fa; border-left:3px solid #e67e22; border-radius:8px; padding:14px; margin-bottom:12px;">
+                                            <strong style="color:#2c3e50;">💳 Credit/Debit Cards</strong>
+                                            <div class="form-group" style="margin-top:10px;">
+                                                <label>Payment Gateway Provider (for cards)</label>
+                                                <input type="text" name="app_payment_cred_card_gateway" placeholder="e.g., Stripe, Razorpay, CCAvenue...">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Merchant Account / API Key</label>
+                                                <input type="text" name="app_payment_cred_card_api_key" placeholder="Gateway API key or merchant ID">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- COD -->
+                                    <div id="creds_cod" class="payment-cred-block" style="display:none;">
+                                        <div style="background:#f8f9fa; border-left:3px solid #27ae60; border-radius:8px; padding:14px; margin-bottom:12px;">
+                                            <strong style="color:#2c3e50;">💵 Cash on Delivery</strong>
+                                            <div class="form-group" style="margin-top:10px;">
+                                                <label>COD Instructions / Notes</label>
+                                                <textarea name="app_payment_cred_cod_notes" placeholder="Any special instructions for COD (e.g., delivery areas, max order value, etc.)" rows="2"></textarea>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -5138,7 +5364,7 @@
             data.timestamp = new Date().toISOString();
 
             // Normalize repeated checkbox groups into arrays for reliable restore
-            ['headerPages', 'footerPages', 'customFeatures', 'filterAttributes', 'paymentMethods', 'currencies', 'pageExtras', 'openDays', 'businessGoals', 'visitorActions', 'priorityFocus', 'contentSupport', 'mediaSupport', 'leadDestinations', 'serviceOperations', 'ecommerceOperations', 'trustAssets', 'legalNeeds', 'app_pageExtras', 'app_contentSupport', 'app_mediaSupport', 'app_target_platforms[]', 'app_features[]', 'app_user_roles[]', 'app_notification_types[]', 'app_payment_methods[]', 'app_deployment_stores[]', 'app_openDays[]'].forEach(name => {
+            ['headerPages', 'footerPages', 'customFeatures', 'filterAttributes', 'paymentMethods', 'currencies', 'pageExtras', 'openDays', 'businessGoals', 'visitorActions', 'priorityFocus', 'contentSupport', 'mediaSupport', 'leadDestinations', 'serviceOperations', 'ecommerceOperations', 'trustAssets', 'legalNeeds', 'app_pageExtras', 'app_contentSupport', 'app_mediaSupport', 'app_target_platforms[]', 'app_features[]', 'app_user_roles[]', 'app_notification_types[]', 'app_payment_methods[]', 'app_deployment_stores[]', 'app_openDays[]', 'app_design_tool[]', 'app_design_mood[]'].forEach(name => {
                 const values = Array.from(form.querySelectorAll(`input[name="${name}"]:checked`)).map(input => input.value);
                 data[name] = values;
             });
@@ -5173,7 +5399,7 @@
 
             existingData.timestamp = new Date().toISOString();
 
-            ['headerPages', 'footerPages', 'customFeatures', 'filterAttributes', 'paymentMethods', 'currencies', 'pageExtras', 'openDays', 'businessGoals', 'visitorActions', 'priorityFocus', 'contentSupport', 'mediaSupport', 'leadDestinations', 'serviceOperations', 'ecommerceOperations', 'trustAssets', 'legalNeeds', 'app_pageExtras', 'app_contentSupport', 'app_mediaSupport', 'app_target_platforms[]', 'app_features[]', 'app_user_roles[]', 'app_notification_types[]', 'app_payment_methods[]', 'app_deployment_stores[]', 'app_openDays[]'].forEach(name => {
+            ['headerPages', 'footerPages', 'customFeatures', 'filterAttributes', 'paymentMethods', 'currencies', 'pageExtras', 'openDays', 'businessGoals', 'visitorActions', 'priorityFocus', 'contentSupport', 'mediaSupport', 'leadDestinations', 'serviceOperations', 'ecommerceOperations', 'trustAssets', 'legalNeeds', 'app_pageExtras', 'app_contentSupport', 'app_mediaSupport', 'app_target_platforms[]', 'app_features[]', 'app_user_roles[]', 'app_notification_types[]', 'app_payment_methods[]', 'app_deployment_stores[]', 'app_openDays[]', 'app_design_tool[]', 'app_design_mood[]'].forEach(name => {
                 existingData[name] = Array.from(form.querySelectorAll(`input[name="${name}"]:checked`)).map(input => input.value);
             });
 
@@ -5199,7 +5425,7 @@
                     return;
                 }
 
-                const checkboxNames = ['headerPages', 'footerPages', 'customFeatures', 'filterAttributes', 'paymentMethods', 'currencies', 'pageExtras', 'openDays', 'businessGoals', 'visitorActions', 'priorityFocus', 'contentSupport', 'mediaSupport', 'leadDestinations', 'serviceOperations', 'ecommerceOperations', 'trustAssets', 'legalNeeds', 'app_pageExtras', 'app_contentSupport', 'app_mediaSupport', 'app_target_platforms[]', 'app_features[]', 'app_user_roles[]', 'app_notification_types[]', 'app_payment_methods[]', 'app_deployment_stores[]', 'app_openDays[]'];
+                const checkboxNames = ['headerPages', 'footerPages', 'customFeatures', 'filterAttributes', 'paymentMethods', 'currencies', 'pageExtras', 'openDays', 'businessGoals', 'visitorActions', 'priorityFocus', 'contentSupport', 'mediaSupport', 'leadDestinations', 'serviceOperations', 'ecommerceOperations', 'trustAssets', 'legalNeeds', 'app_pageExtras', 'app_contentSupport', 'app_mediaSupport', 'app_target_platforms[]', 'app_features[]', 'app_user_roles[]', 'app_notification_types[]', 'app_payment_methods[]', 'app_deployment_stores[]', 'app_openDays[]', 'app_design_tool[]', 'app_design_mood[]'];
 
                 clearPageSelections();
                 checkboxNames.forEach(name => {
@@ -5263,6 +5489,15 @@
                         if (checkbox) checkbox.checked = true;
                     });
                 });
+
+                // Re-trigger conditional sections after restore
+                const savedDesign = savedData['app_design_available'];
+                if (savedDesign && typeof toggleDesignFollowUp === 'function') {
+                    toggleDesignFollowUp(savedDesign);
+                }
+                if (typeof togglePaymentCredentials === 'function') {
+                    togglePaymentCredentials();
+                }
 
                 updateDynamicContentFields();
                 updateNavigationList();
@@ -5720,11 +5955,28 @@
         function updateNavigationList() {
             const navigationList = document.getElementById('navigationList');
             const navigationStructureInput = document.getElementById('navigationStructureInput');
+            
+            // 1. Get current order from DOM or from hidden input (for initial load)
+            const currentItems = Array.from(navigationList.querySelectorAll('.navigation-item'));
+            let currentOrder = currentItems.map(item => ({
+                value: item.dataset.value,
+                type: item.dataset.type
+            }));
+
+            // If DOM is empty but hidden input has value, use it (initial load case)
+            if (currentOrder.length === 0 && navigationStructureInput.value) {
+                const savedOrder = navigationStructureInput.value.split(',');
+                currentOrder = savedOrder.map(item => {
+                    const [val, type] = item.split('|');
+                    return { value: val, type: type || 'header' };
+                });
+            }
+
+            // 2. Get currently selected pages from checkboxes
             const headerPagesCheckboxes = document.querySelectorAll('input[name="headerPages"]');
             const footerPagesCheckboxes = document.querySelectorAll('input[name="footerPages"]');
             const selectedPages = [];
 
-            // Get all selected pages from headerPages checkboxes
             headerPagesCheckboxes.forEach(checkbox => {
                 if (checkbox.checked) {
                     selectedPages.push({
@@ -5735,7 +5987,6 @@
                 }
             });
 
-            // Get all selected pages from footerPages checkboxes
             footerPagesCheckboxes.forEach(checkbox => {
                 if (checkbox.checked) {
                     selectedPages.push({
@@ -5746,11 +5997,29 @@
                 }
             });
 
-            // Clear existing navigation list
+            // 3. Reconstruct list preserving existing order
+            const finalOrder = [];
+            
+            // First, keep existing selected items in their order
+            currentOrder.forEach(item => {
+                const foundIndex = selectedPages.findIndex(p => p.value === item.value && p.type === item.type);
+                if (foundIndex !== -1) {
+                    finalOrder.push(selectedPages[foundIndex]);
+                    // Remove from selectedPages so we don't add it again later
+                    selectedPages.splice(foundIndex, 1);
+                }
+            });
+            
+            // Then add any newly selected items at the end
+            selectedPages.forEach(page => {
+                finalOrder.push(page);
+            });
+
+            // Clear and rebuild the DOM
             navigationList.innerHTML = '';
 
             // Create navigation items
-            selectedPages.forEach((page, index) => {
+            finalOrder.forEach((page, index) => {
                 const navItem = document.createElement('div');
                 navItem.className = 'navigation-item';
                 navItem.draggable = true;
@@ -5779,9 +6048,10 @@
             const checkbox = document.querySelector(`input[name="${pageType}Pages"][value="${pageValue}"]`);
             if (checkbox) {
                 checkbox.checked = false;
-                updateDynamicContentFields();
+                // These functions will handle the rest of the updates
+                if (typeof updateDynamicContentFields === 'function') updateDynamicContentFields();
                 updateNavigationList();
-                updatePageCount();
+                if (typeof updatePageCount === 'function') updatePageCount();
             }
         }
 
@@ -5789,7 +6059,8 @@
             const navigationList = document.getElementById('navigationList');
             const navigationStructureInput = document.getElementById('navigationStructureInput');
             const items = navigationList.querySelectorAll('.navigation-item');
-            const order = Array.from(items).map(item => item.dataset.value);
+            // Store as value|type to preserve structure and order perfectly
+            const order = Array.from(items).map(item => `${item.dataset.value}|${item.dataset.type}`);
             navigationStructureInput.value = order.join(',');
         }
 
@@ -6059,6 +6330,7 @@
                 document.body.classList.add('client-form-visible');
                 if (welcomePanel) {
                     welcomePanel.classList.add('hidden');
+                    welcomePanel.style.display = 'none';
                 }
                 if (form) {
                     form.style.display = 'block';
@@ -6333,73 +6605,9 @@
 
             // Auto-scroll to next section based on progress
             function autoScrollToNextSection() {
-                const currentSection = document.querySelector('.form-section.active');
-                if (!currentSection) return;
-
                 if (window.autoAdvanceTimeout) {
                     clearTimeout(window.autoAdvanceTimeout);
                     window.autoAdvanceTimeout = null;
-                }
-
-                const isVisibleControl = (control) => {
-                    if (!control || control.disabled) return false;
-                    const style = window.getComputedStyle(control);
-                    return style.display !== 'none' && style.visibility !== 'hidden';
-                };
-
-                const visibleControls = Array.from(
-                    currentSection.querySelectorAll('input:not([type="hidden"]), textarea, select')
-                ).filter(isVisibleControl);
-
-                const requiredControls = visibleControls.filter(control => control.required);
-                const controlsToCheck = requiredControls.length ? requiredControls : visibleControls;
-
-                if (!controlsToCheck.length) return;
-
-                const groupState = new Map();
-                let allFilled = true;
-
-                controlsToCheck.forEach(control => {
-                    const type = (control.type || '').toLowerCase();
-                    if (type === 'radio' || type === 'checkbox') {
-                        const key = `${type}:${control.name || control.id || ''}`;
-                        if (!groupState.has(key)) {
-                            const group = controlsToCheck.filter(item => (
-                                (item.type || '').toLowerCase() === type &&
-                                (item.name || item.id || '') === (control.name || control.id || '')
-                            ));
-                            const groupFilled = group.some(item => item.checked);
-                            groupState.set(key, groupFilled);
-                        }
-                        if (!groupState.get(key)) {
-                            allFilled = false;
-                        }
-                    } else if (type === 'file') {
-                        if (!(control.files && control.files.length > 0)) {
-                            allFilled = false;
-                        }
-                    } else if (typeof control.value === 'string') {
-                        if (control.value.trim() === '') {
-                            allFilled = false;
-                        }
-                    }
-                });
-
-                // If the visible required fields are filled, move to the next section.
-                if (allFilled) {
-                    const nextBtn = currentSection.querySelector('.nav-btn[data-next]');
-                    if (nextBtn) {
-                        if (window.autoAdvanceTimeout) {
-                            clearTimeout(window.autoAdvanceTimeout);
-                        }
-                        window.autoAdvanceTimeout = setTimeout(() => {
-                            if (document.querySelector('.form-section.active') !== currentSection) {
-                                return;
-                            }
-                            navigateToSection(nextBtn.dataset.next, 'auto'); // Auto-navigate to next section
-                            window.autoAdvanceTimeout = null;
-                        }, 1000); // 1 second delay for user to see completion
-                    }
                 }
             }
 
@@ -8170,6 +8378,41 @@
             // Run initialization after all functions are defined
             setTimeout(initializeForm, 100);
         });
+
+        // Design availability follow-up toggle
+        function toggleDesignFollowUp(value) {
+            ['yes', 'no', 'partial'].forEach(function(v) {
+                const el = document.getElementById('designFollowUp_' + v);
+                if (el) el.style.display = (v === value) ? 'block' : 'none';
+            });
+        }
+
+        // Payment credentials toggle function
+        function togglePaymentCredentials() {
+            const methodToCredId = {
+                'credit-card': 'creds_credit_card',
+                'paypal':       'creds_paypal',
+                'stripe':       'creds_stripe',
+                'razorpay':     'creds_razorpay',
+                'apple-pay':    'creds_apple_pay',
+                'google-pay':   'creds_google_pay',
+                'upi':          'creds_upi',
+                'cod':          'creds_cod'
+            };
+
+            let anyChecked = false;
+            document.querySelectorAll('input[name="app_payment_methods[]"]').forEach(cb => {
+                const credId = methodToCredId[cb.value];
+                if (credId) {
+                    const block = document.getElementById(credId);
+                    if (block) block.style.display = cb.checked ? 'block' : 'none';
+                }
+                if (cb.checked) anyChecked = true;
+            });
+
+            const section = document.getElementById('paymentCredentialsSection');
+            if (section) section.style.display = anyChecked ? 'block' : 'none';
+        }
 
         // Password toggle function
         function togglePassword(fieldId) {

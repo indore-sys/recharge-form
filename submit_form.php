@@ -64,6 +64,11 @@ function getUploadSubdirectory(string $fieldName): string {
         return 'documents';
     }
 
+    // Design files
+    if (stripos($fieldName, 'app_design_file') !== false) {
+        return 'design-files';
+    }
+
     // Documents and assets
     if (stripos($fieldName, 'asset') !== false || stripos($fieldName, 'document') !== false || stripos($fieldName, 'file') !== false) {
         return 'documents';
@@ -421,7 +426,8 @@ try {
         'businessGoals', 'pageExtras', 'serviceOperations', 'ecommerceOperations',
         'trustAssets', 'legalNeeds', 'leadDestinations', 'app_features',
         'app_target_platforms', 'app_deployment_stores', 'app_payment_methods',
-        'appScreens', 'openDays', 'filterAttributes'
+        'appScreens', 'openDays', 'filterAttributes',
+        'app_design_tool', 'app_design_mood'
     ];
 
     foreach ($multiSelectFields as $field) {
