@@ -1923,30 +1923,46 @@
             grid-column: 1 / -1;
         }
 
-        /* Website steps (website + both flows): 2-column grid of each top-level .section card */
+        /* Website steps (website + both flows): masonry-style columns for uneven cards */
         .form-section#technical .section-content,
         .form-section#content .section-content,
         .form-section#products .section-content,
         .form-section#marketing .section-content {
+            display: block;
+        }
+
+        .section-masonry-grid {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 20px;
             align-items: start;
         }
 
+        .section-masonry-column {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            min-width: 0;
+        }
+
         .form-section#technical .section-content > .section-navigation,
         .form-section#content .section-content > .section-navigation,
         .form-section#products .section-content > .section-navigation,
         .form-section#marketing .section-content > .section-navigation {
-            grid-column: 1 / -1;
+            margin-top: 20px;
         }
 
         @media (max-width: 960px) {
-            .form-section#technical .section-content,
-            .form-section#content .section-content,
-            .form-section#products .section-content,
-            .form-section#marketing .section-content {
-                grid-template-columns: 1fr;
+            .section-masonry-grid {
+                display: block;
+            }
+
+            .section-masonry-column {
+                display: contents;
+            }
+
+            .section-masonry-column > .section {
+                margin-bottom: 20px;
             }
         }
 
@@ -6501,6 +6517,64 @@
                 });
             }
 
+            function syncWebsiteSectionMasonry() {
+                const isSingleColumn = window.matchMedia('(max-width: 960px)').matches;
+                const containers = document.querySelectorAll(
+                    '.form-section#technical .section-content, .form-section#content .section-content, .form-section#products .section-content, .form-section#marketing .section-content'
+                );
+
+                containers.forEach(container => {
+                    const existingGrid = container.querySelector(':scope > .section-masonry-grid');
+                    const existingColumns = existingGrid ? Array.from(existingGrid.children) : [];
+
+                    if (existingGrid) {
+                        const restoredSections = existingColumns
+                            .flatMap(column => Array.from(column.children))
+                            .sort((a, b) => Number(a.dataset.masonryIndex || 0) - Number(b.dataset.masonryIndex || 0));
+                        restoredSections.forEach(section => container.insertBefore(section, existingGrid));
+                        existingGrid.remove();
+                    }
+
+                    const sectionsToPack = Array.from(container.querySelectorAll(':scope > .section'));
+                    if (!sectionsToPack.length) {
+                        return;
+                    }
+
+                    sectionsToPack.forEach((section, index) => {
+                        section.dataset.masonryIndex = index;
+                    });
+
+                    if (isSingleColumn) {
+                        return;
+                    }
+
+                    const grid = document.createElement('div');
+                    grid.className = 'section-masonry-grid';
+
+                    const leftColumn = document.createElement('div');
+                    leftColumn.className = 'section-masonry-column';
+
+                    const rightColumn = document.createElement('div');
+                    rightColumn.className = 'section-masonry-column';
+
+                    grid.append(leftColumn, rightColumn);
+                    container.insertBefore(grid, sectionsToPack[0]);
+
+                    sectionsToPack.forEach((section, index) => {
+                        if (index === 0) {
+                            leftColumn.appendChild(section);
+                            return;
+                        }
+                        if (index === 1) {
+                            rightColumn.appendChild(section);
+                            return;
+                        }
+                        const targetColumn = leftColumn.scrollHeight <= rightColumn.scrollHeight ? leftColumn : rightColumn;
+                        targetColumn.appendChild(section);
+                    });
+                });
+            }
+
             function activateFormSection(sectionId) {
                 resetFormSectionState();
 
@@ -6517,8 +6591,12 @@
                     activeLink.classList.add('active');
                 }
 
+                syncWebsiteSectionMasonry();
+
                 return targetSection;
             }
+
+            window.addEventListener('resize', syncWebsiteSectionMasonry);
 
             // Sidebar navigation click
             navLinks.forEach(link => {
