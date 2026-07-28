@@ -190,6 +190,7 @@ function readSubmissionData() {
             if (empty($payload)) {
                 throw new Exception('Empty payload received');
             }
+            return $payload;
         } catch (Exception $e) {
             throw new Exception('Error reading JSON data: ' . $e->getMessage());
         }
@@ -339,12 +340,18 @@ function buildStructuredPayload(array $data, array $uploadedFiles, string $clien
 }
 
 try {
+    $perf_start = microtime(true);
+    $perf_metrics = [];
+
     error_log('=== FORM SUBMISSION START ===');
     error_log('Request Method: ' . ($_SERVER['REQUEST_METHOD'] ?? 'unknown'));
     error_log('Content-Type: ' . ($_SERVER['CONTENT_TYPE'] ?? 'not set'));
 
     $data = readSubmissionData();
     $uploadedFiles = collectUploadedFiles();
+    
+    $perf_metrics['read_data_time'] = round((microtime(true) - $perf_start) * 1000, 2) . ' ms';
+    $perf_payload_start = microtime(true);
 
     // Normalize mobile app contact and company fields into standard names
     if (empty($data['contactName']) && !empty($data['app_contactName'])) {
@@ -370,7 +377,6 @@ try {
     // Backend validation - ensure project type is selected
     if (empty($data['project_type'])) {
         error_log('Project type is missing but continuing for testing');
-        // Don't throw error for testing
     }
 
     // Backend validation - very lenient for testing purposes
@@ -393,14 +399,10 @@ try {
     // Only validate email if provided (allow empty for testing)
     if (!empty($email) && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
         error_log('Invalid email provided but continuing for testing');
-        // Don't throw exception for testing
     }
 
     // Log the final values being saved
     error_log('Final values - Email: ' . $email . ', Name: ' . $name . ', Phone: ' . $phone);
-
-    // For testing, allow empty submissions as long as project type is selected
-    // This helps test the Enter key fix without requiring form completion
 
     error_log('Submitted payload: ' . print_r($data, true));
     error_log('POST dump: ' . print_r($_POST, true));
@@ -450,15 +452,25 @@ try {
     }
 
     $payload = buildStructuredPayload($data, $uploadedFiles, $client_id);
+    
+    $perf_metrics['build_payload_time'] = round((microtime(true) - $perf_payload_start) * 1000, 2) . ' ms';
+    $perf_db_conn_start = microtime(true);
 
     $conn = getDBConnection();
+    
+    $perf_metrics['db_connect_time'] = round((microtime(true) - $perf_db_conn_start) * 1000, 2) . ' ms';
 
     if ($conn) {
+        $perf_db_select_start = microtime(true);
+        
         $check_sql = "SELECT id FROM clients WHERE client_id = ?";
         $check_stmt = $conn->prepare($check_sql);
         $check_stmt->bind_param('s', $client_id);
         $check_stmt->execute();
         $result = $check_stmt->get_result();
+        
+        $perf_metrics['db_select_query_time'] = round((microtime(true) - $perf_db_select_start) * 1000, 2) . ' ms';
+        $perf_db_write_start = microtime(true);
 
         $form_data_json = json_encode($payload);
 
@@ -487,15 +499,19 @@ try {
         $stmt->close();
         $check_stmt->close();
         $conn->close();
+        
+        $perf_metrics['db_write_query_time'] = round((microtime(true) - $perf_db_write_start) * 1000, 2) . ' ms';
     } else {
-        // Database connection failed, but we still want to return success for testing
         error_log('Database connection failed, but continuing with form submission');
     }
+
+    $perf_metrics['total_execution_time'] = round((microtime(true) - $perf_start) * 1000, 2) . ' ms';
 
     echo json_encode([
         'success' => true,
         'message' => 'Form submitted successfully',
         'client_id' => $client_id,
+        'performance_metrics' => $perf_metrics,
         'post_data' => $data,
         'post_data_print_r' => print_r($_POST, true),
         'files' => array_keys($uploadedFiles),

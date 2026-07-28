@@ -1,0 +1,6952 @@
+[01-Jun-2026 06:24:19 UTC] === FORM SUBMISSION START ===
+[01-Jun-2026 06:24:19 UTC] Request Method: POST
+[01-Jun-2026 06:24:19 UTC] Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryETFTGOtAGVleW7oC
+[01-Jun-2026 06:24:19 UTC] Final values - Email: rajvishwakarma2021@gmail.com, Name: Rajkumar Vishwakarma, Phone: 09111328903
+[01-Jun-2026 06:24:19 UTC] Submitted payload: Array
+(
+    [project_type] => website
+    [applicationType] => informational
+    [brandName] => thecraftloom
+    [businessCategory] => healthcare
+    [otherBusinessCategoryInput] => 
+    [brandShortDescription] => frghjm
+    [projectType] => new
+    [otherProjectTypeInput] => 
+    [projectDescription] => 
+    [businessGoals] => Array
+        (
+            [0] => generate-leads
+        )
+
+    [targetAudience] => 
+    [visitorProblem] => 
+    [visitorActions] => Array
+        (
+            [0] => book-appointment
+        )
+
+    [priorityFocus] => Array
+        (
+            [0] => fast-launch
+        )
+
+    [launchDate] => 2026-07-01
+    [platform] => wordpress
+    [otherPlatformName] => 
+    [shopifyEmail] => 
+    [shopifyPassword] => 
+    [sslProvider] => 
+    [sslExpiryDate] => 
+    [sslType] => 
+    [sslPreferredProvider] => 
+    [securityRequirements] => 
+    [hasTheme] => no
+    [themeName] => jhgf.com
+    [themeProvider] => 
+    [inspirationSites] => developem.com
+    [websitePageStyle] => multi-page
+    [designStyle] => simple-minimal
+    [colorPreferences] => 
+    [colorScheme] => team-choice
+    [fontPreference] => team-choice
+    [fontUrl] => sccza
+    [referenceWebsite1] => thecraftloom.com
+    [referenceWebsite2] => avana.com
+    [referenceWebsite3] => 
+    [designComments] => 
+    [headerPages] => Array
+        (
+            [0] => home
+            [1] => contact
+            [2] => shop
+        )
+
+    [footerPages] => Array
+        (
+            [0] => privacy
+            [1] => terms
+        )
+
+    [navigationStructure] => home|header,contact|header,shop|header,privacy|footer,terms|footer
+    [subpageNotes] => 
+    [customFeatures] => Array
+        (
+            [0] => contact
+            [1] => facebook-pixel
+            [2] => search
+            [3] => payment-gateway
+        )
+
+    [otherFeatures] => 
+    [integrations] => 
+    [formRequirements] => 
+    [leadDestinations] => Array
+        (
+            [0] => email
+            [1] => whatsapp
+            [2] => admin-dashboard
+        )
+
+    [leadNotificationEmail] => 
+    [leadAutoReply] => 
+    [hasDomain] => yes
+    [domainName] => avana.co.nz
+    [domainProvider] => godaddy
+    [domainLogin] => no
+    [domainRegistrationSource] => other-provider
+    [domainManagementPreference] => team-handles
+    [domainUsername] => 
+    [domainPassword] => 
+    [preferredDomain] => 
+    [hasHosting] => no
+    [getspaceRegistrationEmail] => rajvishwakarma2021@gmail.com
+    [hostingProvider] => 
+    [hostingPlan] => 
+    [hostingUsername] => 
+    [hostingPassword] => 
+    [hostingPreference] => shared
+    [hostingPurchaseService] => yes
+    [companyName] => RECHARGE TRENDD SETTER PVT LTD
+    [companyCode] => 
+    [gstNumber] => 
+    [registrationNumber] => 
+    [bankAccount] => 
+    [bankName] => 
+    [ifscCode] => 
+    [companyAddress] => 
+    [city] => 
+    [state] => 
+    [country] => 
+    [pincode] => 
+    [tagline] => Success you’ve always craved—served hot, instantly, and built to deliver results with the speed that fuels unstoppable growth.
+    [hasLogo] => yes
+    [logoLink] => 
+    [logoSize] => 
+    [logoColors] => 
+    [temporaryLogoText] => 
+    [professionalLogoText] => 
+    [professionalLogoDescription] => 
+    [brandGuidelines] => 
+    [brandVoice] => friendly
+    [assetLinks] => 
+    [contentReady] => yes
+    [contentSupport] => Array
+        (
+            [0] => rewrite
+            [1] => not-sure
+        )
+
+    [mediaSupport] => Array
+        (
+            [0] => stock-images
+            [1] => banner-design
+        )
+
+    [pageHeading_home] => What is the astrology
+    [pageSubheading_home] => scdvfbgdv
+    [content_home] => hhiii
+    [contactFormTitle] => 
+    [contactFormSubmitText] => 
+    [contactFormThankYou] => 
+    [contactFormAdminEmail] => 
+    [pageHeading_shop] => 
+    [pageSubheading_shop] => 
+    [content_shop] => 
+    [pageHeading_privacy] => 
+    [pageSubheading_privacy] => 
+    [content_privacy] => 
+    [pageHeading_terms] => 
+    [pageSubheading_terms] => 
+    [content_terms] => 
+    [pageExtras] => Array
+        (
+            [0] => testimonials
+            [1] => gallery
+        )
+
+    [galleryTitle] => ranu mandal
+    [galleryDescription] => hii
+    [sellType] => none
+    [productDriveLink] => 
+    [productCategories] => 
+    [productImagesLink] => 
+    [serviceDriveLink] => 
+    [serviceCategories] => 
+    [servicePortfolioLink] => 
+    [servicePricing] => 
+    [serviceOperationNotes] => 
+    [isEcommerce] => no
+    [paymentMethods] => Array
+        (
+            [0] => razorpay
+            [1] => stripe
+            [2] => cod
+        )
+
+    [razorpayKeyId] => sfseghtw345trde456ygf
+    [stripeKey] => sfseghtw345trde456ygf
+    [paypalEmail] => 
+    [otherPaymentMethod] => 
+    [currencies] => Array
+        (
+            [0] => USD
+            [1] => INR
+        )
+
+    [otherCurrencyText] => 
+    [taxRegion] => UK , India
+    [taxRate] => 12
+    [shippingType] => free
+    [flatRate] => 
+    [shippingZones] => north
+    [shippingRates] => 
+    [deliveryTimeframes] => 
+    [inventoryType] => manual
+    [returnPolicy] => 
+    [ecommerceOperations] => Array
+        (
+            [0] => variants
+            [1] => sku
+            [2] => delivery-partners
+        )
+
+    [ecommerceOperationNotes] => 
+    [businessDescription] => seeess
+    [keywords] => sfrcdsvf
+    [competitors] => fvdrv.com
+    [avoidWebsites] => 
+    [targetLocations] => 
+    [googleBusinessProfile] => 
+    [trustAssets] => Array
+        (
+            [0] => testimonials
+            [1] => certifications
+        )
+
+    [legalNeeds] => Array
+        (
+            [0] => privacy-policy
+            [1] => cookie-banner
+        )
+
+    [legalTrustNotes] => 
+    [hasAnalytics] => no
+    [analyticsId] => 
+    [gaEmail] => rajvishwakarma2021@gmail.com
+    [gaPassword] => dgrverbdfb
+    [hasGMB] => no
+    [showSocialIcons] => yes
+    [facebookUrl] => https://linkedin.com/in/rajkumar-vishwakarma-87a9b9264
+    [instagramUrl] => 
+    [twitterUrl] => https://linkedin.com/in/rajkumar-vishwakarma-87a9b9264
+    [linkedinUrl] => 
+    [youtubeUrl] => 
+    [pinterestUrl] => 
+    [tiktokUrl] => 
+    [otherSocialMedia] => 
+    [contactName] => Rajkumar Vishwakarma
+    [contactEmail] => rajvishwakarma2021@gmail.com
+    [contactPhone] => 09111328903
+    [businessEmail] => rajvishwakarma2021@gmail.com
+    [businessAddress] => asttrokol 321
+    [workingHoursMode] => selected-hours
+    [openDays] => Array
+        (
+            [0] => monday
+            [1] => tuesday
+            [2] => wednesday
+            [3] => thursday
+            [4] => friday
+        )
+
+    [openingTime] => 13:49
+    [closingTime] => 16:49
+    [additionalNotes] => 
+    [decisionMaker] => Rajkumar
+    [reviewerCount] => 5
+    [preferredCommunication] => email
+    [bestContactTime] => after 3pm
+    [deadlineReason] => Event
+    [clientUncertainties] => 
+    [informationConfirmed] => yes
+    [app_purpose] => 
+    [app_target_audience] => 
+    [appScreens] => Array
+        (
+            [0] => login
+            [1] => home
+            [2] => profile
+            [3] => settings
+        )
+
+    [app_user_flow] => 
+    [app_name] => 
+    [app_companyCode] => 
+    [app_gstNumber] => 
+    [app_registrationNumber] => 
+    [app_bankAccount] => 
+    [app_bankName] => 
+    [app_ifscCode] => 
+    [app_companyAddress] => 
+    [app_city] => 
+    [app_state] => 
+    [app_country] => 
+    [app_pincode] => 
+    [app_tagline] => 
+    [app_iconLink] => 
+    [app_iconSize] => 
+    [app_iconColors] => 
+    [app_temporaryIconText] => 
+    [app_professionalIconText] => 
+    [app_professionalIconDescription] => 
+    [app_brandGuidelines] => 
+    [app_brandVoice] => 
+    [app_assetLinks] => 
+    [login_title] => 
+    [login_content] => 
+    [login_features] => 
+    [home_title] => 
+    [home_content] => 
+    [home_features] => 
+    [profile_title] => 
+    [profile_content] => 
+    [profile_features] => 
+    [settings_title] => 
+    [settings_content] => 
+    [settings_features] => 
+    [app_galleryTitle] => 
+    [app_galleryDescription] => 
+    [app_development_type] => 
+    [app_design_link] => 
+    [app_design_notes] => 
+    [app_design_colors] => 
+    [app_design_reference] => 
+    [app_design_ready_screens] => 
+    [app_design_missing_screens] => 
+    [app_reference_apps] => 
+    [app_payment_cred_razorpay_key_id] => 
+    [app_payment_cred_razorpay_key_secret] => 
+    [app_payment_cred_stripe_publishable_key] => 
+    [app_payment_cred_stripe_secret_key] => 
+    [app_payment_cred_paypal_client_id] => 
+    [app_payment_cred_paypal_client_secret] => 
+    [app_payment_cred_paypal_email] => 
+    [app_payment_cred_upi_id] => 
+    [app_payment_cred_upi_merchant_name] => 
+    [app_payment_cred_gpay_merchant_id] => 
+    [app_payment_cred_gpay_merchant_name] => 
+    [app_payment_cred_apple_merchant_id] => 
+    [app_payment_cred_apple_bundle_id] => 
+    [app_payment_cred_card_gateway] => 
+    [app_payment_cred_card_api_key] => 
+    [app_payment_cred_cod_notes] => 
+    [app_backend_tech] => 
+    [app_backend_tech_other] => 
+    [app_api_source] => 
+    [app_api_documentation] => 
+    [app_api_auth_type] => 
+    [app_api_credentials] => 
+    [app_playstore_login] => 
+    [app_playstore_password] => 
+    [app_appstore_login] => 
+    [app_appstore_password] => 
+    [app_contactName] => 
+    [app_contactEmail] => 
+    [app_contactPhone] => 
+    [app_businessEmail] => 
+    [app_businessAddress] => 
+    [app_openingTime] => 
+    [app_closingTime] => 
+    [app_additionalNotes] => 
+    [app_decisionMaker] => 
+    [app_reviewerCount] => 
+    [app_preferredCommunication] => 
+    [app_bestContactTime] => 
+    [app_deadlineReason] => 
+    [client_id] => CL-2026-4609
+)
+
+[01-Jun-2026 06:24:19 UTC] POST dump: Array
+(
+    [project_type] => website
+    [applicationType] => informational
+    [brandName] => thecraftloom
+    [businessCategory] => healthcare
+    [otherBusinessCategoryInput] => 
+    [brandShortDescription] => frghjm
+    [projectType] => new
+    [otherProjectTypeInput] => 
+    [projectDescription] => 
+    [businessGoals] => Array
+        (
+            [0] => generate-leads
+        )
+
+    [targetAudience] => 
+    [visitorProblem] => 
+    [visitorActions] => Array
+        (
+            [0] => book-appointment
+        )
+
+    [priorityFocus] => Array
+        (
+            [0] => fast-launch
+        )
+
+    [launchDate] => 2026-07-01
+    [platform] => wordpress
+    [otherPlatformName] => 
+    [shopifyEmail] => 
+    [shopifyPassword] => 
+    [sslProvider] => 
+    [sslExpiryDate] => 
+    [sslType] => 
+    [sslPreferredProvider] => 
+    [securityRequirements] => 
+    [hasTheme] => no
+    [themeName] => jhgf.com
+    [themeProvider] => 
+    [inspirationSites] => developem.com
+    [websitePageStyle] => multi-page
+    [designStyle] => simple-minimal
+    [colorPreferences] => 
+    [colorScheme] => team-choice
+    [fontPreference] => team-choice
+    [fontUrl] => sccza
+    [referenceWebsite1] => thecraftloom.com
+    [referenceWebsite2] => avana.com
+    [referenceWebsite3] => 
+    [designComments] => 
+    [headerPages] => Array
+        (
+            [0] => home
+            [1] => contact
+            [2] => shop
+        )
+
+    [footerPages] => Array
+        (
+            [0] => privacy
+            [1] => terms
+        )
+
+    [navigationStructure] => home|header,contact|header,shop|header,privacy|footer,terms|footer
+    [subpageNotes] => 
+    [customFeatures] => Array
+        (
+            [0] => contact
+            [1] => facebook-pixel
+            [2] => search
+            [3] => payment-gateway
+        )
+
+    [otherFeatures] => 
+    [integrations] => 
+    [formRequirements] => 
+    [leadDestinations] => Array
+        (
+            [0] => email
+            [1] => whatsapp
+            [2] => admin-dashboard
+        )
+
+    [leadNotificationEmail] => 
+    [leadAutoReply] => 
+    [hasDomain] => yes
+    [domainName] => avana.co.nz
+    [domainProvider] => godaddy
+    [domainLogin] => no
+    [domainRegistrationSource] => other-provider
+    [domainManagementPreference] => team-handles
+    [domainUsername] => 
+    [domainPassword] => 
+    [preferredDomain] => 
+    [hasHosting] => no
+    [getspaceRegistrationEmail] => rajvishwakarma2021@gmail.com
+    [hostingProvider] => 
+    [hostingPlan] => 
+    [hostingUsername] => 
+    [hostingPassword] => 
+    [hostingPreference] => shared
+    [hostingPurchaseService] => yes
+    [companyName] => RECHARGE TRENDD SETTER PVT LTD
+    [companyCode] => 
+    [gstNumber] => 
+    [registrationNumber] => 
+    [bankAccount] => 
+    [bankName] => 
+    [ifscCode] => 
+    [companyAddress] => 
+    [city] => 
+    [state] => 
+    [country] => 
+    [pincode] => 
+    [tagline] => Success you’ve always craved—served hot, instantly, and built to deliver results with the speed that fuels unstoppable growth.
+    [hasLogo] => yes
+    [logoLink] => 
+    [logoSize] => 
+    [logoColors] => 
+    [temporaryLogoText] => 
+    [professionalLogoText] => 
+    [professionalLogoDescription] => 
+    [brandGuidelines] => 
+    [brandVoice] => friendly
+    [assetLinks] => 
+    [contentReady] => yes
+    [contentSupport] => Array
+        (
+            [0] => rewrite
+            [1] => not-sure
+        )
+
+    [mediaSupport] => Array
+        (
+            [0] => stock-images
+            [1] => banner-design
+        )
+
+    [pageHeading_home] => What is the astrology
+    [pageSubheading_home] => scdvfbgdv
+    [content_home] => hhiii
+    [contactFormTitle] => 
+    [contactFormSubmitText] => 
+    [contactFormThankYou] => 
+    [contactFormAdminEmail] => 
+    [pageHeading_shop] => 
+    [pageSubheading_shop] => 
+    [content_shop] => 
+    [pageHeading_privacy] => 
+    [pageSubheading_privacy] => 
+    [content_privacy] => 
+    [pageHeading_terms] => 
+    [pageSubheading_terms] => 
+    [content_terms] => 
+    [pageExtras] => Array
+        (
+            [0] => testimonials
+            [1] => gallery
+        )
+
+    [galleryTitle] => ranu mandal
+    [galleryDescription] => hii
+    [sellType] => none
+    [productDriveLink] => 
+    [productCategories] => 
+    [productImagesLink] => 
+    [serviceDriveLink] => 
+    [serviceCategories] => 
+    [servicePortfolioLink] => 
+    [servicePricing] => 
+    [serviceOperationNotes] => 
+    [isEcommerce] => no
+    [paymentMethods] => Array
+        (
+            [0] => razorpay
+            [1] => stripe
+            [2] => cod
+        )
+
+    [razorpayKeyId] => sfseghtw345trde456ygf
+    [stripeKey] => sfseghtw345trde456ygf
+    [paypalEmail] => 
+    [otherPaymentMethod] => 
+    [currencies] => Array
+        (
+            [0] => USD
+            [1] => INR
+        )
+
+    [otherCurrencyText] => 
+    [taxRegion] => UK , India
+    [taxRate] => 12
+    [shippingType] => free
+    [flatRate] => 
+    [shippingZones] => north
+    [shippingRates] => 
+    [deliveryTimeframes] => 
+    [inventoryType] => manual
+    [returnPolicy] => 
+    [ecommerceOperations] => Array
+        (
+            [0] => variants
+            [1] => sku
+            [2] => delivery-partners
+        )
+
+    [ecommerceOperationNotes] => 
+    [businessDescription] => seeess
+    [keywords] => sfrcdsvf
+    [competitors] => fvdrv.com
+    [avoidWebsites] => 
+    [targetLocations] => 
+    [googleBusinessProfile] => 
+    [trustAssets] => Array
+        (
+            [0] => testimonials
+            [1] => certifications
+        )
+
+    [legalNeeds] => Array
+        (
+            [0] => privacy-policy
+            [1] => cookie-banner
+        )
+
+    [legalTrustNotes] => 
+    [hasAnalytics] => no
+    [analyticsId] => 
+    [gaEmail] => rajvishwakarma2021@gmail.com
+    [gaPassword] => dgrverbdfb
+    [hasGMB] => no
+    [showSocialIcons] => yes
+    [facebookUrl] => https://linkedin.com/in/rajkumar-vishwakarma-87a9b9264
+    [instagramUrl] => 
+    [twitterUrl] => https://linkedin.com/in/rajkumar-vishwakarma-87a9b9264
+    [linkedinUrl] => 
+    [youtubeUrl] => 
+    [pinterestUrl] => 
+    [tiktokUrl] => 
+    [otherSocialMedia] => 
+    [contactName] => Rajkumar Vishwakarma
+    [contactEmail] => rajvishwakarma2021@gmail.com
+    [contactPhone] => 09111328903
+    [businessEmail] => rajvishwakarma2021@gmail.com
+    [businessAddress] => asttrokol 321
+    [workingHoursMode] => selected-hours
+    [openDays] => Array
+        (
+            [0] => monday
+            [1] => tuesday
+            [2] => wednesday
+            [3] => thursday
+            [4] => friday
+        )
+
+    [openingTime] => 13:49
+    [closingTime] => 16:49
+    [additionalNotes] => 
+    [decisionMaker] => Rajkumar
+    [reviewerCount] => 5
+    [preferredCommunication] => email
+    [bestContactTime] => after 3pm
+    [deadlineReason] => Event
+    [clientUncertainties] => 
+    [informationConfirmed] => yes
+    [app_purpose] => 
+    [app_target_audience] => 
+    [appScreens] => Array
+        (
+            [0] => login
+            [1] => home
+            [2] => profile
+            [3] => settings
+        )
+
+    [app_user_flow] => 
+    [app_name] => 
+    [app_companyCode] => 
+    [app_gstNumber] => 
+    [app_registrationNumber] => 
+    [app_bankAccount] => 
+    [app_bankName] => 
+    [app_ifscCode] => 
+    [app_companyAddress] => 
+    [app_city] => 
+    [app_state] => 
+    [app_country] => 
+    [app_pincode] => 
+    [app_tagline] => 
+    [app_iconLink] => 
+    [app_iconSize] => 
+    [app_iconColors] => 
+    [app_temporaryIconText] => 
+    [app_professionalIconText] => 
+    [app_professionalIconDescription] => 
+    [app_brandGuidelines] => 
+    [app_brandVoice] => 
+    [app_assetLinks] => 
+    [login_title] => 
+    [login_content] => 
+    [login_features] => 
+    [home_title] => 
+    [home_content] => 
+    [home_features] => 
+    [profile_title] => 
+    [profile_content] => 
+    [profile_features] => 
+    [settings_title] => 
+    [settings_content] => 
+    [settings_features] => 
+    [app_galleryTitle] => 
+    [app_galleryDescription] => 
+    [app_development_type] => 
+    [app_design_link] => 
+    [app_design_notes] => 
+    [app_design_colors] => 
+    [app_design_reference] => 
+    [app_design_ready_screens] => 
+    [app_design_missing_screens] => 
+    [app_reference_apps] => 
+    [app_payment_cred_razorpay_key_id] => 
+    [app_payment_cred_razorpay_key_secret] => 
+    [app_payment_cred_stripe_publishable_key] => 
+    [app_payment_cred_stripe_secret_key] => 
+    [app_payment_cred_paypal_client_id] => 
+    [app_payment_cred_paypal_client_secret] => 
+    [app_payment_cred_paypal_email] => 
+    [app_payment_cred_upi_id] => 
+    [app_payment_cred_upi_merchant_name] => 
+    [app_payment_cred_gpay_merchant_id] => 
+    [app_payment_cred_gpay_merchant_name] => 
+    [app_payment_cred_apple_merchant_id] => 
+    [app_payment_cred_apple_bundle_id] => 
+    [app_payment_cred_card_gateway] => 
+    [app_payment_cred_card_api_key] => 
+    [app_payment_cred_cod_notes] => 
+    [app_backend_tech] => 
+    [app_backend_tech_other] => 
+    [app_api_source] => 
+    [app_api_documentation] => 
+    [app_api_auth_type] => 
+    [app_api_credentials] => 
+    [app_playstore_login] => 
+    [app_playstore_password] => 
+    [app_appstore_login] => 
+    [app_appstore_password] => 
+    [app_contactName] => 
+    [app_contactEmail] => 
+    [app_contactPhone] => 
+    [app_businessEmail] => 
+    [app_businessAddress] => 
+    [app_openingTime] => 
+    [app_closingTime] => 
+    [app_additionalNotes] => 
+    [app_decisionMaker] => 
+    [app_reviewerCount] => 
+    [app_preferredCommunication] => 
+    [app_bestContactTime] => 
+    [app_deadlineReason] => 
+    [client_id] => CL-2026-4609
+)
+
+[01-Jun-2026 06:24:19 UTC] Uploaded files: Array
+(
+)
+
+[01-Jun-2026 06:24:38 UTC] === FORM SUBMISSION START ===
+[01-Jun-2026 06:24:38 UTC] Request Method: POST
+[01-Jun-2026 06:24:38 UTC] Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryQVt1cAqY4j6L96pL
+[01-Jun-2026 06:24:38 UTC] Final values - Email: rajvishwakarma2021@gmail.com, Name: Rajkumar Vishwakarma, Phone: 09111328903
+[01-Jun-2026 06:24:38 UTC] Submitted payload: Array
+(
+    [project_type] => website
+    [applicationType] => informational
+    [brandName] => thecraftloom
+    [businessCategory] => healthcare
+    [otherBusinessCategoryInput] => 
+    [brandShortDescription] => frghjm
+    [projectType] => new
+    [otherProjectTypeInput] => 
+    [projectDescription] => 
+    [businessGoals] => Array
+        (
+            [0] => generate-leads
+        )
+
+    [targetAudience] => 
+    [visitorProblem] => 
+    [visitorActions] => Array
+        (
+            [0] => book-appointment
+        )
+
+    [priorityFocus] => Array
+        (
+            [0] => fast-launch
+        )
+
+    [launchDate] => 2026-07-01
+    [platform] => wordpress
+    [otherPlatformName] => 
+    [shopifyEmail] => 
+    [shopifyPassword] => 
+    [sslProvider] => 
+    [sslExpiryDate] => 
+    [sslType] => 
+    [sslPreferredProvider] => 
+    [securityRequirements] => 
+    [hasTheme] => no
+    [themeName] => jhgf.com
+    [themeProvider] => 
+    [inspirationSites] => developem.com
+    [websitePageStyle] => multi-page
+    [designStyle] => simple-minimal
+    [colorPreferences] => 
+    [colorScheme] => team-choice
+    [fontPreference] => team-choice
+    [fontUrl] => sccza
+    [referenceWebsite1] => thecraftloom.com
+    [referenceWebsite2] => avana.com
+    [referenceWebsite3] => 
+    [designComments] => 
+    [headerPages] => Array
+        (
+            [0] => home
+            [1] => contact
+            [2] => shop
+        )
+
+    [footerPages] => Array
+        (
+            [0] => privacy
+            [1] => terms
+        )
+
+    [navigationStructure] => home|header,contact|header,shop|header,privacy|footer,terms|footer
+    [subpageNotes] => 
+    [customFeatures] => Array
+        (
+            [0] => contact
+            [1] => facebook-pixel
+            [2] => search
+            [3] => payment-gateway
+        )
+
+    [otherFeatures] => 
+    [integrations] => 
+    [formRequirements] => 
+    [leadDestinations] => Array
+        (
+            [0] => email
+            [1] => whatsapp
+            [2] => admin-dashboard
+        )
+
+    [leadNotificationEmail] => 
+    [leadAutoReply] => 
+    [hasDomain] => yes
+    [domainName] => avana.co.nz
+    [domainProvider] => godaddy
+    [domainLogin] => no
+    [domainRegistrationSource] => other-provider
+    [domainManagementPreference] => team-handles
+    [domainUsername] => 
+    [domainPassword] => 
+    [preferredDomain] => 
+    [hasHosting] => no
+    [getspaceRegistrationEmail] => rajvishwakarma2021@gmail.com
+    [hostingProvider] => 
+    [hostingPlan] => 
+    [hostingUsername] => 
+    [hostingPassword] => 
+    [hostingPreference] => shared
+    [hostingPurchaseService] => yes
+    [companyName] => RECHARGE TRENDD SETTER PVT LTD
+    [companyCode] => 
+    [gstNumber] => 
+    [registrationNumber] => 
+    [bankAccount] => 
+    [bankName] => 
+    [ifscCode] => 
+    [companyAddress] => 
+    [city] => 
+    [state] => 
+    [country] => 
+    [pincode] => 
+    [tagline] => Success you’ve always craved—served hot, instantly, and built to deliver results with the speed that fuels unstoppable growth.
+    [hasLogo] => yes
+    [logoLink] => 
+    [logoSize] => 
+    [logoColors] => 
+    [temporaryLogoText] => 
+    [professionalLogoText] => 
+    [professionalLogoDescription] => 
+    [brandGuidelines] => 
+    [brandVoice] => friendly
+    [assetLinks] => 
+    [contentReady] => yes
+    [contentSupport] => Array
+        (
+            [0] => rewrite
+            [1] => not-sure
+        )
+
+    [mediaSupport] => Array
+        (
+            [0] => stock-images
+            [1] => banner-design
+        )
+
+    [pageHeading_home] => What is the astrology
+    [pageSubheading_home] => scdvfbgdv
+    [content_home] => hhiii
+    [contactFormTitle] => 
+    [contactFormSubmitText] => 
+    [contactFormThankYou] => 
+    [contactFormAdminEmail] => 
+    [pageHeading_shop] => 
+    [pageSubheading_shop] => 
+    [content_shop] => 
+    [pageHeading_privacy] => 
+    [pageSubheading_privacy] => 
+    [content_privacy] => 
+    [pageHeading_terms] => 
+    [pageSubheading_terms] => 
+    [content_terms] => 
+    [pageExtras] => Array
+        (
+            [0] => testimonials
+            [1] => gallery
+        )
+
+    [testimonial_1_name] => raj
+    [testimonial_1_date] => 2026-06-17
+    [testimonial_1_text] => hi
+    [galleryTitle] => ranu mandal
+    [galleryDescription] => hii
+    [gallery_1_caption] => 
+    [gallery_2_caption] => 
+    [sellType] => none
+    [productDriveLink] => 
+    [productCategories] => 
+    [productImagesLink] => 
+    [serviceDriveLink] => 
+    [serviceCategories] => 
+    [servicePortfolioLink] => 
+    [servicePricing] => 
+    [serviceOperationNotes] => 
+    [isEcommerce] => yes
+    [paymentMethods] => Array
+        (
+            [0] => razorpay
+            [1] => stripe
+            [2] => cod
+        )
+
+    [razorpayKeyId] => sfseghtw345trde456ygf
+    [stripeKey] => sfseghtw345trde456ygf
+    [paypalEmail] => 
+    [otherPaymentMethod] => 
+    [currencies] => Array
+        (
+            [0] => USD
+            [1] => INR
+        )
+
+    [otherCurrencyText] => 
+    [taxRegion] => UK , India
+    [taxRate] => 12
+    [shippingType] => free
+    [flatRate] => 
+    [shippingZones] => north
+    [shippingRates] => 
+    [deliveryTimeframes] => 
+    [inventoryType] => manual
+    [returnPolicy] => 
+    [ecommerceOperations] => Array
+        (
+            [0] => variants
+            [1] => sku
+            [2] => delivery-partners
+        )
+
+    [ecommerceOperationNotes] => 
+    [businessDescription] => seeess
+    [keywords] => sfrcdsvf
+    [competitors] => fvdrv.com
+    [avoidWebsites] => 
+    [targetLocations] => 
+    [googleBusinessProfile] => 
+    [trustAssets] => Array
+        (
+            [0] => testimonials
+            [1] => certifications
+        )
+
+    [legalNeeds] => Array
+        (
+            [0] => privacy-policy
+            [1] => cookie-banner
+        )
+
+    [legalTrustNotes] => 
+    [hasAnalytics] => no
+    [analyticsId] => 
+    [gaEmail] => rajvishwakarma2021@gmail.com
+    [gaPassword] => dgrverbdfb
+    [hasGMB] => no
+    [showSocialIcons] => yes
+    [facebookUrl] => https://linkedin.com/in/rajkumar-vishwakarma-87a9b9264
+    [instagramUrl] => 
+    [twitterUrl] => https://linkedin.com/in/rajkumar-vishwakarma-87a9b9264
+    [linkedinUrl] => 
+    [youtubeUrl] => 
+    [pinterestUrl] => 
+    [tiktokUrl] => 
+    [otherSocialMedia] => 
+    [contactName] => Rajkumar Vishwakarma
+    [contactEmail] => rajvishwakarma2021@gmail.com
+    [contactPhone] => 09111328903
+    [businessEmail] => rajvishwakarma2021@gmail.com
+    [businessAddress] => asttrokol 321
+    [workingHoursMode] => selected-hours
+    [openDays] => Array
+        (
+            [0] => monday
+            [1] => tuesday
+            [2] => wednesday
+            [3] => thursday
+            [4] => friday
+        )
+
+    [openingTime] => 13:49
+    [closingTime] => 16:49
+    [additionalNotes] => 
+    [decisionMaker] => Rajkumar
+    [reviewerCount] => 5
+    [preferredCommunication] => email
+    [bestContactTime] => after 3pm
+    [deadlineReason] => Event
+    [clientUncertainties] => 
+    [informationConfirmed] => yes
+    [app_purpose] => 
+    [app_target_audience] => 
+    [appScreens] => Array
+        (
+            [0] => login
+            [1] => home
+            [2] => profile
+            [3] => settings
+        )
+
+    [app_user_flow] => 
+    [app_name] => 
+    [app_companyCode] => 
+    [app_gstNumber] => 
+    [app_registrationNumber] => 
+    [app_bankAccount] => 
+    [app_bankName] => 
+    [app_ifscCode] => 
+    [app_companyAddress] => 
+    [app_city] => 
+    [app_state] => 
+    [app_country] => 
+    [app_pincode] => 
+    [app_tagline] => 
+    [app_iconLink] => 
+    [app_iconSize] => 
+    [app_iconColors] => 
+    [app_temporaryIconText] => 
+    [app_professionalIconText] => 
+    [app_professionalIconDescription] => 
+    [app_brandGuidelines] => 
+    [app_brandVoice] => 
+    [app_assetLinks] => 
+    [login_title] => 
+    [login_content] => 
+    [login_features] => 
+    [home_title] => 
+    [home_content] => 
+    [home_features] => 
+    [profile_title] => 
+    [profile_content] => 
+    [profile_features] => 
+    [settings_title] => 
+    [settings_content] => 
+    [settings_features] => 
+    [app_galleryTitle] => 
+    [app_galleryDescription] => 
+    [app_development_type] => 
+    [app_design_link] => 
+    [app_design_notes] => 
+    [app_design_colors] => 
+    [app_design_reference] => 
+    [app_design_ready_screens] => 
+    [app_design_missing_screens] => 
+    [app_reference_apps] => 
+    [app_payment_cred_razorpay_key_id] => 
+    [app_payment_cred_razorpay_key_secret] => 
+    [app_payment_cred_stripe_publishable_key] => 
+    [app_payment_cred_stripe_secret_key] => 
+    [app_payment_cred_paypal_client_id] => 
+    [app_payment_cred_paypal_client_secret] => 
+    [app_payment_cred_paypal_email] => 
+    [app_payment_cred_upi_id] => 
+    [app_payment_cred_upi_merchant_name] => 
+    [app_payment_cred_gpay_merchant_id] => 
+    [app_payment_cred_gpay_merchant_name] => 
+    [app_payment_cred_apple_merchant_id] => 
+    [app_payment_cred_apple_bundle_id] => 
+    [app_payment_cred_card_gateway] => 
+    [app_payment_cred_card_api_key] => 
+    [app_payment_cred_cod_notes] => 
+    [app_backend_tech] => 
+    [app_backend_tech_other] => 
+    [app_api_source] => 
+    [app_api_documentation] => 
+    [app_api_auth_type] => 
+    [app_api_credentials] => 
+    [app_playstore_login] => 
+    [app_playstore_password] => 
+    [app_appstore_login] => 
+    [app_appstore_password] => 
+    [app_contactName] => 
+    [app_contactEmail] => 
+    [app_contactPhone] => 
+    [app_businessEmail] => 
+    [app_businessAddress] => 
+    [app_openingTime] => 
+    [app_closingTime] => 
+    [app_additionalNotes] => 
+    [app_decisionMaker] => 
+    [app_reviewerCount] => 
+    [app_preferredCommunication] => 
+    [app_bestContactTime] => 
+    [app_deadlineReason] => 
+    [client_id] => CL-2026-4609
+)
+
+[01-Jun-2026 06:24:38 UTC] POST dump: Array
+(
+    [project_type] => website
+    [applicationType] => informational
+    [brandName] => thecraftloom
+    [businessCategory] => healthcare
+    [otherBusinessCategoryInput] => 
+    [brandShortDescription] => frghjm
+    [projectType] => new
+    [otherProjectTypeInput] => 
+    [projectDescription] => 
+    [businessGoals] => Array
+        (
+            [0] => generate-leads
+        )
+
+    [targetAudience] => 
+    [visitorProblem] => 
+    [visitorActions] => Array
+        (
+            [0] => book-appointment
+        )
+
+    [priorityFocus] => Array
+        (
+            [0] => fast-launch
+        )
+
+    [launchDate] => 2026-07-01
+    [platform] => wordpress
+    [otherPlatformName] => 
+    [shopifyEmail] => 
+    [shopifyPassword] => 
+    [sslProvider] => 
+    [sslExpiryDate] => 
+    [sslType] => 
+    [sslPreferredProvider] => 
+    [securityRequirements] => 
+    [hasTheme] => no
+    [themeName] => jhgf.com
+    [themeProvider] => 
+    [inspirationSites] => developem.com
+    [websitePageStyle] => multi-page
+    [designStyle] => simple-minimal
+    [colorPreferences] => 
+    [colorScheme] => team-choice
+    [fontPreference] => team-choice
+    [fontUrl] => sccza
+    [referenceWebsite1] => thecraftloom.com
+    [referenceWebsite2] => avana.com
+    [referenceWebsite3] => 
+    [designComments] => 
+    [headerPages] => Array
+        (
+            [0] => home
+            [1] => contact
+            [2] => shop
+        )
+
+    [footerPages] => Array
+        (
+            [0] => privacy
+            [1] => terms
+        )
+
+    [navigationStructure] => home|header,contact|header,shop|header,privacy|footer,terms|footer
+    [subpageNotes] => 
+    [customFeatures] => Array
+        (
+            [0] => contact
+            [1] => facebook-pixel
+            [2] => search
+            [3] => payment-gateway
+        )
+
+    [otherFeatures] => 
+    [integrations] => 
+    [formRequirements] => 
+    [leadDestinations] => Array
+        (
+            [0] => email
+            [1] => whatsapp
+            [2] => admin-dashboard
+        )
+
+    [leadNotificationEmail] => 
+    [leadAutoReply] => 
+    [hasDomain] => yes
+    [domainName] => avana.co.nz
+    [domainProvider] => godaddy
+    [domainLogin] => no
+    [domainRegistrationSource] => other-provider
+    [domainManagementPreference] => team-handles
+    [domainUsername] => 
+    [domainPassword] => 
+    [preferredDomain] => 
+    [hasHosting] => no
+    [getspaceRegistrationEmail] => rajvishwakarma2021@gmail.com
+    [hostingProvider] => 
+    [hostingPlan] => 
+    [hostingUsername] => 
+    [hostingPassword] => 
+    [hostingPreference] => shared
+    [hostingPurchaseService] => yes
+    [companyName] => RECHARGE TRENDD SETTER PVT LTD
+    [companyCode] => 
+    [gstNumber] => 
+    [registrationNumber] => 
+    [bankAccount] => 
+    [bankName] => 
+    [ifscCode] => 
+    [companyAddress] => 
+    [city] => 
+    [state] => 
+    [country] => 
+    [pincode] => 
+    [tagline] => Success you’ve always craved—served hot, instantly, and built to deliver results with the speed that fuels unstoppable growth.
+    [hasLogo] => yes
+    [logoLink] => 
+    [logoSize] => 
+    [logoColors] => 
+    [temporaryLogoText] => 
+    [professionalLogoText] => 
+    [professionalLogoDescription] => 
+    [brandGuidelines] => 
+    [brandVoice] => friendly
+    [assetLinks] => 
+    [contentReady] => yes
+    [contentSupport] => Array
+        (
+            [0] => rewrite
+            [1] => not-sure
+        )
+
+    [mediaSupport] => Array
+        (
+            [0] => stock-images
+            [1] => banner-design
+        )
+
+    [pageHeading_home] => What is the astrology
+    [pageSubheading_home] => scdvfbgdv
+    [content_home] => hhiii
+    [contactFormTitle] => 
+    [contactFormSubmitText] => 
+    [contactFormThankYou] => 
+    [contactFormAdminEmail] => 
+    [pageHeading_shop] => 
+    [pageSubheading_shop] => 
+    [content_shop] => 
+    [pageHeading_privacy] => 
+    [pageSubheading_privacy] => 
+    [content_privacy] => 
+    [pageHeading_terms] => 
+    [pageSubheading_terms] => 
+    [content_terms] => 
+    [pageExtras] => Array
+        (
+            [0] => testimonials
+            [1] => gallery
+        )
+
+    [testimonial_1_name] => raj
+    [testimonial_1_date] => 2026-06-17
+    [testimonial_1_text] => hi
+    [galleryTitle] => ranu mandal
+    [galleryDescription] => hii
+    [gallery_1_caption] => 
+    [gallery_2_caption] => 
+    [sellType] => none
+    [productDriveLink] => 
+    [productCategories] => 
+    [productImagesLink] => 
+    [serviceDriveLink] => 
+    [serviceCategories] => 
+    [servicePortfolioLink] => 
+    [servicePricing] => 
+    [serviceOperationNotes] => 
+    [isEcommerce] => yes
+    [paymentMethods] => Array
+        (
+            [0] => razorpay
+            [1] => stripe
+            [2] => cod
+        )
+
+    [razorpayKeyId] => sfseghtw345trde456ygf
+    [stripeKey] => sfseghtw345trde456ygf
+    [paypalEmail] => 
+    [otherPaymentMethod] => 
+    [currencies] => Array
+        (
+            [0] => USD
+            [1] => INR
+        )
+
+    [otherCurrencyText] => 
+    [taxRegion] => UK , India
+    [taxRate] => 12
+    [shippingType] => free
+    [flatRate] => 
+    [shippingZones] => north
+    [shippingRates] => 
+    [deliveryTimeframes] => 
+    [inventoryType] => manual
+    [returnPolicy] => 
+    [ecommerceOperations] => Array
+        (
+            [0] => variants
+            [1] => sku
+            [2] => delivery-partners
+        )
+
+    [ecommerceOperationNotes] => 
+    [businessDescription] => seeess
+    [keywords] => sfrcdsvf
+    [competitors] => fvdrv.com
+    [avoidWebsites] => 
+    [targetLocations] => 
+    [googleBusinessProfile] => 
+    [trustAssets] => Array
+        (
+            [0] => testimonials
+            [1] => certifications
+        )
+
+    [legalNeeds] => Array
+        (
+            [0] => privacy-policy
+            [1] => cookie-banner
+        )
+
+    [legalTrustNotes] => 
+    [hasAnalytics] => no
+    [analyticsId] => 
+    [gaEmail] => rajvishwakarma2021@gmail.com
+    [gaPassword] => dgrverbdfb
+    [hasGMB] => no
+    [showSocialIcons] => yes
+    [facebookUrl] => https://linkedin.com/in/rajkumar-vishwakarma-87a9b9264
+    [instagramUrl] => 
+    [twitterUrl] => https://linkedin.com/in/rajkumar-vishwakarma-87a9b9264
+    [linkedinUrl] => 
+    [youtubeUrl] => 
+    [pinterestUrl] => 
+    [tiktokUrl] => 
+    [otherSocialMedia] => 
+    [contactName] => Rajkumar Vishwakarma
+    [contactEmail] => rajvishwakarma2021@gmail.com
+    [contactPhone] => 09111328903
+    [businessEmail] => rajvishwakarma2021@gmail.com
+    [businessAddress] => asttrokol 321
+    [workingHoursMode] => selected-hours
+    [openDays] => Array
+        (
+            [0] => monday
+            [1] => tuesday
+            [2] => wednesday
+            [3] => thursday
+            [4] => friday
+        )
+
+    [openingTime] => 13:49
+    [closingTime] => 16:49
+    [additionalNotes] => 
+    [decisionMaker] => Rajkumar
+    [reviewerCount] => 5
+    [preferredCommunication] => email
+    [bestContactTime] => after 3pm
+    [deadlineReason] => Event
+    [clientUncertainties] => 
+    [informationConfirmed] => yes
+    [app_purpose] => 
+    [app_target_audience] => 
+    [appScreens] => Array
+        (
+            [0] => login
+            [1] => home
+            [2] => profile
+            [3] => settings
+        )
+
+    [app_user_flow] => 
+    [app_name] => 
+    [app_companyCode] => 
+    [app_gstNumber] => 
+    [app_registrationNumber] => 
+    [app_bankAccount] => 
+    [app_bankName] => 
+    [app_ifscCode] => 
+    [app_companyAddress] => 
+    [app_city] => 
+    [app_state] => 
+    [app_country] => 
+    [app_pincode] => 
+    [app_tagline] => 
+    [app_iconLink] => 
+    [app_iconSize] => 
+    [app_iconColors] => 
+    [app_temporaryIconText] => 
+    [app_professionalIconText] => 
+    [app_professionalIconDescription] => 
+    [app_brandGuidelines] => 
+    [app_brandVoice] => 
+    [app_assetLinks] => 
+    [login_title] => 
+    [login_content] => 
+    [login_features] => 
+    [home_title] => 
+    [home_content] => 
+    [home_features] => 
+    [profile_title] => 
+    [profile_content] => 
+    [profile_features] => 
+    [settings_title] => 
+    [settings_content] => 
+    [settings_features] => 
+    [app_galleryTitle] => 
+    [app_galleryDescription] => 
+    [app_development_type] => 
+    [app_design_link] => 
+    [app_design_notes] => 
+    [app_design_colors] => 
+    [app_design_reference] => 
+    [app_design_ready_screens] => 
+    [app_design_missing_screens] => 
+    [app_reference_apps] => 
+    [app_payment_cred_razorpay_key_id] => 
+    [app_payment_cred_razorpay_key_secret] => 
+    [app_payment_cred_stripe_publishable_key] => 
+    [app_payment_cred_stripe_secret_key] => 
+    [app_payment_cred_paypal_client_id] => 
+    [app_payment_cred_paypal_client_secret] => 
+    [app_payment_cred_paypal_email] => 
+    [app_payment_cred_upi_id] => 
+    [app_payment_cred_upi_merchant_name] => 
+    [app_payment_cred_gpay_merchant_id] => 
+    [app_payment_cred_gpay_merchant_name] => 
+    [app_payment_cred_apple_merchant_id] => 
+    [app_payment_cred_apple_bundle_id] => 
+    [app_payment_cred_card_gateway] => 
+    [app_payment_cred_card_api_key] => 
+    [app_payment_cred_cod_notes] => 
+    [app_backend_tech] => 
+    [app_backend_tech_other] => 
+    [app_api_source] => 
+    [app_api_documentation] => 
+    [app_api_auth_type] => 
+    [app_api_credentials] => 
+    [app_playstore_login] => 
+    [app_playstore_password] => 
+    [app_appstore_login] => 
+    [app_appstore_password] => 
+    [app_contactName] => 
+    [app_contactEmail] => 
+    [app_contactPhone] => 
+    [app_businessEmail] => 
+    [app_businessAddress] => 
+    [app_openingTime] => 
+    [app_closingTime] => 
+    [app_additionalNotes] => 
+    [app_decisionMaker] => 
+    [app_reviewerCount] => 
+    [app_preferredCommunication] => 
+    [app_bestContactTime] => 
+    [app_deadlineReason] => 
+    [client_id] => CL-2026-4609
+)
+
+[01-Jun-2026 06:24:38 UTC] Uploaded files: Array
+(
+    [0] => logoFile
+    [1] => businessAssetsFile
+    [2] => pageImage_home
+    [3] => content_home_file
+    [4] => testimonial_1_image
+    [5] => gallery_1_image
+    [6] => gallery_2_image
+)
+
+[01-Jun-2026 06:29:13 UTC] === FORM SUBMISSION START ===
+[01-Jun-2026 06:29:13 UTC] Request Method: POST
+[01-Jun-2026 06:29:13 UTC] Content-Type: multipart/form-data; boundary=----WebKitFormBoundary3QcITQ8nAUavKsno
+[01-Jun-2026 06:29:13 UTC] Final values - Email: rajvishwakarma2021@gmail.com, Name: Rajkumar Vishwakarma, Phone: 09111328903
+[01-Jun-2026 06:29:13 UTC] Submitted payload: Array
+(
+    [project_type] => website
+    [applicationType] => informational
+    [brandName] => thecraftloom
+    [businessCategory] => healthcare
+    [otherBusinessCategoryInput] => 
+    [brandShortDescription] => frghjm
+    [projectType] => new
+    [otherProjectTypeInput] => 
+    [projectDescription] => 
+    [businessGoals] => Array
+        (
+            [0] => generate-leads
+        )
+
+    [targetAudience] => 
+    [visitorProblem] => 
+    [visitorActions] => Array
+        (
+            [0] => book-appointment
+        )
+
+    [priorityFocus] => Array
+        (
+            [0] => fast-launch
+        )
+
+    [launchDate] => 2026-07-01
+    [platform] => wordpress
+    [otherPlatformName] => 
+    [shopifyEmail] => 
+    [shopifyPassword] => 
+    [hasSSL] => yes
+    [sslProvider] => Godaddy
+    [sslExpiryDate] => 2026-06-18
+    [sslType] => OV
+    [sslPreferredProvider] => 
+    [securityRequirements] => 
+    [hasTheme] => no
+    [themeName] => jhgf.com
+    [themeProvider] => 
+    [inspirationSites] => developem.com
+    [websitePageStyle] => multi-page
+    [designStyle] => simple-minimal
+    [colorPreferences] => 
+    [colorScheme] => team-choice
+    [fontPreference] => team-choice
+    [fontUrl] => sccza
+    [referenceWebsite1] => thecraftloom.com
+    [referenceWebsite2] => avana.com
+    [referenceWebsite3] => 
+    [designComments] => 
+    [headerPages] => Array
+        (
+            [0] => home
+            [1] => contact
+            [2] => shop
+        )
+
+    [footerPages] => Array
+        (
+            [0] => privacy
+            [1] => terms
+        )
+
+    [navigationStructure] => home|header,contact|header,shop|header,privacy|footer,terms|footer
+    [subpageNotes] => 
+    [customFeatures] => Array
+        (
+            [0] => contact
+            [1] => facebook-pixel
+            [2] => search
+            [3] => payment-gateway
+        )
+
+    [otherFeatures] => 
+    [integrations] => 
+    [formRequirements] => 
+    [leadDestinations] => Array
+        (
+            [0] => email
+            [1] => whatsapp
+            [2] => admin-dashboard
+        )
+
+    [leadNotificationEmail] => 
+    [leadAutoReply] => 
+    [hasDomain] => yes
+    [domainName] => avana.co.nz
+    [domainProvider] => godaddy
+    [domainLogin] => no
+    [domainRegistrationSource] => other-provider
+    [domainManagementPreference] => team-handles
+    [domainUsername] => 
+    [domainPassword] => 
+    [preferredDomain] => 
+    [hasHosting] => no
+    [getspaceRegistrationEmail] => rajvishwakarma2021@gmail.com
+    [hostingProvider] => 
+    [hostingPlan] => 
+    [hostingUsername] => 
+    [hostingPassword] => 
+    [hostingPreference] => shared
+    [hostingPurchaseService] => yes
+    [companyName] => RECHARGE TRENDD SETTER PVT LTD
+    [companyCode] => 
+    [gstNumber] => 
+    [registrationNumber] => 
+    [bankAccount] => 
+    [bankName] => 
+    [ifscCode] => 
+    [companyAddress] => 
+    [city] => 
+    [state] => 
+    [country] => 
+    [pincode] => 
+    [tagline] => Success you’ve always craved—served hot, instantly, and built to deliver results with the speed that fuels unstoppable growth.
+    [hasLogo] => yes
+    [logoLink] => 
+    [logoSize] => 
+    [logoColors] => 
+    [temporaryLogoText] => 
+    [professionalLogoText] => 
+    [professionalLogoDescription] => 
+    [brandGuidelines] => 
+    [brandVoice] => friendly
+    [assetLinks] => 
+    [contentReady] => yes
+    [contentSupport] => Array
+        (
+            [0] => rewrite
+            [1] => not-sure
+        )
+
+    [mediaSupport] => Array
+        (
+            [0] => stock-images
+            [1] => banner-design
+        )
+
+    [pageHeading_home] => What is the astrology
+    [pageSubheading_home] => scdvfbgdv
+    [content_home] => hhiii
+    [contactFormTitle] => vsdsdvs
+    [contactFormSubmitText] => Submit form
+    [contactFormThankYou] => gyftdr
+    [contactFormAdminEmail] => rajvishwakarma2021@gmail.com
+    [contactField_name] => yes
+    [contactField_email] => yes
+    [contactField_phone] => yes
+    [contactField_message] => yes
+    [pageHeading_shop] => 
+    [pageSubheading_shop] => 
+    [content_shop] => 
+    [pageHeading_privacy] => 
+    [pageSubheading_privacy] => 
+    [content_privacy] => 
+    [pageHeading_terms] => 
+    [pageSubheading_terms] => 
+    [content_terms] => 
+    [pageExtras] => Array
+        (
+            [0] => testimonials
+            [1] => gallery
+        )
+
+    [testimonial_1_name] => earaa
+    [testimonial_1_date] => 2026-06-10
+    [testimonial_1_text] => hiii
+    [galleryTitle] => ranu mandal
+    [galleryDescription] => hii
+    [gallery_1_caption] => 
+    [sellType] => none
+    [productDriveLink] => 
+    [productCategories] => 
+    [productImagesLink] => 
+    [serviceDriveLink] => 
+    [serviceCategories] => 
+    [servicePortfolioLink] => 
+    [servicePricing] => 
+    [serviceOperationNotes] => 
+    [isEcommerce] => no
+    [paymentMethods] => Array
+        (
+            [0] => razorpay
+            [1] => stripe
+            [2] => cod
+        )
+
+    [razorpayKeyId] => sfseghtw345trde456ygf
+    [stripeKey] => sfseghtw345trde456ygf
+    [paypalEmail] => 
+    [otherPaymentMethod] => 
+    [currencies] => Array
+        (
+            [0] => USD
+            [1] => INR
+        )
+
+    [otherCurrencyText] => 
+    [taxRegion] => UK , India
+    [taxRate] => 12
+    [shippingType] => free
+    [flatRate] => 
+    [shippingZones] => north
+    [shippingRates] => 
+    [deliveryTimeframes] => 
+    [inventoryType] => manual
+    [returnPolicy] => 
+    [ecommerceOperations] => Array
+        (
+            [0] => variants
+            [1] => sku
+            [2] => delivery-partners
+        )
+
+    [ecommerceOperationNotes] => 
+    [businessDescription] => seeess
+    [keywords] => sfrcdsvf
+    [competitors] => fvdrv.com
+    [avoidWebsites] => 
+    [targetLocations] => 
+    [googleBusinessProfile] => 
+    [trustAssets] => Array
+        (
+            [0] => testimonials
+            [1] => certifications
+        )
+
+    [legalNeeds] => Array
+        (
+            [0] => privacy-policy
+            [1] => cookie-banner
+        )
+
+    [legalTrustNotes] => 
+    [hasAnalytics] => no
+    [analyticsId] => 
+    [gaEmail] => rajvishwakarma2021@gmail.com
+    [gaPassword] => dgrverbdfb
+    [hasGMB] => no
+    [showSocialIcons] => yes
+    [facebookUrl] => https://linkedin.com/in/rajkumar-vishwakarma-87a9b9264
+    [instagramUrl] => 
+    [twitterUrl] => https://linkedin.com/in/rajkumar-vishwakarma-87a9b9264
+    [linkedinUrl] => 
+    [youtubeUrl] => 
+    [pinterestUrl] => 
+    [tiktokUrl] => 
+    [otherSocialMedia] => 
+    [contactName] => Rajkumar Vishwakarma
+    [contactEmail] => rajvishwakarma2021@gmail.com
+    [contactPhone] => 09111328903
+    [businessEmail] => rajvishwakarma2021@gmail.com
+    [businessAddress] => asttrokol 321
+    [workingHoursMode] => selected-hours
+    [openDays] => Array
+        (
+            [0] => monday
+            [1] => tuesday
+            [2] => wednesday
+            [3] => thursday
+            [4] => friday
+        )
+
+    [openingTime] => 13:49
+    [closingTime] => 16:49
+    [additionalNotes] => 
+    [decisionMaker] => Rajkumar
+    [reviewerCount] => 5
+    [preferredCommunication] => email
+    [bestContactTime] => after 3pm
+    [deadlineReason] => Event
+    [clientUncertainties] => 
+    [informationConfirmed] => yes
+    [app_purpose] => 
+    [app_target_audience] => 
+    [appScreens] => Array
+        (
+            [0] => login
+            [1] => home
+            [2] => profile
+            [3] => settings
+        )
+
+    [app_user_flow] => 
+    [app_name] => 
+    [app_companyCode] => 
+    [app_gstNumber] => 
+    [app_registrationNumber] => 
+    [app_bankAccount] => 
+    [app_bankName] => 
+    [app_ifscCode] => 
+    [app_companyAddress] => 
+    [app_city] => 
+    [app_state] => 
+    [app_country] => 
+    [app_pincode] => 
+    [app_tagline] => 
+    [app_iconLink] => 
+    [app_iconSize] => 
+    [app_iconColors] => 
+    [app_temporaryIconText] => 
+    [app_professionalIconText] => 
+    [app_professionalIconDescription] => 
+    [app_brandGuidelines] => 
+    [app_brandVoice] => 
+    [app_assetLinks] => 
+    [login_title] => 
+    [login_content] => 
+    [login_features] => 
+    [home_title] => 
+    [home_content] => 
+    [home_features] => 
+    [profile_title] => 
+    [profile_content] => 
+    [profile_features] => 
+    [settings_title] => 
+    [settings_content] => 
+    [settings_features] => 
+    [app_galleryTitle] => 
+    [app_galleryDescription] => 
+    [app_development_type] => 
+    [app_design_link] => 
+    [app_design_notes] => 
+    [app_design_colors] => 
+    [app_design_reference] => 
+    [app_design_ready_screens] => 
+    [app_design_missing_screens] => 
+    [app_reference_apps] => 
+    [app_payment_cred_razorpay_key_id] => 
+    [app_payment_cred_razorpay_key_secret] => 
+    [app_payment_cred_stripe_publishable_key] => 
+    [app_payment_cred_stripe_secret_key] => 
+    [app_payment_cred_paypal_client_id] => 
+    [app_payment_cred_paypal_client_secret] => 
+    [app_payment_cred_paypal_email] => 
+    [app_payment_cred_upi_id] => 
+    [app_payment_cred_upi_merchant_name] => 
+    [app_payment_cred_gpay_merchant_id] => 
+    [app_payment_cred_gpay_merchant_name] => 
+    [app_payment_cred_apple_merchant_id] => 
+    [app_payment_cred_apple_bundle_id] => 
+    [app_payment_cred_card_gateway] => 
+    [app_payment_cred_card_api_key] => 
+    [app_payment_cred_cod_notes] => 
+    [app_backend_tech] => 
+    [app_backend_tech_other] => 
+    [app_api_source] => 
+    [app_api_documentation] => 
+    [app_api_auth_type] => 
+    [app_api_credentials] => 
+    [app_playstore_login] => 
+    [app_playstore_password] => 
+    [app_appstore_login] => 
+    [app_appstore_password] => 
+    [app_contactName] => 
+    [app_contactEmail] => 
+    [app_contactPhone] => 
+    [app_businessEmail] => 
+    [app_businessAddress] => 
+    [app_openingTime] => 
+    [app_closingTime] => 
+    [app_additionalNotes] => 
+    [app_decisionMaker] => 
+    [app_reviewerCount] => 
+    [app_preferredCommunication] => 
+    [app_bestContactTime] => 
+    [app_deadlineReason] => 
+    [client_id] => CL-2026-4609
+)
+
+[01-Jun-2026 06:29:13 UTC] POST dump: Array
+(
+    [project_type] => website
+    [applicationType] => informational
+    [brandName] => thecraftloom
+    [businessCategory] => healthcare
+    [otherBusinessCategoryInput] => 
+    [brandShortDescription] => frghjm
+    [projectType] => new
+    [otherProjectTypeInput] => 
+    [projectDescription] => 
+    [businessGoals] => Array
+        (
+            [0] => generate-leads
+        )
+
+    [targetAudience] => 
+    [visitorProblem] => 
+    [visitorActions] => Array
+        (
+            [0] => book-appointment
+        )
+
+    [priorityFocus] => Array
+        (
+            [0] => fast-launch
+        )
+
+    [launchDate] => 2026-07-01
+    [platform] => wordpress
+    [otherPlatformName] => 
+    [shopifyEmail] => 
+    [shopifyPassword] => 
+    [hasSSL] => yes
+    [sslProvider] => Godaddy
+    [sslExpiryDate] => 2026-06-18
+    [sslType] => OV
+    [sslPreferredProvider] => 
+    [securityRequirements] => 
+    [hasTheme] => no
+    [themeName] => jhgf.com
+    [themeProvider] => 
+    [inspirationSites] => developem.com
+    [websitePageStyle] => multi-page
+    [designStyle] => simple-minimal
+    [colorPreferences] => 
+    [colorScheme] => team-choice
+    [fontPreference] => team-choice
+    [fontUrl] => sccza
+    [referenceWebsite1] => thecraftloom.com
+    [referenceWebsite2] => avana.com
+    [referenceWebsite3] => 
+    [designComments] => 
+    [headerPages] => Array
+        (
+            [0] => home
+            [1] => contact
+            [2] => shop
+        )
+
+    [footerPages] => Array
+        (
+            [0] => privacy
+            [1] => terms
+        )
+
+    [navigationStructure] => home|header,contact|header,shop|header,privacy|footer,terms|footer
+    [subpageNotes] => 
+    [customFeatures] => Array
+        (
+            [0] => contact
+            [1] => facebook-pixel
+            [2] => search
+            [3] => payment-gateway
+        )
+
+    [otherFeatures] => 
+    [integrations] => 
+    [formRequirements] => 
+    [leadDestinations] => Array
+        (
+            [0] => email
+            [1] => whatsapp
+            [2] => admin-dashboard
+        )
+
+    [leadNotificationEmail] => 
+    [leadAutoReply] => 
+    [hasDomain] => yes
+    [domainName] => avana.co.nz
+    [domainProvider] => godaddy
+    [domainLogin] => no
+    [domainRegistrationSource] => other-provider
+    [domainManagementPreference] => team-handles
+    [domainUsername] => 
+    [domainPassword] => 
+    [preferredDomain] => 
+    [hasHosting] => no
+    [getspaceRegistrationEmail] => rajvishwakarma2021@gmail.com
+    [hostingProvider] => 
+    [hostingPlan] => 
+    [hostingUsername] => 
+    [hostingPassword] => 
+    [hostingPreference] => shared
+    [hostingPurchaseService] => yes
+    [companyName] => RECHARGE TRENDD SETTER PVT LTD
+    [companyCode] => 
+    [gstNumber] => 
+    [registrationNumber] => 
+    [bankAccount] => 
+    [bankName] => 
+    [ifscCode] => 
+    [companyAddress] => 
+    [city] => 
+    [state] => 
+    [country] => 
+    [pincode] => 
+    [tagline] => Success you’ve always craved—served hot, instantly, and built to deliver results with the speed that fuels unstoppable growth.
+    [hasLogo] => yes
+    [logoLink] => 
+    [logoSize] => 
+    [logoColors] => 
+    [temporaryLogoText] => 
+    [professionalLogoText] => 
+    [professionalLogoDescription] => 
+    [brandGuidelines] => 
+    [brandVoice] => friendly
+    [assetLinks] => 
+    [contentReady] => yes
+    [contentSupport] => Array
+        (
+            [0] => rewrite
+            [1] => not-sure
+        )
+
+    [mediaSupport] => Array
+        (
+            [0] => stock-images
+            [1] => banner-design
+        )
+
+    [pageHeading_home] => What is the astrology
+    [pageSubheading_home] => scdvfbgdv
+    [content_home] => hhiii
+    [contactFormTitle] => vsdsdvs
+    [contactFormSubmitText] => Submit form
+    [contactFormThankYou] => gyftdr
+    [contactFormAdminEmail] => rajvishwakarma2021@gmail.com
+    [contactField_name] => yes
+    [contactField_email] => yes
+    [contactField_phone] => yes
+    [contactField_message] => yes
+    [pageHeading_shop] => 
+    [pageSubheading_shop] => 
+    [content_shop] => 
+    [pageHeading_privacy] => 
+    [pageSubheading_privacy] => 
+    [content_privacy] => 
+    [pageHeading_terms] => 
+    [pageSubheading_terms] => 
+    [content_terms] => 
+    [pageExtras] => Array
+        (
+            [0] => testimonials
+            [1] => gallery
+        )
+
+    [testimonial_1_name] => earaa
+    [testimonial_1_date] => 2026-06-10
+    [testimonial_1_text] => hiii
+    [galleryTitle] => ranu mandal
+    [galleryDescription] => hii
+    [gallery_1_caption] => 
+    [sellType] => none
+    [productDriveLink] => 
+    [productCategories] => 
+    [productImagesLink] => 
+    [serviceDriveLink] => 
+    [serviceCategories] => 
+    [servicePortfolioLink] => 
+    [servicePricing] => 
+    [serviceOperationNotes] => 
+    [isEcommerce] => no
+    [paymentMethods] => Array
+        (
+            [0] => razorpay
+            [1] => stripe
+            [2] => cod
+        )
+
+    [razorpayKeyId] => sfseghtw345trde456ygf
+    [stripeKey] => sfseghtw345trde456ygf
+    [paypalEmail] => 
+    [otherPaymentMethod] => 
+    [currencies] => Array
+        (
+            [0] => USD
+            [1] => INR
+        )
+
+    [otherCurrencyText] => 
+    [taxRegion] => UK , India
+    [taxRate] => 12
+    [shippingType] => free
+    [flatRate] => 
+    [shippingZones] => north
+    [shippingRates] => 
+    [deliveryTimeframes] => 
+    [inventoryType] => manual
+    [returnPolicy] => 
+    [ecommerceOperations] => Array
+        (
+            [0] => variants
+            [1] => sku
+            [2] => delivery-partners
+        )
+
+    [ecommerceOperationNotes] => 
+    [businessDescription] => seeess
+    [keywords] => sfrcdsvf
+    [competitors] => fvdrv.com
+    [avoidWebsites] => 
+    [targetLocations] => 
+    [googleBusinessProfile] => 
+    [trustAssets] => Array
+        (
+            [0] => testimonials
+            [1] => certifications
+        )
+
+    [legalNeeds] => Array
+        (
+            [0] => privacy-policy
+            [1] => cookie-banner
+        )
+
+    [legalTrustNotes] => 
+    [hasAnalytics] => no
+    [analyticsId] => 
+    [gaEmail] => rajvishwakarma2021@gmail.com
+    [gaPassword] => dgrverbdfb
+    [hasGMB] => no
+    [showSocialIcons] => yes
+    [facebookUrl] => https://linkedin.com/in/rajkumar-vishwakarma-87a9b9264
+    [instagramUrl] => 
+    [twitterUrl] => https://linkedin.com/in/rajkumar-vishwakarma-87a9b9264
+    [linkedinUrl] => 
+    [youtubeUrl] => 
+    [pinterestUrl] => 
+    [tiktokUrl] => 
+    [otherSocialMedia] => 
+    [contactName] => Rajkumar Vishwakarma
+    [contactEmail] => rajvishwakarma2021@gmail.com
+    [contactPhone] => 09111328903
+    [businessEmail] => rajvishwakarma2021@gmail.com
+    [businessAddress] => asttrokol 321
+    [workingHoursMode] => selected-hours
+    [openDays] => Array
+        (
+            [0] => monday
+            [1] => tuesday
+            [2] => wednesday
+            [3] => thursday
+            [4] => friday
+        )
+
+    [openingTime] => 13:49
+    [closingTime] => 16:49
+    [additionalNotes] => 
+    [decisionMaker] => Rajkumar
+    [reviewerCount] => 5
+    [preferredCommunication] => email
+    [bestContactTime] => after 3pm
+    [deadlineReason] => Event
+    [clientUncertainties] => 
+    [informationConfirmed] => yes
+    [app_purpose] => 
+    [app_target_audience] => 
+    [appScreens] => Array
+        (
+            [0] => login
+            [1] => home
+            [2] => profile
+            [3] => settings
+        )
+
+    [app_user_flow] => 
+    [app_name] => 
+    [app_companyCode] => 
+    [app_gstNumber] => 
+    [app_registrationNumber] => 
+    [app_bankAccount] => 
+    [app_bankName] => 
+    [app_ifscCode] => 
+    [app_companyAddress] => 
+    [app_city] => 
+    [app_state] => 
+    [app_country] => 
+    [app_pincode] => 
+    [app_tagline] => 
+    [app_iconLink] => 
+    [app_iconSize] => 
+    [app_iconColors] => 
+    [app_temporaryIconText] => 
+    [app_professionalIconText] => 
+    [app_professionalIconDescription] => 
+    [app_brandGuidelines] => 
+    [app_brandVoice] => 
+    [app_assetLinks] => 
+    [login_title] => 
+    [login_content] => 
+    [login_features] => 
+    [home_title] => 
+    [home_content] => 
+    [home_features] => 
+    [profile_title] => 
+    [profile_content] => 
+    [profile_features] => 
+    [settings_title] => 
+    [settings_content] => 
+    [settings_features] => 
+    [app_galleryTitle] => 
+    [app_galleryDescription] => 
+    [app_development_type] => 
+    [app_design_link] => 
+    [app_design_notes] => 
+    [app_design_colors] => 
+    [app_design_reference] => 
+    [app_design_ready_screens] => 
+    [app_design_missing_screens] => 
+    [app_reference_apps] => 
+    [app_payment_cred_razorpay_key_id] => 
+    [app_payment_cred_razorpay_key_secret] => 
+    [app_payment_cred_stripe_publishable_key] => 
+    [app_payment_cred_stripe_secret_key] => 
+    [app_payment_cred_paypal_client_id] => 
+    [app_payment_cred_paypal_client_secret] => 
+    [app_payment_cred_paypal_email] => 
+    [app_payment_cred_upi_id] => 
+    [app_payment_cred_upi_merchant_name] => 
+    [app_payment_cred_gpay_merchant_id] => 
+    [app_payment_cred_gpay_merchant_name] => 
+    [app_payment_cred_apple_merchant_id] => 
+    [app_payment_cred_apple_bundle_id] => 
+    [app_payment_cred_card_gateway] => 
+    [app_payment_cred_card_api_key] => 
+    [app_payment_cred_cod_notes] => 
+    [app_backend_tech] => 
+    [app_backend_tech_other] => 
+    [app_api_source] => 
+    [app_api_documentation] => 
+    [app_api_auth_type] => 
+    [app_api_credentials] => 
+    [app_playstore_login] => 
+    [app_playstore_password] => 
+    [app_appstore_login] => 
+    [app_appstore_password] => 
+    [app_contactName] => 
+    [app_contactEmail] => 
+    [app_contactPhone] => 
+    [app_businessEmail] => 
+    [app_businessAddress] => 
+    [app_openingTime] => 
+    [app_closingTime] => 
+    [app_additionalNotes] => 
+    [app_decisionMaker] => 
+    [app_reviewerCount] => 
+    [app_preferredCommunication] => 
+    [app_bestContactTime] => 
+    [app_deadlineReason] => 
+    [client_id] => CL-2026-4609
+)
+
+[01-Jun-2026 06:29:13 UTC] Uploaded files: Array
+(
+    [0] => logoFile
+    [1] => businessAssetsFile
+    [2] => pageImage_home
+    [3] => content_home_file
+    [4] => testimonial_1_image
+    [5] => gallery_1_image
+)
+
+[01-Jun-2026 06:45:45 UTC] === FORM SUBMISSION START ===
+[01-Jun-2026 06:45:45 UTC] Request Method: POST
+[01-Jun-2026 06:45:45 UTC] Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryDAufWVJuMstb34L3
+[01-Jun-2026 06:45:45 UTC] Final values - Email: rajvishwakarma2021@gmail.com, Name: Rajkumar Vishwakarma, Phone: 09111328903
+[01-Jun-2026 06:45:45 UTC] Submitted payload: Array
+(
+    [project_type] => website
+    [applicationType] => informational
+    [brandName] => thecraftloom
+    [businessCategory] => technology
+    [otherBusinessCategoryInput] => 
+    [brandShortDescription] => frghjm
+    [projectType] => new
+    [otherProjectTypeInput] => 
+    [projectDescription] => hf
+    [businessGoals] => Array
+        (
+            [0] => generate-leads
+            [1] => share-information
+        )
+
+    [targetAudience] => 
+    [visitorProblem] => 
+    [visitorActions] => Array
+        (
+            [0] => call
+            [1] => book-appointment
+        )
+
+    [priorityFocus] => Array
+        (
+            [0] => fast-launch
+            [1] => premium-design
+        )
+
+    [launchDate] => 2026-06-18
+    [platform] => shopify
+    [otherPlatformName] => 
+    [hasShopifyAccount] => yes
+    [shopifyEmail] => rajvishwakarma2021@gmail.com
+    [shopifyPassword] => scsxfgvrd
+    [hasSSL] => yes
+    [sslProvider] => Godaddy
+    [sslExpiryDate] => 2026-06-11
+    [sslType] => OV
+    [sslPreferredProvider] => 
+    [securityRequirements] => 
+    [hasTheme] => yes
+    [themeName] => jhgf.com
+    [themeProvider] => vgf
+    [themeLicense] => no
+    [inspirationSites] => 
+    [websitePageStyle] => one-page
+    [designStyle] => modern-bold
+    [colorPreferences] => 
+    [colorScheme] => teal-sand
+    [fontPreference] => team-choice
+    [fontUrl] => sccza
+    [referenceWebsite1] => thecraftloom.com
+    [referenceWebsite2] => avana.com
+    [referenceWebsite3] => 
+    [designComments] => 
+    [headerPages] => Array
+        (
+            [0] => home
+            [1] => contact
+            [2] => shop
+        )
+
+    [navigationStructure] => home|header,contact|header,shop|header
+    [subpageNotes] => 
+    [customFeatures] => Array
+        (
+            [0] => contact
+            [1] => whatsapp
+            [2] => payment-gateway
+            [3] => api-integration
+        )
+
+    [otherFeatures] => 
+    [integrations] => 
+    [formRequirements] => 
+    [leadDestinations] => Array
+        (
+            [0] => whatsapp
+            [1] => admin-dashboard
+        )
+
+    [leadNotificationEmail] => 
+    [leadAutoReply] => 
+    [hasDomain] => yes
+    [domainName] => avana.co.nz
+    [domainProvider] => godaddy
+    [domainLogin] => yes
+    [domainRegistrationSource] => getspace
+    [domainUsername] => rajvishwakarma2021@gmail.com
+    [domainPassword] => ret4ge5grf
+    [preferredDomain] => 
+    [hasHosting] => yes
+    [getspaceRegistrationEmail] => rajvishwakarma2021@gmail.com
+    [hostingProvider] => godaddy
+    [hostingPlan] => no specifuc
+    [hostingLogin] => yes
+    [hostingUsername] => avana@gmail.com
+    [hostingPassword] => re5tged5ygr
+    [hostingPreference] => 
+    [companyName] => RECHARGE TRENDD SETTER PVT LTD
+    [companyCode] => 
+    [gstNumber] => 
+    [registrationNumber] => 
+    [bankAccount] => 
+    [bankName] => 
+    [ifscCode] => 
+    [companyAddress] => 
+    [city] => 
+    [state] => 
+    [country] => 
+    [pincode] => 
+    [tagline] => Success you’ve always craved—served hot, instantly, and built to deliver results with the speed that fuels unstoppable growth.
+    [hasLogo] => yes
+    [logoLink] => 
+    [logoSize] => 
+    [logoColors] => 
+    [temporaryLogoText] => 
+    [professionalLogoText] => 
+    [professionalLogoDescription] => 
+    [brandGuidelines] => 
+    [brandVoice] => professional
+    [assetLinks] => 
+    [contentReady] => yes
+    [contentSupport] => Array
+        (
+            [0] => rewrite
+            [1] => not-sure
+        )
+
+    [mediaSupport] => Array
+        (
+            [0] => stock-images
+            [1] => banner-design
+        )
+
+    [pageHeading_home] => What is the astrology
+    [pageSubheading_home] => gyftrdfdefrgthyjuk
+    [content_home] => hiiiiiiiii
+    [contactFormTitle] => Contact form
+    [contactFormSubmitText] => Submit form
+    [contactFormThankYou] => hii
+    [contactFormAdminEmail] => rajvishwakarma2021@gmail.com
+    [contactField_name] => yes
+    [contactField_phone] => yes
+    [contactField_message] => yes
+    [contactCustomField_0_label] => Serrivce
+    [contactCustomField_0_type] => text
+    [pageHeading_shop] => 
+    [pageSubheading_shop] => 
+    [content_shop] => 
+    [pageExtras] => Array
+        (
+            [0] => testimonials
+            [1] => gallery
+        )
+
+    [testimonial_1_name] => raj
+    [testimonial_1_date] => 2026-06-24
+    [testimonial_1_text] => 
+    [galleryTitle] => ranu mandal
+    [galleryDescription] => vc
+    [gallery_1_caption] => 
+    [gallery_2_caption] => 
+    [sellType] => none
+    [productDriveLink] => 
+    [productCategories] => 
+    [productImagesLink] => 
+    [serviceDriveLink] => 
+    [serviceCategories] => 
+    [servicePortfolioLink] => 
+    [servicePricing] => 
+    [serviceOperationNotes] => 
+    [isEcommerce] => no
+    [razorpayKeyId] => 
+    [stripeKey] => 
+    [paypalEmail] => 
+    [otherPaymentMethod] => 
+    [otherCurrencyText] => 
+    [taxRegion] => 
+    [taxRate] => 
+    [shippingType] => 
+    [flatRate] => 
+    [shippingZones] => 
+    [shippingRates] => 
+    [deliveryTimeframes] => 
+    [inventoryType] => 
+    [returnPolicy] => 
+    [ecommerceOperationNotes] => 
+    [businessDescription] => 
+    [keywords] => 
+    [competitors] => 
+    [avoidWebsites] => 
+    [targetLocations] => 
+    [googleBusinessProfile] => 
+    [legalNeeds] => Array
+        (
+            [0] => privacy-policy
+            [1] => terms
+            [2] => cookie-banner
+            [3] => not-sure
+        )
+
+    [legalTrustNotes] => 
+    [hasAnalytics] => yes
+    [analyticsId] => sefrg4etge5t
+    [gaEmail] => 
+    [gaPassword] => 
+    [hasGMB] => no
+    [showSocialIcons] => no
+    [facebookUrl] => 
+    [instagramUrl] => 
+    [twitterUrl] => 
+    [linkedinUrl] => 
+    [youtubeUrl] => 
+    [pinterestUrl] => 
+    [tiktokUrl] => 
+    [otherSocialMedia] => 
+    [contactName] => Rajkumar Vishwakarma
+    [contactEmail] => rajvishwakarma2021@gmail.com
+    [contactPhone] => 09111328903
+    [businessEmail] => rajvishwakarma2021@gmail.com
+    [businessAddress] => joo
+    [workingHoursMode] => selected-hours
+    [openDays] => Array
+        (
+            [0] => monday
+            [1] => tuesday
+            [2] => wednesday
+            [3] => thursday
+        )
+
+    [openingTime] => 13:11
+    [closingTime] => 15:11
+    [additionalNotes] => 
+    [decisionMaker] => Rajkumar
+    [reviewerCount] => 4
+    [preferredCommunication] => email
+    [bestContactTime] => after 3pm
+    [deadlineReason] => Event
+    [clientUncertainties] => 
+    [informationConfirmed] => yes
+    [app_purpose] => 
+    [app_target_audience] => 
+    [appScreens] => Array
+        (
+            [0] => login
+            [1] => home
+            [2] => profile
+            [3] => settings
+        )
+
+    [app_user_flow] => 
+    [app_name] => 
+    [app_companyCode] => 
+    [app_gstNumber] => 
+    [app_registrationNumber] => 
+    [app_bankAccount] => 
+    [app_bankName] => 
+    [app_ifscCode] => 
+    [app_companyAddress] => 
+    [app_city] => 
+    [app_state] => 
+    [app_country] => 
+    [app_pincode] => 
+    [app_tagline] => 
+    [app_iconLink] => 
+    [app_iconSize] => 
+    [app_iconColors] => 
+    [app_temporaryIconText] => 
+    [app_professionalIconText] => 
+    [app_professionalIconDescription] => 
+    [app_brandGuidelines] => 
+    [app_brandVoice] => 
+    [app_assetLinks] => 
+    [login_title] => 
+    [login_content] => 
+    [login_features] => 
+    [home_title] => 
+    [home_content] => 
+    [home_features] => 
+    [profile_title] => 
+    [profile_content] => 
+    [profile_features] => 
+    [settings_title] => 
+    [settings_content] => 
+    [settings_features] => 
+    [app_galleryTitle] => 
+    [app_galleryDescription] => 
+    [app_development_type] => 
+    [app_design_link] => 
+    [app_design_notes] => 
+    [app_design_colors] => 
+    [app_design_reference] => 
+    [app_design_ready_screens] => 
+    [app_design_missing_screens] => 
+    [app_reference_apps] => 
+    [app_payment_cred_razorpay_key_id] => 
+    [app_payment_cred_razorpay_key_secret] => 
+    [app_payment_cred_stripe_publishable_key] => 
+    [app_payment_cred_stripe_secret_key] => 
+    [app_payment_cred_paypal_client_id] => 
+    [app_payment_cred_paypal_client_secret] => 
+    [app_payment_cred_paypal_email] => 
+    [app_payment_cred_upi_id] => 
+    [app_payment_cred_upi_merchant_name] => 
+    [app_payment_cred_gpay_merchant_id] => 
+    [app_payment_cred_gpay_merchant_name] => 
+    [app_payment_cred_apple_merchant_id] => 
+    [app_payment_cred_apple_bundle_id] => 
+    [app_payment_cred_card_gateway] => 
+    [app_payment_cred_card_api_key] => 
+    [app_payment_cred_cod_notes] => 
+    [app_backend_tech] => 
+    [app_backend_tech_other] => 
+    [app_api_source] => 
+    [app_api_documentation] => 
+    [app_api_auth_type] => 
+    [app_api_credentials] => 
+    [app_playstore_login] => 
+    [app_playstore_password] => 
+    [app_appstore_login] => 
+    [app_appstore_password] => 
+    [app_contactName] => 
+    [app_contactEmail] => 
+    [app_contactPhone] => 
+    [app_businessEmail] => 
+    [app_businessAddress] => 
+    [app_openingTime] => 
+    [app_closingTime] => 
+    [app_additionalNotes] => 
+    [app_decisionMaker] => 
+    [app_reviewerCount] => 
+    [app_preferredCommunication] => 
+    [app_bestContactTime] => 
+    [app_deadlineReason] => 
+    [client_id] => CL-2026-7458
+)
+
+[01-Jun-2026 06:45:45 UTC] POST dump: Array
+(
+    [project_type] => website
+    [applicationType] => informational
+    [brandName] => thecraftloom
+    [businessCategory] => technology
+    [otherBusinessCategoryInput] => 
+    [brandShortDescription] => frghjm
+    [projectType] => new
+    [otherProjectTypeInput] => 
+    [projectDescription] => hf
+    [businessGoals] => Array
+        (
+            [0] => generate-leads
+            [1] => share-information
+        )
+
+    [targetAudience] => 
+    [visitorProblem] => 
+    [visitorActions] => Array
+        (
+            [0] => call
+            [1] => book-appointment
+        )
+
+    [priorityFocus] => Array
+        (
+            [0] => fast-launch
+            [1] => premium-design
+        )
+
+    [launchDate] => 2026-06-18
+    [platform] => shopify
+    [otherPlatformName] => 
+    [hasShopifyAccount] => yes
+    [shopifyEmail] => rajvishwakarma2021@gmail.com
+    [shopifyPassword] => scsxfgvrd
+    [hasSSL] => yes
+    [sslProvider] => Godaddy
+    [sslExpiryDate] => 2026-06-11
+    [sslType] => OV
+    [sslPreferredProvider] => 
+    [securityRequirements] => 
+    [hasTheme] => yes
+    [themeName] => jhgf.com
+    [themeProvider] => vgf
+    [themeLicense] => no
+    [inspirationSites] => 
+    [websitePageStyle] => one-page
+    [designStyle] => modern-bold
+    [colorPreferences] => 
+    [colorScheme] => teal-sand
+    [fontPreference] => team-choice
+    [fontUrl] => sccza
+    [referenceWebsite1] => thecraftloom.com
+    [referenceWebsite2] => avana.com
+    [referenceWebsite3] => 
+    [designComments] => 
+    [headerPages] => Array
+        (
+            [0] => home
+            [1] => contact
+            [2] => shop
+        )
+
+    [navigationStructure] => home|header,contact|header,shop|header
+    [subpageNotes] => 
+    [customFeatures] => Array
+        (
+            [0] => contact
+            [1] => whatsapp
+            [2] => payment-gateway
+            [3] => api-integration
+        )
+
+    [otherFeatures] => 
+    [integrations] => 
+    [formRequirements] => 
+    [leadDestinations] => Array
+        (
+            [0] => whatsapp
+            [1] => admin-dashboard
+        )
+
+    [leadNotificationEmail] => 
+    [leadAutoReply] => 
+    [hasDomain] => yes
+    [domainName] => avana.co.nz
+    [domainProvider] => godaddy
+    [domainLogin] => yes
+    [domainRegistrationSource] => getspace
+    [domainUsername] => rajvishwakarma2021@gmail.com
+    [domainPassword] => ret4ge5grf
+    [preferredDomain] => 
+    [hasHosting] => yes
+    [getspaceRegistrationEmail] => rajvishwakarma2021@gmail.com
+    [hostingProvider] => godaddy
+    [hostingPlan] => no specifuc
+    [hostingLogin] => yes
+    [hostingUsername] => avana@gmail.com
+    [hostingPassword] => re5tged5ygr
+    [hostingPreference] => 
+    [companyName] => RECHARGE TRENDD SETTER PVT LTD
+    [companyCode] => 
+    [gstNumber] => 
+    [registrationNumber] => 
+    [bankAccount] => 
+    [bankName] => 
+    [ifscCode] => 
+    [companyAddress] => 
+    [city] => 
+    [state] => 
+    [country] => 
+    [pincode] => 
+    [tagline] => Success you’ve always craved—served hot, instantly, and built to deliver results with the speed that fuels unstoppable growth.
+    [hasLogo] => yes
+    [logoLink] => 
+    [logoSize] => 
+    [logoColors] => 
+    [temporaryLogoText] => 
+    [professionalLogoText] => 
+    [professionalLogoDescription] => 
+    [brandGuidelines] => 
+    [brandVoice] => professional
+    [assetLinks] => 
+    [contentReady] => yes
+    [contentSupport] => Array
+        (
+            [0] => rewrite
+            [1] => not-sure
+        )
+
+    [mediaSupport] => Array
+        (
+            [0] => stock-images
+            [1] => banner-design
+        )
+
+    [pageHeading_home] => What is the astrology
+    [pageSubheading_home] => gyftrdfdefrgthyjuk
+    [content_home] => hiiiiiiiii
+    [contactFormTitle] => Contact form
+    [contactFormSubmitText] => Submit form
+    [contactFormThankYou] => hii
+    [contactFormAdminEmail] => rajvishwakarma2021@gmail.com
+    [contactField_name] => yes
+    [contactField_phone] => yes
+    [contactField_message] => yes
+    [contactCustomField_0_label] => Serrivce
+    [contactCustomField_0_type] => text
+    [pageHeading_shop] => 
+    [pageSubheading_shop] => 
+    [content_shop] => 
+    [pageExtras] => Array
+        (
+            [0] => testimonials
+            [1] => gallery
+        )
+
+    [testimonial_1_name] => raj
+    [testimonial_1_date] => 2026-06-24
+    [testimonial_1_text] => 
+    [galleryTitle] => ranu mandal
+    [galleryDescription] => vc
+    [gallery_1_caption] => 
+    [gallery_2_caption] => 
+    [sellType] => none
+    [productDriveLink] => 
+    [productCategories] => 
+    [productImagesLink] => 
+    [serviceDriveLink] => 
+    [serviceCategories] => 
+    [servicePortfolioLink] => 
+    [servicePricing] => 
+    [serviceOperationNotes] => 
+    [isEcommerce] => no
+    [razorpayKeyId] => 
+    [stripeKey] => 
+    [paypalEmail] => 
+    [otherPaymentMethod] => 
+    [otherCurrencyText] => 
+    [taxRegion] => 
+    [taxRate] => 
+    [shippingType] => 
+    [flatRate] => 
+    [shippingZones] => 
+    [shippingRates] => 
+    [deliveryTimeframes] => 
+    [inventoryType] => 
+    [returnPolicy] => 
+    [ecommerceOperationNotes] => 
+    [businessDescription] => 
+    [keywords] => 
+    [competitors] => 
+    [avoidWebsites] => 
+    [targetLocations] => 
+    [googleBusinessProfile] => 
+    [legalNeeds] => Array
+        (
+            [0] => privacy-policy
+            [1] => terms
+            [2] => cookie-banner
+            [3] => not-sure
+        )
+
+    [legalTrustNotes] => 
+    [hasAnalytics] => yes
+    [analyticsId] => sefrg4etge5t
+    [gaEmail] => 
+    [gaPassword] => 
+    [hasGMB] => no
+    [showSocialIcons] => no
+    [facebookUrl] => 
+    [instagramUrl] => 
+    [twitterUrl] => 
+    [linkedinUrl] => 
+    [youtubeUrl] => 
+    [pinterestUrl] => 
+    [tiktokUrl] => 
+    [otherSocialMedia] => 
+    [contactName] => Rajkumar Vishwakarma
+    [contactEmail] => rajvishwakarma2021@gmail.com
+    [contactPhone] => 09111328903
+    [businessEmail] => rajvishwakarma2021@gmail.com
+    [businessAddress] => joo
+    [workingHoursMode] => selected-hours
+    [openDays] => Array
+        (
+            [0] => monday
+            [1] => tuesday
+            [2] => wednesday
+            [3] => thursday
+        )
+
+    [openingTime] => 13:11
+    [closingTime] => 15:11
+    [additionalNotes] => 
+    [decisionMaker] => Rajkumar
+    [reviewerCount] => 4
+    [preferredCommunication] => email
+    [bestContactTime] => after 3pm
+    [deadlineReason] => Event
+    [clientUncertainties] => 
+    [informationConfirmed] => yes
+    [app_purpose] => 
+    [app_target_audience] => 
+    [appScreens] => Array
+        (
+            [0] => login
+            [1] => home
+            [2] => profile
+            [3] => settings
+        )
+
+    [app_user_flow] => 
+    [app_name] => 
+    [app_companyCode] => 
+    [app_gstNumber] => 
+    [app_registrationNumber] => 
+    [app_bankAccount] => 
+    [app_bankName] => 
+    [app_ifscCode] => 
+    [app_companyAddress] => 
+    [app_city] => 
+    [app_state] => 
+    [app_country] => 
+    [app_pincode] => 
+    [app_tagline] => 
+    [app_iconLink] => 
+    [app_iconSize] => 
+    [app_iconColors] => 
+    [app_temporaryIconText] => 
+    [app_professionalIconText] => 
+    [app_professionalIconDescription] => 
+    [app_brandGuidelines] => 
+    [app_brandVoice] => 
+    [app_assetLinks] => 
+    [login_title] => 
+    [login_content] => 
+    [login_features] => 
+    [home_title] => 
+    [home_content] => 
+    [home_features] => 
+    [profile_title] => 
+    [profile_content] => 
+    [profile_features] => 
+    [settings_title] => 
+    [settings_content] => 
+    [settings_features] => 
+    [app_galleryTitle] => 
+    [app_galleryDescription] => 
+    [app_development_type] => 
+    [app_design_link] => 
+    [app_design_notes] => 
+    [app_design_colors] => 
+    [app_design_reference] => 
+    [app_design_ready_screens] => 
+    [app_design_missing_screens] => 
+    [app_reference_apps] => 
+    [app_payment_cred_razorpay_key_id] => 
+    [app_payment_cred_razorpay_key_secret] => 
+    [app_payment_cred_stripe_publishable_key] => 
+    [app_payment_cred_stripe_secret_key] => 
+    [app_payment_cred_paypal_client_id] => 
+    [app_payment_cred_paypal_client_secret] => 
+    [app_payment_cred_paypal_email] => 
+    [app_payment_cred_upi_id] => 
+    [app_payment_cred_upi_merchant_name] => 
+    [app_payment_cred_gpay_merchant_id] => 
+    [app_payment_cred_gpay_merchant_name] => 
+    [app_payment_cred_apple_merchant_id] => 
+    [app_payment_cred_apple_bundle_id] => 
+    [app_payment_cred_card_gateway] => 
+    [app_payment_cred_card_api_key] => 
+    [app_payment_cred_cod_notes] => 
+    [app_backend_tech] => 
+    [app_backend_tech_other] => 
+    [app_api_source] => 
+    [app_api_documentation] => 
+    [app_api_auth_type] => 
+    [app_api_credentials] => 
+    [app_playstore_login] => 
+    [app_playstore_password] => 
+    [app_appstore_login] => 
+    [app_appstore_password] => 
+    [app_contactName] => 
+    [app_contactEmail] => 
+    [app_contactPhone] => 
+    [app_businessEmail] => 
+    [app_businessAddress] => 
+    [app_openingTime] => 
+    [app_closingTime] => 
+    [app_additionalNotes] => 
+    [app_decisionMaker] => 
+    [app_reviewerCount] => 
+    [app_preferredCommunication] => 
+    [app_bestContactTime] => 
+    [app_deadlineReason] => 
+    [client_id] => CL-2026-7458
+)
+
+[01-Jun-2026 06:45:45 UTC] Uploaded files: Array
+(
+    [0] => logoFile
+    [1] => businessAssetsFile
+    [2] => pageImage_home
+    [3] => content_home_file
+    [4] => testimonial_1_image
+    [5] => gallery_1_image
+    [6] => gallery_2_image
+)
+
+[01-Jun-2026 06:45:45 UTC] Invalid image file for field pageImage_home - continuing for testing
+[01-Jun-2026 07:12:50 UTC] === FORM SUBMISSION START ===
+[01-Jun-2026 07:12:50 UTC] Request Method: POST
+[01-Jun-2026 07:12:50 UTC] Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryWKpYH8xnt5CceGAt
+[01-Jun-2026 07:12:50 UTC] Final values - Email: rajvishwakarma2021@gmail.com, Name: Rajkumar Vishwakarma, Phone: 09111328903
+[01-Jun-2026 07:12:50 UTC] Submitted payload: Array
+(
+    [project_type] => website
+    [applicationType] => informational
+    [brandName] => thecraftloom
+    [businessCategory] => healthcare
+    [otherBusinessCategoryInput] => 
+    [brandShortDescription] => dfhfthbf
+    [projectType] => redesign
+    [otherProjectTypeInput] => 
+    [projectDescription] => 
+    [businessGoals] => Array
+        (
+            [0] => sell-online
+            [1] => share-information
+        )
+
+    [targetAudience] => 
+    [visitorProblem] => 
+    [visitorActions] => Array
+        (
+            [0] => call
+            [1] => book-appointment
+        )
+
+    [priorityFocus] => Array
+        (
+            [0] => automation
+        )
+
+    [launchDate] => 2026-06-24
+    [platform] => wordpress
+    [otherPlatformName] => 
+    [shopifyEmail] => 
+    [shopifyPassword] => 
+    [hasSSL] => no
+    [sslProvider] => 
+    [sslExpiryDate] => 
+    [sslType] => 
+    [sslPurchase] => yes
+    [sslPreferredProvider] => godaddy
+    [securityRequirements] => 
+    [themeName] => 
+    [themeProvider] => 
+    [inspirationSites] => 
+    [websitePageStyle] => one-page
+    [designStyle] => 
+    [colorPreferences] => 
+    [colorScheme] => teal-sand
+    [fontPreference] => 
+    [fontUrl] => 
+    [referenceWebsite1] => 
+    [referenceWebsite2] => 
+    [referenceWebsite3] => 
+    [designComments] => 
+    [headerPages] => Array
+        (
+            [0] => home
+            [1] => contact
+        )
+
+    [navigationStructure] => home|header,contact|header
+    [subpageNotes] => 
+    [customFeatures] => Array
+        (
+            [0] => whatsapp
+            [1] => multilingual
+        )
+
+    [otherFeatures] => 
+    [integrations] => 
+    [formRequirements] => 
+    [leadDestinations] => Array
+        (
+            [0] => whatsapp
+        )
+
+    [leadNotificationEmail] => rajvishwakarma2021@gmail.com
+    [leadAutoReply] => 
+    [hasDomain] => yes
+    [domainName] => avana.co.nz
+    [domainProvider] => 
+    [domainLogin] => no
+    [domainRegistrationSource] => other-provider
+    [domainManagementPreference] => team-handles
+    [domainUsername] => 
+    [domainPassword] => 
+    [preferredDomain] => 
+    [hasHosting] => no
+    [getspaceRegistrationEmail] => rajvishwakarma2021@gmail.com
+    [hostingProvider] => 
+    [hostingPlan] => 
+    [hostingUsername] => 
+    [hostingPassword] => 
+    [hostingPreference] => vps
+    [companyName] => RECHARGE TRENDD SETTER PVT LTD
+    [companyCode] => 
+    [gstNumber] => 
+    [registrationNumber] => 
+    [bankAccount] => 
+    [bankName] => 
+    [ifscCode] => 
+    [companyAddress] => 
+    [city] => 
+    [state] => 
+    [country] => 
+    [pincode] => 
+    [tagline] => Success you’ve always craved—served hot, instantly, and built to deliver results with the speed that fuels unstoppable growth.
+    [hasLogo] => yes
+    [logoLink] => 
+    [logoSize] => 
+    [logoColors] => 
+    [temporaryLogoText] => 
+    [professionalLogoText] => 
+    [professionalLogoDescription] => 
+    [brandGuidelines] => 
+    [brandVoice] => professional
+    [assetLinks] => 
+    [contentReady] => yes
+    [contentSupport] => Array
+        (
+            [0] => rewrite
+        )
+
+    [mediaSupport] => Array
+        (
+            [0] => stock-images
+        )
+
+    [pageHeading_home] => What is the astrology
+    [pageSubheading_home] => gyftrdfdefrgthyjuk
+    [content_home] => uiytrdf
+    [contactFormTitle] => vsdsdvs
+    [contactFormSubmitText] => Submit form
+    [contactFormThankYou] => hi
+    [contactFormAdminEmail] => rajvishwakarma2021@gmail.com
+    [contactField_name] => yes
+    [contactField_message] => yes
+    [contactCustomField_0_label] => Serrivce
+    [contactCustomField_0_type] => select
+    [pageExtras] => Array
+        (
+            [0] => testimonials
+            [1] => gallery
+        )
+
+    [testimonial_1_name] => hii
+    [testimonial_1_date] => 2026-06-20
+    [testimonial_1_text] => 
+    [galleryTitle] => ranu mandal
+    [galleryDescription] => vgcf
+    [gallery_1_caption] => 
+    [gallery_2_caption] => 
+    [sellType] => none
+    [productDriveLink] => 
+    [productCategories] => 
+    [productImagesLink] => 
+    [serviceDriveLink] => 
+    [serviceCategories] => 
+    [servicePortfolioLink] => 
+    [servicePricing] => 
+    [serviceOperationNotes] => 
+    [isEcommerce] => no
+    [razorpayKeyId] => 
+    [stripeKey] => 
+    [paypalEmail] => 
+    [otherPaymentMethod] => 
+    [otherCurrencyText] => 
+    [taxRegion] => 
+    [taxRate] => 
+    [shippingType] => 
+    [flatRate] => 
+    [shippingZones] => 
+    [shippingRates] => 
+    [deliveryTimeframes] => 
+    [inventoryType] => 
+    [returnPolicy] => 
+    [ecommerceOperationNotes] => 
+    [businessDescription] => 
+    [keywords] => 
+    [competitors] => 
+    [avoidWebsites] => 
+    [targetLocations] => 
+    [googleBusinessProfile] => 
+    [legalNeeds] => Array
+        (
+            [0] => not-sure
+        )
+
+    [legalTrustNotes] => 
+    [hasAnalytics] => no
+    [analyticsId] => 
+    [gaEmail] => rajvishwakarma2021@gmail.com
+    [gaPassword] => jgyt6fyguujh
+    [showSocialIcons] => no
+    [facebookUrl] => 
+    [instagramUrl] => 
+    [twitterUrl] => 
+    [linkedinUrl] => 
+    [youtubeUrl] => 
+    [pinterestUrl] => 
+    [tiktokUrl] => 
+    [otherSocialMedia] => 
+    [contactName] => Rajkumar Vishwakarma
+    [contactEmail] => rajvishwakarma2021@gmail.com
+    [contactPhone] => 09111328903
+    [businessEmail] => rajvishwakarma2021@gmail.com
+    [businessAddress] => 
+    [workingHoursMode] => always-open
+    [openingTime] => 
+    [closingTime] => 
+    [additionalNotes] => 
+    [decisionMaker] => Rajkumar
+    [reviewerCount] => 3
+    [preferredCommunication] => whatsapp
+    [bestContactTime] => after 3pm
+    [deadlineReason] => Eventmjbhgfcd
+    [clientUncertainties] => 
+    [informationConfirmed] => yes
+    [app_purpose] => 
+    [app_target_audience] => 
+    [appScreens] => Array
+        (
+            [0] => login
+            [1] => home
+            [2] => profile
+            [3] => settings
+        )
+
+    [app_user_flow] => 
+    [app_name] => 
+    [app_companyCode] => 
+    [app_gstNumber] => 
+    [app_registrationNumber] => 
+    [app_bankAccount] => 
+    [app_bankName] => 
+    [app_ifscCode] => 
+    [app_companyAddress] => 
+    [app_city] => 
+    [app_state] => 
+    [app_country] => 
+    [app_pincode] => 
+    [app_tagline] => 
+    [app_iconLink] => 
+    [app_iconSize] => 
+    [app_iconColors] => 
+    [app_temporaryIconText] => 
+    [app_professionalIconText] => 
+    [app_professionalIconDescription] => 
+    [app_brandGuidelines] => 
+    [app_brandVoice] => 
+    [app_assetLinks] => 
+    [login_title] => 
+    [login_content] => 
+    [login_features] => 
+    [home_title] => 
+    [home_content] => 
+    [home_features] => 
+    [profile_title] => 
+    [profile_content] => 
+    [profile_features] => 
+    [settings_title] => 
+    [settings_content] => 
+    [settings_features] => 
+    [app_galleryTitle] => 
+    [app_galleryDescription] => 
+    [app_development_type] => 
+    [app_design_link] => 
+    [app_design_notes] => 
+    [app_design_colors] => 
+    [app_design_reference] => 
+    [app_design_ready_screens] => 
+    [app_design_missing_screens] => 
+    [app_reference_apps] => 
+    [app_payment_cred_razorpay_key_id] => 
+    [app_payment_cred_razorpay_key_secret] => 
+    [app_payment_cred_stripe_publishable_key] => 
+    [app_payment_cred_stripe_secret_key] => 
+    [app_payment_cred_paypal_client_id] => 
+    [app_payment_cred_paypal_client_secret] => 
+    [app_payment_cred_paypal_email] => 
+    [app_payment_cred_upi_id] => 
+    [app_payment_cred_upi_merchant_name] => 
+    [app_payment_cred_gpay_merchant_id] => 
+    [app_payment_cred_gpay_merchant_name] => 
+    [app_payment_cred_apple_merchant_id] => 
+    [app_payment_cred_apple_bundle_id] => 
+    [app_payment_cred_card_gateway] => 
+    [app_payment_cred_card_api_key] => 
+    [app_payment_cred_cod_notes] => 
+    [app_backend_tech] => 
+    [app_backend_tech_other] => 
+    [app_api_source] => 
+    [app_api_documentation] => 
+    [app_api_auth_type] => 
+    [app_api_credentials] => 
+    [app_playstore_login] => 
+    [app_playstore_password] => 
+    [app_appstore_login] => 
+    [app_appstore_password] => 
+    [app_contactName] => 
+    [app_contactEmail] => 
+    [app_contactPhone] => 
+    [app_businessEmail] => 
+    [app_businessAddress] => 
+    [app_openingTime] => 
+    [app_closingTime] => 
+    [app_additionalNotes] => 
+    [app_decisionMaker] => 
+    [app_reviewerCount] => 
+    [app_preferredCommunication] => 
+    [app_bestContactTime] => 
+    [app_deadlineReason] => 
+    [client_id] => CL-2026-0779
+)
+
+[01-Jun-2026 07:12:50 UTC] POST dump: Array
+(
+    [project_type] => website
+    [applicationType] => informational
+    [brandName] => thecraftloom
+    [businessCategory] => healthcare
+    [otherBusinessCategoryInput] => 
+    [brandShortDescription] => dfhfthbf
+    [projectType] => redesign
+    [otherProjectTypeInput] => 
+    [projectDescription] => 
+    [businessGoals] => Array
+        (
+            [0] => sell-online
+            [1] => share-information
+        )
+
+    [targetAudience] => 
+    [visitorProblem] => 
+    [visitorActions] => Array
+        (
+            [0] => call
+            [1] => book-appointment
+        )
+
+    [priorityFocus] => Array
+        (
+            [0] => automation
+        )
+
+    [launchDate] => 2026-06-24
+    [platform] => wordpress
+    [otherPlatformName] => 
+    [shopifyEmail] => 
+    [shopifyPassword] => 
+    [hasSSL] => no
+    [sslProvider] => 
+    [sslExpiryDate] => 
+    [sslType] => 
+    [sslPurchase] => yes
+    [sslPreferredProvider] => godaddy
+    [securityRequirements] => 
+    [themeName] => 
+    [themeProvider] => 
+    [inspirationSites] => 
+    [websitePageStyle] => one-page
+    [designStyle] => 
+    [colorPreferences] => 
+    [colorScheme] => teal-sand
+    [fontPreference] => 
+    [fontUrl] => 
+    [referenceWebsite1] => 
+    [referenceWebsite2] => 
+    [referenceWebsite3] => 
+    [designComments] => 
+    [headerPages] => Array
+        (
+            [0] => home
+            [1] => contact
+        )
+
+    [navigationStructure] => home|header,contact|header
+    [subpageNotes] => 
+    [customFeatures] => Array
+        (
+            [0] => whatsapp
+            [1] => multilingual
+        )
+
+    [otherFeatures] => 
+    [integrations] => 
+    [formRequirements] => 
+    [leadDestinations] => Array
+        (
+            [0] => whatsapp
+        )
+
+    [leadNotificationEmail] => rajvishwakarma2021@gmail.com
+    [leadAutoReply] => 
+    [hasDomain] => yes
+    [domainName] => avana.co.nz
+    [domainProvider] => 
+    [domainLogin] => no
+    [domainRegistrationSource] => other-provider
+    [domainManagementPreference] => team-handles
+    [domainUsername] => 
+    [domainPassword] => 
+    [preferredDomain] => 
+    [hasHosting] => no
+    [getspaceRegistrationEmail] => rajvishwakarma2021@gmail.com
+    [hostingProvider] => 
+    [hostingPlan] => 
+    [hostingUsername] => 
+    [hostingPassword] => 
+    [hostingPreference] => vps
+    [companyName] => RECHARGE TRENDD SETTER PVT LTD
+    [companyCode] => 
+    [gstNumber] => 
+    [registrationNumber] => 
+    [bankAccount] => 
+    [bankName] => 
+    [ifscCode] => 
+    [companyAddress] => 
+    [city] => 
+    [state] => 
+    [country] => 
+    [pincode] => 
+    [tagline] => Success you’ve always craved—served hot, instantly, and built to deliver results with the speed that fuels unstoppable growth.
+    [hasLogo] => yes
+    [logoLink] => 
+    [logoSize] => 
+    [logoColors] => 
+    [temporaryLogoText] => 
+    [professionalLogoText] => 
+    [professionalLogoDescription] => 
+    [brandGuidelines] => 
+    [brandVoice] => professional
+    [assetLinks] => 
+    [contentReady] => yes
+    [contentSupport] => Array
+        (
+            [0] => rewrite
+        )
+
+    [mediaSupport] => Array
+        (
+            [0] => stock-images
+        )
+
+    [pageHeading_home] => What is the astrology
+    [pageSubheading_home] => gyftrdfdefrgthyjuk
+    [content_home] => uiytrdf
+    [contactFormTitle] => vsdsdvs
+    [contactFormSubmitText] => Submit form
+    [contactFormThankYou] => hi
+    [contactFormAdminEmail] => rajvishwakarma2021@gmail.com
+    [contactField_name] => yes
+    [contactField_message] => yes
+    [contactCustomField_0_label] => Serrivce
+    [contactCustomField_0_type] => select
+    [pageExtras] => Array
+        (
+            [0] => testimonials
+            [1] => gallery
+        )
+
+    [testimonial_1_name] => hii
+    [testimonial_1_date] => 2026-06-20
+    [testimonial_1_text] => 
+    [galleryTitle] => ranu mandal
+    [galleryDescription] => vgcf
+    [gallery_1_caption] => 
+    [gallery_2_caption] => 
+    [sellType] => none
+    [productDriveLink] => 
+    [productCategories] => 
+    [productImagesLink] => 
+    [serviceDriveLink] => 
+    [serviceCategories] => 
+    [servicePortfolioLink] => 
+    [servicePricing] => 
+    [serviceOperationNotes] => 
+    [isEcommerce] => no
+    [razorpayKeyId] => 
+    [stripeKey] => 
+    [paypalEmail] => 
+    [otherPaymentMethod] => 
+    [otherCurrencyText] => 
+    [taxRegion] => 
+    [taxRate] => 
+    [shippingType] => 
+    [flatRate] => 
+    [shippingZones] => 
+    [shippingRates] => 
+    [deliveryTimeframes] => 
+    [inventoryType] => 
+    [returnPolicy] => 
+    [ecommerceOperationNotes] => 
+    [businessDescription] => 
+    [keywords] => 
+    [competitors] => 
+    [avoidWebsites] => 
+    [targetLocations] => 
+    [googleBusinessProfile] => 
+    [legalNeeds] => Array
+        (
+            [0] => not-sure
+        )
+
+    [legalTrustNotes] => 
+    [hasAnalytics] => no
+    [analyticsId] => 
+    [gaEmail] => rajvishwakarma2021@gmail.com
+    [gaPassword] => jgyt6fyguujh
+    [showSocialIcons] => no
+    [facebookUrl] => 
+    [instagramUrl] => 
+    [twitterUrl] => 
+    [linkedinUrl] => 
+    [youtubeUrl] => 
+    [pinterestUrl] => 
+    [tiktokUrl] => 
+    [otherSocialMedia] => 
+    [contactName] => Rajkumar Vishwakarma
+    [contactEmail] => rajvishwakarma2021@gmail.com
+    [contactPhone] => 09111328903
+    [businessEmail] => rajvishwakarma2021@gmail.com
+    [businessAddress] => 
+    [workingHoursMode] => always-open
+    [openingTime] => 
+    [closingTime] => 
+    [additionalNotes] => 
+    [decisionMaker] => Rajkumar
+    [reviewerCount] => 3
+    [preferredCommunication] => whatsapp
+    [bestContactTime] => after 3pm
+    [deadlineReason] => Eventmjbhgfcd
+    [clientUncertainties] => 
+    [informationConfirmed] => yes
+    [app_purpose] => 
+    [app_target_audience] => 
+    [appScreens] => Array
+        (
+            [0] => login
+            [1] => home
+            [2] => profile
+            [3] => settings
+        )
+
+    [app_user_flow] => 
+    [app_name] => 
+    [app_companyCode] => 
+    [app_gstNumber] => 
+    [app_registrationNumber] => 
+    [app_bankAccount] => 
+    [app_bankName] => 
+    [app_ifscCode] => 
+    [app_companyAddress] => 
+    [app_city] => 
+    [app_state] => 
+    [app_country] => 
+    [app_pincode] => 
+    [app_tagline] => 
+    [app_iconLink] => 
+    [app_iconSize] => 
+    [app_iconColors] => 
+    [app_temporaryIconText] => 
+    [app_professionalIconText] => 
+    [app_professionalIconDescription] => 
+    [app_brandGuidelines] => 
+    [app_brandVoice] => 
+    [app_assetLinks] => 
+    [login_title] => 
+    [login_content] => 
+    [login_features] => 
+    [home_title] => 
+    [home_content] => 
+    [home_features] => 
+    [profile_title] => 
+    [profile_content] => 
+    [profile_features] => 
+    [settings_title] => 
+    [settings_content] => 
+    [settings_features] => 
+    [app_galleryTitle] => 
+    [app_galleryDescription] => 
+    [app_development_type] => 
+    [app_design_link] => 
+    [app_design_notes] => 
+    [app_design_colors] => 
+    [app_design_reference] => 
+    [app_design_ready_screens] => 
+    [app_design_missing_screens] => 
+    [app_reference_apps] => 
+    [app_payment_cred_razorpay_key_id] => 
+    [app_payment_cred_razorpay_key_secret] => 
+    [app_payment_cred_stripe_publishable_key] => 
+    [app_payment_cred_stripe_secret_key] => 
+    [app_payment_cred_paypal_client_id] => 
+    [app_payment_cred_paypal_client_secret] => 
+    [app_payment_cred_paypal_email] => 
+    [app_payment_cred_upi_id] => 
+    [app_payment_cred_upi_merchant_name] => 
+    [app_payment_cred_gpay_merchant_id] => 
+    [app_payment_cred_gpay_merchant_name] => 
+    [app_payment_cred_apple_merchant_id] => 
+    [app_payment_cred_apple_bundle_id] => 
+    [app_payment_cred_card_gateway] => 
+    [app_payment_cred_card_api_key] => 
+    [app_payment_cred_cod_notes] => 
+    [app_backend_tech] => 
+    [app_backend_tech_other] => 
+    [app_api_source] => 
+    [app_api_documentation] => 
+    [app_api_auth_type] => 
+    [app_api_credentials] => 
+    [app_playstore_login] => 
+    [app_playstore_password] => 
+    [app_appstore_login] => 
+    [app_appstore_password] => 
+    [app_contactName] => 
+    [app_contactEmail] => 
+    [app_contactPhone] => 
+    [app_businessEmail] => 
+    [app_businessAddress] => 
+    [app_openingTime] => 
+    [app_closingTime] => 
+    [app_additionalNotes] => 
+    [app_decisionMaker] => 
+    [app_reviewerCount] => 
+    [app_preferredCommunication] => 
+    [app_bestContactTime] => 
+    [app_deadlineReason] => 
+    [client_id] => CL-2026-0779
+)
+
+[01-Jun-2026 07:12:50 UTC] Uploaded files: Array
+(
+    [0] => logoFile
+    [1] => businessAssetsFile
+    [2] => pageImage_home
+    [3] => content_home_file
+    [4] => testimonial_1_image
+    [5] => gallery_1_image
+    [6] => gallery_2_image
+)
+
+[01-Jun-2026 07:19:59 UTC] === FORM SUBMISSION START ===
+[01-Jun-2026 07:19:59 UTC] Request Method: POST
+[01-Jun-2026 07:19:59 UTC] Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryAHWRzNoARMMpyA0o
+[01-Jun-2026 07:19:59 UTC] Final values - Email: rajvishwakarma2021@gmail.com, Name: Rajkumar Vishwakarma, Phone: 09111328903
+[01-Jun-2026 07:19:59 UTC] Submitted payload: Array
+(
+    [project_type] => website
+    [applicationType] => informational
+    [brandName] => thecraftloom
+    [businessCategory] => healthcare
+    [otherBusinessCategoryInput] => 
+    [brandShortDescription] => frghjm
+    [projectType] => redesign
+    [otherProjectTypeInput] => 
+    [projectDescription] => 
+    [businessGoals] => Array
+        (
+            [0] => generate-leads
+            [1] => show-portfolio
+            [2] => book-appointments
+            [3] => share-information
+        )
+
+    [targetAudience] => 
+    [visitorProblem] => 
+    [visitorActions] => Array
+        (
+            [0] => call
+            [1] => book-appointment
+        )
+
+    [launchDate] => 2026-06-30
+    [platform] => wordpress
+    [otherPlatformName] => 
+    [shopifyEmail] => 
+    [shopifyPassword] => 
+    [hasSSL] => yes
+    [sslProvider] => Godaddy
+    [sslExpiryDate] => 2026-06-17
+    [sslType] => OV
+    [sslPreferredProvider] => 
+    [securityRequirements] => 
+    [hasTheme] => no
+    [themeName] => 
+    [themeProvider] => 
+    [inspirationSites] => 
+    [websitePageStyle] => multi-page
+    [designStyle] => 
+    [colorPreferences] => 
+    [colorScheme] => teal-sand
+    [fontPreference] => team-choice
+    [fontUrl] => 
+    [referenceWebsite1] => thecraftloom.com
+    [referenceWebsite2] => avana.com
+    [referenceWebsite3] => 
+    [designComments] => 
+    [headerPages] => Array
+        (
+            [0] => home
+            [1] => contact
+        )
+
+    [footerPages] => Array
+        (
+            [0] => terms
+        )
+
+    [navigationStructure] => home|header,contact|header,terms|footer
+    [subpageNotes] => 
+    [customFeatures] => Array
+        (
+            [0] => facebook-pixel
+            [1] => email-marketing
+            [2] => api-integration
+        )
+
+    [otherFeatures] => 
+    [integrations] => 
+    [formRequirements] => 
+    [leadDestinations] => Array
+        (
+            [0] => whatsapp
+            [1] => google-sheet
+        )
+
+    [leadNotificationEmail] => 
+    [leadAutoReply] => 
+    [hasDomain] => yes
+    [domainName] => avana.co.nz
+    [domainProvider] => godaddy
+    [domainLogin] => no
+    [domainRegistrationSource] => getspace
+    [domainUsername] => 
+    [domainPassword] => 
+    [preferredDomain] => 
+    [hasHosting] => no
+    [getspaceRegistrationEmail] => rajvishwakarma2021@gmail.com
+    [hostingProvider] => 
+    [hostingPlan] => 
+    [hostingUsername] => 
+    [hostingPassword] => 
+    [hostingPreference] => shared
+    [hostingPurchaseService] => yes
+    [companyName] => RECHARGE TRENDD SETTER PVT LTD
+    [companyCode] => 
+    [gstNumber] => 
+    [registrationNumber] => 
+    [bankAccount] => 
+    [bankName] => 
+    [ifscCode] => 
+    [companyAddress] => 
+    [city] => 
+    [state] => 
+    [country] => 
+    [pincode] => 
+    [tagline] => Success you’ve always craved—served hot, instantly, and built to deliver results with the speed that fuels unstoppable growth.
+    [hasLogo] => professional
+    [logoLink] => 
+    [logoSize] => 
+    [logoColors] => 
+    [temporaryLogoText] => sefrdg
+    [professionalLogoText] => esfse
+    [professionalLogoDescription] => 
+    [brandGuidelines] => 
+    [brandVoice] => professional
+    [assetLinks] => 
+    [contentReady] => yes
+    [pageHeading_home] => What is the astrology
+    [pageSubheading_home] => defrgthyjuk
+    [content_home] => 
+    [contactFormTitle] => Contact form
+    [contactFormSubmitText] => Submit form
+    [contactFormThankYou] => 
+    [contactFormAdminEmail] => rajvishwakarma2021@gmail.com
+    [contactField_name] => yes
+    [contactField_email] => yes
+    [contactField_phone] => yes
+    [contactField_message] => yes
+    [pageHeading_terms] => 
+    [pageSubheading_terms] => 
+    [content_terms] => 
+    [galleryTitle] => 
+    [galleryDescription] => 
+    [sellType] => none
+    [productDriveLink] => 
+    [productCategories] => 
+    [productImagesLink] => 
+    [serviceDriveLink] => 
+    [serviceCategories] => 
+    [servicePortfolioLink] => 
+    [servicePricing] => 
+    [serviceOperationNotes] => 
+    [isEcommerce] => yes
+    [paymentMethods] => Array
+        (
+            [0] => razorpay
+            [1] => paypal
+        )
+
+    [razorpayKeyId] => sfseghtw345trde456ygf
+    [stripeKey] => 
+    [paypalEmail] => rajvishwakarma2021@gmail.com
+    [otherPaymentMethod] => 
+    [currencies] => Array
+        (
+            [0] => USD
+            [1] => INR
+        )
+
+    [otherCurrencyText] => 
+    [taxRegion] => UK , India
+    [taxRate] => 12
+    [shippingType] => free
+    [flatRate] => 
+    [shippingZones] => 
+    [shippingRates] => 
+    [deliveryTimeframes] => 
+    [inventoryType] => manual
+    [returnPolicy] => 
+    [ecommerceOperations] => Array
+        (
+            [0] => delivery-partners
+        )
+
+    [ecommerceOperationNotes] => 
+    [businessDescription] => 
+    [keywords] => 
+    [competitors] => 
+    [avoidWebsites] => 
+    [targetLocations] => 
+    [googleBusinessProfile] => 
+    [legalNeeds] => Array
+        (
+            [0] => privacy-policy
+            [1] => terms
+            [2] => not-sure
+        )
+
+    [legalTrustNotes] => 
+    [hasAnalytics] => no
+    [analyticsId] => 
+    [gaEmail] => rajvishwakarma2021@gmail.com
+    [gaPassword] => hvfyr6t5y6ftgu8
+    [showSocialIcons] => yes
+    [facebookUrl] => https://linkedin.com/in/rajkumar-vishwakarma-87a9b9264
+    [instagramUrl] => 
+    [twitterUrl] => 
+    [linkedinUrl] => 
+    [youtubeUrl] => 
+    [pinterestUrl] => 
+    [tiktokUrl] => 
+    [otherSocialMedia] => 
+    [contactName] => Rajkumar Vishwakarma
+    [contactEmail] => rajvishwakarma2021@gmail.com
+    [contactPhone] => 09111328903
+    [businessEmail] => rajvishwakarma2021@gmail.com
+    [businessAddress] => gvdf
+    [workingHoursMode] => always-open
+    [openingTime] => 
+    [closingTime] => 
+    [additionalNotes] => 
+    [decisionMaker] => Rajkumar
+    [reviewerCount] => 3
+    [preferredCommunication] => email
+    [bestContactTime] => after 3pm
+    [deadlineReason] => Event
+    [clientUncertainties] => 
+    [informationConfirmed] => yes
+    [app_purpose] => 
+    [app_target_audience] => 
+    [appScreens] => Array
+        (
+            [0] => login
+            [1] => home
+            [2] => profile
+            [3] => settings
+        )
+
+    [app_user_flow] => 
+    [app_name] => 
+    [app_companyCode] => 
+    [app_gstNumber] => 
+    [app_registrationNumber] => 
+    [app_bankAccount] => 
+    [app_bankName] => 
+    [app_ifscCode] => 
+    [app_companyAddress] => 
+    [app_city] => 
+    [app_state] => 
+    [app_country] => 
+    [app_pincode] => 
+    [app_tagline] => 
+    [app_iconLink] => 
+    [app_iconSize] => 
+    [app_iconColors] => 
+    [app_temporaryIconText] => 
+    [app_professionalIconText] => 
+    [app_professionalIconDescription] => 
+    [app_brandGuidelines] => 
+    [app_brandVoice] => 
+    [app_assetLinks] => 
+    [login_title] => 
+    [login_content] => 
+    [login_features] => 
+    [home_title] => 
+    [home_content] => 
+    [home_features] => 
+    [profile_title] => 
+    [profile_content] => 
+    [profile_features] => 
+    [settings_title] => 
+    [settings_content] => 
+    [settings_features] => 
+    [app_galleryTitle] => 
+    [app_galleryDescription] => 
+    [app_development_type] => 
+    [app_design_link] => 
+    [app_design_notes] => 
+    [app_design_colors] => 
+    [app_design_reference] => 
+    [app_design_ready_screens] => 
+    [app_design_missing_screens] => 
+    [app_reference_apps] => 
+    [app_payment_cred_razorpay_key_id] => 
+    [app_payment_cred_razorpay_key_secret] => 
+    [app_payment_cred_stripe_publishable_key] => 
+    [app_payment_cred_stripe_secret_key] => 
+    [app_payment_cred_paypal_client_id] => 
+    [app_payment_cred_paypal_client_secret] => 
+    [app_payment_cred_paypal_email] => 
+    [app_payment_cred_upi_id] => 
+    [app_payment_cred_upi_merchant_name] => 
+    [app_payment_cred_gpay_merchant_id] => 
+    [app_payment_cred_gpay_merchant_name] => 
+    [app_payment_cred_apple_merchant_id] => 
+    [app_payment_cred_apple_bundle_id] => 
+    [app_payment_cred_card_gateway] => 
+    [app_payment_cred_card_api_key] => 
+    [app_payment_cred_cod_notes] => 
+    [app_backend_tech] => 
+    [app_backend_tech_other] => 
+    [app_api_source] => 
+    [app_api_documentation] => 
+    [app_api_auth_type] => 
+    [app_api_credentials] => 
+    [app_playstore_login] => 
+    [app_playstore_password] => 
+    [app_appstore_login] => 
+    [app_appstore_password] => 
+    [app_contactName] => 
+    [app_contactEmail] => 
+    [app_contactPhone] => 
+    [app_businessEmail] => 
+    [app_businessAddress] => 
+    [app_openingTime] => 
+    [app_closingTime] => 
+    [app_additionalNotes] => 
+    [app_decisionMaker] => 
+    [app_reviewerCount] => 
+    [app_preferredCommunication] => 
+    [app_bestContactTime] => 
+    [app_deadlineReason] => 
+    [client_id] => CL-2026-3376
+)
+
+[01-Jun-2026 07:19:59 UTC] POST dump: Array
+(
+    [project_type] => website
+    [applicationType] => informational
+    [brandName] => thecraftloom
+    [businessCategory] => healthcare
+    [otherBusinessCategoryInput] => 
+    [brandShortDescription] => frghjm
+    [projectType] => redesign
+    [otherProjectTypeInput] => 
+    [projectDescription] => 
+    [businessGoals] => Array
+        (
+            [0] => generate-leads
+            [1] => show-portfolio
+            [2] => book-appointments
+            [3] => share-information
+        )
+
+    [targetAudience] => 
+    [visitorProblem] => 
+    [visitorActions] => Array
+        (
+            [0] => call
+            [1] => book-appointment
+        )
+
+    [launchDate] => 2026-06-30
+    [platform] => wordpress
+    [otherPlatformName] => 
+    [shopifyEmail] => 
+    [shopifyPassword] => 
+    [hasSSL] => yes
+    [sslProvider] => Godaddy
+    [sslExpiryDate] => 2026-06-17
+    [sslType] => OV
+    [sslPreferredProvider] => 
+    [securityRequirements] => 
+    [hasTheme] => no
+    [themeName] => 
+    [themeProvider] => 
+    [inspirationSites] => 
+    [websitePageStyle] => multi-page
+    [designStyle] => 
+    [colorPreferences] => 
+    [colorScheme] => teal-sand
+    [fontPreference] => team-choice
+    [fontUrl] => 
+    [referenceWebsite1] => thecraftloom.com
+    [referenceWebsite2] => avana.com
+    [referenceWebsite3] => 
+    [designComments] => 
+    [headerPages] => Array
+        (
+            [0] => home
+            [1] => contact
+        )
+
+    [footerPages] => Array
+        (
+            [0] => terms
+        )
+
+    [navigationStructure] => home|header,contact|header,terms|footer
+    [subpageNotes] => 
+    [customFeatures] => Array
+        (
+            [0] => facebook-pixel
+            [1] => email-marketing
+            [2] => api-integration
+        )
+
+    [otherFeatures] => 
+    [integrations] => 
+    [formRequirements] => 
+    [leadDestinations] => Array
+        (
+            [0] => whatsapp
+            [1] => google-sheet
+        )
+
+    [leadNotificationEmail] => 
+    [leadAutoReply] => 
+    [hasDomain] => yes
+    [domainName] => avana.co.nz
+    [domainProvider] => godaddy
+    [domainLogin] => no
+    [domainRegistrationSource] => getspace
+    [domainUsername] => 
+    [domainPassword] => 
+    [preferredDomain] => 
+    [hasHosting] => no
+    [getspaceRegistrationEmail] => rajvishwakarma2021@gmail.com
+    [hostingProvider] => 
+    [hostingPlan] => 
+    [hostingUsername] => 
+    [hostingPassword] => 
+    [hostingPreference] => shared
+    [hostingPurchaseService] => yes
+    [companyName] => RECHARGE TRENDD SETTER PVT LTD
+    [companyCode] => 
+    [gstNumber] => 
+    [registrationNumber] => 
+    [bankAccount] => 
+    [bankName] => 
+    [ifscCode] => 
+    [companyAddress] => 
+    [city] => 
+    [state] => 
+    [country] => 
+    [pincode] => 
+    [tagline] => Success you’ve always craved—served hot, instantly, and built to deliver results with the speed that fuels unstoppable growth.
+    [hasLogo] => professional
+    [logoLink] => 
+    [logoSize] => 
+    [logoColors] => 
+    [temporaryLogoText] => sefrdg
+    [professionalLogoText] => esfse
+    [professionalLogoDescription] => 
+    [brandGuidelines] => 
+    [brandVoice] => professional
+    [assetLinks] => 
+    [contentReady] => yes
+    [pageHeading_home] => What is the astrology
+    [pageSubheading_home] => defrgthyjuk
+    [content_home] => 
+    [contactFormTitle] => Contact form
+    [contactFormSubmitText] => Submit form
+    [contactFormThankYou] => 
+    [contactFormAdminEmail] => rajvishwakarma2021@gmail.com
+    [contactField_name] => yes
+    [contactField_email] => yes
+    [contactField_phone] => yes
+    [contactField_message] => yes
+    [pageHeading_terms] => 
+    [pageSubheading_terms] => 
+    [content_terms] => 
+    [galleryTitle] => 
+    [galleryDescription] => 
+    [sellType] => none
+    [productDriveLink] => 
+    [productCategories] => 
+    [productImagesLink] => 
+    [serviceDriveLink] => 
+    [serviceCategories] => 
+    [servicePortfolioLink] => 
+    [servicePricing] => 
+    [serviceOperationNotes] => 
+    [isEcommerce] => yes
+    [paymentMethods] => Array
+        (
+            [0] => razorpay
+            [1] => paypal
+        )
+
+    [razorpayKeyId] => sfseghtw345trde456ygf
+    [stripeKey] => 
+    [paypalEmail] => rajvishwakarma2021@gmail.com
+    [otherPaymentMethod] => 
+    [currencies] => Array
+        (
+            [0] => USD
+            [1] => INR
+        )
+
+    [otherCurrencyText] => 
+    [taxRegion] => UK , India
+    [taxRate] => 12
+    [shippingType] => free
+    [flatRate] => 
+    [shippingZones] => 
+    [shippingRates] => 
+    [deliveryTimeframes] => 
+    [inventoryType] => manual
+    [returnPolicy] => 
+    [ecommerceOperations] => Array
+        (
+            [0] => delivery-partners
+        )
+
+    [ecommerceOperationNotes] => 
+    [businessDescription] => 
+    [keywords] => 
+    [competitors] => 
+    [avoidWebsites] => 
+    [targetLocations] => 
+    [googleBusinessProfile] => 
+    [legalNeeds] => Array
+        (
+            [0] => privacy-policy
+            [1] => terms
+            [2] => not-sure
+        )
+
+    [legalTrustNotes] => 
+    [hasAnalytics] => no
+    [analyticsId] => 
+    [gaEmail] => rajvishwakarma2021@gmail.com
+    [gaPassword] => hvfyr6t5y6ftgu8
+    [showSocialIcons] => yes
+    [facebookUrl] => https://linkedin.com/in/rajkumar-vishwakarma-87a9b9264
+    [instagramUrl] => 
+    [twitterUrl] => 
+    [linkedinUrl] => 
+    [youtubeUrl] => 
+    [pinterestUrl] => 
+    [tiktokUrl] => 
+    [otherSocialMedia] => 
+    [contactName] => Rajkumar Vishwakarma
+    [contactEmail] => rajvishwakarma2021@gmail.com
+    [contactPhone] => 09111328903
+    [businessEmail] => rajvishwakarma2021@gmail.com
+    [businessAddress] => gvdf
+    [workingHoursMode] => always-open
+    [openingTime] => 
+    [closingTime] => 
+    [additionalNotes] => 
+    [decisionMaker] => Rajkumar
+    [reviewerCount] => 3
+    [preferredCommunication] => email
+    [bestContactTime] => after 3pm
+    [deadlineReason] => Event
+    [clientUncertainties] => 
+    [informationConfirmed] => yes
+    [app_purpose] => 
+    [app_target_audience] => 
+    [appScreens] => Array
+        (
+            [0] => login
+            [1] => home
+            [2] => profile
+            [3] => settings
+        )
+
+    [app_user_flow] => 
+    [app_name] => 
+    [app_companyCode] => 
+    [app_gstNumber] => 
+    [app_registrationNumber] => 
+    [app_bankAccount] => 
+    [app_bankName] => 
+    [app_ifscCode] => 
+    [app_companyAddress] => 
+    [app_city] => 
+    [app_state] => 
+    [app_country] => 
+    [app_pincode] => 
+    [app_tagline] => 
+    [app_iconLink] => 
+    [app_iconSize] => 
+    [app_iconColors] => 
+    [app_temporaryIconText] => 
+    [app_professionalIconText] => 
+    [app_professionalIconDescription] => 
+    [app_brandGuidelines] => 
+    [app_brandVoice] => 
+    [app_assetLinks] => 
+    [login_title] => 
+    [login_content] => 
+    [login_features] => 
+    [home_title] => 
+    [home_content] => 
+    [home_features] => 
+    [profile_title] => 
+    [profile_content] => 
+    [profile_features] => 
+    [settings_title] => 
+    [settings_content] => 
+    [settings_features] => 
+    [app_galleryTitle] => 
+    [app_galleryDescription] => 
+    [app_development_type] => 
+    [app_design_link] => 
+    [app_design_notes] => 
+    [app_design_colors] => 
+    [app_design_reference] => 
+    [app_design_ready_screens] => 
+    [app_design_missing_screens] => 
+    [app_reference_apps] => 
+    [app_payment_cred_razorpay_key_id] => 
+    [app_payment_cred_razorpay_key_secret] => 
+    [app_payment_cred_stripe_publishable_key] => 
+    [app_payment_cred_stripe_secret_key] => 
+    [app_payment_cred_paypal_client_id] => 
+    [app_payment_cred_paypal_client_secret] => 
+    [app_payment_cred_paypal_email] => 
+    [app_payment_cred_upi_id] => 
+    [app_payment_cred_upi_merchant_name] => 
+    [app_payment_cred_gpay_merchant_id] => 
+    [app_payment_cred_gpay_merchant_name] => 
+    [app_payment_cred_apple_merchant_id] => 
+    [app_payment_cred_apple_bundle_id] => 
+    [app_payment_cred_card_gateway] => 
+    [app_payment_cred_card_api_key] => 
+    [app_payment_cred_cod_notes] => 
+    [app_backend_tech] => 
+    [app_backend_tech_other] => 
+    [app_api_source] => 
+    [app_api_documentation] => 
+    [app_api_auth_type] => 
+    [app_api_credentials] => 
+    [app_playstore_login] => 
+    [app_playstore_password] => 
+    [app_appstore_login] => 
+    [app_appstore_password] => 
+    [app_contactName] => 
+    [app_contactEmail] => 
+    [app_contactPhone] => 
+    [app_businessEmail] => 
+    [app_businessAddress] => 
+    [app_openingTime] => 
+    [app_closingTime] => 
+    [app_additionalNotes] => 
+    [app_decisionMaker] => 
+    [app_reviewerCount] => 
+    [app_preferredCommunication] => 
+    [app_bestContactTime] => 
+    [app_deadlineReason] => 
+    [client_id] => CL-2026-3376
+)
+
+[01-Jun-2026 07:19:59 UTC] Uploaded files: Array
+(
+)
+
+[01-Jun-2026 07:48:02 UTC] === FORM SUBMISSION START ===
+[01-Jun-2026 07:48:02 UTC] Request Method: POST
+[01-Jun-2026 07:48:02 UTC] Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryWyB6OWrIx3nphIIM
+[01-Jun-2026 07:48:02 UTC] Final values - Email: rajvishwakarma2021@gmail.com, Name: Rajkumar Vishwakarma, Phone: 09111328903
+[01-Jun-2026 07:48:02 UTC] Submitted payload: Array
+(
+    [project_type] => website
+    [applicationType] => informational
+    [brandName] => thecraftloom
+    [businessCategory] => technology
+    [otherBusinessCategoryInput] => 
+    [brandShortDescription] => dfhfthbf
+    [projectType] => new
+    [otherProjectTypeInput] => 
+    [projectDescription] => 
+    [businessGoals] => Array
+        (
+            [0] => generate-leads
+            [1] => book-appointments
+        )
+
+    [targetAudience] => 
+    [visitorProblem] => 
+    [visitorActions] => Array
+        (
+            [0] => call
+            [1] => whatsapp
+        )
+
+    [launchDate] => 2026-06-24
+    [platform] => wordpress
+    [otherPlatformName] => 
+    [shopifyEmail] => 
+    [shopifyPassword] => 
+    [hasSSL] => yes
+    [sslProvider] => Godaddy
+    [sslExpiryDate] => 2026-06-10
+    [sslType] => DV
+    [sslPreferredProvider] => 
+    [securityRequirements] => 
+    [hasTheme] => no
+    [themeName] => 
+    [themeProvider] => 
+    [inspirationSites] => 
+    [websitePageStyle] => one-page
+    [designStyle] => modern-bold
+    [colorPreferences] => 
+    [colorScheme] => team-choice
+    [fontPreference] => 
+    [fontUrl] => 
+    [referenceWebsite1] => 
+    [referenceWebsite2] => 
+    [referenceWebsite3] => 
+    [designComments] => 
+    [headerPages] => Array
+        (
+            [0] => home
+            [1] => contact
+        )
+
+    [footerPages] => Array
+        (
+            [0] => privacy
+            [1] => terms
+        )
+
+    [navigationStructure] => home|header,contact|header,terms|footer,privacy|footer
+    [subpageNotes] => 
+    [customFeatures] => Array
+        (
+            [0] => contact
+            [1] => newsletter
+            [2] => facebook-pixel
+            [3] => multilingual
+            [4] => search
+            [5] => email-marketing
+        )
+
+    [otherFeatures] => 
+    [integrations] => 
+    [formRequirements] => 
+    [leadDestinations] => Array
+        (
+            [0] => whatsapp
+            [1] => google-sheet
+            [2] => admin-dashboard
+        )
+
+    [leadNotificationEmail] => 
+    [leadAutoReply] => 
+    [hasDomain] => yes
+    [domainName] => avana.co.nz
+    [domainProvider] => godaddy
+    [domainLogin] => no
+    [domainRegistrationSource] => other-provider
+    [domainManagementPreference] => team-handles
+    [domainUsername] => 
+    [domainPassword] => 
+    [preferredDomain] => 
+    [hasHosting] => no
+    [getspaceRegistrationEmail] => rajvishwakarma2021@gmail.com
+    [hostingProvider] => 
+    [hostingPlan] => 
+    [hostingUsername] => 
+    [hostingPassword] => 
+    [hostingPreference] => shared
+    [hostingPurchaseService] => yes
+    [companyName] => RECHARGE TRENDD SETTER PVT LTD
+    [companyCode] => 
+    [gstNumber] => 
+    [registrationNumber] => 
+    [bankAccount] => 
+    [bankName] => 
+    [ifscCode] => 
+    [companyAddress] => 
+    [city] => 
+    [state] => 
+    [country] => 
+    [pincode] => 
+    [tagline] => Success you’ve always craved—served hot, instantly, and built to deliver results with the speed that fuels unstoppable growth.
+    [hasLogo] => yes
+    [logoLink] => 
+    [logoSize] => 
+    [logoColors] => 
+    [temporaryLogoText] => 
+    [professionalLogoText] => 
+    [professionalLogoDescription] => 
+    [brandGuidelines] => 
+    [brandVoice] => 
+    [assetLinks] => 
+    [contentReady] => yes
+    [contentSupport] => Array
+        (
+            [0] => rewrite
+            [1] => placeholder
+        )
+
+    [pageHeading_home] => What is the astrology
+    [pageSubheading_home] => gyftrdfdefrgthyjuk
+    [content_home] => 
+    [contactFormTitle] => Contact form
+    [contactFormSubmitText] => Submit form
+    [contactFormThankYou] => drgvdx
+    [contactFormAdminEmail] => rajvishwakarma2021@gmail.com
+    [contactField_name] => yes
+    [contactField_email] => yes
+    [contactField_phone] => yes
+    [contactField_message] => yes
+    [pageHeading_privacy] => asas
+    [pageSubheading_privacy] => sefvs
+    [content_privacy] => dvgfrd
+    [pageHeading_terms] => regfrv
+    [pageSubheading_terms] => dvdfder
+    [content_terms] => dsfcsd
+    [pageExtras] => Array
+        (
+            [0] => testimonials
+            [1] => gallery
+        )
+
+    [testimonial_1_name] => drgfb
+    [testimonial_1_date] => 2026-06-09
+    [testimonial_1_text] => 
+    [galleryTitle] => ranu mandal
+    [galleryDescription] => 
+    [gallery_1_caption] => 
+    [gallery_2_caption] => 
+    [sellType] => none
+    [productDriveLink] => 
+    [productCategories] => 
+    [productImagesLink] => 
+    [serviceDriveLink] => 
+    [serviceCategories] => 
+    [servicePortfolioLink] => 
+    [servicePricing] => 
+    [serviceOperationNotes] => 
+    [isEcommerce] => no
+    [paymentMethods] => Array
+        (
+            [0] => razorpay
+        )
+
+    [razorpayKeyId] => 
+    [stripeKey] => 
+    [paypalEmail] => 
+    [otherPaymentMethod] => 
+    [currencies] => Array
+        (
+            [0] => USD
+            [1] => EUR
+        )
+
+    [otherCurrencyText] => 
+    [taxRegion] => 
+    [taxRate] => 
+    [shippingType] => 
+    [flatRate] => 
+    [shippingZones] => 
+    [shippingRates] => 
+    [deliveryTimeframes] => 
+    [inventoryType] => 
+    [returnPolicy] => 
+    [ecommerceOperationNotes] => 
+    [businessDescription] => 
+    [keywords] => 
+    [competitors] => 
+    [avoidWebsites] => 
+    [targetLocations] => 
+    [googleBusinessProfile] => 
+    [legalTrustNotes] => 
+    [analyticsId] => 
+    [gaEmail] => 
+    [gaPassword] => 
+    [showSocialIcons] => no
+    [facebookUrl] => 
+    [instagramUrl] => 
+    [twitterUrl] => 
+    [linkedinUrl] => 
+    [youtubeUrl] => 
+    [pinterestUrl] => 
+    [tiktokUrl] => 
+    [otherSocialMedia] => 
+    [contactName] => Rajkumar Vishwakarma
+    [contactEmail] => rajvishwakarma2021@gmail.com
+    [contactPhone] => 09111328903
+    [businessEmail] => rajvishwakarma2021@gmail.com
+    [businessAddress] => 
+    [workingHoursMode] => always-open
+    [openingTime] => 
+    [closingTime] => 
+    [additionalNotes] => 
+    [decisionMaker] => Rajkumar
+    [reviewerCount] => 3
+    [preferredCommunication] => whatsapp
+    [bestContactTime] => after 3pm
+    [deadlineReason] => 
+    [clientUncertainties] => 
+    [informationConfirmed] => yes
+    [app_purpose] => 
+    [app_target_audience] => 
+    [appScreens] => Array
+        (
+            [0] => login
+            [1] => home
+            [2] => profile
+            [3] => settings
+        )
+
+    [app_user_flow] => 
+    [app_name] => 
+    [app_companyCode] => 
+    [app_gstNumber] => 
+    [app_registrationNumber] => 
+    [app_bankAccount] => 
+    [app_bankName] => 
+    [app_ifscCode] => 
+    [app_companyAddress] => 
+    [app_city] => 
+    [app_state] => 
+    [app_country] => 
+    [app_pincode] => 
+    [app_tagline] => 
+    [app_iconLink] => 
+    [app_iconSize] => 
+    [app_iconColors] => 
+    [app_temporaryIconText] => 
+    [app_professionalIconText] => 
+    [app_professionalIconDescription] => 
+    [app_brandGuidelines] => 
+    [app_brandVoice] => 
+    [app_assetLinks] => 
+    [login_title] => 
+    [login_content] => 
+    [login_features] => 
+    [home_title] => 
+    [home_content] => 
+    [home_features] => 
+    [profile_title] => 
+    [profile_content] => 
+    [profile_features] => 
+    [settings_title] => 
+    [settings_content] => 
+    [settings_features] => 
+    [app_galleryTitle] => 
+    [app_galleryDescription] => 
+    [app_development_type] => 
+    [app_design_link] => 
+    [app_design_notes] => 
+    [app_design_colors] => 
+    [app_design_reference] => 
+    [app_design_ready_screens] => 
+    [app_design_missing_screens] => 
+    [app_reference_apps] => 
+    [app_payment_cred_razorpay_key_id] => 
+    [app_payment_cred_razorpay_key_secret] => 
+    [app_payment_cred_stripe_publishable_key] => 
+    [app_payment_cred_stripe_secret_key] => 
+    [app_payment_cred_paypal_client_id] => 
+    [app_payment_cred_paypal_client_secret] => 
+    [app_payment_cred_paypal_email] => 
+    [app_payment_cred_upi_id] => 
+    [app_payment_cred_upi_merchant_name] => 
+    [app_payment_cred_gpay_merchant_id] => 
+    [app_payment_cred_gpay_merchant_name] => 
+    [app_payment_cred_apple_merchant_id] => 
+    [app_payment_cred_apple_bundle_id] => 
+    [app_payment_cred_card_gateway] => 
+    [app_payment_cred_card_api_key] => 
+    [app_payment_cred_cod_notes] => 
+    [app_backend_tech] => 
+    [app_backend_tech_other] => 
+    [app_api_source] => 
+    [app_api_documentation] => 
+    [app_api_auth_type] => 
+    [app_api_credentials] => 
+    [app_playstore_login] => 
+    [app_playstore_password] => 
+    [app_appstore_login] => 
+    [app_appstore_password] => 
+    [app_contactName] => 
+    [app_contactEmail] => 
+    [app_contactPhone] => 
+    [app_businessEmail] => 
+    [app_businessAddress] => 
+    [app_openingTime] => 
+    [app_closingTime] => 
+    [app_additionalNotes] => 
+    [app_decisionMaker] => 
+    [app_reviewerCount] => 
+    [app_preferredCommunication] => 
+    [app_bestContactTime] => 
+    [app_deadlineReason] => 
+    [client_id] => CL-2026-8836
+)
+
+[01-Jun-2026 07:48:02 UTC] POST dump: Array
+(
+    [project_type] => website
+    [applicationType] => informational
+    [brandName] => thecraftloom
+    [businessCategory] => technology
+    [otherBusinessCategoryInput] => 
+    [brandShortDescription] => dfhfthbf
+    [projectType] => new
+    [otherProjectTypeInput] => 
+    [projectDescription] => 
+    [businessGoals] => Array
+        (
+            [0] => generate-leads
+            [1] => book-appointments
+        )
+
+    [targetAudience] => 
+    [visitorProblem] => 
+    [visitorActions] => Array
+        (
+            [0] => call
+            [1] => whatsapp
+        )
+
+    [launchDate] => 2026-06-24
+    [platform] => wordpress
+    [otherPlatformName] => 
+    [shopifyEmail] => 
+    [shopifyPassword] => 
+    [hasSSL] => yes
+    [sslProvider] => Godaddy
+    [sslExpiryDate] => 2026-06-10
+    [sslType] => DV
+    [sslPreferredProvider] => 
+    [securityRequirements] => 
+    [hasTheme] => no
+    [themeName] => 
+    [themeProvider] => 
+    [inspirationSites] => 
+    [websitePageStyle] => one-page
+    [designStyle] => modern-bold
+    [colorPreferences] => 
+    [colorScheme] => team-choice
+    [fontPreference] => 
+    [fontUrl] => 
+    [referenceWebsite1] => 
+    [referenceWebsite2] => 
+    [referenceWebsite3] => 
+    [designComments] => 
+    [headerPages] => Array
+        (
+            [0] => home
+            [1] => contact
+        )
+
+    [footerPages] => Array
+        (
+            [0] => privacy
+            [1] => terms
+        )
+
+    [navigationStructure] => home|header,contact|header,terms|footer,privacy|footer
+    [subpageNotes] => 
+    [customFeatures] => Array
+        (
+            [0] => contact
+            [1] => newsletter
+            [2] => facebook-pixel
+            [3] => multilingual
+            [4] => search
+            [5] => email-marketing
+        )
+
+    [otherFeatures] => 
+    [integrations] => 
+    [formRequirements] => 
+    [leadDestinations] => Array
+        (
+            [0] => whatsapp
+            [1] => google-sheet
+            [2] => admin-dashboard
+        )
+
+    [leadNotificationEmail] => 
+    [leadAutoReply] => 
+    [hasDomain] => yes
+    [domainName] => avana.co.nz
+    [domainProvider] => godaddy
+    [domainLogin] => no
+    [domainRegistrationSource] => other-provider
+    [domainManagementPreference] => team-handles
+    [domainUsername] => 
+    [domainPassword] => 
+    [preferredDomain] => 
+    [hasHosting] => no
+    [getspaceRegistrationEmail] => rajvishwakarma2021@gmail.com
+    [hostingProvider] => 
+    [hostingPlan] => 
+    [hostingUsername] => 
+    [hostingPassword] => 
+    [hostingPreference] => shared
+    [hostingPurchaseService] => yes
+    [companyName] => RECHARGE TRENDD SETTER PVT LTD
+    [companyCode] => 
+    [gstNumber] => 
+    [registrationNumber] => 
+    [bankAccount] => 
+    [bankName] => 
+    [ifscCode] => 
+    [companyAddress] => 
+    [city] => 
+    [state] => 
+    [country] => 
+    [pincode] => 
+    [tagline] => Success you’ve always craved—served hot, instantly, and built to deliver results with the speed that fuels unstoppable growth.
+    [hasLogo] => yes
+    [logoLink] => 
+    [logoSize] => 
+    [logoColors] => 
+    [temporaryLogoText] => 
+    [professionalLogoText] => 
+    [professionalLogoDescription] => 
+    [brandGuidelines] => 
+    [brandVoice] => 
+    [assetLinks] => 
+    [contentReady] => yes
+    [contentSupport] => Array
+        (
+            [0] => rewrite
+            [1] => placeholder
+        )
+
+    [pageHeading_home] => What is the astrology
+    [pageSubheading_home] => gyftrdfdefrgthyjuk
+    [content_home] => 
+    [contactFormTitle] => Contact form
+    [contactFormSubmitText] => Submit form
+    [contactFormThankYou] => drgvdx
+    [contactFormAdminEmail] => rajvishwakarma2021@gmail.com
+    [contactField_name] => yes
+    [contactField_email] => yes
+    [contactField_phone] => yes
+    [contactField_message] => yes
+    [pageHeading_privacy] => asas
+    [pageSubheading_privacy] => sefvs
+    [content_privacy] => dvgfrd
+    [pageHeading_terms] => regfrv
+    [pageSubheading_terms] => dvdfder
+    [content_terms] => dsfcsd
+    [pageExtras] => Array
+        (
+            [0] => testimonials
+            [1] => gallery
+        )
+
+    [testimonial_1_name] => drgfb
+    [testimonial_1_date] => 2026-06-09
+    [testimonial_1_text] => 
+    [galleryTitle] => ranu mandal
+    [galleryDescription] => 
+    [gallery_1_caption] => 
+    [gallery_2_caption] => 
+    [sellType] => none
+    [productDriveLink] => 
+    [productCategories] => 
+    [productImagesLink] => 
+    [serviceDriveLink] => 
+    [serviceCategories] => 
+    [servicePortfolioLink] => 
+    [servicePricing] => 
+    [serviceOperationNotes] => 
+    [isEcommerce] => no
+    [paymentMethods] => Array
+        (
+            [0] => razorpay
+        )
+
+    [razorpayKeyId] => 
+    [stripeKey] => 
+    [paypalEmail] => 
+    [otherPaymentMethod] => 
+    [currencies] => Array
+        (
+            [0] => USD
+            [1] => EUR
+        )
+
+    [otherCurrencyText] => 
+    [taxRegion] => 
+    [taxRate] => 
+    [shippingType] => 
+    [flatRate] => 
+    [shippingZones] => 
+    [shippingRates] => 
+    [deliveryTimeframes] => 
+    [inventoryType] => 
+    [returnPolicy] => 
+    [ecommerceOperationNotes] => 
+    [businessDescription] => 
+    [keywords] => 
+    [competitors] => 
+    [avoidWebsites] => 
+    [targetLocations] => 
+    [googleBusinessProfile] => 
+    [legalTrustNotes] => 
+    [analyticsId] => 
+    [gaEmail] => 
+    [gaPassword] => 
+    [showSocialIcons] => no
+    [facebookUrl] => 
+    [instagramUrl] => 
+    [twitterUrl] => 
+    [linkedinUrl] => 
+    [youtubeUrl] => 
+    [pinterestUrl] => 
+    [tiktokUrl] => 
+    [otherSocialMedia] => 
+    [contactName] => Rajkumar Vishwakarma
+    [contactEmail] => rajvishwakarma2021@gmail.com
+    [contactPhone] => 09111328903
+    [businessEmail] => rajvishwakarma2021@gmail.com
+    [businessAddress] => 
+    [workingHoursMode] => always-open
+    [openingTime] => 
+    [closingTime] => 
+    [additionalNotes] => 
+    [decisionMaker] => Rajkumar
+    [reviewerCount] => 3
+    [preferredCommunication] => whatsapp
+    [bestContactTime] => after 3pm
+    [deadlineReason] => 
+    [clientUncertainties] => 
+    [informationConfirmed] => yes
+    [app_purpose] => 
+    [app_target_audience] => 
+    [appScreens] => Array
+        (
+            [0] => login
+            [1] => home
+            [2] => profile
+            [3] => settings
+        )
+
+    [app_user_flow] => 
+    [app_name] => 
+    [app_companyCode] => 
+    [app_gstNumber] => 
+    [app_registrationNumber] => 
+    [app_bankAccount] => 
+    [app_bankName] => 
+    [app_ifscCode] => 
+    [app_companyAddress] => 
+    [app_city] => 
+    [app_state] => 
+    [app_country] => 
+    [app_pincode] => 
+    [app_tagline] => 
+    [app_iconLink] => 
+    [app_iconSize] => 
+    [app_iconColors] => 
+    [app_temporaryIconText] => 
+    [app_professionalIconText] => 
+    [app_professionalIconDescription] => 
+    [app_brandGuidelines] => 
+    [app_brandVoice] => 
+    [app_assetLinks] => 
+    [login_title] => 
+    [login_content] => 
+    [login_features] => 
+    [home_title] => 
+    [home_content] => 
+    [home_features] => 
+    [profile_title] => 
+    [profile_content] => 
+    [profile_features] => 
+    [settings_title] => 
+    [settings_content] => 
+    [settings_features] => 
+    [app_galleryTitle] => 
+    [app_galleryDescription] => 
+    [app_development_type] => 
+    [app_design_link] => 
+    [app_design_notes] => 
+    [app_design_colors] => 
+    [app_design_reference] => 
+    [app_design_ready_screens] => 
+    [app_design_missing_screens] => 
+    [app_reference_apps] => 
+    [app_payment_cred_razorpay_key_id] => 
+    [app_payment_cred_razorpay_key_secret] => 
+    [app_payment_cred_stripe_publishable_key] => 
+    [app_payment_cred_stripe_secret_key] => 
+    [app_payment_cred_paypal_client_id] => 
+    [app_payment_cred_paypal_client_secret] => 
+    [app_payment_cred_paypal_email] => 
+    [app_payment_cred_upi_id] => 
+    [app_payment_cred_upi_merchant_name] => 
+    [app_payment_cred_gpay_merchant_id] => 
+    [app_payment_cred_gpay_merchant_name] => 
+    [app_payment_cred_apple_merchant_id] => 
+    [app_payment_cred_apple_bundle_id] => 
+    [app_payment_cred_card_gateway] => 
+    [app_payment_cred_card_api_key] => 
+    [app_payment_cred_cod_notes] => 
+    [app_backend_tech] => 
+    [app_backend_tech_other] => 
+    [app_api_source] => 
+    [app_api_documentation] => 
+    [app_api_auth_type] => 
+    [app_api_credentials] => 
+    [app_playstore_login] => 
+    [app_playstore_password] => 
+    [app_appstore_login] => 
+    [app_appstore_password] => 
+    [app_contactName] => 
+    [app_contactEmail] => 
+    [app_contactPhone] => 
+    [app_businessEmail] => 
+    [app_businessAddress] => 
+    [app_openingTime] => 
+    [app_closingTime] => 
+    [app_additionalNotes] => 
+    [app_decisionMaker] => 
+    [app_reviewerCount] => 
+    [app_preferredCommunication] => 
+    [app_bestContactTime] => 
+    [app_deadlineReason] => 
+    [client_id] => CL-2026-8836
+)
+
+[01-Jun-2026 07:48:02 UTC] Uploaded files: Array
+(
+    [0] => logoFile
+    [1] => pageImage_home
+    [2] => pageImage_privacy
+    [3] => pageImage_terms
+    [4] => testimonial_1_image
+    [5] => gallery_1_image
+    [6] => gallery_2_image
+)
+
+[01-Jun-2026 07:56:04 UTC] === FORM SUBMISSION START ===
+[01-Jun-2026 07:56:04 UTC] Request Method: POST
+[01-Jun-2026 07:56:04 UTC] Content-Type: application/json
+[01-Jun-2026 07:56:04 UTC] Project type is missing but continuing for testing
+[01-Jun-2026 07:56:04 UTC] All contact fields are empty - using defaults
+[01-Jun-2026 07:56:04 UTC] Phone is empty - using default
+[01-Jun-2026 07:56:04 UTC] Final values - Email: , Name: Test User, Phone: 1234567890
+[01-Jun-2026 07:56:04 UTC] Submitted payload: Array
+(
+)
+
+[01-Jun-2026 07:56:04 UTC] POST dump: Array
+(
+)
+
+[01-Jun-2026 07:56:04 UTC] Uploaded files: Array
+(
+)
+
+[01-Jun-2026 07:56:09 UTC] === FORM SUBMISSION START ===
+[01-Jun-2026 07:56:09 UTC] Request Method: POST
+[01-Jun-2026 07:56:09 UTC] Content-Type: application/json
+[01-Jun-2026 07:56:09 UTC] Project type is missing but continuing for testing
+[01-Jun-2026 07:56:09 UTC] All contact fields are empty - using defaults
+[01-Jun-2026 07:56:09 UTC] Phone is empty - using default
+[01-Jun-2026 07:56:09 UTC] Final values - Email: , Name: Test User, Phone: 1234567890
+[01-Jun-2026 07:56:09 UTC] Submitted payload: Array
+(
+)
+
+[01-Jun-2026 07:56:09 UTC] POST dump: Array
+(
+)
+
+[01-Jun-2026 07:56:09 UTC] Uploaded files: Array
+(
+)
+
+[01-Jun-2026 07:56:10 UTC] === FORM SUBMISSION START ===
+[01-Jun-2026 07:56:10 UTC] Request Method: POST
+[01-Jun-2026 07:56:10 UTC] Content-Type: application/json
+[01-Jun-2026 07:56:10 UTC] Project type is missing but continuing for testing
+[01-Jun-2026 07:56:10 UTC] All contact fields are empty - using defaults
+[01-Jun-2026 07:56:10 UTC] Phone is empty - using default
+[01-Jun-2026 07:56:10 UTC] Final values - Email: , Name: Test User, Phone: 1234567890
+[01-Jun-2026 07:56:10 UTC] Submitted payload: Array
+(
+)
+
+[01-Jun-2026 07:56:10 UTC] POST dump: Array
+(
+)
+
+[01-Jun-2026 07:56:10 UTC] Uploaded files: Array
+(
+)
+
+[01-Jun-2026 07:56:10 UTC] === FORM SUBMISSION START ===
+[01-Jun-2026 07:56:10 UTC] Request Method: POST
+[01-Jun-2026 07:56:10 UTC] Content-Type: application/json
+[01-Jun-2026 07:56:10 UTC] Project type is missing but continuing for testing
+[01-Jun-2026 07:56:10 UTC] All contact fields are empty - using defaults
+[01-Jun-2026 07:56:10 UTC] Phone is empty - using default
+[01-Jun-2026 07:56:10 UTC] Final values - Email: , Name: Test User, Phone: 1234567890
+[01-Jun-2026 07:56:10 UTC] Submitted payload: Array
+(
+)
+
+[01-Jun-2026 07:56:10 UTC] POST dump: Array
+(
+)
+
+[01-Jun-2026 07:56:10 UTC] Uploaded files: Array
+(
+)
+
+[01-Jun-2026 07:56:40 UTC] === FORM SUBMISSION START ===
+[01-Jun-2026 07:56:40 UTC] Request Method: POST
+[01-Jun-2026 07:56:40 UTC] Content-Type: application/json
+[01-Jun-2026 07:56:40 UTC] Project type is missing but continuing for testing
+[01-Jun-2026 07:56:40 UTC] All contact fields are empty - using defaults
+[01-Jun-2026 07:56:40 UTC] Phone is empty - using default
+[01-Jun-2026 07:56:40 UTC] Final values - Email: , Name: Test User, Phone: 1234567890
+[01-Jun-2026 07:56:40 UTC] Submitted payload: Array
+(
+)
+
+[01-Jun-2026 07:56:40 UTC] POST dump: Array
+(
+)
+
+[01-Jun-2026 07:56:40 UTC] Uploaded files: Array
+(
+)
+
+[01-Jun-2026 08:08:06 UTC] === FORM SUBMISSION START ===
+[01-Jun-2026 08:08:06 UTC] Request Method: POST
+[01-Jun-2026 08:08:06 UTC] Content-Type: application/json
+[01-Jun-2026 08:08:06 UTC] Project type is missing but continuing for testing
+[01-Jun-2026 08:08:06 UTC] All contact fields are empty - using defaults
+[01-Jun-2026 08:08:06 UTC] Phone is empty - using default
+[01-Jun-2026 08:08:06 UTC] Final values - Email: , Name: Test User, Phone: 1234567890
+[01-Jun-2026 08:08:06 UTC] Submitted payload: Array
+(
+)
+
+[01-Jun-2026 08:08:06 UTC] POST dump: Array
+(
+)
+
+[01-Jun-2026 08:08:06 UTC] Uploaded files: Array
+(
+)
+
+[01-Jun-2026 08:08:07 UTC] === FORM SUBMISSION START ===
+[01-Jun-2026 08:08:07 UTC] Request Method: POST
+[01-Jun-2026 08:08:07 UTC] Content-Type: application/json
+[01-Jun-2026 08:08:07 UTC] Project type is missing but continuing for testing
+[01-Jun-2026 08:08:07 UTC] All contact fields are empty - using defaults
+[01-Jun-2026 08:08:07 UTC] Phone is empty - using default
+[01-Jun-2026 08:08:07 UTC] Final values - Email: , Name: Test User, Phone: 1234567890
+[01-Jun-2026 08:08:07 UTC] Submitted payload: Array
+(
+)
+
+[01-Jun-2026 08:08:07 UTC] POST dump: Array
+(
+)
+
+[01-Jun-2026 08:08:07 UTC] Uploaded files: Array
+(
+)
+
+[01-Jun-2026 08:08:09 UTC] === FORM SUBMISSION START ===
+[01-Jun-2026 08:08:09 UTC] Request Method: POST
+[01-Jun-2026 08:08:09 UTC] Content-Type: application/json
+[01-Jun-2026 08:08:09 UTC] Project type is missing but continuing for testing
+[01-Jun-2026 08:08:09 UTC] All contact fields are empty - using defaults
+[01-Jun-2026 08:08:09 UTC] Phone is empty - using default
+[01-Jun-2026 08:08:09 UTC] Final values - Email: , Name: Test User, Phone: 1234567890
+[01-Jun-2026 08:08:09 UTC] Submitted payload: Array
+(
+)
+
+[01-Jun-2026 08:08:09 UTC] POST dump: Array
+(
+)
+
+[01-Jun-2026 08:08:09 UTC] Uploaded files: Array
+(
+)
+
+[01-Jun-2026 08:09:53 UTC] === FORM SUBMISSION START ===
+[01-Jun-2026 08:09:53 UTC] Request Method: POST
+[01-Jun-2026 08:09:53 UTC] Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryuUuUttwGRtSAYzJr
+[01-Jun-2026 08:09:53 UTC] Final values - Email: rdaf@gmail.com, Name: giiiii, Phone: 9878767657
+[01-Jun-2026 08:09:53 UTC] Submitted payload: Array
+(
+    [project_type] => website
+    [applicationType] => informational
+    [brandName] => hii
+    [businessCategory] => technology
+    [otherBusinessCategoryInput] => 
+    [brandShortDescription] => ghj
+    [projectType] => redesign
+    [otherProjectTypeInput] => 
+    [projectDescription] => 
+    [businessGoals] => Array
+        (
+            [0] => generate-leads
+            [1] => book-appointments
+        )
+
+    [targetAudience] => 
+    [visitorProblem] => 
+    [visitorActions] => Array
+        (
+            [0] => call
+            [1] => book-appointment
+        )
+
+    [priorityFocus] => Array
+        (
+            [0] => premium-design
+            [1] => automation
+        )
+
+    [launchDate] => 2026-06-26
+    [platform] => wordpress
+    [otherPlatformName] => 
+    [shopifyEmail] => 
+    [shopifyPassword] => 
+    [hasSSL] => no
+    [sslProvider] => 
+    [sslExpiryDate] => 
+    [sslType] => 
+    [sslPurchase] => yes
+    [sslPreferredProvider] => godaddy
+    [securityRequirements] => 
+    [hasTheme] => no
+    [themeName] => 
+    [themeProvider] => 
+    [inspirationSites] => 
+    [websitePageStyle] => multi-page
+    [designStyle] => modern-bold
+    [colorPreferences] => 
+    [colorScheme] => teal-sand
+    [fontPreference] => 
+    [fontUrl] => 
+    [referenceWebsite1] => 
+    [referenceWebsite2] => 
+    [referenceWebsite3] => 
+    [designComments] => 
+    [headerPages] => Array
+        (
+            [0] => home
+            [1] => contact
+        )
+
+    [footerPages] => Array
+        (
+            [0] => terms
+        )
+
+    [navigationStructure] => home|header,contact|header,terms|footer
+    [subpageNotes] => 
+    [customFeatures] => Array
+        (
+            [0] => facebook-pixel
+            [1] => email-marketing
+        )
+
+    [otherFeatures] => 
+    [integrations] => 
+    [formRequirements] => 
+    [leadDestinations] => Array
+        (
+            [0] => whatsapp
+            [1] => google-sheet
+            [2] => not-sure
+        )
+
+    [leadNotificationEmail] => 
+    [leadAutoReply] => 
+    [hasDomain] => yes
+    [domainName] => guttd.com
+    [domainProvider] => godday
+    [domainLogin] => no
+    [domainRegistrationSource] => getspace
+    [domainUsername] => 
+    [domainPassword] => 
+    [preferredDomain] => 
+    [hasHosting] => no
+    [getspaceRegistrationEmail] => 
+    [hostingProvider] => 
+    [hostingPlan] => 
+    [hostingUsername] => 
+    [hostingPassword] => 
+    [hostingPreference] => shared
+    [hostingPurchaseService] => yes
+    [companyName] => ftres
+    [companyCode] => 
+    [gstNumber] => 
+    [registrationNumber] => 
+    [bankAccount] => 
+    [bankName] => 
+    [ifscCode] => 
+    [companyAddress] => 
+    [city] => 
+    [state] => 
+    [country] => 
+    [pincode] => 
+    [tagline] => sucess
+    [hasLogo] => yes
+    [logoLink] => 
+    [logoSize] => 
+    [logoColors] => 
+    [temporaryLogoText] => 
+    [professionalLogoText] => 
+    [professionalLogoDescription] => 
+    [brandGuidelines] => 
+    [brandVoice] => friendly
+    [assetLinks] => 
+    [contentReady] => yes
+    [contentSupport] => Array
+        (
+            [0] => not-sure
+        )
+
+    [mediaSupport] => Array
+        (
+            [0] => stock-images
+        )
+
+    [pageHeading_home] => hii
+    [pageSubheading_home] => hvgfdx
+    [content_home] => dfgh
+    [contactFormTitle] => fghj
+    [contactFormSubmitText] => hvgcfdx
+    [contactFormThankYou] => vgcf
+    [contactFormAdminEmail] => 
+    [contactField_name] => yes
+    [contactField_email] => yes
+    [contactField_phone] => yes
+    [contactField_message] => yes
+    [pageHeading_terms] => bhgfd
+    [pageSubheading_terms] => bvgcf
+    [content_terms] => hgf
+    [pageExtras] => Array
+        (
+            [0] => testimonials
+        )
+
+    [testimonial_1_name] => gii
+    [testimonial_1_date] => 
+    [testimonial_1_text] => hgcf
+    [galleryTitle] => 
+    [galleryDescription] => 
+    [sellType] => none
+    [productDriveLink] => 
+    [productCategories] => 
+    [productImagesLink] => 
+    [serviceDriveLink] => 
+    [serviceCategories] => 
+    [servicePortfolioLink] => 
+    [servicePricing] => 
+    [serviceOperationNotes] => 
+    [isEcommerce] => no
+    [razorpayKeyId] => 
+    [stripeKey] => 
+    [paypalEmail] => 
+    [otherPaymentMethod] => 
+    [otherCurrencyText] => 
+    [taxRegion] => 
+    [taxRate] => 
+    [shippingType] => 
+    [flatRate] => 
+    [shippingZones] => 
+    [shippingRates] => 
+    [deliveryTimeframes] => 
+    [inventoryType] => 
+    [returnPolicy] => 
+    [ecommerceOperationNotes] => 
+    [businessDescription] => 
+    [keywords] => 
+    [competitors] => 
+    [avoidWebsites] => 
+    [targetLocations] => 
+    [googleBusinessProfile] => 
+    [legalTrustNotes] => 
+    [analyticsId] => 
+    [gaEmail] => 
+    [gaPassword] => 
+    [showSocialIcons] => no
+    [facebookUrl] => 
+    [instagramUrl] => 
+    [twitterUrl] => 
+    [linkedinUrl] => 
+    [youtubeUrl] => 
+    [pinterestUrl] => 
+    [tiktokUrl] => 
+    [otherSocialMedia] => 
+    [contactName] => giiiii
+    [contactEmail] => rdaf@gmail.com
+    [contactPhone] => 9878767657
+    [businessEmail] => rdaf@gmail.com
+    [businessAddress] => hadrda
+    [workingHoursMode] => always-open
+    [openingTime] => 
+    [closingTime] => 
+    [additionalNotes] => 
+    [decisionMaker] => raj
+    [reviewerCount] => 2
+    [preferredCommunication] => video-call
+    [bestContactTime] => evet
+    [deadlineReason] => 
+    [clientUncertainties] => 
+    [informationConfirmed] => yes
+    [app_purpose] => 
+    [app_target_audience] => 
+    [appScreens] => Array
+        (
+            [0] => login
+            [1] => home
+            [2] => profile
+            [3] => settings
+        )
+
+    [app_user_flow] => 
+    [app_name] => 
+    [app_companyCode] => 
+    [app_gstNumber] => 
+    [app_registrationNumber] => 
+    [app_bankAccount] => 
+    [app_bankName] => 
+    [app_ifscCode] => 
+    [app_companyAddress] => 
+    [app_city] => 
+    [app_state] => 
+    [app_country] => 
+    [app_pincode] => 
+    [app_tagline] => 
+    [app_iconLink] => 
+    [app_iconSize] => 
+    [app_iconColors] => 
+    [app_temporaryIconText] => 
+    [app_professionalIconText] => 
+    [app_professionalIconDescription] => 
+    [app_brandGuidelines] => 
+    [app_brandVoice] => 
+    [app_assetLinks] => 
+    [login_title] => 
+    [login_content] => 
+    [login_features] => 
+    [home_title] => 
+    [home_content] => 
+    [home_features] => 
+    [profile_title] => 
+    [profile_content] => 
+    [profile_features] => 
+    [settings_title] => 
+    [settings_content] => 
+    [settings_features] => 
+    [app_galleryTitle] => 
+    [app_galleryDescription] => 
+    [app_development_type] => 
+    [app_design_link] => 
+    [app_design_notes] => 
+    [app_design_colors] => 
+    [app_design_reference] => 
+    [app_design_ready_screens] => 
+    [app_design_missing_screens] => 
+    [app_reference_apps] => 
+    [app_payment_cred_razorpay_key_id] => 
+    [app_payment_cred_razorpay_key_secret] => 
+    [app_payment_cred_stripe_publishable_key] => 
+    [app_payment_cred_stripe_secret_key] => 
+    [app_payment_cred_paypal_client_id] => 
+    [app_payment_cred_paypal_client_secret] => 
+    [app_payment_cred_paypal_email] => 
+    [app_payment_cred_upi_id] => 
+    [app_payment_cred_upi_merchant_name] => 
+    [app_payment_cred_gpay_merchant_id] => 
+    [app_payment_cred_gpay_merchant_name] => 
+    [app_payment_cred_apple_merchant_id] => 
+    [app_payment_cred_apple_bundle_id] => 
+    [app_payment_cred_card_gateway] => 
+    [app_payment_cred_card_api_key] => 
+    [app_payment_cred_cod_notes] => 
+    [app_backend_tech] => 
+    [app_backend_tech_other] => 
+    [app_api_source] => 
+    [app_api_documentation] => 
+    [app_api_auth_type] => 
+    [app_api_credentials] => 
+    [app_playstore_login] => 
+    [app_playstore_password] => 
+    [app_appstore_login] => 
+    [app_appstore_password] => 
+    [app_contactName] => 
+    [app_contactEmail] => 
+    [app_contactPhone] => 
+    [app_businessEmail] => 
+    [app_businessAddress] => 
+    [app_openingTime] => 
+    [app_closingTime] => 
+    [app_additionalNotes] => 
+    [app_decisionMaker] => 
+    [app_reviewerCount] => 
+    [app_preferredCommunication] => 
+    [app_bestContactTime] => 
+    [app_deadlineReason] => 
+    [client_id] => CL-2026-7570
+)
+
+[01-Jun-2026 08:09:53 UTC] POST dump: Array
+(
+    [project_type] => website
+    [applicationType] => informational
+    [brandName] => hii
+    [businessCategory] => technology
+    [otherBusinessCategoryInput] => 
+    [brandShortDescription] => ghj
+    [projectType] => redesign
+    [otherProjectTypeInput] => 
+    [projectDescription] => 
+    [businessGoals] => Array
+        (
+            [0] => generate-leads
+            [1] => book-appointments
+        )
+
+    [targetAudience] => 
+    [visitorProblem] => 
+    [visitorActions] => Array
+        (
+            [0] => call
+            [1] => book-appointment
+        )
+
+    [priorityFocus] => Array
+        (
+            [0] => premium-design
+            [1] => automation
+        )
+
+    [launchDate] => 2026-06-26
+    [platform] => wordpress
+    [otherPlatformName] => 
+    [shopifyEmail] => 
+    [shopifyPassword] => 
+    [hasSSL] => no
+    [sslProvider] => 
+    [sslExpiryDate] => 
+    [sslType] => 
+    [sslPurchase] => yes
+    [sslPreferredProvider] => godaddy
+    [securityRequirements] => 
+    [hasTheme] => no
+    [themeName] => 
+    [themeProvider] => 
+    [inspirationSites] => 
+    [websitePageStyle] => multi-page
+    [designStyle] => modern-bold
+    [colorPreferences] => 
+    [colorScheme] => teal-sand
+    [fontPreference] => 
+    [fontUrl] => 
+    [referenceWebsite1] => 
+    [referenceWebsite2] => 
+    [referenceWebsite3] => 
+    [designComments] => 
+    [headerPages] => Array
+        (
+            [0] => home
+            [1] => contact
+        )
+
+    [footerPages] => Array
+        (
+            [0] => terms
+        )
+
+    [navigationStructure] => home|header,contact|header,terms|footer
+    [subpageNotes] => 
+    [customFeatures] => Array
+        (
+            [0] => facebook-pixel
+            [1] => email-marketing
+        )
+
+    [otherFeatures] => 
+    [integrations] => 
+    [formRequirements] => 
+    [leadDestinations] => Array
+        (
+            [0] => whatsapp
+            [1] => google-sheet
+            [2] => not-sure
+        )
+
+    [leadNotificationEmail] => 
+    [leadAutoReply] => 
+    [hasDomain] => yes
+    [domainName] => guttd.com
+    [domainProvider] => godday
+    [domainLogin] => no
+    [domainRegistrationSource] => getspace
+    [domainUsername] => 
+    [domainPassword] => 
+    [preferredDomain] => 
+    [hasHosting] => no
+    [getspaceRegistrationEmail] => 
+    [hostingProvider] => 
+    [hostingPlan] => 
+    [hostingUsername] => 
+    [hostingPassword] => 
+    [hostingPreference] => shared
+    [hostingPurchaseService] => yes
+    [companyName] => ftres
+    [companyCode] => 
+    [gstNumber] => 
+    [registrationNumber] => 
+    [bankAccount] => 
+    [bankName] => 
+    [ifscCode] => 
+    [companyAddress] => 
+    [city] => 
+    [state] => 
+    [country] => 
+    [pincode] => 
+    [tagline] => sucess
+    [hasLogo] => yes
+    [logoLink] => 
+    [logoSize] => 
+    [logoColors] => 
+    [temporaryLogoText] => 
+    [professionalLogoText] => 
+    [professionalLogoDescription] => 
+    [brandGuidelines] => 
+    [brandVoice] => friendly
+    [assetLinks] => 
+    [contentReady] => yes
+    [contentSupport] => Array
+        (
+            [0] => not-sure
+        )
+
+    [mediaSupport] => Array
+        (
+            [0] => stock-images
+        )
+
+    [pageHeading_home] => hii
+    [pageSubheading_home] => hvgfdx
+    [content_home] => dfgh
+    [contactFormTitle] => fghj
+    [contactFormSubmitText] => hvgcfdx
+    [contactFormThankYou] => vgcf
+    [contactFormAdminEmail] => 
+    [contactField_name] => yes
+    [contactField_email] => yes
+    [contactField_phone] => yes
+    [contactField_message] => yes
+    [pageHeading_terms] => bhgfd
+    [pageSubheading_terms] => bvgcf
+    [content_terms] => hgf
+    [pageExtras] => Array
+        (
+            [0] => testimonials
+        )
+
+    [testimonial_1_name] => gii
+    [testimonial_1_date] => 
+    [testimonial_1_text] => hgcf
+    [galleryTitle] => 
+    [galleryDescription] => 
+    [sellType] => none
+    [productDriveLink] => 
+    [productCategories] => 
+    [productImagesLink] => 
+    [serviceDriveLink] => 
+    [serviceCategories] => 
+    [servicePortfolioLink] => 
+    [servicePricing] => 
+    [serviceOperationNotes] => 
+    [isEcommerce] => no
+    [razorpayKeyId] => 
+    [stripeKey] => 
+    [paypalEmail] => 
+    [otherPaymentMethod] => 
+    [otherCurrencyText] => 
+    [taxRegion] => 
+    [taxRate] => 
+    [shippingType] => 
+    [flatRate] => 
+    [shippingZones] => 
+    [shippingRates] => 
+    [deliveryTimeframes] => 
+    [inventoryType] => 
+    [returnPolicy] => 
+    [ecommerceOperationNotes] => 
+    [businessDescription] => 
+    [keywords] => 
+    [competitors] => 
+    [avoidWebsites] => 
+    [targetLocations] => 
+    [googleBusinessProfile] => 
+    [legalTrustNotes] => 
+    [analyticsId] => 
+    [gaEmail] => 
+    [gaPassword] => 
+    [showSocialIcons] => no
+    [facebookUrl] => 
+    [instagramUrl] => 
+    [twitterUrl] => 
+    [linkedinUrl] => 
+    [youtubeUrl] => 
+    [pinterestUrl] => 
+    [tiktokUrl] => 
+    [otherSocialMedia] => 
+    [contactName] => giiiii
+    [contactEmail] => rdaf@gmail.com
+    [contactPhone] => 9878767657
+    [businessEmail] => rdaf@gmail.com
+    [businessAddress] => hadrda
+    [workingHoursMode] => always-open
+    [openingTime] => 
+    [closingTime] => 
+    [additionalNotes] => 
+    [decisionMaker] => raj
+    [reviewerCount] => 2
+    [preferredCommunication] => video-call
+    [bestContactTime] => evet
+    [deadlineReason] => 
+    [clientUncertainties] => 
+    [informationConfirmed] => yes
+    [app_purpose] => 
+    [app_target_audience] => 
+    [appScreens] => Array
+        (
+            [0] => login
+            [1] => home
+            [2] => profile
+            [3] => settings
+        )
+
+    [app_user_flow] => 
+    [app_name] => 
+    [app_companyCode] => 
+    [app_gstNumber] => 
+    [app_registrationNumber] => 
+    [app_bankAccount] => 
+    [app_bankName] => 
+    [app_ifscCode] => 
+    [app_companyAddress] => 
+    [app_city] => 
+    [app_state] => 
+    [app_country] => 
+    [app_pincode] => 
+    [app_tagline] => 
+    [app_iconLink] => 
+    [app_iconSize] => 
+    [app_iconColors] => 
+    [app_temporaryIconText] => 
+    [app_professionalIconText] => 
+    [app_professionalIconDescription] => 
+    [app_brandGuidelines] => 
+    [app_brandVoice] => 
+    [app_assetLinks] => 
+    [login_title] => 
+    [login_content] => 
+    [login_features] => 
+    [home_title] => 
+    [home_content] => 
+    [home_features] => 
+    [profile_title] => 
+    [profile_content] => 
+    [profile_features] => 
+    [settings_title] => 
+    [settings_content] => 
+    [settings_features] => 
+    [app_galleryTitle] => 
+    [app_galleryDescription] => 
+    [app_development_type] => 
+    [app_design_link] => 
+    [app_design_notes] => 
+    [app_design_colors] => 
+    [app_design_reference] => 
+    [app_design_ready_screens] => 
+    [app_design_missing_screens] => 
+    [app_reference_apps] => 
+    [app_payment_cred_razorpay_key_id] => 
+    [app_payment_cred_razorpay_key_secret] => 
+    [app_payment_cred_stripe_publishable_key] => 
+    [app_payment_cred_stripe_secret_key] => 
+    [app_payment_cred_paypal_client_id] => 
+    [app_payment_cred_paypal_client_secret] => 
+    [app_payment_cred_paypal_email] => 
+    [app_payment_cred_upi_id] => 
+    [app_payment_cred_upi_merchant_name] => 
+    [app_payment_cred_gpay_merchant_id] => 
+    [app_payment_cred_gpay_merchant_name] => 
+    [app_payment_cred_apple_merchant_id] => 
+    [app_payment_cred_apple_bundle_id] => 
+    [app_payment_cred_card_gateway] => 
+    [app_payment_cred_card_api_key] => 
+    [app_payment_cred_cod_notes] => 
+    [app_backend_tech] => 
+    [app_backend_tech_other] => 
+    [app_api_source] => 
+    [app_api_documentation] => 
+    [app_api_auth_type] => 
+    [app_api_credentials] => 
+    [app_playstore_login] => 
+    [app_playstore_password] => 
+    [app_appstore_login] => 
+    [app_appstore_password] => 
+    [app_contactName] => 
+    [app_contactEmail] => 
+    [app_contactPhone] => 
+    [app_businessEmail] => 
+    [app_businessAddress] => 
+    [app_openingTime] => 
+    [app_closingTime] => 
+    [app_additionalNotes] => 
+    [app_decisionMaker] => 
+    [app_reviewerCount] => 
+    [app_preferredCommunication] => 
+    [app_bestContactTime] => 
+    [app_deadlineReason] => 
+    [client_id] => CL-2026-7570
+)
+
+[01-Jun-2026 08:09:53 UTC] Uploaded files: Array
+(
+    [0] => logoFile
+    [1] => businessAssetsFile
+    [2] => pageImage_home
+    [3] => content_home_file
+    [4] => testimonial_1_image
+)
+
+[01-Jun-2026 09:11:02 UTC] === FORM SUBMISSION START ===
+[01-Jun-2026 09:11:02 UTC] Request Method: POST
+[01-Jun-2026 09:11:02 UTC] Content-Type: application/json
+[01-Jun-2026 09:11:02 UTC] Project type is missing but continuing for testing
+[01-Jun-2026 09:11:02 UTC] All contact fields are empty - using defaults
+[01-Jun-2026 09:11:02 UTC] Phone is empty - using default
+[01-Jun-2026 09:11:02 UTC] Final values - Email: , Name: Test User, Phone: 1234567890
+[01-Jun-2026 09:11:02 UTC] Submitted payload: Array
+(
+)
+
+[01-Jun-2026 09:11:02 UTC] POST dump: Array
+(
+)
+
+[01-Jun-2026 09:11:02 UTC] Uploaded files: Array
+(
+)
+
+[27-Jul-2026 12:47:32 UTC] === FORM SUBMISSION START ===
+[27-Jul-2026 12:47:32 UTC] Request Method: POST
+[27-Jul-2026 12:47:32 UTC] Content-Type: multipart/form-data; boundary=----WebKitFormBoundarydj7SykKeV0N4Rw9y
+[27-Jul-2026 12:47:32 UTC] Final values - Email: rajvishwakarma2021@gmail.com, Name: Rajkumar Vishwakarma, Phone: 09111328903
+[27-Jul-2026 12:47:32 UTC] Submitted payload: Array
+(
+    [project_type] => website
+    [applicationType] => informational
+    [brandName] => thecraftloom
+    [businessCategory] => education
+    [otherBusinessCategoryInput] => 
+    [brandShortDescription] => frghjm
+    [projectType] => redesign
+    [otherProjectTypeInput] => 
+    [projectDescription] => 
+    [businessGoals] => Array
+        (
+            [0] => generate-leads
+            [1] => share-information
+        )
+
+    [targetAudience] => 
+    [visitorProblem] => 
+    [visitorActions] => Array
+        (
+            [0] => call
+            [1] => whatsapp
+        )
+
+    [priorityFocus] => Array
+        (
+            [0] => premium-design
+        )
+
+    [launchDate] => 2026-07-28
+    [platform] => wordpress
+    [otherPlatformName] => 
+    [shopifyEmail] => 
+    [shopifyPassword] => 
+    [hasSSL] => no
+    [sslProvider] => 
+    [sslExpiryDate] => 
+    [sslType] => 
+    [sslPurchase] => yes
+    [sslPreferredProvider] => godaddy
+    [securityRequirements] => 
+    [hasTheme] => yes
+    [themeName] => jhgf.com
+    [themeProvider] => vgf
+    [themeLicense] => yes
+    [inspirationSites] => 
+    [websitePageStyle] => one-page
+    [designStyle] => simple-minimal
+    [colorPreferences] => 
+    [colorScheme] => team-choice
+    [fontPreference] => clean-sans
+    [fontUrl] => sccza
+    [referenceWebsite1] => thecraftloom.com
+    [referenceWebsite2] => avana.com
+    [referenceWebsite3] => 
+    [designComments] => 
+    [headerPages] => Array
+        (
+            [0] => home
+            [1] => contact
+        )
+
+    [footerPages] => Array
+        (
+            [0] => privacy
+        )
+
+    [navigationStructure] => home|header,contact|header,privacy|footer
+    [subpageNotes] => 
+    [customFeatures] => Array
+        (
+            [0] => contact
+            [1] => newsletter
+            [2] => whatsapp
+        )
+
+    [otherFeatures] => 
+    [integrations] => 
+    [formRequirements] => 
+    [leadDestinations] => Array
+        (
+            [0] => email
+            [1] => whatsapp
+        )
+
+    [leadNotificationEmail] => 
+    [leadAutoReply] => 
+    [domainName] => 
+    [domainProvider] => 
+    [domainUsername] => 
+    [domainPassword] => 
+    [preferredDomain] => 
+    [getspaceRegistrationEmail] => 
+    [hostingProvider] => 
+    [hostingPlan] => 
+    [hostingUsername] => 
+    [hostingPassword] => 
+    [hostingPreference] => 
+    [companyName] => RECHARGE TRENDD SETTER PVT LTD
+    [companyCode] => 
+    [gstNumber] => 
+    [registrationNumber] => 
+    [bankAccount] => 
+    [bankName] => 
+    [ifscCode] => 
+    [companyAddress] => 
+    [city] => 
+    [state] => 
+    [country] => 
+    [pincode] => 
+    [tagline] => 
+    [hasLogo] => temporary
+    [logoLink] => 
+    [logoSize] => 
+    [logoColors] => 
+    [temporaryLogoText] => sefrdg
+    [professionalLogoText] => 
+    [professionalLogoDescription] => 
+    [brandGuidelines] => 
+    [brandVoice] => professional
+    [assetLinks] => 
+    [contentReady] => partial
+    [contentSupport] => Array
+        (
+            [0] => rewrite
+            [1] => not-sure
+        )
+
+    [mediaSupport] => Array
+        (
+            [0] => banner-design
+        )
+
+    [pageHeading_home] => defrgthyjuk
+    [pageSubheading_home] => scdvfbgdv
+    [content_home] => axzscvdfbg
+    [contactFormTitle] => vsdsdvs
+    [contactFormSubmitText] => Submit form
+    [contactFormThankYou] => rgfhyj
+    [contactFormAdminEmail] => rajvishwakarma2021@gmail.com
+    [contactField_name] => yes
+    [contactField_email] => yes
+    [contactField_phone] => yes
+    [contactField_message] => yes
+    [contactCustomField_0_label] => Serrivce
+    [contactCustomField_0_type] => number
+    [pageHeading_privacy] => 
+    [pageSubheading_privacy] => 
+    [content_privacy] => 
+    [galleryTitle] => 
+    [galleryDescription] => 
+    [sellType] => both
+    [productDriveLink] => 
+    [productCategories] => 
+    [productImagesLink] => 
+    [serviceDriveLink] => 
+    [serviceCategories] => 
+    [servicePortfolioLink] => 
+    [servicePricing] => 
+    [serviceOperationNotes] => 
+    [isEcommerce] => yes
+    [paymentMethods] => Array
+        (
+            [0] => razorpay
+            [1] => stripe
+        )
+
+    [razorpayKeyId] => sfseghtw345trde456ygf
+    [stripeKey] => asdfbgnhmjk
+    [paypalEmail] => 
+    [otherPaymentMethod] => 
+    [currencies] => Array
+        (
+            [0] => USD
+            [1] => EUR
+        )
+
+    [otherCurrencyText] => 
+    [taxRegion] => UK , India
+    [taxRate] => 12
+    [shippingType] => free
+    [flatRate] => 
+    [shippingZones] => notyh
+    [shippingRates] => 
+    [deliveryTimeframes] => 
+    [inventoryType] => 
+    [returnPolicy] => 
+    [ecommerceOperations] => Array
+        (
+            [0] => variants
+            [1] => tax-invoice
+        )
+
+    [ecommerceOperationNotes] => 
+    [businessDescription] => 
+    [keywords] => 
+    [competitors] => 
+    [avoidWebsites] => 
+    [targetLocations] => 
+    [googleBusinessProfile] => 
+    [trustAssets] => Array
+        (
+            [0] => client-logos
+        )
+
+    [legalNeeds] => Array
+        (
+            [0] => terms
+        )
+
+    [legalTrustNotes] => 
+    [hasAnalytics] => no
+    [analyticsId] => 
+    [gaEmail] => rajvishwakarma2021@gmail.com
+    [gaPassword] => 
+    [showSocialIcons] => no
+    [facebookUrl] => 
+    [instagramUrl] => 
+    [twitterUrl] => 
+    [linkedinUrl] => 
+    [youtubeUrl] => 
+    [pinterestUrl] => 
+    [tiktokUrl] => 
+    [otherSocialMedia] => 
+    [contactName] => Rajkumar Vishwakarma
+    [contactEmail] => rajvishwakarma2021@gmail.com
+    [contactPhone] => 09111328903
+    [businessEmail] => rajvishwakarma2021@gmail.com
+    [businessAddress] => sefghj
+    [workingHoursMode] => selected-hours
+    [openDays] => Array
+        (
+            [0] => monday
+            [1] => tuesday
+            [2] => wednesday
+            [3] => thursday
+            [4] => friday
+            [5] => saturday
+            [6] => sunday
+        )
+
+    [openingTime] => 21:17
+    [closingTime] => 23:17
+    [additionalNotes] => 
+    [decisionMaker] => Rajkumar
+    [reviewerCount] => 4
+    [preferredCommunication] => whatsapp
+    [bestContactTime] => after 3pm
+    [deadlineReason] => 3
+    [clientUncertainties] => 
+    [informationConfirmed] => yes
+    [app_purpose] => 
+    [app_target_audience] => 
+    [appScreens] => Array
+        (
+            [0] => login
+            [1] => home
+            [2] => profile
+            [3] => settings
+        )
+
+    [app_user_flow] => 
+    [app_name] => 
+    [app_companyCode] => 
+    [app_gstNumber] => 
+    [app_registrationNumber] => 
+    [app_bankAccount] => 
+    [app_bankName] => 
+    [app_ifscCode] => 
+    [app_companyAddress] => 
+    [app_city] => 
+    [app_state] => 
+    [app_country] => 
+    [app_pincode] => 
+    [app_tagline] => 
+    [app_iconLink] => 
+    [app_iconSize] => 
+    [app_iconColors] => 
+    [app_temporaryIconText] => 
+    [app_professionalIconText] => 
+    [app_professionalIconDescription] => 
+    [app_brandGuidelines] => 
+    [app_brandVoice] => 
+    [app_assetLinks] => 
+    [login_title] => 
+    [login_content] => 
+    [login_features] => 
+    [home_title] => 
+    [home_content] => 
+    [home_features] => 
+    [profile_title] => 
+    [profile_content] => 
+    [profile_features] => 
+    [settings_title] => 
+    [settings_content] => 
+    [settings_features] => 
+    [app_galleryTitle] => 
+    [app_galleryDescription] => 
+    [app_development_type] => 
+    [app_design_link] => 
+    [app_design_notes] => 
+    [app_design_colors] => 
+    [app_design_reference] => 
+    [app_design_ready_screens] => 
+    [app_design_missing_screens] => 
+    [app_reference_apps] => 
+    [app_payment_cred_razorpay_key_id] => 
+    [app_payment_cred_razorpay_key_secret] => 
+    [app_payment_cred_stripe_publishable_key] => 
+    [app_payment_cred_stripe_secret_key] => 
+    [app_payment_cred_paypal_client_id] => 
+    [app_payment_cred_paypal_client_secret] => 
+    [app_payment_cred_paypal_email] => 
+    [app_payment_cred_upi_id] => 
+    [app_payment_cred_upi_merchant_name] => 
+    [app_payment_cred_gpay_merchant_id] => 
+    [app_payment_cred_gpay_merchant_name] => 
+    [app_payment_cred_apple_merchant_id] => 
+    [app_payment_cred_apple_bundle_id] => 
+    [app_payment_cred_card_gateway] => 
+    [app_payment_cred_card_api_key] => 
+    [app_payment_cred_cod_notes] => 
+    [app_backend_tech] => 
+    [app_backend_tech_other] => 
+    [app_api_source] => 
+    [app_api_documentation] => 
+    [app_api_auth_type] => 
+    [app_api_credentials] => 
+    [app_playstore_login] => 
+    [app_playstore_password] => 
+    [app_appstore_login] => 
+    [app_appstore_password] => 
+    [app_contactName] => 
+    [app_contactEmail] => 
+    [app_contactPhone] => 
+    [app_businessEmail] => 
+    [app_businessAddress] => 
+    [app_openingTime] => 
+    [app_closingTime] => 
+    [app_additionalNotes] => 
+    [app_decisionMaker] => 
+    [app_reviewerCount] => 
+    [app_preferredCommunication] => 
+    [app_bestContactTime] => 
+    [app_deadlineReason] => 
+    [client_id] => CL-2026-8243
+)
+
+[27-Jul-2026 12:47:32 UTC] POST dump: Array
+(
+    [project_type] => website
+    [applicationType] => informational
+    [brandName] => thecraftloom
+    [businessCategory] => education
+    [otherBusinessCategoryInput] => 
+    [brandShortDescription] => frghjm
+    [projectType] => redesign
+    [otherProjectTypeInput] => 
+    [projectDescription] => 
+    [businessGoals] => Array
+        (
+            [0] => generate-leads
+            [1] => share-information
+        )
+
+    [targetAudience] => 
+    [visitorProblem] => 
+    [visitorActions] => Array
+        (
+            [0] => call
+            [1] => whatsapp
+        )
+
+    [priorityFocus] => Array
+        (
+            [0] => premium-design
+        )
+
+    [launchDate] => 2026-07-28
+    [platform] => wordpress
+    [otherPlatformName] => 
+    [shopifyEmail] => 
+    [shopifyPassword] => 
+    [hasSSL] => no
+    [sslProvider] => 
+    [sslExpiryDate] => 
+    [sslType] => 
+    [sslPurchase] => yes
+    [sslPreferredProvider] => godaddy
+    [securityRequirements] => 
+    [hasTheme] => yes
+    [themeName] => jhgf.com
+    [themeProvider] => vgf
+    [themeLicense] => yes
+    [inspirationSites] => 
+    [websitePageStyle] => one-page
+    [designStyle] => simple-minimal
+    [colorPreferences] => 
+    [colorScheme] => team-choice
+    [fontPreference] => clean-sans
+    [fontUrl] => sccza
+    [referenceWebsite1] => thecraftloom.com
+    [referenceWebsite2] => avana.com
+    [referenceWebsite3] => 
+    [designComments] => 
+    [headerPages] => Array
+        (
+            [0] => home
+            [1] => contact
+        )
+
+    [footerPages] => Array
+        (
+            [0] => privacy
+        )
+
+    [navigationStructure] => home|header,contact|header,privacy|footer
+    [subpageNotes] => 
+    [customFeatures] => Array
+        (
+            [0] => contact
+            [1] => newsletter
+            [2] => whatsapp
+        )
+
+    [otherFeatures] => 
+    [integrations] => 
+    [formRequirements] => 
+    [leadDestinations] => Array
+        (
+            [0] => email
+            [1] => whatsapp
+        )
+
+    [leadNotificationEmail] => 
+    [leadAutoReply] => 
+    [domainName] => 
+    [domainProvider] => 
+    [domainUsername] => 
+    [domainPassword] => 
+    [preferredDomain] => 
+    [getspaceRegistrationEmail] => 
+    [hostingProvider] => 
+    [hostingPlan] => 
+    [hostingUsername] => 
+    [hostingPassword] => 
+    [hostingPreference] => 
+    [companyName] => RECHARGE TRENDD SETTER PVT LTD
+    [companyCode] => 
+    [gstNumber] => 
+    [registrationNumber] => 
+    [bankAccount] => 
+    [bankName] => 
+    [ifscCode] => 
+    [companyAddress] => 
+    [city] => 
+    [state] => 
+    [country] => 
+    [pincode] => 
+    [tagline] => 
+    [hasLogo] => temporary
+    [logoLink] => 
+    [logoSize] => 
+    [logoColors] => 
+    [temporaryLogoText] => sefrdg
+    [professionalLogoText] => 
+    [professionalLogoDescription] => 
+    [brandGuidelines] => 
+    [brandVoice] => professional
+    [assetLinks] => 
+    [contentReady] => partial
+    [contentSupport] => Array
+        (
+            [0] => rewrite
+            [1] => not-sure
+        )
+
+    [mediaSupport] => Array
+        (
+            [0] => banner-design
+        )
+
+    [pageHeading_home] => defrgthyjuk
+    [pageSubheading_home] => scdvfbgdv
+    [content_home] => axzscvdfbg
+    [contactFormTitle] => vsdsdvs
+    [contactFormSubmitText] => Submit form
+    [contactFormThankYou] => rgfhyj
+    [contactFormAdminEmail] => rajvishwakarma2021@gmail.com
+    [contactField_name] => yes
+    [contactField_email] => yes
+    [contactField_phone] => yes
+    [contactField_message] => yes
+    [contactCustomField_0_label] => Serrivce
+    [contactCustomField_0_type] => number
+    [pageHeading_privacy] => 
+    [pageSubheading_privacy] => 
+    [content_privacy] => 
+    [galleryTitle] => 
+    [galleryDescription] => 
+    [sellType] => both
+    [productDriveLink] => 
+    [productCategories] => 
+    [productImagesLink] => 
+    [serviceDriveLink] => 
+    [serviceCategories] => 
+    [servicePortfolioLink] => 
+    [servicePricing] => 
+    [serviceOperationNotes] => 
+    [isEcommerce] => yes
+    [paymentMethods] => Array
+        (
+            [0] => razorpay
+            [1] => stripe
+        )
+
+    [razorpayKeyId] => sfseghtw345trde456ygf
+    [stripeKey] => asdfbgnhmjk
+    [paypalEmail] => 
+    [otherPaymentMethod] => 
+    [currencies] => Array
+        (
+            [0] => USD
+            [1] => EUR
+        )
+
+    [otherCurrencyText] => 
+    [taxRegion] => UK , India
+    [taxRate] => 12
+    [shippingType] => free
+    [flatRate] => 
+    [shippingZones] => notyh
+    [shippingRates] => 
+    [deliveryTimeframes] => 
+    [inventoryType] => 
+    [returnPolicy] => 
+    [ecommerceOperations] => Array
+        (
+            [0] => variants
+            [1] => tax-invoice
+        )
+
+    [ecommerceOperationNotes] => 
+    [businessDescription] => 
+    [keywords] => 
+    [competitors] => 
+    [avoidWebsites] => 
+    [targetLocations] => 
+    [googleBusinessProfile] => 
+    [trustAssets] => Array
+        (
+            [0] => client-logos
+        )
+
+    [legalNeeds] => Array
+        (
+            [0] => terms
+        )
+
+    [legalTrustNotes] => 
+    [hasAnalytics] => no
+    [analyticsId] => 
+    [gaEmail] => rajvishwakarma2021@gmail.com
+    [gaPassword] => 
+    [showSocialIcons] => no
+    [facebookUrl] => 
+    [instagramUrl] => 
+    [twitterUrl] => 
+    [linkedinUrl] => 
+    [youtubeUrl] => 
+    [pinterestUrl] => 
+    [tiktokUrl] => 
+    [otherSocialMedia] => 
+    [contactName] => Rajkumar Vishwakarma
+    [contactEmail] => rajvishwakarma2021@gmail.com
+    [contactPhone] => 09111328903
+    [businessEmail] => rajvishwakarma2021@gmail.com
+    [businessAddress] => sefghj
+    [workingHoursMode] => selected-hours
+    [openDays] => Array
+        (
+            [0] => monday
+            [1] => tuesday
+            [2] => wednesday
+            [3] => thursday
+            [4] => friday
+            [5] => saturday
+            [6] => sunday
+        )
+
+    [openingTime] => 21:17
+    [closingTime] => 23:17
+    [additionalNotes] => 
+    [decisionMaker] => Rajkumar
+    [reviewerCount] => 4
+    [preferredCommunication] => whatsapp
+    [bestContactTime] => after 3pm
+    [deadlineReason] => 3
+    [clientUncertainties] => 
+    [informationConfirmed] => yes
+    [app_purpose] => 
+    [app_target_audience] => 
+    [appScreens] => Array
+        (
+            [0] => login
+            [1] => home
+            [2] => profile
+            [3] => settings
+        )
+
+    [app_user_flow] => 
+    [app_name] => 
+    [app_companyCode] => 
+    [app_gstNumber] => 
+    [app_registrationNumber] => 
+    [app_bankAccount] => 
+    [app_bankName] => 
+    [app_ifscCode] => 
+    [app_companyAddress] => 
+    [app_city] => 
+    [app_state] => 
+    [app_country] => 
+    [app_pincode] => 
+    [app_tagline] => 
+    [app_iconLink] => 
+    [app_iconSize] => 
+    [app_iconColors] => 
+    [app_temporaryIconText] => 
+    [app_professionalIconText] => 
+    [app_professionalIconDescription] => 
+    [app_brandGuidelines] => 
+    [app_brandVoice] => 
+    [app_assetLinks] => 
+    [login_title] => 
+    [login_content] => 
+    [login_features] => 
+    [home_title] => 
+    [home_content] => 
+    [home_features] => 
+    [profile_title] => 
+    [profile_content] => 
+    [profile_features] => 
+    [settings_title] => 
+    [settings_content] => 
+    [settings_features] => 
+    [app_galleryTitle] => 
+    [app_galleryDescription] => 
+    [app_development_type] => 
+    [app_design_link] => 
+    [app_design_notes] => 
+    [app_design_colors] => 
+    [app_design_reference] => 
+    [app_design_ready_screens] => 
+    [app_design_missing_screens] => 
+    [app_reference_apps] => 
+    [app_payment_cred_razorpay_key_id] => 
+    [app_payment_cred_razorpay_key_secret] => 
+    [app_payment_cred_stripe_publishable_key] => 
+    [app_payment_cred_stripe_secret_key] => 
+    [app_payment_cred_paypal_client_id] => 
+    [app_payment_cred_paypal_client_secret] => 
+    [app_payment_cred_paypal_email] => 
+    [app_payment_cred_upi_id] => 
+    [app_payment_cred_upi_merchant_name] => 
+    [app_payment_cred_gpay_merchant_id] => 
+    [app_payment_cred_gpay_merchant_name] => 
+    [app_payment_cred_apple_merchant_id] => 
+    [app_payment_cred_apple_bundle_id] => 
+    [app_payment_cred_card_gateway] => 
+    [app_payment_cred_card_api_key] => 
+    [app_payment_cred_cod_notes] => 
+    [app_backend_tech] => 
+    [app_backend_tech_other] => 
+    [app_api_source] => 
+    [app_api_documentation] => 
+    [app_api_auth_type] => 
+    [app_api_credentials] => 
+    [app_playstore_login] => 
+    [app_playstore_password] => 
+    [app_appstore_login] => 
+    [app_appstore_password] => 
+    [app_contactName] => 
+    [app_contactEmail] => 
+    [app_contactPhone] => 
+    [app_businessEmail] => 
+    [app_businessAddress] => 
+    [app_openingTime] => 
+    [app_closingTime] => 
+    [app_additionalNotes] => 
+    [app_decisionMaker] => 
+    [app_reviewerCount] => 
+    [app_preferredCommunication] => 
+    [app_bestContactTime] => 
+    [app_deadlineReason] => 
+    [client_id] => CL-2026-8243
+)
+
+[27-Jul-2026 12:47:32 UTC] Uploaded files: Array
+(
+    [0] => businessAssetsFile
+    [1] => pageImage_home
+    [2] => content_home_file
+)
+
+[27-Jul-2026 13:44:11 UTC] === FORM SUBMISSION START ===
+[27-Jul-2026 13:44:11 UTC] Request Method: POST
+[27-Jul-2026 13:44:11 UTC] Content-Type: application/json
+[27-Jul-2026 13:44:11 UTC] Final values - Email: vandana@curtel.in, Name: Vandana Singh, Phone: 8287931048
+[27-Jul-2026 13:44:11 UTC] Submitted payload: Array
+(
+    [project_type] => website
+    [applicationType] => informational
+    [brandName] => Curtel & civON
+    [businessCategory] => manufacturing
+    [otherBusinessCategoryInput] => 
+    [brandShortDescription] => Under Curtel brand name we manufacture Brass, Bronze and Copper Kitchenware, Tableware, Cookware, Giftware. And under civON we are into Small Kitchen Appliances
+    [projectType] => redesign
+    [otherProjectTypeInput] => 
+    [projectDescription] => We want a live, story telling, emotional, health related, sustainability related product based website
+    [businessGoals] => Array
+        (
+            [0] => generate-leads
+            [1] => sell-online
+            [2] => build-trust
+            [3] => show-portfolio
+            [4] => share-information
+        )
+
+    [targetAudience] => Tier 1 and Tier 2
+    [visitorProblem] => It should enciurage them to purchase through offline or online cchannels of ours and educated them also about health and heritage
+    [visitorActions] => Array
+        (
+            [0] => call
+            [1] => inquiry-form
+            [2] => buy-now
+            [3] => download-brochure
+        )
+
+    [priorityFocus] => Array
+        (
+            [0] => fast-launch
+            [1] => premium-design
+            [2] => seo
+            [3] => easy-editing
+        )
+
+    [launchDate] => 2026-08-15
+    [platform] => wordpress
+    [otherPlatformName] => 
+    [shopifyEmail] => 
+    [shopifyPassword] => 
+    [hasSSL] => yes
+    [sslProvider] => Godaddy
+    [sslExpiryDate] => 2028-07-17
+    [sslType] => DV
+    [sslPreferredProvider] => 
+    [securityRequirements] => Firewall, malware,daily backups, ssl, spam protection
+    [hasTheme] => no
+    [themeName] => 
+    [themeProvider] => 
+    [inspirationSites] => 
+    [websitePageStyle] => multi-page
+    [designStyle] => classic-professional
+    [colorPreferences] => Royal Blue 
+    [colorScheme] => navy-gold
+    [fontPreference] => custom
+    [fontUrl] => 
+    [referenceWebsite1] => 
+    [referenceWebsite2] => 
+    [referenceWebsite3] => 
+    [designComments] => 
+    [headerPages] => Array
+        (
+            [0] => home
+            [1] => about
+            [2] => services
+            [3] => contact
+            [4] => testimonial
+            [5] => blog
+            [6] => shop
+            [7] => gallery
+        )
+
+    [footerPages] => Array
+        (
+            [0] => privacy
+            [1] => terms
+        )
+
+    [navigationStructure] => home|header,about|header,services|header,contact|header,blog|header,testimonial|header,shop|header,gallery|header,privacy|footer,terms|footer
+    [subpageNotes] => 
+    [customFeatures] => Array
+        (
+            [0] => contact
+            [1] => whatsapp
+            [2] => analytics
+            [3] => multilingual
+            [4] => seo
+            [5] => social-media
+        )
+
+    [otherFeatures] => 
+    [integrations] => 
+    [formRequirements] => 
+    [leadDestinations] => Array
+        (
+            [0] => email
+            [1] => whatsapp
+            [2] => admin-dashboard
+        )
+
+    [leadNotificationEmail] => 
+    [leadAutoReply] => 
+    [hasDomain] => yes
+    [domainName] => curtel.in
+    [domainProvider] => Godaddy
+    [domainLogin] => yes
+    [domainRegistrationSource] => other-provider
+    [domainManagementPreference] => team-handles
+    [domainUsername] => 
+    [domainPassword] => 
+    [preferredDomain] => 
+    [getspaceRegistrationEmail] => 
+    [hostingProvider] => 
+    [hostingPlan] => 
+    [hostingUsername] => 
+    [hostingPassword] => 
+    [hostingPreference] => 
+    [companyName] => Curtel Innovations Pvt Ltd
+    [companyCode] => 
+    [gstNumber] => 
+    [registrationNumber] => 
+    [bankAccount] => 
+    [bankName] => 
+    [ifscCode] => 
+    [companyAddress] => 
+    [city] => 
+    [state] => 
+    [country] => 
+    [pincode] => 
+    [tagline] => Health & Heritage, Switch on the Future
+    [hasLogo] => yes
+    [logoLink] => 
+    [logoFile] => Array
+        (
+        )
+
+    [logoSize] => 
+    [logoColors] => 
+    [temporaryLogoText] => 
+    [professionalLogoText] => 
+    [professionalLogoDescription] => 
+    [professionalLogoReference] => Array
+        (
+        )
+
+    [brandGuidelines] => 
+    [brandVoice] => 
+    [assetLinks] => 
+    [businessAssetsFile] => Array
+        (
+        )
+
+    [contentReady] => no
+    [contentSupport] => Array
+        (
+            [0] => copywriting
+        )
+
+    [mediaSupport] => Array
+        (
+            [0] => image-editing
+            [1] => product-cleanup
+        )
+
+    [pageHeading_home] => 
+    [pageSubheading_home] => 
+    [content_home] => 
+    [pageImage_home] => Array
+        (
+        )
+
+    [content_home_file] => Array
+        (
+        )
+
+    [pageHeading_about] => 
+    [pageSubheading_about] => 
+    [content_about] => 
+    [pageImage_about] => Array
+        (
+        )
+
+    [content_about_file] => Array
+        (
+        )
+
+    [pageHeading_services] => 
+    [pageSubheading_services] => 
+    [content_services] => 
+    [pageImage_services] => Array
+        (
+        )
+
+    [content_services_file] => Array
+        (
+        )
+
+    [contactFormTitle] => 
+    [contactFormSubmitText] => 
+    [contactFormThankYou] => 
+    [contactFormAdminEmail] => 
+    [pageHeading_testimonial] => 
+    [pageSubheading_testimonial] => 
+    [content_testimonial] => 
+    [pageImage_testimonial] => Array
+        (
+        )
+
+    [content_testimonial_file] => Array
+        (
+        )
+
+    [pageHeading_blog] => 
+    [pageSubheading_blog] => 
+    [content_blog] => 
+    [pageImage_blog] => Array
+        (
+        )
+
+    [content_blog_file] => Array
+        (
+        )
+
+    [pageHeading_shop] => 
+    [pageSubheading_shop] => 
+    [content_shop] => 
+    [pageImage_shop] => Array
+        (
+        )
+
+    [content_shop_file] => Array
+        (
+        )
+
+    [pageHeading_gallery] => 
+    [pageSubheading_gallery] => 
+    [content_gallery] => 
+    [pageImage_gallery] => Array
+        (
+        )
+
+    [content_gallery_file] => Array
+        (
+        )
+
+    [pageHeading_privacy] => 
+    [pageSubheading_privacy] => 
+    [content_privacy] => 
+    [pageImage_privacy] => Array
+        (
+        )
+
+    [content_privacy_file] => Array
+        (
+        )
+
+    [pageHeading_terms] => 
+    [pageSubheading_terms] => 
+    [content_terms] => 
+    [pageImage_terms] => Array
+        (
+        )
+
+    [content_terms_file] => Array
+        (
+        )
+
+    [pageExtras] => Array
+        (
+            [0] => testimonials
+            [1] => gallery
+        )
+
+    [galleryTitle] => 
+    [galleryDescription] => 
+    [sellType] => products
+    [productDriveLink] => 
+    [productCategories] => 
+    [productImagesLink] => 
+    [serviceDriveLink] => 
+    [serviceCategories] => 
+    [servicePortfolioLink] => 
+    [servicePricing] => 
+    [serviceOperationNotes] => 
+    [serviceDetailsFile] => Array
+        (
+        )
+
+    [isEcommerce] => no
+    [razorpayKeyId] => 
+    [stripeKey] => 
+    [paypalEmail] => 
+    [otherPaymentMethod] => 
+    [otherCurrencyText] => 
+    [taxRegion] => 
+    [taxRate] => 
+    [shippingType] => 
+    [flatRate] => 
+    [shippingZones] => 
+    [shippingRates] => 
+    [deliveryTimeframes] => 
+    [inventoryType] => 
+    [returnPolicy] => 
+    [ecommerceOperationNotes] => 
+    [businessDescription] => 
+    [keywords] => 
+    [competitors] => 
+    [avoidWebsites] => 
+    [targetLocations] => 
+    [googleBusinessProfile] => 
+    [legalTrustNotes] => 
+    [analyticsId] => 
+    [gaEmail] => 
+    [gaPassword] => 
+    [showSocialIcons] => yes
+    [facebookUrl] => 
+    [instagramUrl] => 
+    [twitterUrl] => 
+    [linkedinUrl] => 
+    [youtubeUrl] => 
+    [pinterestUrl] => 
+    [tiktokUrl] => 
+    [otherSocialMedia] => 
+    [contactName] => Vandana Singh
+    [contactEmail] => vandana@curtel.in
+    [contactPhone] => 8287931048
+    [businessEmail] => vandana@curtel.in
+    [businessAddress] => 
+    [workingHoursMode] => selected-hours
+    [openDays] => Array
+        (
+            [0] => monday
+            [1] => tuesday
+            [2] => wednesday
+            [3] => thursday
+            [4] => friday
+        )
+
+    [openingTime] => 
+    [closingTime] => 
+    [additionalNotes] => 
+    [decisionMaker] => 
+    [reviewerCount] => 
+    [preferredCommunication] => 
+    [bestContactTime] => 
+    [deadlineReason] => 
+    [clientUncertainties] => 
+    [informationConfirmed] => yes
+    [app_purpose] => 
+    [app_target_audience] => 
+    [appScreens] => Array
+        (
+            [0] => login
+            [1] => home
+            [2] => profile
+            [3] => settings
+        )
+
+    [app_user_flow] => 
+    [app_name] => 
+    [app_companyCode] => 
+    [app_gstNumber] => 
+    [app_registrationNumber] => 
+    [app_bankAccount] => 
+    [app_bankName] => 
+    [app_ifscCode] => 
+    [app_companyAddress] => 
+    [app_city] => 
+    [app_state] => 
+    [app_country] => 
+    [app_pincode] => 
+    [app_tagline] => 
+    [app_iconLink] => 
+    [app_iconFile] => Array
+        (
+        )
+
+    [app_iconSize] => 
+    [app_iconColors] => 
+    [app_temporaryIconText] => 
+    [app_professionalIconText] => 
+    [app_professionalIconDescription] => 
+    [app_professionalIconReference] => Array
+        (
+        )
+
+    [app_brandGuidelines] => 
+    [app_brandVoice] => 
+    [app_assetLinks] => 
+    [app_businessAssetsFile] => Array
+        (
+        )
+
+    [login_title] => 
+    [login_content] => 
+    [login_media] => Array
+        (
+        )
+
+    [login_features] => 
+    [home_title] => 
+    [home_content] => 
+    [home_media] => Array
+        (
+        )
+
+    [home_features] => 
+    [profile_title] => 
+    [profile_content] => 
+    [profile_media] => Array
+        (
+        )
+
+    [profile_features] => 
+    [settings_title] => 
+    [settings_content] => 
+    [settings_media] => Array
+        (
+        )
+
+    [settings_features] => 
+    [app_galleryTitle] => 
+    [app_galleryDescription] => 
+    [app_development_type] => 
+    [app_design_link] => 
+    [app_design_file] => Array
+        (
+        )
+
+    [app_design_notes] => 
+    [app_design_colors] => 
+    [app_design_reference] => 
+    [app_design_ready_screens] => 
+    [app_design_missing_screens] => 
+    [app_reference_apps] => 
+    [app_payment_cred_razorpay_key_id] => 
+    [app_payment_cred_razorpay_key_secret] => 
+    [app_payment_cred_stripe_publishable_key] => 
+    [app_payment_cred_stripe_secret_key] => 
+    [app_payment_cred_paypal_client_id] => 
+    [app_payment_cred_paypal_client_secret] => 
+    [app_payment_cred_paypal_email] => 
+    [app_payment_cred_upi_id] => 
+    [app_payment_cred_upi_merchant_name] => 
+    [app_payment_cred_gpay_merchant_id] => 
+    [app_payment_cred_gpay_merchant_name] => 
+    [app_payment_cred_apple_merchant_id] => 
+    [app_payment_cred_apple_bundle_id] => 
+    [app_payment_cred_card_gateway] => 
+    [app_payment_cred_card_api_key] => 
+    [app_payment_cred_cod_notes] => 
+    [app_backend_tech] => 
+    [app_backend_tech_other] => 
+    [app_api_source] => 
+    [app_api_documentation] => 
+    [app_api_auth_type] => 
+    [app_api_credentials] => 
+    [app_api_files] => Array
+        (
+            [0] => Array
+                (
+                )
+
+        )
+
+    [app_playstore_login] => 
+    [app_playstore_password] => 
+    [app_appstore_login] => 
+    [app_appstore_password] => 
+    [app_contactName] => 
+    [app_contactEmail] => 
+    [app_contactPhone] => 
+    [app_businessEmail] => 
+    [app_businessAddress] => 
+    [app_openingTime] => 
+    [app_closingTime] => 
+    [app_additionalNotes] => 
+    [app_decisionMaker] => 
+    [app_reviewerCount] => 
+    [app_preferredCommunication] => 
+    [app_bestContactTime] => 
+    [app_deadlineReason] => 
+    [client_id] => CL-2026-6112
+)
+
+[27-Jul-2026 13:44:11 UTC] POST dump: Array
+(
+)
+
+[27-Jul-2026 13:44:11 UTC] Uploaded files: Array
+(
+)
+

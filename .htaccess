@@ -1,19 +1,24 @@
-# Security settings for Client Requirements System
+# Client Requirements Form
+RewriteEngine On
 
-# Prevent directory listing
-Options -Indexes
+# Redirect root to client form
+RewriteRule ^$ client-requirement-form.html [L]
 
-# Protect sensitive files
-<Files "config.php">
-    Require all denied
+# DirectoryIndex
+DirectoryIndex client-requirement-form.html index.php
+
+# Allow all files
+<Files "*">
+    Require all granted
 </Files>
 
-# Set secure headers
-<IfModule mod_headers.c>
-    Header always set X-Content-Type-Options nosniff
-    Header always set X-Frame-Options DENY
-    Header always set X-XSS-Protection "1; mode=block"
+# PHP settings
+<IfModule mod_php.c>
+    php_flag display_errors On
+    php_value max_execution_time 300
+    php_value upload_max_filesize 10M
+    php_value post_max_size 10M
 </IfModule>
 
-# Error pages
-ErrorDocument 404 "Page not found"
+# Error handling
+ErrorDocument 404 /404.html

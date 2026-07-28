@@ -80,24 +80,83 @@ echo "<h3>6. Form Submission Endpoint Test</h3>";
 if (function_exists('curl_init')) {
     $test_data = [
         'client_id' => 'TEST-2026-9999',
-        'companyName' => 'Test Company',
-        'projectType' => 'test'
+        'contactName' => 'Test cURL User',
+        'contactEmail' => 'test@example.com',
+        'contactPhone' => '1234567890',
+        'project_type' => 'website'
     ];
     
-    $ch = curl_init('submit_form.php');
+    $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || ($_SERVER['SERVER_PORT'] ?? 80) == 443) ? 'https' : 'http';
+    $host = $_SERVER['HTTP_HOST'] ?? 'localhost';
+    $uri_dir = rtrim(dirname($_SERVER['SCRIPT_NAME'] ?? ''), '/\\');
+    $target_url = $protocol . '://' . $host . $uri_dir . '/submit_form.php';
+    
+    echo "<h4>Test 6A: JSON Format POST Submission</h4>";
+    echo "Testing JSON POST to: <code>" . htmlspecialchars($target_url) . "</code><br>";
+    
+    $perf_curl_start = microtime(true);
+    
+    $ch = curl_init($target_url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($test_data));
     curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 10);
     
     $response = curl_exec($ch);
     $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    $curl_error = curl_error($ch);
     curl_close($ch);
     
+    $elapsed = round((microtime(true) - $perf_curl_start) * 1000, 2);
+    echo "JSON Request completed in: <strong>" . $elapsed . " ms</strong><br>";
+    
     if ($http_code === 200) {
-        echo "✓ Form submission endpoint responding<br>";
+        echo "<span class='success'>✓ JSON submission endpoint responding (HTTP 200)</span><br>";
+        echo "Response: <pre style='background: #f4f4f4; padding: 10px; border-radius: 4px;'>" . htmlspecialchars($response) . "</pre>";
     } else {
-        echo "✗ Form submission endpoint error (HTTP $http_code)<br>";
+        echo "<span class='error'>✗ JSON submission endpoint error (HTTP $http_code)</span><br>";
+        if ($curl_error) {
+            echo "cURL Error: <code>" . htmlspecialchars($curl_error) . "</code><br>";
+        } else {
+            echo "Response: <pre style='background: #f4f4f4; padding: 10px; border-radius: 4px;'>" . htmlspecialchars($response) . "</pre>";
+        }
+    }
+    
+    echo "<h4>Test 6B: Standard Form URL-encoded POST Submission</h4>";
+    echo "Testing Form POST to: <code>" . htmlspecialchars($target_url) . "</code><br>";
+    
+    $perf_curl_start2 = microtime(true);
+    
+    $ch = curl_init($target_url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($test_data));
+    curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/x-www-form-urlencoded']);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+    
+    $response = curl_exec($ch);
+    $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    $curl_error = curl_error($ch);
+    curl_close($ch);
+    
+    $elapsed2 = round((microtime(true) - $perf_curl_start2) * 1000, 2);
+    echo "Form Request completed in: <strong>" . $elapsed2 . " ms</strong><br>";
+    
+    if ($http_code === 200) {
+        echo "<span class='success'>✓ Form submission endpoint responding (HTTP 200)</span><br>";
+        echo "Response: <pre style='background: #f4f4f4; padding: 10px; border-radius: 4px;'>" . htmlspecialchars($response) . "</pre>";
+    } else {
+        echo "<span class='error'>✗ Form submission endpoint error (HTTP $http_code)</span><br>";
+        if ($curl_error) {
+            echo "cURL Error: <code>" . htmlspecialchars($curl_error) . "</code><br>";
+        } else {
+            echo "Response: <pre style='background: #f4f4f4; padding: 10px; border-radius: 4px;'>" . htmlspecialchars($response) . "</pre>";
+        }
     }
 } else {
     echo "⚠ Cannot test form endpoint (cURL not available)<br>";
@@ -110,7 +169,7 @@ echo "<p>If you see ✗ marks, please address those issues before proceeding.</p
 echo "<br><h3>Next Steps</h3>";
 echo "<ol>";
 echo "<li><a href='client-requirement-form.html'>Test the client form</a></li>";
-echo "<li><a href='admin/login.php'>Test admin login</a> (username: admin, password: admin123)</li>";
+// echo "<li><a href='admin/login.php'>Test admin login</a> (username: admin, password: admin123)</li>";
 echo "<li>Submit a test form and verify it appears in the admin dashboard</li>";
 echo "<li>Test PDF generation from the client view page</li>";
 echo "</ol>";

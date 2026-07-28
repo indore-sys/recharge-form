@@ -1,0 +1,2 @@
+[01-Jun-2026 06:36:29 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/l93y487memcp/public_html/recharge-website-form/config.php on line 15
+[01-Jun-2026 06:36:40 UTC] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/l93y487memcp/public_html/recharge-website-form/config.php on line 15

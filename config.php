@@ -1,36 +1,31 @@
 <?php
 // MySQL Database Configuration
-define('DB_HOST', 'localhost');
-define('DB_NAME', 'client_requirements');
-define('DB_USER', 'root');
-define('DB_PASS', '');
+// Note: Using '127.0.0.1' instead of 'localhost' prevents slow DNS/IPv6 resolution delays on live/production servers.
+define('DB_HOST', '127.0.0.1');
+define('DB_NAME', 'client_requirements-form');
+define('DB_USER', 'client_requirements');
+define('DB_PASS', 'client_requirements');
 
 // Security settings
 define('ADMIN_USERNAME', 'admin');
 define('ADMIN_PASSWORD', 'admin123'); // Change this in production
 
-// Create database connection
 function getDBConnection() {
-    // First try to connect without specifying database
-    $conn = new mysqli(DB_HOST, DB_USER, DB_PASS);
-    
-    if ($conn->connect_error) {
-        error_log("Database connection failed: " . $conn->connect_error);
-        return null; // Return null instead of dying
+    $conn = mysqli_init();
+    if (!$conn) {
+        die("Connection failed: mysqli_init failed");
     }
     
-    // Try to create database if it doesn't exist
-    $conn->query("CREATE DATABASE IF NOT EXISTS " . DB_NAME);
+    // Set 5 seconds connection timeout
+    $conn->options(MYSQLI_OPT_CONNECT_TIMEOUT, 5);
     
-    // Select the database
-    if (!$conn->select_db(DB_NAME)) {
-        error_log("Failed to select database: " . $conn->error);
-        return null;
+    // Suppress warning with @ and connect
+    if (!@$conn->real_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME)) {
+        die("Database connection failed. Please verify your DB credentials (DB_HOST, DB_USER, DB_PASS, DB_NAME) in config.php. Error: " . mysqli_connect_error());
     }
     
     return $conn;
 }
-
 // Initialize database tables
 function initializeDatabase() {
     $conn = getDBConnection();
@@ -53,19 +48,6 @@ function initializeDatabase() {
     if (!$conn->query($sql)) {
         die("Error creating clients table: " . $conn->error);
     }
-
-    // Keep the status enum in sync with the admin UI.
-    $statusColumn = $conn->query("SHOW COLUMNS FROM clients LIKE 'status'");
-    if ($statusColumn && $statusColumn->num_rows > 0) {
-        $statusInfo = $statusColumn->fetch_assoc();
-        $type = $statusInfo['Type'] ?? '';
-        if (strpos($type, "Hold") === false) {
-            $alterSql = "ALTER TABLE clients MODIFY status ENUM('New', 'In Progress', 'Hold', 'Completed') DEFAULT 'New'";
-            if (!$conn->query($alterSql)) {
-                die("Error updating clients status enum: " . $conn->error);
-            }
-        }
-    }
     
     // Create admin_users table
     $sql = "CREATE TABLE IF NOT EXISTS admin_users (
@@ -84,6 +66,7 @@ function initializeDatabase() {
     $conn->close();
 }
 
-// Call initialization
-initializeDatabase();
+// Call initialization (Commented out for live production to avoid connection overhead on every request. 
+// You can uncomment this if you need to re-initialize the database tables).
+// initializeDatabase();
 ?>
